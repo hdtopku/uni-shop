@@ -76,7 +76,6 @@
   "h5": {
     "router": {
       "mode": "history"
-    },
-    "template": "template.html"
+    }
   }
 }
