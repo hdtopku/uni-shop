@@ -109,7 +109,7 @@
       return {
         ios: true,
         showAlert: true,
-        currentStep: 1,
+        currentStep: 0,
         showModal: false,
         checkboxValue1: [false],
         alertType: 'error',
@@ -166,7 +166,6 @@
     methods: {
       checkboxChange(val) {
         this.checkboxValue1 = val
-        console.log(this.checkboxValue1[0])
       },
       copyLink() {
         // #ifdef H5
@@ -214,9 +213,7 @@
             break
         }
       },
-      radioChange(n) {
-        console.log('radioChange', n);
-      },
+      radioChange(n) {},
       clickNext() {
         if (this.currentStep === 0 && this.radiovalue7 <= 3) {
           this.showAlert = false

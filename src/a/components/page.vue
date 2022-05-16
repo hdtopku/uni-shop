@@ -1,7 +1,7 @@
 <template>
   <view>
-    <u-navbar v-if="showNavbar" title="苹果音乐学生验证" @rightClick="rightClick" leftIcon="">
-    </u-navbar>
+    <!-- <u-navbar v-if="showNavbar" title="苹果音乐学生验证" @rightClick="rightClick" leftIcon="">
+    </u-navbar> -->
     <!-- <u-navbar height="0" class="nav-center" :is-back="false" :background="background" :safeAreaInsetTop="false"
       immersive fixed :border-bottom="false">
       <view class="nav-center">
