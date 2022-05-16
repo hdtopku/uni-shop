@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "custom-icon"; /* Project id 2138434 */
+  src: url('//at.alicdn.com/t/font_2138434_psfzfl6xr3h.woff2?t=1651951712420') format('woff2');
+}
+
+.custom-icon {
+  font-family: "custom-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-icon-plus-square:before {
+  content: "\e61f";
+}
+
+.custom-icon-wechat1:before {
+  content: "\e891";
+}
+
+.custom-icon-WeChat:before {
+  content: "\e65b";
+}
+
+.custom-icon-play1:before {
+  content: "\e605";
+}
+
+.custom-icon-play:before {
+  content: "\ea42";
+}
+
+.custom-icon-favorite:before {
+  content: "\e66e";
+}
+
+.custom-icon-dd_history:before {
+  content: "\e89e";
+}
+
+.custom-icon-wechat:before {
+  content: "\e6ca";
+}
+
+.custom-icon-biaoti:before {
+  content: "\e62b";
+}
+
+.custom-icon-Link:before {
+  content: "\e6b0";
+}
+
+.custom-icon-move_down:before {
+  content: "\e731";
+}
+
+.custom-icon-share-:before {
+  content: "\e856";
+}
+
+.custom-icon-fenxiang:before {
+  content: "\e604";
+}
+
+.custom-icon-share:before {
+  content: "\e63e";
+}
+
+.custom-icon-share1:before {
+  content: "\e636";
+}
+
+.custom-icon-fuzhi:before {
+  content: "\ec7a";
+}
+
+.custom-icon-alipay1:before {
+  content: "\e7c0";
+}
+
+.custom-icon-alipay2:before {
+  content: "\e660";
+}
+
+.custom-icon-a-Alipaypayment:before {
+  content: "\e63f";
+}
+
+.custom-icon-alipay3:before {
+  content: "\e648";
+}
+
+.custom-icon-badge:before {
+  content: "\e603";
+}
+
+.custom-icon-chevronleftcircle1:before {
+  content: "\e60c";
+}
+
+.custom-icon-circle:before {
+  content: "\e685";
+}
+
+.custom-icon-checked:before {
+  content: "\e607";
+}
+
+.custom-icon-pa_checked01:before {
+  content: "\e66c";
+}
+
+.custom-icon-arrow-right:before {
+  content: "\e602";
+}
+
+.custom-icon-arrow-down:before {
+  content: "\e601";
+}
+
+.custom-icon-img_wepay:before {
+  content: "\e611";
+}
+
+.custom-icon-alipay:before {
+  content: "\e7ff";
+}
+
+.custom-icon-wepay:before {
+  content: "\ea9c";
+}
+
+.custom-icon-we-chatpay:before {
+  content: "\e600";
+}
+
+.custom-icon-zhifubao2:before {
+  content: "\e693";
+}
+
+.custom-icon-zhifubao:before {
+  content: "\e6b2";
+}

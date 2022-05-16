@@ -1,16 +1,35 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "uni-app"
+      }
+    }
+      ,{
+            "path" : "pages/test/test",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#000",
+    "navigationStyle": "custom", // 隐藏系统导航栏
+    "navigationBarTextStyle": "white", // 状态栏字体为white或black
+    // #ifdef H5
+    "rpxCalcMaxDeviceWidth": 0, // ipad适配
+    // #endif
+    "app-plus": {
+      "titleView": false
+    }
+  },
+  "easycom": {
+    "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue",
+    "ui-(.*)": "@/ui/components/ui-$1/ui-$1.vue",
+    "app-(.*)": "@/app/components/app-$1/app-$1.vue"
+  }
 }
