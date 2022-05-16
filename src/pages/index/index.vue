@@ -1,6 +1,8 @@
 <template>
   <page class="page-container">
-    <view class="font-60" v-if="ios">
+    是否为chrome：{{isChrome}}
+    是否是ios：{{ios}}
+    <view class="font-60" v-if="!ios">
       <u-alert effect="dark" title="提示：" type="error"
         description="安卓、windows或mac用户无法验证，需借助iphone或ipad验证后才可使用！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
       </u-alert>
@@ -34,7 +36,6 @@
               :label="item.label" :name="item.name" @change="radioChange">
             </u-radio>
           </u-radio-group>
-          是否为chrome：{{isChrome}}
           <u-alert v-show="showAlert" class="animate__animated animate__headShake" :title="alertTitle" :type="alertType"
             :effect="alertEffect" showIcon>
           </u-alert>
