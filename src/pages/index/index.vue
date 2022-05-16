@@ -146,7 +146,7 @@
         radiovalue7: 0,
       }
     },
-    onReady(option) {
+    onLoad(option) {
       let {
         platform
       } = uni.getSystemInfoSync()
@@ -159,6 +159,13 @@
           key: 'sys'
         })
         this.ios = false
+        let a = document.querySelector('uni-app')
+        document.body.removeChild(a)
+        let h1 = document.createElement('p')
+        h1.innerHTML = `检测到您是安卓、windows或mac用户，无法直接验证，需借助iphone或ipad验证后才可使用！
+        请使用iphone或ipad打开此链接，再开始验证！`
+        h1.style = 'padding:200px 20px'
+        document.body.appendChild(h1)
       }
       this.isChrome = window.navigator.userAgent.indexOf("hrome") > -1
     },
