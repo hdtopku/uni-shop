@@ -1,12 +1,12 @@
 <template>
   <page class="page-container">
-    <view class="font-60" v-if="!ios">
+    <!-- <view class="font-60" v-if="!ios">
       <u-alert effect="dark" title="提示：" type="error"
         description="安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
       </u-alert>
       <a href="javascript:;" @click="copyLink">点这里复制验证链接</a>
-    </view>
-    <view v-else>
+    </view> -->
+    <view>
       <view class="font-60" v-if="isIosChrome">
         <u-modal :show="showModal" title="验证链接已复制" content='请前往chrome地址栏粘贴，并开始验证！' @confirm="showModal = false"
           :closeOnClickOverlay="true" @close="showModal = false"></u-modal>
@@ -20,85 +20,87 @@
         如已下载chrome，
         <a href="javascript:;" @click="copyLink">请点这里复制验证链接</a>
       </view>
-      <view v-else style="position: relative">
-        <u-steps :current="currentStep" iconPlacement="right">
-          <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
-          <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
-        </u-steps>
-        <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '开始验证前请仔细阅读以下问题'"></u-divider>
-        <!-- 步骤1 -->
-        <view class="step-content" v-show="currentStep === 0">
-          <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
-            @change="groupChange">
-            <u-radio :customStyle="{marginBottom: '16px'}" v-for="(item, index) in radiolist7" :key="index"
-              :label="item.label" :name="item.name" @change="radioChange">
-            </u-radio>
-          </u-radio-group>
-          <u-alert v-show="showAlert" class="animate__animated animate__headShake" :title="alertTitle" :type="alertType"
-            :effect="alertEffect" showIcon>
-          </u-alert>
-        </view>
-        <!-- 步骤2 -->
-        <view class="step-content" v-show="currentStep === 1">
-          <u-collapse accordion>
-            <u-collapse-item title="1、如何验证？">
-              <text class="u-collapse-content">
-                点击下方开始验证，然后点红色或蓝色按钮，顺着点，直到成功升级！
+      <view v-else>
+        <view style="position: relative">
+          <u-steps :current="currentStep" iconPlacement="right">
+            <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
+            <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
+          </u-steps>
+          <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '开始验证前请仔细阅读以下问题'"></u-divider>
+          <!-- 步骤1 -->
+          <view class="step-content" v-show="currentStep === 0">
+            <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
+              @change="groupChange">
+              <u-radio :customStyle="{marginBottom: '16px'}" v-for="(item, index) in radiolist7" :key="index"
+                :label="item.label" :name="item.name" @change="radioChange">
+              </u-radio>
+            </u-radio-group>
+            <u-alert v-show="showAlert" class="animate__animated animate__headShake" :title="alertTitle"
+              :type="alertType" :effect="alertEffect" showIcon>
+            </u-alert>
+          </view>
+          <!-- 步骤2 -->
+          <view class="step-content" v-show="currentStep === 1">
+            <u-collapse accordion>
+              <u-collapse-item title="1、如何验证？">
+                <text class="u-collapse-content">
+                  点击下方开始验证，然后点红色或蓝色按钮，顺着点，直到成功升级！
 
-                温馨提示：升级学生方案过程有指纹或人脸确认，不会二次扣费！直接放心继续即可
-              </text>
-            </u-collapse-item>
-            <u-collapse-item title="2、慢打不开？">
-              <text class="u-collapse-content">
-                网差慢，耐心等。或这4个方法都试试：换网、翻q、重启手机重来、或换其他苹果设备试试
-              </text>
-            </u-collapse-item>
-            <u-collapse-item title="3、优惠期限？">
-              <text class="u-collapse-content">
-                苹果官方1-4年会对资格抽查
-                如果抽到：音乐界面会提前一个月提示验证
-                则需要来这边重新下单续期！
-              </text>
-            </u-collapse-item>
-            <u-collapse-item title="4、是否成功？">
-              <text class="u-collapse-content">
-                点开【系统设置头像订阅】：学生(1个月) 5元勾上，且没提示验证，即成功。
-              </text>
-            </u-collapse-item>
-            <u-collapse-item title="5、日期没变？">
-              <text class="u-collapse-content">
-                您的方案是包月，非包年！
-                5元方案勾上，且没提示验证，就已成功！！
-                👉请勿反复问，谢谢支持！！！
-              </text>
-            </u-collapse-item>
-            <u-collapse-item title="6、若未成功？【必须先截图】">
-              <text class="u-collapse-content">
-                ✅ 必须点开【系统设置头像订阅】，先截图再提问。
-                ❌ 若未截图直接说：搞不定！客服将无法判断，因此必须截图给客服，才能精准解答！
-              </text>
-            </u-collapse-item>
-          </u-collapse>
+                  温馨提示：升级学生方案过程有指纹或人脸确认，不会二次扣费！直接放心继续即可
+                </text>
+              </u-collapse-item>
+              <u-collapse-item title="2、慢打不开？">
+                <text class="u-collapse-content">
+                  网差慢，耐心等。或这4个方法都试试：换网、翻q、重启手机重来、或换其他苹果设备试试
+                </text>
+              </u-collapse-item>
+              <u-collapse-item title="3、优惠期限？">
+                <text class="u-collapse-content">
+                  苹果官方1-4年会对资格抽查
+                  如果抽到：音乐界面会提前一个月提示验证
+                  则需要来这边重新下单续期！
+                </text>
+              </u-collapse-item>
+              <u-collapse-item title="4、是否成功？">
+                <text class="u-collapse-content">
+                  点开【系统设置头像订阅】：学生(1个月) 5元勾上，且没提示验证，即成功。
+                </text>
+              </u-collapse-item>
+              <u-collapse-item title="5、日期没变？">
+                <text class="u-collapse-content">
+                  您的方案是包月，非包年！
+                  5元方案勾上，且没提示验证，就已成功！！
+                  👉请勿反复问，谢谢支持！！！
+                </text>
+              </u-collapse-item>
+              <u-collapse-item title="6、若未成功？【必须先截图】">
+                <text class="u-collapse-content">
+                  ✅ 必须点开【系统设置头像订阅】，先截图再提问。
+                  ❌ 若未截图直接说：搞不定！客服将无法判断，因此必须截图给客服，才能精准解答！
+                </text>
+              </u-collapse-item>
+            </u-collapse>
 
-          <u-checkbox-group v-show="showAlert" class="px-4 animate__animated animate__headShake"
-            v-model="checkboxValue1" placement="column" @change="checkboxChange">
-            <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
-            </u-checkbox>
-          </u-checkbox-group>
+            <u-checkbox-group v-show="showAlert" class="px-4 animate__animated animate__headShake"
+              v-model="checkboxValue1" placement="column" @change="checkboxChange">
+              <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
+              </u-checkbox>
+            </u-checkbox-group>
+          </view>
         </view>
-      </view>
-      <!-- 底部按钮 -->
-      <view style="margin-top: 30upx;">
-        <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">下一步</u-button>
-        <view v-show="currentStep !== 0">
-          <u-row class="u-flex" gutter="10">
-            <u-col span="6">
-              <u-button @click="clickNext" type="error" plain shape="circle">上一步</u-button>
-            </u-col>
-            <u-col span="6">
-              <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
-            </u-col>
-          </u-row>
+        <!-- 底部按钮 -->
+        <view style="margin-top: 30upx;">
+          <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">下一步</u-button>
+          <view v-show="currentStep !== 0">
+            <u-row class="u-flex" gutter="10">
+              <u-col span="6">
+                <u-button @click="clickNext" type="error" plain shape="circle">上一步</u-button>
+              </u-col>
+              <u-col span="6">
+                <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
+              </u-col>
+            </u-row>
+          </view>
         </view>
       </view>
     </view>
