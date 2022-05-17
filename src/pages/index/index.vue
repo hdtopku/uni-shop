@@ -1,8 +1,5 @@
 <template>
   <page class="page-container">
-    是否为chrome：{{isChrome}}
-    是否是ios：{{ios}}
-    是否为isIosChrome：{{isIosChrome}}
     <view class="font-60" v-if="!ios">
       <u-alert effect="dark" title="提示：" type="error"
         description="安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
@@ -10,7 +7,7 @@
       <a href="javascript:;" @click="copyLink">点这里复制验证链接</a>
     </view>
     <view v-else>
-      <view class="font-60" v-if="false">
+      <view class="font-60" v-if="isIosChrome">
         <u-modal :show="showModal" title="验证链接已复制" content='请前往chrome地址栏粘贴，并开始验证！' @confirm="showModal = false"
           :closeOnClickOverlay="true" @close="showModal = false"></u-modal>
         <u--image :showLoading="true"
@@ -23,7 +20,7 @@
         如已下载chrome，
         <a href="javascript:;" @click="copyLink">请点这里复制验证链接</a>
       </view>
-      <view v-if="true" style="position: relative">
+      <view v-else style="position: relative">
         <u-steps :current="currentStep" iconPlacement="right">
           <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
           <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
@@ -113,7 +110,6 @@
     data() {
       return {
         ios: true,
-        isChrome: false,
         isIosChrome: false,
         showAlert: true,
         currentStep: 0,
@@ -149,25 +145,15 @@
       }
     },
     onLoad(option) {
-      // let {
-      //   platform
-      // } = uni.getSystemInfoSync()
-      // let sys = uni.getStorageSync('sys')
-      // if (!sys && platform === 'ios') {
-      //   this.ios = true
-      // } else {
-      //   uni.setStorage({
-      //     data: 'false',
-      //     key: 'sys'
-      //   })
-      //   this.ios = false
-      //   let a = document.querySelector('uni-app')
-      //   document.body.removeChild(a)
-      //   let h1 = document.createElement('p')
-      //   h1.innerHTML = `安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！`
-      //   h1.style = 'padding:200px 20px'
-      //   document.body.appendChild(h1)
-      // }
+      this.ios = uni.$u.isIos
+      if (!this.isIos) {
+        let a = document.querySelector('uni-app')
+        document.body.removeChild(a)
+        let h1 = document.createElement('p')
+        h1.innerHTML = `安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！`
+        h1.style = 'padding:200px 20px'
+        document.body.appendChild(h1)
+      }
       this.isIosChrome = uni.$u.isIosChrome()
     },
     methods: {
