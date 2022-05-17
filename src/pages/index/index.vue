@@ -119,7 +119,7 @@
       }
     },
     onLoad(option) {
-      // uni.$u.checkAmEnv()
+      uni.$u.checkAmEnv()
     },
     methods: {
       checkboxChange(val) {
@@ -201,7 +201,7 @@
           // #ifdef H5
           window.open(
             'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-            )
+          )
           // #endif
         }
       },
