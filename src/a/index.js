@@ -1,2 +1,2 @@
 // import './core/info.js'
-import './utils/deviceUtil.js'
+import './utils/amUtil.js'

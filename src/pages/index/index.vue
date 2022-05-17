@@ -127,7 +127,7 @@
       }
     },
     onLoad(option) {
-      uni.$u.checkAmEnv()
+      // uni.$u.checkAmEnv()
     },
     methods: {
       checkboxChange(val) {
@@ -229,7 +229,7 @@
     }
 
     .step-content {
-      height: 63vh;
+      height: 70vh;
       width: 90vw;
       overflow: scroll;
       padding-bottom: 100upx;
