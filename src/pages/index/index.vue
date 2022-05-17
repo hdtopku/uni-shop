@@ -156,7 +156,7 @@
         h1.style = 'padding:200px 20px'
         document.body.appendChild(h1)
       }
-      this.isIosChrome = uni.$u.isIosChrome()
+      this.isIosChrome = uni.$u.isIosChrome
     },
     methods: {
       checkboxChange(val) {
