@@ -2,9 +2,10 @@
   <page class="page-container">
     是否为chrome：{{isChrome}}
     是否是ios：{{ios}}
+    是否为isIosChrome：{{isIosChrome}}
     <view class="font-60" v-if="!ios">
       <u-alert effect="dark" title="提示：" type="error"
-        description="安卓、windows或mac用户无法验证，需借助iphone或ipad验证后才可使用！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
+        description="安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
       </u-alert>
       <a href="javascript:;" @click="copyLink">点这里复制验证链接</a>
     </view>
@@ -113,6 +114,7 @@
       return {
         ios: true,
         isChrome: false,
+        isIosChrome: false,
         showAlert: true,
         currentStep: 0,
         showModal: false,
@@ -147,27 +149,26 @@
       }
     },
     onLoad(option) {
-      let {
-        platform
-      } = uni.getSystemInfoSync()
-      let sys = uni.getStorageSync('sys')
-      if (!sys && platform === 'ios') {
-        this.ios = true
-      } else {
-        uni.setStorage({
-          data: 'false',
-          key: 'sys'
-        })
-        this.ios = false
-        let a = document.querySelector('uni-app')
-        document.body.removeChild(a)
-        let h1 = document.createElement('p')
-        h1.innerHTML = `检测到您是安卓、windows或mac用户，无法直接验证，需借助iphone或ipad验证后才可使用！
-        请使用iphone或ipad打开此链接，再开始验证！`
-        h1.style = 'padding:200px 20px'
-        document.body.appendChild(h1)
-      }
-      this.isChrome = window.navigator.userAgent.indexOf("hrome") > -1
+      // let {
+      //   platform
+      // } = uni.getSystemInfoSync()
+      // let sys = uni.getStorageSync('sys')
+      // if (!sys && platform === 'ios') {
+      //   this.ios = true
+      // } else {
+      //   uni.setStorage({
+      //     data: 'false',
+      //     key: 'sys'
+      //   })
+      //   this.ios = false
+      //   let a = document.querySelector('uni-app')
+      //   document.body.removeChild(a)
+      //   let h1 = document.createElement('p')
+      //   h1.innerHTML = `安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！`
+      //   h1.style = 'padding:200px 20px'
+      //   document.body.appendChild(h1)
+      // }
+      this.isIosChrome = uni.$u.isIosChrome()
     },
     methods: {
       checkboxChange(val) {

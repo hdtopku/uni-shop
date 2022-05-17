@@ -20,4 +20,5 @@ const app = new Vue({
 app.$mount()
 
 import commonUtil from '@/a/utils/commonUtil.js'
+import '@/a/index.js'
 Vue.use(commonUtil, app)
