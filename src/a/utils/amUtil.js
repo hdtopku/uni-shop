@@ -50,9 +50,9 @@ const checkAmEnv = () => {
     let h1 = document.createElement('p')
     h1.innerHTML = `安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！
           <br>
-          如已下载，
+          如有iphone或ipad，
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我验证复制链接，并前往验证</button>
+<button id="CopyBtn">点我验证复制链接，并前往iphone或ipad验证</button>
     
     `
     h1.style = 'padding:200px 20px'
@@ -80,7 +80,7 @@ const checkAmEnv = () => {
           <br>
           如已下载，
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我验证复制链接，并前往验证</button>
+<button id="CopyBtn">点我验证复制链接，并前往chrome验证</button>
           `
     h1.style = 'padding:200px 20px;background-color:white'
     document.body.appendChild(h1)
