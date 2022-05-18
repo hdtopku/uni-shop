@@ -81,6 +81,9 @@ const checkAmEnv = () => {
           如已下载，
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
 <button id="CopyBtn">点我验证复制链接，并前往chrome验证</button>
+<br>
+温馨提醒：请勿反复询问客服：必须使用chrome吗？
+是的，必须使用！自行下载安装并开始验证即可！
           `
     h1.style = 'padding:200px 20px;background-color:white'
     document.body.appendChild(h1)
