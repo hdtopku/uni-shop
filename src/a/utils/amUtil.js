@@ -87,7 +87,8 @@ const checkAmEnv = () => {
 <br>
 <br>
 温馨提醒：请勿反复询问客服：必须使用chrome吗？
-是的，必须使用！自行下载安装并开始验证即可！
+<br>
+答：是的，必须使用！（不想用？验证完就卸载。如没流量？有wifi时弄）
           `
     h1.style = 'padding:200px 20px;background-color:white'
     document.body.appendChild(h1)
