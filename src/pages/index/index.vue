@@ -29,7 +29,7 @@
         </u-collapse-item>
         <u-collapse-item title="2、慢打不开？">
           <text class="u-collapse-content">
-            网差慢，耐心等。或这3个方法都试试：换网、重启手机重来、或换其他苹果设备试试、或翻q
+            网差慢，耐心等。或这3个方法都试试：换网、重启手机重来、或换其他iphone、ipad设备重来、或翻q
           </text>
         </u-collapse-item>
         <u-collapse-item title="3、优惠期限？">
@@ -37,6 +37,9 @@
             苹果官方1-4年会对资格抽查
             如果抽到：音乐界面会提前一个月提示验证
             则需要来这边重新下单续期！
+
+            有客户360天说提示验证，以不到365天为由，要求客服免费加一年。
+            特别提示：人工和升级链均需成本，希望客户能尊重客服的劳动成果。
           </text>
         </u-collapse-item>
         <u-collapse-item title="4、是否成功？">
@@ -119,7 +122,7 @@
       }
     },
     onLoad(option) {
-      uni.$u.checkAmEnv()
+      // uni.$u.checkAmEnv()
     },
     methods: {
       checkboxChange(val) {
