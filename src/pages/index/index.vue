@@ -45,21 +45,22 @@
         <u-collapse-item title="4、是否成功？">
           <text class="u-collapse-content">
             点开【系统设置头像订阅】：学生(1个月) 5元勾上，且没提示验证，即成功。
+
+            温馨提醒：若存在疑惑，必须【系统设置头像订阅】截图客服才可提问。
           </text>
         </u-collapse-item>
         <u-collapse-item title="5、日期没变？">
           <text class="u-collapse-content">
             您的方案是包月，非包年！
             5元方案勾上，且没提示验证，就已成功！！
+
             👉请勿反复问，谢谢支持！！！
           </text>
         </u-collapse-item>
-        <u-collapse-item title="6、若未成功？【必须先截图】">
+        <u-collapse-item title="6、如何有效和客服沟通？【必须先截图】">
           <text class="u-collapse-content">
             ✅ 必须点开【系统设置头像订阅】，先截图再提问。
             ❌ 若未截图直接说：搞不定！客服将无法判断，因此必须截图给客服，才能精准解答！
-
-            温馨提醒：当客服回复您：图！即代表您需要将订阅截图给客服
           </text>
         </u-collapse-item>
       </u-collapse>
@@ -83,6 +84,10 @@
         <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
         </u-checkbox>
       </u-checkbox-group>
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="如何有效和客服沟通？" cancelText="我再想想"
+        @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
+        @confirm="confirm" :content='modalContent'>
+      </u-modal>
     </view>
   </page>
 </template>
@@ -94,6 +99,8 @@
         showAlert: true,
         currentStep: 0,
         showModal: false,
+        modalContent: `任何提问必须【系统设置头像订阅】截图给客服，再提问！
+        这是唯一有效提问凭证！`,
         checkboxValue1: [false],
         alertType: 'error',
         alertTitle: '请正确选择您的情况，否则可能导致验证失败！',
@@ -124,7 +131,7 @@
       }
     },
     onLoad(option) {
-      uni.$u.checkAmEnv()
+      // uni.$u.checkAmEnv()
     },
     methods: {
       checkboxChange(val) {
@@ -162,18 +169,19 @@
             break
           case 3:
             this.alertType = 'success'
-            this.alertTitle = `我确保已经处于【个人方案】中，且未取消、未过期，可以进入下一步！
+            this.alertTitle = `我保证已经处于【个人方案】中，且未取消、未过期，可以进入下一步！
             
             温馨提示：如何判断是否成功升级学生方案？
-            打开【系统设置头像订阅】，学生5元/月勾上即成功！日期没变？是因为您的方案是包月，非包年！
-            升级过程中需人脸或指纹确认，但不会扣费，请爽快继续！
+            打开【系统设置头像订阅】，学生5元/月勾上即成功！
+            日期没变？是因为您的方案是包月，非包年！
+            升级过程中需人脸或指纹确认？但不会扣费，请爽快继续！
             `
             this.alertEffect = 'dark'
             this.nextDisabled = false
             break
           case 4:
             this.alertType = 'success'
-            this.alertTitle = `我确保已经处于【学生方案】中，且未取消、未过期，目前苹果提示我验证资格，可以下一步！
+            this.alertTitle = `我保证已经处于【学生方案】中，且未取消、未过期，目前苹果提示我验证资格，可以下一步！
             
             温馨提示：如何判断是否成功续期？
             打开【系统设置头像订阅】，没有提示验证，则此次续期成功！
@@ -203,13 +211,16 @@
             this.showAlert = true
           })
         } else {
-          // #ifdef H5
-          window.open(
-            'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-          )
-          // #endif
+          this.showModal = true
         }
       },
+      confirm() {
+        // #ifdef H5
+        window.open(
+          'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
+        )
+        // #endif
+      }
     }
   }
 </script>
