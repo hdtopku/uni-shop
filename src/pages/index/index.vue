@@ -45,8 +45,6 @@
         <u-collapse-item title="4、是否成功？">
           <text class="u-collapse-content">
             点开【系统设置头像订阅】：学生(1个月) 5元勾上，且没提示验证，即成功。
-
-            温馨提醒：若存在疑惑，必须【系统设置头像订阅】截图客服才可提问。
           </text>
         </u-collapse-item>
         <u-collapse-item title="5、日期没变？">
@@ -78,7 +76,7 @@
           </u-col>
         </u-row>
       </view>
-      <u-checkbox-group style="margin-top: 30upx;float: right;" v-show="currentStep === 1 && showAlert"
+      <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
         class="px-4 animate__animated animate__headShake" v-model="checkboxValue1" placement="column"
         @change="checkboxChange">
         <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
