@@ -129,7 +129,7 @@
       }
     },
     onLoad(option) {
-      // uni.$u.checkAmEnv()
+      uni.$u.checkAmEnv()
     },
     methods: {
       checkboxChange(val) {
