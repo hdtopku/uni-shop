@@ -9,7 +9,7 @@
     <view class="step-content" v-show="currentStep === 0">
       <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
         @change="groupChange">
-        <u-radio :customStyle="{marginBottom: '36px'}" v-for="(item, index) in radiolist7" :key="index"
+        <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index"
           :label="item.label" :name="item.name" @change="radioChange">
         </u-radio>
       </u-radio-group>
@@ -58,15 +58,9 @@
           </text>
         </u-collapse-item>
       </u-collapse>
-
-      <u-checkbox-group v-show="showAlert" class="px-4 animate__animated animate__headShake" v-model="checkboxValue1"
-        placement="column" @change="checkboxChange">
-        <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
-        </u-checkbox>
-      </u-checkbox-group>
     </view>
     <!-- 底部按钮 -->
-    <view style="margin-top: 30upx;">
+    <view>
       <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">下一步</u-button>
       <view v-show="currentStep !== 0">
         <u-row class="u-flex" gutter="10">
@@ -78,6 +72,12 @@
           </u-col>
         </u-row>
       </view>
+      <u-checkbox-group style="margin-top: 30upx;float: right;" v-show="currentStep === 1 && showAlert"
+        class="px-4 animate__animated animate__headShake" v-model="checkboxValue1" placement="column"
+        @change="checkboxChange">
+        <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
+        </u-checkbox>
+      </u-checkbox-group>
     </view>
   </page>
 </template>
@@ -223,15 +223,10 @@
     }
 
     .step-content {
-      height: 70vh;
+      height: 60vh;
       width: 90vw;
       overflow: scroll;
       padding-bottom: 100upx;
-
-      .animate__animated {
-        position: absolute;
-        bottom: 0;
-      }
 
       .chrome-image {
         margin: 20upx auto;
