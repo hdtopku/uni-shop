@@ -67,7 +67,7 @@
         </u-row>
       </view>
       <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
-        class="px-4 animate__animated animate__headShake" v-model="checkboxValue1" placement="column"
+        class="px-4 animate__animated animate__shakeX" v-model="checkboxValue1" placement="column"
         @change="checkboxChange">
         <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
         </u-checkbox>
