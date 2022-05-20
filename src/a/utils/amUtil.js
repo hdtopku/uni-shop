@@ -1,10 +1,13 @@
 // 参考：https://codepen.io/phantom4/pen/mpygyP
 const isIosChrome = () => {
-  return navigator.userAgent.indexOf('CriOS') >= 0; // iOS&Chrome?
+  let u = navigator.userAgent
+  console.log(u)
+  return u.indexOf('CriOS') > -1 || u.indexOf('Quark') > -1; // iOS&Chrome?
   // const yourUserAgent = navigator.userAgent.replace(/CriOS/g, function(whole) {
   //   return `<span class='has-text-success'>${whole}</span>`;
   // });
 }
+
 uni.$u.isIosChrome = isIosChrome()
 // <view class="font-60" v-if="!isIosChrome">
 //   <u-modal :show="showModal" title="验证链接已复制" content='请前往chrome地址栏粘贴，并开始验证！' @confirm="showModal = false"
@@ -75,18 +78,23 @@ const checkAmEnv = () => {
     document.body.removeChild(a)
     let h1 = document.createElement('p')
     h1.innerHTML = `
+        <img style="width:100px;height:100px" src="https://is2-ssl.mzstatic.com/image/thumb/Purple122/v4/c9/b9/94/c9b99441-ff1f-a4cd-efb5-01bc0473bf90/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/492x0w.webp">
         <img style="width:100px;height:100px" src="https://is3-ssl.mzstatic.com/image/thumb/Purple122/v4/0e/16/3b/0e163b57-2e3a-427c-e061-9fe4f6bf40a8/AppIcon-0-1x_U007emarketing-0-0-0-6-0-0-sRGB-85-220.png/434x0w.webp">
         <br>
-        必须使用谷歌chrome浏览器才可验证，
+        必须使用夸克或谷歌chrome浏览器才可验证，
+        <br>
+        <a href="https://apps.apple.com/cn/app/%E5%A4%B8%E5%85%8B-%E6%96%B0%E7%94%9F%E4%BB%A3%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2/id1160172628" text="请点这里下载夸克浏览器" target="_blank"
+          @click="click">请点这里下载夸克浏览器</a>
+          <br>
         <a href="https://apps.apple.com/cn/app/google-chrome/id535886823" text="请点这里下载谷歌浏览器" target="_blank"
           @click="click">请点这里下载谷歌浏览器</a>
           <br>
           如已下载，
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我验证复制链接，并前往chrome验证</button>
+<button id="CopyBtn">点我验证复制链接，并前往夸克、chrome验证</button>
 <br>
 <br>
-温馨提醒：请勿反复询问客服：必须使用chrome吗？
+温馨提醒：请勿反复询问客服：必须使用夸克、chrome吗？
 <br>
 答：是的，必须使用！（不想用？验证完就卸载。如没流量？有wifi时弄）
           `
