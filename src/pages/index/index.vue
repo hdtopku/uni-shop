@@ -13,7 +13,7 @@
           :label="item.label" :name="item.name">
         </u-radio>
       </u-radio-group>
-      <u-alert v-show="showAlert" class="animate__animated animate__headShake" :title="alertTitle" :type="alertType"
+      <u-alert v-show="showAlert" class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType"
         :effect="alertEffect" showIcon>
       </u-alert>
     </view>
@@ -30,7 +30,7 @@
         <u-collapse-item title="2、是否成功？">
           <text class="u-collapse-content">
             点开【系统设置头像订阅】，学生(1个月) 5元勾上
-            并且【验证您的学生身份】消失即成功。
+            并且【验证大学生身份】消失即成功。
           </text>
         </u-collapse-item>
         <u-collapse-item title="3、慢打不开？">
@@ -76,7 +76,7 @@
         @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
         @confirm="confirm" :content='modalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="验证完，日期没加1年？"
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="验证完，日期没变？"
         cancelText="继续！我保证已看懂" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
         confirmText="懵了！再想想" confirmColor="gray" @confirm="showRenewModal = false" :content='renewModalContent'>
       </u-modal>
