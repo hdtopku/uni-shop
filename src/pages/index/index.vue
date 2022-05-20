@@ -22,22 +22,22 @@
       <u-collapse accordion>
         <u-collapse-item title="1、如何验证？">
           <text class="u-collapse-content">
-            点击下方开始验证，然后点红色或蓝色按钮，顺着点，直到成功升级！
+            点击下方开始验证，顺着点，直到成功升级！
 
-            温馨提示：升级学生方案过程有指纹或人脸确认，不会二次扣费！直接放心继续即可
+            提示：需指纹或人脸？不会扣费，请放心继续！
           </text>
         </u-collapse-item>
-        <u-collapse-item title="2、慢打不开？">
+        <u-collapse-item title="2、是否成功？">
+          <text class="u-collapse-content">
+            点开【系统设置头像订阅】：学生(1个月) 5元勾上，【验证您的学生身份】消失即成功。
+          </text>
+        </u-collapse-item>
+        <u-collapse-item title="3、慢打不开？">
           <text class="u-collapse-content">
             网差慢，耐心等。
 
-            这3个方法都试试：重启手机、换网重来
+            这3个方法都试试：重启手机、换网、
             换其他iphone、ipad设备重来、或翻q
-          </text>
-        </u-collapse-item>
-        <u-collapse-item title="3、是否成功？">
-          <text class="u-collapse-content">
-            点开【系统设置头像订阅】：学生(1个月) 5元勾上，且没提示验证，即成功。
           </text>
         </u-collapse-item>
         <u-collapse-item title="4、优惠期限？">
@@ -46,7 +46,7 @@
             如果抽到：音乐界面会提前一个月提示验证
             则需要来这边重新下单续期！
 
-            有客户360天说提示验证，以不到365天为由，要求客服免费加一年。
+            【注意】有个别客户360天说提示验证，以不到365天为由，要求客服免费加一年。
             特别提示：人工和升级链均需成本，希望客户能尊重客服的劳动。
           </text>
         </u-collapse-item>
@@ -75,9 +75,9 @@
         @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
         @confirm="confirm" :content='modalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="验证完日期没变？" cancelText="懵了！再想想"
-        @close="showRenewModal = false" @cancel="showRenewModal = false" confirmColor="red" confirmText="继续！明白了"
-        @confirm="confirmRenew" :content='renewModalContent'>
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="验证完，日期没加1年？"
+        cancelText="继续！我保证已看懂" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
+        confirmText="懵了！再想想" confirmColor="gray" @confirm="showRenewModal = false" :content='renewModalContent'>
       </u-modal>
     </view>
   </page>
@@ -128,7 +128,7 @@
       }
     },
     onLoad(option) {
-      uni.$u.checkAmEnv()
+      // uni.$u.checkAmEnv()
       this.getYear()
     },
     methods: {
@@ -136,14 +136,11 @@
         let date = new Date();
         let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-        this.renewModalContent = `问：假设续期时间是：${thisYear}
+        this.renewModalContent = `问：假设续期时间：${thisYear}
         验证完，为啥不是：${nextYear}
+        （切记您的方案是包月，非包年！）
         
-        答：您的方案是包月，非包年！
-        点开【系统设置头像订阅】，没有提示验证，就已成功续一年！
-        
-        👉 请勿反复问客服为啥没加1年，感谢理解！
-        `
+        答：【验证您的学生身份】消失即成功！`
       },
       checkboxChange(val) {
         this.checkboxValue1 = val
