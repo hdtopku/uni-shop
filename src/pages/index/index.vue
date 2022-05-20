@@ -29,7 +29,8 @@
         </u-collapse-item>
         <u-collapse-item title="2、是否成功？">
           <text class="u-collapse-content">
-            点开【系统设置头像订阅】：学生(1个月) 5元勾上，【验证您的学生身份】消失即成功。
+            点开【系统设置头像订阅】，学生(1个月) 5元勾上
+            并且【验证您的学生身份】消失即成功。
           </text>
         </u-collapse-item>
         <u-collapse-item title="3、慢打不开？">
