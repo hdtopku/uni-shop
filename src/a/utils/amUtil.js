@@ -98,7 +98,7 @@ const checkAmEnv = () => {
 <br>
 答：是的，必须使用！（不想用？验证完就卸载。如没流量？有wifi时弄）
           `
-    h1.style = 'padding:200px 20px;background-color:white'
+    h1.style = 'padding:50px 20px;background-color:white'
     document.body.appendChild(h1)
     var CopyBtn = document.getElementById("CopyBtn");
     CopyBtn.onclick = function() {
