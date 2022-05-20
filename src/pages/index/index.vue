@@ -101,7 +101,7 @@
         `,
         checkboxValue1: [false],
         alertType: 'error',
-        alertTitle: '请正确选择您的情况，否则可能导致验证失败！',
+        alertTitle: '请正确选择您的情况！',
         alertEffect: 'light',
         nextDisabled: true,
         radiolist7: [{
@@ -129,7 +129,7 @@
       }
     },
     onLoad(option) {
-      // uni.$u.checkAmEnv()
+      uni.$u.checkAmEnv()
       this.getYear()
     },
     methods: {
