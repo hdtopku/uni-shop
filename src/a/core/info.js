@@ -1,4 +1,3 @@
-// {"ip":{"ip":"183.253.210.201","country":"中国","province":"福建","city":"宁德","county":"寿宁县","operator":"移动","zipcode":"355500","areacode":"0593"},"sys":{"model":"PC","system":"Mac 10.15.7","platform":"mac","deviceId":"16508038442979959123"}}
 import {
   getIpInfo
 } from '../utils/ipUtil.js'
@@ -11,24 +10,62 @@ import {
   getCache,
   delCache
 } from '../utils/cacheUtil.js'
-import {
-  getSystemInfo
-} from '../utils/systemUtil.js'
 const key = 'ms'
-const saveCurrentInfo= async () => {
-  let info = getCurrentInfo()
-  if (info?.ip?.country != null) {
-    return info
+const timeout = 3600 * 24
+const getSystemInfo = () => {
+  try {
+    let {
+      model,
+      system,
+      platform,
+      deviceId
+    } = uni.getSystemInfoSync()
+    return {
+      model,
+      system,
+      platform,
+      deviceId
+    }
+  } catch (e) {
+    console.error(e)
+    return null
   }
-  let ip = getIpInfo() ?? {}
-  let sys = getSystemInfo() ?? {}
-  if (ip?.ip?.country == null) {
-    ip = await getIpInfo()
+}
+const saveSyncInfo = () => {
+  let info = getCache(key) ?? {}
+  info.sys = getSystemInfo() ?? {}
+  if (!(info?.ios === false) && info?.sys?.platform === 'ios') {
+    info.ios = true
+  } else {
+    info.ios = false
   }
-  setCache(key, {ip, sys}, 3600, false)
+  info.iosChrome = navigator.userAgent.indexOf('CriOS') > -1 || navigator.userAgent.indexOf('Quark') > -1;
+  setCache(key, info, timeout)
 }
-uni.usaveInfo = saveCurrentInfo
-const getCurrentInfo = () => {
-  return  getCache(key, true) ?? null
+// ipchaxun挂在uni.$u上，无法获取结果，所以得单独导出方法
+export const saveAsyncInfo = async () => {
+  saveSyncInfo()
+  let info = getCache(key)
+  if (info?.ip?.country == null) {
+    info.ip = await getIpInfo() ?? {}
+  }
+  setCache(key, info, timeout)
 }
-uni.ugetInfo = getCurrentInfo
+saveAsyncInfo()
+export const saveRecordIp = () => {
+  let info = getCache(key)
+  info.reportIp = true
+  setCache(key, info, timeout)
+}
+uni.$u.saveRecordIp = saveRecordIp
+
+uni.$u.getInfo = (index = null) => {
+  let cache = getCache(key)
+  if (cache != null) {
+    if (index == null) {
+      return cache
+    }
+    return cache[index]
+  }
+  return null
+}

@@ -76,6 +76,17 @@
   "h5": {
     "router": {
       "mode": "history"
+    },
+    "devServer": {
+      "port": 8080,
+      "disableHostCheck": true,
+      "proxy": {
+        "/x/resource/ip": {
+          "target": "http://app.bilibili.com",
+          "changeOrigin": true,
+          "secure": false
+        }
+      }
     }
   }
 }

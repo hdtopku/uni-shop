@@ -1,2 +1,2 @@
-// import './core/info.js'
-import './utils/amUtil.js'
+import './core/info.js'
+import './core/amUtil.js'

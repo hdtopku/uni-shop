@@ -21,7 +21,4 @@ const getPlatformUrl = (str) => {
   }
   return null
 }
-
-export default {
-  getPlatformUrl
-}
+uni.$u.getPlatformUrl = getPlatformUrl

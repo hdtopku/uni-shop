@@ -1,10 +1,10 @@
 <template>
-  <page class="page-container">
+  <page v-if="showPage" class="page-container">
     <u-steps :current="currentStep" iconPlacement="right">
       <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
       <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
     </u-steps>
-    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '开始验证前请仔细阅读以下问题'"></u-divider>
+    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '4个问答，解答所有疑问'"></u-divider>
     <!-- 步骤1 -->
     <view class="step-content" v-show="currentStep === 0">
       <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
@@ -24,7 +24,7 @@
           <text class="u-collapse-content">
             点击下方开始验证，顺着点，直到成功升级！
 
-            提示：需指纹或人脸？不会扣费，请放心继续！
+            提示：无论指纹或人脸多少次？苹果不会二次扣费，请放心人脸或指纹！
           </text>
         </u-collapse-item>
         <u-collapse-item title="2、是否成功？">
@@ -47,7 +47,7 @@
             如果抽到：音乐界面会提前一个月提示验证
             则需要来这边重新下单续期！
 
-            【注意】有个别客户360天说提示验证，以不到365天为由，要求客服免费加一年。
+            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年。
             特别提示：人工和升级链均需成本，希望客户能尊重客服的劳动。
           </text>
         </u-collapse-item>
@@ -59,7 +59,8 @@
       <view v-show="currentStep !== 0">
         <u-row class="u-flex" gutter="10">
           <u-col span="6">
-            <u-button @click="clickNext" type="error" plain shape="circle">上一步</u-button>
+            <u-button class="animate__animated animate__slideInLeft animate__slower animate__repeat-2"
+              @click="clickNext" type="error" plain shape="circle">上一步</u-button>
           </u-col>
           <u-col span="6">
             <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
@@ -69,15 +70,15 @@
       <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
         class="px-4 animate__animated animate__shakeX" v-model="checkboxValue1" placement="column"
         @change="checkboxChange">
-        <u-checkbox labelSize="18" size="25" label="我已认真阅读并知晓所有问题，可以开始验证！" :name="true">
+        <u-checkbox labelSize="18" size="25" label="我已认真阅读所有问题" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
         @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
         @confirm="confirm" :content='modalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="验证完，日期没变？"
-        cancelText="继续！我保证已看懂" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" :title="renewTitle"
+        :cancelText="renewCancelText" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
         confirmText="懵了！再想想" confirmColor="gray" @confirm="showRenewModal = false" :content='renewModalContent'>
       </u-modal>
     </view>
@@ -85,23 +86,31 @@
 </template>
 
 <script>
+  import {
+    saveAsyncInfo
+  } from '@/a/core/info.js'
   export default {
     data() {
       return {
+        showPage: false,
         showAlert: true,
         currentStep: 0,
         showRenewModal: false,
+        renewTitle: '',
+        renewCancelText: '',
         renewModalContent: '',
         showModal: false,
         modalContent: `有疑问？
         必须【系统设置头像订阅】截图给客服，再提问！这是唯一有效提问凭证！
         
-        没疑问，很快很满意！
-        记得给小店好的评哦！
+        没疑问！很快很满意，好评！
         `,
         checkboxValue1: [false],
         alertType: 'error',
-        alertTitle: '请正确选择您的情况！',
+        alertTitle: `请正确选择您的情况！
+        
+        不难，按教程1分钟搞定！
+        `,
         alertEffect: 'light',
         nextDisabled: true,
         radiolist7: [{
@@ -129,19 +138,65 @@
       }
     },
     onLoad(option) {
-      uni.$u.checkAmEnv()
-      this.getYear()
+      // this.queryCode()
+      // let env = true
+      let env = uni.$u.checkAmEnv()
+      if (env) {
+        this.showPage = true
+        uni.setNavigationBarTitle({
+          title: '苹果音乐学生验证'
+        })
+      }
     },
+    onShow(option) {},
     methods: {
-      getYear() {
-        let date = new Date();
-        let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-        let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-        this.renewModalContent = `问：假设续期时间：${thisYear}
-        验证完，为啥不是：${nextYear}
-        （切记您的方案是包月，非包年！）
-        
-        答：【验证您的学生身份】消失即成功！`
+      queryCode() {
+        let pages = getCurrentPages();
+        let curPage = pages[pages.length - 1]
+        let curParam = curPage.options || curPage.$route.query;
+        let code = curParam.c
+        // 验证码非法
+        let codes = uni.$u.getCache('cs') ?? []
+        if (code == null || codes?.includes(code)) {
+          // 验证码不合法
+          uni.$u.removePage()
+          return
+        }
+        // 验证码合法，但不是iosChrome
+        let codes1 = uni.$u.getCache('cs1') ?? []
+        if (!codes1?.includes(code)) {
+          uni.$u.http.get('/pms/am/queryCode', {
+            params: {
+              code
+            }
+          }).then(res => {
+            // 验证码合法，但环境不是iosChrome，10分钟不查后端
+            codes1.push(code)
+            uni.$u.setCache('cs1', codes1, 60 * 10)
+            if (res?.success) {
+              // 验证码合法，但环境不是iosChrome，10分钟不查后端
+              codes1.push(code)
+              uni.$u.setCache('cs1', codes1, 60 * 10)
+            } else {
+              codes.push(code)
+              uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+            }
+          }).catch(err => {
+            console.log(err)
+            uni.$u.removePage()
+            codes.push(code)
+            uni.$u.saveCache('cs', codes, 3600 * 24 * 30)
+          })
+        }
+        let env = true
+        // let env = uni.$u.checkAmEnv()
+        if (env) {
+          this.reportIp(code)
+          this.showPage = true
+          uni.setNavigationBarTitle({
+            title: '苹果音乐学生验证'
+          })
+        }
       },
       checkboxChange(val) {
         this.checkboxValue1 = val
@@ -179,6 +234,8 @@
           case 3:
             this.alertType = 'success'
             this.alertTitle = `我保证已经处于【个人方案】中，且未取消、未过期，可以进入下一步！
+            
+            温馨提示：验证后月租减半，月租5元需自付
             `
             this.alertEffect = 'dark'
             this.nextDisabled = false
@@ -186,6 +243,8 @@
           case 4:
             this.alertType = 'success'
             this.alertTitle = `我保证已经处于【学生方案】中，且未取消、未过期，目前苹果提示我验证资格，可以下一步！
+            
+            温馨提示：【验证您的学生身份】消失即成功续期
 `
             this.alertEffect = 'dark'
             this.nextDisabled = false
@@ -193,13 +252,31 @@
         }
       },
       clickNext() {
-        if (this.currentStep === 0 && this.radiovalue7 < 3) {
-          this.showAlert = false
-          this.$nextTick(() => {
-            this.showAlert = true
-          })
-        } else if (this.currentStep === 0 && this.radiovalue7 == 4) {
-          this.showRenewModal = true
+        if (this.currentStep === 0) {
+          if (this.radiovalue7 < 3) {
+            this.showAlert = false
+            this.$nextTick(() => {
+              this.showAlert = true
+            })
+          } else if (this.radiovalue7 == 4) {
+            let date = new Date();
+            let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+            let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+            this.renewTitle = '验证完，日期没变？'
+            this.renewCancelText = '继续！我保证已看懂'
+            this.renewModalContent = `问：假设续期时间：${thisYear}
+        验证完，为啥不是：${nextYear}
+        （切记您的方案是包月，非包年！）
+        答：【验证您的学生身份】消失即成功！`
+            this.showRenewModal = true
+          } else if (this.radiovalue7 == 3) {
+            this.renewTitle = '非常重要！请看清楚'
+            this.renewCancelText = '继续！我保证没过期'
+            this.renewModalContent = `1、我确定正在订阅中
+            2、若过期先选情况2，否则将失败
+            `
+            this.showRenewModal = true
+          }
         } else {
           this.currentStep = ++this.currentStep % 2
         }
@@ -219,11 +296,42 @@
         window.open(
           'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
         )
+        let pages = getCurrentPages();
+        let curPage = pages[pages.length - 1]
+        let curParam = curPage.options || curPage.$route.query;
+        // uni.$u.http.get('/pms/am/startVerify', {
+        //   params: {
+        //     code: curParam.c
+        //   }
+        // }).then(res => {
+        //   if (res.code === 200 && res.result != null) {
+        //     window.open(res.result)
+        //   }
+        // })
         // #endif
       },
       confirmRenew() {
         this.showRenewModal = false
         this.currentStep = ++this.currentStep % 2
+      },
+      reportIp(code) {
+        let allInfo = uni.$u.getInfo()
+        if (!allInfo.reportIp) {
+          uni.$u.http.post('/pms/am/report', {}, {
+            params: {
+              info: uni.$u.encrypt({
+                ip: allInfo.ip,
+                sys: allInfo.sys,
+                code
+              }, true)
+            }
+          }).then(res => {
+            console.log(res)
+            if (res?.success) {
+              uni.$u.saveRecordIp()
+            }
+          })
+        }
       }
     }
   }

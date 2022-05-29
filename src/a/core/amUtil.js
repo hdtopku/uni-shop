@@ -1,14 +1,6 @@
 // 参考：https://codepen.io/phantom4/pen/mpygyP
-const isIosChrome = () => {
-  let u = navigator.userAgent
-  console.log(u)
-  return u.indexOf('CriOS') > -1 || u.indexOf('Quark') > -1; // iOS&Chrome?
-  // const yourUserAgent = navigator.userAgent.replace(/CriOS/g, function(whole) {
-  //   return `<span class='has-text-success'>${whole}</span>`;
-  // });
-}
 
-uni.$u.isIosChrome = isIosChrome()
+// uni.$u.isIosChrome = isIosChrome()
 // <view class="font-60" v-if="!isIosChrome">
 //   <u-modal :show="showModal" title="验证链接已复制" content='请前往chrome地址栏粘贴，并开始验证！' @confirm="showModal = false"
 //     :closeOnClickOverlay="true" @close="showModal = false"></u-modal>
@@ -23,22 +15,17 @@ uni.$u.isIosChrome = isIosChrome()
 //   <a href="javascript:;" @click="copyLink">请点这里复制验证链接</a>
 // </view>
 
-const isIos = () => {
-  let {
-    platform
-  } = uni.getSystemInfoSync()
-  let sys = uni.getStorageSync('sys')
-  if (!sys && platform === 'ios') {
-    return true
-  } else {
-    uni.setStorage({
-      data: 'false',
-      key: 'sys'
-    })
-    return false
-  }
-}
-uni.$u.isIos = isIos()
+// const isIos = () => {
+//   let info = uni.$u.getInfo()
+//   let ios = info.ios
+//   if (!ios && platform === 'ios') {
+//     return true
+//   } else {
+//     info.ios = false
+//     return false
+//   }
+// }
+// uni.$u.isIos = isIos()
 // <view class="font-60" v-if="!ios">
 //   <u-alert effect="dark" title="提示：" type="error"
 //     description="安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！" fontSize="25">
@@ -47,19 +34,21 @@ uni.$u.isIos = isIos()
 // </view>
 
 const checkAmEnv = () => {
-  if (!uni.$u.isIos) {
-    let a = document.querySelector('uni-app')
-    document.body.removeChild(a)
+  if (!uni.$u.getInfo('ios')) {
+    uni.$u.removePage()
     let h1 = document.createElement('p')
-    h1.innerHTML = `安卓、windows或mac用户无法直接验证，您需借助iphone或ipad才可完成验证！请使用iphone或ipad打开此链接，再开始验证！
+    h1.innerHTML = `安卓、windows或mac用户必须借助iphone或ipad才可验证！请使用iphone或ipad打开此链接，再开始验证！
           <br>
           如有iphone或ipad，
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我验证复制链接，并前往iphone或ipad验证</button>
+<button id="CopyBtn">点我复制验证链接，并前往iphone或ipad验证</button>
     <br>
     <br>
-    温馨提醒：请勿反复询问客服：安卓、windows或mac不可以吗？
-    是的，只能使用iphone或ipad验证！
+    <br>
+    温馨提醒：<b style='color:red'>请勿反复询问</b>客服：安卓、windows或mac不可以吗？
+    <br>
+    <br>
+    答：<b style='color:red'>是，只能使用</b>iphone或ipad验证！
     `
     h1.style = 'padding:200px 20px'
     document.body.appendChild(h1)
@@ -73,9 +62,9 @@ const checkAmEnv = () => {
       document.execCommand("copy");
       window.alert(`链接：${location.href}，已复制，请前往iphone或ipad验证`)
     }
-  } else if (!uni.$u.isIosChrome) {
-    let a = document.querySelector('uni-app')
-    document.body.removeChild(a)
+    return false
+  } else if (!uni.$u.getInfo('iosChrome')) {
+    uni.$u.removePage()
     let h1 = document.createElement('p')
     h1.innerHTML = `
         <img style="width:100px;height:100px" src="https://is3-ssl.mzstatic.com/image/thumb/Purple122/v4/0e/16/3b/0e163b57-2e3a-427c-e061-9fe4f6bf40a8/AppIcon-0-1x_U007emarketing-0-0-0-6-0-0-sRGB-85-220.png/434x0w.webp">
@@ -94,9 +83,15 @@ const checkAmEnv = () => {
 <button id="CopyBtn">点我验证复制链接，并前往chrome、夸克验证</button>
 <br>
 <br>
-温馨提醒：请勿反复询问客服：必须使用chrome、夸克吗？
+温馨提醒：<b style='color:red'>请勿反复询问</b>客服：必须使用chrome、夸克吗？
 <br>
-答：是，必须！（不想用？验证完就卸载。没流量？有wifi时弄）
+<br>
+答：<b>是，必须！</b><b style='color:red'>不要犹豫，请直接下载。</b>因为Safari等验证过程中会出现各种问题。
+<br>
+<br>
+不想用？验完就卸载
+<br>
+没流量？有wifi时弄
           `
     h1.style = 'padding:50px 20px;background-color:white'
     document.body.appendChild(h1)
@@ -110,6 +105,27 @@ const checkAmEnv = () => {
       document.execCommand("copy");
       window.alert(`链接：${location.href}，已复制，请前往chrome验证`)
     }
+    return false
   }
+  return true
 }
+
+const removePage = () => {
+  // #ifdef H5
+  if (document.body != null) {
+    document.body.remove()
+  }
+  document.body = document.createElement("body")
+  let ap = document.querySelector('uni-app')
+  if (ap != null) {
+    document.body.remove(ap)
+  }
+  if (document.head != null) {
+    document.head.remove()
+  }
+  // window.location.replace('https://am.taojingllng.cn/')
+  // #endif
+}
+
 uni.$u.checkAmEnv = checkAmEnv
+uni.$u.removePage = removePage

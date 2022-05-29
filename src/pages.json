@@ -3,7 +3,7 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "苹果音乐学生验证"
+        "navigationBarTitleText": "."
       }
     }, {
       "path": "pages/test/test",

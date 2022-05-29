@@ -1,4 +1,3 @@
-import parseUtil from './parseUtil.js'
 const install = (Vue, vm) => {
   uni.$u.vibrate = (short = true) => {
     // #ifndef H5
@@ -18,7 +17,6 @@ const install = (Vue, vm) => {
   // colorui的工具类
   uni.$u.copy = copyText
   uni.$u.msg = showTips
-  uni.$u.getPlatformUrl = parseUtil.getPlatformUrl
 }
 /**
  * showTips 显示系统提示
