@@ -4,7 +4,7 @@
       <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
       <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
     </u-steps>
-    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '4个问答，解答所有疑问'"></u-divider>
+    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '仔细阅读，不必求助客服'"></u-divider>
     <!-- 步骤1 -->
     <view class="step-content" v-show="currentStep === 0">
       <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
@@ -22,33 +22,34 @@
       <u-collapse accordion>
         <u-collapse-item title="1、如何验证？">
           <text class="u-collapse-content">
-            点击下方开始验证，顺着点，直到成功升级！
+            点开始验证，并顺着点，直到成功！
 
-            提示：无论指纹或人脸多少次？苹果不会二次扣费，请放心人脸或指纹！
+            提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
           </text>
         </u-collapse-item>
         <u-collapse-item title="2、是否成功？">
           <text class="u-collapse-content">
-            点开【系统设置头像订阅Apple Music】，学生(1个月) 5元勾上
-            并且【验证大学生身份】消失即成功。
+            点开【系统设置头像订阅Apple Music】
+
+            1、学生(1个月) 5元勾上
+            2、且【验证大学生身份】提醒消失即成功。
           </text>
         </u-collapse-item>
         <u-collapse-item title="3、慢打不开？">
           <text class="u-collapse-content">
-            网差慢，耐心等。
+            网差慢，耐心等待。
 
-            这3个方法都试试：重启手机、换网、
+            还可以重启手机、换网、
             换其他iphone、ipad设备重来、或翻q
           </text>
         </u-collapse-item>
         <u-collapse-item title="4、优惠期限？">
           <text class="u-collapse-content">
-            苹果官方1-4年会对资格抽查
-            如果抽到：音乐界面会提前一个月提示验证
-            则需要来这边重新下单续期！
+            苹果1-4年会抽查资格
+            如果抽到：音乐界面会提前一个月提醒验证
+            则需要来这边下单续！
 
-            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年。
-            特别提示：人工和升级链均需成本，希望客户能尊重客服的劳动。
+            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（人工和升级链均需成本，希望能尊重客服的劳动）
           </text>
         </u-collapse-item>
       </u-collapse>
@@ -101,9 +102,9 @@
         renewModalContent: '',
         showModal: false,
         modalContent: `有疑问？
-        必须【系统设置头像订阅Apple Music】截图给客服，再提问！这是唯一有效提问凭证！
+        必须【系统设置头像订阅Apple Music】先截图，再提问！这是唯一有效凭证！
         
-        没疑问！很快很满意，好评！
+        没疑问！很满意，好评！
         `,
         checkboxValue1: [false],
         alertType: 'error',
@@ -114,12 +115,12 @@
         alertEffect: 'light',
         nextDisabled: true,
         radiolist7: [{
-            label: '1、我是新用户，目前还有免费试用',
+            label: '1、我是新用户，还有免费试用',
             name: 1,
             disabled: false
           },
           {
-            label: '2、我的订阅已过期或已取消，目前未订阅',
+            label: '2、我已过期或已取消，目前未订阅',
             name: 2,
             disabled: false
           },
@@ -139,8 +140,8 @@
     },
     onLoad(option) {
       // this.queryCode()
-      // let env = true
-      let env = uni.$u.checkAmEnv()
+      let env = true
+      // let env = uni.$u.checkAmEnv()
       if (env) {
         this.showPage = true
         uni.setNavigationBarTitle({
@@ -217,34 +218,32 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `请先到苹果音乐中【免费开通个人方案】，然后选择情况3继续！
+            this.alertTitle = `请先到苹果音乐中【免费开通个人方案】，然后选情况3继续！
             
-            温馨提示：若无免费试用，说明您之前已试用过，过期了或被您取消了。您已不是新用户，请按照情况2继续！`
+            温馨提示：若无免费试用，说明您之前试用过，过期了或被您取消了。请按照情况2继续！`
             this.alertEffect = 'dark'
             this.nextDisabled = true
             break
           case 2:
             this.alertType = 'error'
-            this.alertTitle = `请先到苹果音乐中【花费10元开通个人方案】，开通后选择情况3继续！
+            this.alertTitle = `请先到苹果音乐中【花费10元开通个人方案】，然后选情况3继续！
             
-            温馨提示：下个月起5元，10元由苹果收取且不可退还！`
+            温馨提示：下个月起5元，10元苹果收取，不可退还！`
             this.alertEffect = 'dark'
             this.nextDisabled = true
             break
           case 3:
             this.alertType = 'success'
-            this.alertTitle = `我保证已经处于【个人方案】中，且未取消、未过期，可以进入下一步！
+            this.alertTitle = `我保证【个人方案】未过期、未取消
             
-            温馨提示：验证后月租减半，月租5元需自付
+            温馨提示：验证后月租半价
             `
             this.alertEffect = 'dark'
             this.nextDisabled = false
             break
           case 4:
             this.alertType = 'success'
-            this.alertTitle = `我保证已经处于【学生方案】中，且未取消、未过期，目前苹果提示我验证资格，可以下一步！
-            
-            温馨提示：【验证您的学生身份】消失即成功续期
+            this.alertTitle = `苹果提醒我【验证学生资格】，提醒消失即成功续期
 `
             this.alertEffect = 'dark'
             this.nextDisabled = false
@@ -262,12 +261,13 @@
             let date = new Date();
             let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
             let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-            this.renewTitle = '验证完，日期没变？'
+            this.renewTitle = '成功后，时间没变？'
             this.renewCancelText = '继续！我保证已看懂'
-            this.renewModalContent = `问：假设续期时间：${thisYear}
-        验证完，为啥不是：${nextYear}
-        （切记您的方案是包月，非包年！）
-        答：【验证您的学生身份】消失即成功！`
+            this.renewModalContent = `续期时间：${thisYear}
+            为啥不是：${nextYear}
+        
+        【验证资格】提醒消失即成功！
+        因为您的方案是包月，非包年！`
             this.showRenewModal = true
           } else if (this.radiovalue7 == 3) {
             this.renewTitle = '非常重要！请看清楚'
