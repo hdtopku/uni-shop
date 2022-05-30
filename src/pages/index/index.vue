@@ -78,9 +78,15 @@
         @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
         @confirm="confirm" :content='modalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" :title="renewTitle"
-        :cancelText="renewCancelText" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="非常重要！请看清楚"
+        cancelText="继续！我保证没过期" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
         confirmText="懵了！再想想" confirmColor="gray" @confirm="showRenewModal = false" :content='renewModalContent'>
+      </u-modal>
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！无需问客服"
+        @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！再想想"
+        confirmColor="gray" @confirm="showRenewModal1 = false" :content='renewModalContent'>
+        <img style="width: 600rpx;height: 600rpx;"
+          src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png" />
       </u-modal>
     </view>
   </page>
@@ -97,6 +103,7 @@
         showAlert: true,
         currentStep: 0,
         showRenewModal: false,
+        showRenewModal1: false,
         renewTitle: '',
         renewCancelText: '',
         renewModalContent: '',
@@ -140,8 +147,8 @@
     },
     onLoad(option) {
       // this.queryCode()
-      // let env = true
-      let env = uni.$u.checkAmEnv()
+      let env = true
+      // let env = uni.$u.checkAmEnv()
       if (env) {
         this.showPage = true
         uni.setNavigationBarTitle({
@@ -257,27 +264,23 @@
             this.$nextTick(() => {
               this.showAlert = true
             })
+          } else if (this.radiovalue7 == 3) {
+            this.renewModalContent = `1、我确定正在订阅中
+            
+            2、若过期先选情况2，否则将失败
+            `
+            this.showRenewModal = true
           } else if (this.radiovalue7 == 4) {
             let date = new Date();
             let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
             let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-            this.renewTitle = '如何判断成功续1年？'
-            this.renewCancelText = '验证提醒消失即成功'
             this.renewModalContent = `【验证资格】提醒消失即成功！
             成功后，续期时间不改变！
            
         因为您的方案包月：非包年！
         所以续期时间不是：${nextYear}
         `
-            this.showRenewModal = true
-          } else if (this.radiovalue7 == 3) {
-            this.renewTitle = '非常重要！请看清楚'
-            this.renewCancelText = '继续！我保证没过期'
-            this.renewModalContent = `1、我确定正在订阅中
-            
-            2、若过期先选情况2，否则将失败
-            `
-            this.showRenewModal = true
+            this.showRenewModal1 = true
           }
         } else {
           this.currentStep = ++this.currentStep % 2
@@ -314,6 +317,7 @@
       },
       confirmRenew() {
         this.showRenewModal = false
+        this.showRenewModal1 = false
         this.currentStep = ++this.currentStep % 2
       },
       reportIp(code) {
