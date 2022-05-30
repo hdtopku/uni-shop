@@ -69,9 +69,8 @@
         </u-row>
       </view>
       <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
-        class="px-4 animate__animated animate__shakeX" v-model="checkboxValue1" placement="column"
-        @change="checkboxChange">
-        <u-checkbox labelSize="18" size="25" label="我已认真阅读所有问题" :name="true">
+        class=" animate__animated animate__shakeX" v-model="checkboxValue1" placement="column" @change="checkboxChange">
+        <u-checkbox labelSize="18" size="25" label="我已认真阅读（所有问题以上都能解答）" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
@@ -85,8 +84,9 @@
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！无需问客服"
         @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！再想想"
         confirmColor="gray" @confirm="showRenewModal1 = false" :content='renewModalContent'>
-        <img style="width: 600rpx;height: 600rpx;"
-          src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png" />
+        <view
+          style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
+        </view>
       </u-modal>
     </view>
   </page>
@@ -147,8 +147,8 @@
     },
     onLoad(option) {
       // this.queryCode()
-      // let env = true
-      let env = uni.$u.checkAmEnv()
+      let env = true
+      // let env = uni.$u.checkAmEnv()
       if (env) {
         this.showPage = true
         uni.setNavigationBarTitle({
