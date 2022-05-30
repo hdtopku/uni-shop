@@ -189,8 +189,8 @@
             uni.$u.saveCache('cs', codes, 3600 * 24 * 30)
           })
         }
-        let env = true
-        // let env = uni.$u.checkAmEnv()
+        // let env = true
+        let env = uni.$u.checkAmEnv()
         if (env) {
           this.reportIp(code)
           this.showPage = true
@@ -261,18 +261,20 @@
             let date = new Date();
             let thisYear = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
             let nextYear = (date.getFullYear() + 1) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-            this.renewTitle = '成功后，时间没变？'
-            this.renewCancelText = '继续！我保证已看懂'
-            this.renewModalContent = `续期时间：${thisYear}
-            为啥不是：${nextYear}
-        
-        【验证资格】提醒消失即成功！
-        因为您的方案是包月，非包年！`
+            this.renewTitle = '如何判断成功续1年？'
+            this.renewCancelText = '验证提醒消失即成功'
+            this.renewModalContent = `【验证资格】提醒消失即成功！
+            成功后，续期时间不改变！
+           
+        因为您的方案包月：非包年！
+        所以续期时间不是：${nextYear}
+        `
             this.showRenewModal = true
           } else if (this.radiovalue7 == 3) {
             this.renewTitle = '非常重要！请看清楚'
             this.renewCancelText = '继续！我保证没过期'
             this.renewModalContent = `1、我确定正在订阅中
+            
             2、若过期先选情况2，否则将失败
             `
             this.showRenewModal = true
