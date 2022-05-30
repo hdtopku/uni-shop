@@ -147,8 +147,8 @@
     },
     onLoad(option) {
       // this.queryCode()
-      let env = true
-      // let env = uni.$u.checkAmEnv()
+      // let env = true
+      let env = uni.$u.checkAmEnv()
       if (env) {
         this.showPage = true
         uni.setNavigationBarTitle({
