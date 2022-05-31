@@ -85,6 +85,14 @@
           "target": "http://app.bilibili.com",
           "changeOrigin": true,
           "secure": false
+        },
+        "/jeecgboot": {
+          "target": "http://api3.taojingling.cn/jeecg-boot",
+          "changeOrigin": true,
+          "secure": false,
+          "pathRewrite": {
+            "^/jeecgboot": ""
+          }
         }
       }
     }
