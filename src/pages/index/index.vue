@@ -79,12 +79,12 @@
       </u-modal>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="非常重要！请看清楚"
         cancelText="继续！我保证没过期" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
-        confirmText="懵了！再想想" confirmColor="gray" @confirm="showRenewModal = false" :content='renewModalContent'>
+        confirmText="懵了！我再想想" confirmColor="blue" @confirm="showRenewModal = false" :content='renewModalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！无需问客服"
-        @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！再想想"
-        confirmColor="gray" @confirm="showRenewModal1 = false" :content='renewModalContent'>
-        <view
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="日期不变、提醒消失"
+        @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！我再看看"
+        confirmColor="blue" @confirm="showRenewModal1 = false" :content='renewModalContent'>
+        <view class="animate__animated animate__flipInX"
           style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
         </view>
       </u-modal>
@@ -147,8 +147,8 @@
     },
     onLoad(option) {
       // this.queryCode()
-      // let env = true
-      let env = uni.$u.checkAmEnv()
+      let env = true
+      // let env = uni.$u.checkAmEnv()
       if (env) {
         this.showPage = true
         uni.setNavigationBarTitle({
@@ -250,7 +250,7 @@
             break
           case 4:
             this.alertType = 'success'
-            this.alertTitle = `苹果提醒我【验证学生资格】，提醒消失即成功续期
+            this.alertTitle = `苹果提醒我【验证学生资格】，提醒消失即成功续期、日期不变
 `
             this.alertEffect = 'dark'
             this.nextDisabled = false
