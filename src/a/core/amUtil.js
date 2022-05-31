@@ -63,7 +63,8 @@ const checkAmEnv = () => {
       window.alert(`链接：${location.href}，已复制，请前往iphone或ipad验证`)
     }
     return false
-  } else if (!uni.$u.getInfo('iosChrome')) {
+    // } else if (!uni.$u.getInfo('iosChrome')) {
+  } else if (false) {
     uni.$u.removePage()
     let h1 = document.createElement('p')
     h1.innerHTML = `
