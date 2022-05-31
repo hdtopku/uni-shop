@@ -67,8 +67,8 @@ const checkAmEnv = () => {
     uni.$u.removePage()
     let h1 = document.createElement('p')
     h1.innerHTML = `
-        <img style="width:100px;height:100px" src="https://is3-ssl.mzstatic.com/image/thumb/Purple122/v4/0e/16/3b/0e163b57-2e3a-427c-e061-9fe4f6bf40a8/AppIcon-0-1x_U007emarketing-0-0-0-6-0-0-sRGB-85-220.png/434x0w.webp">
-        <img style="width:100px;height:100px" src="https://is2-ssl.mzstatic.com/image/thumb/Purple122/v4/c9/b9/94/c9b99441-ff1f-a4cd-efb5-01bc0473bf90/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/492x0w.webp">
+        <img style="width:100px;height:100px" src="/static/img/chrome.png">
+        <img style="width:100px;height:100px" src="/static/img/quark.png">
         <br>
         必须使用谷歌chrome、或夸克浏览器才可验证，
         <br>
