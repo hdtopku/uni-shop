@@ -24,8 +24,8 @@ import '@/a/index.js'
 Vue.use(commonUtil, app)
 uni.$u.http.setConfig((config) => {
   /* config 为默认全局配置*/
-  config.baseURL = `http://localhost:9000/jeecg-boot`; /* 根域名 */
-  // config.baseURL = `http://api3.taojingling.cn/jeecg-boot`; /* 根域名 */
+  // config.baseURL = `http://localhost:9000/jeecg-boot`; /* 根域名 */
+  config.baseURL = `http://api3.taojingling.cn/jeecg-boot`; /* 根域名 */
   return config
 })
 uni.$u.http.interceptors.response.use((response) => {

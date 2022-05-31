@@ -70,7 +70,7 @@
       </view>
       <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
         class=" animate__animated animate__shakeX" v-model="checkboxValue1" placement="column" @change="checkboxChange">
-        <u-checkbox labelSize="18" size="25" label="我已认真阅读（所有问题以上都能解答）" :name="true">
+        <u-checkbox labelSize="18" size="25" label="我已认真阅读（有问题👆都有答案）" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
@@ -84,9 +84,11 @@
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="日期不变、提醒消失"
         @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！我再看看"
         confirmColor="blue" @confirm="showRenewModal1 = false" :content='renewModalContent'>
-        <view class="animate__animated animate__flipInX"
+        <!-- <view class="animate__animated animate__flipInX"
           style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
-        </view>
+        </view> -->
+        <img src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png"
+          style="width: 600rpx;height: 600rpx;" />
       </u-modal>
     </view>
   </page>
@@ -146,15 +148,8 @@
       }
     },
     onLoad(option) {
-      // this.queryCode()
-      let env = true
-      // let env = uni.$u.checkAmEnv()
-      if (env) {
-        this.showPage = true
-        uni.setNavigationBarTitle({
-          title: '苹果音乐学生验证'
-        })
-      }
+      this.queryCode()
+      // this.checkAmEnv()
     },
     onShow(option) {},
     methods: {
@@ -183,28 +178,35 @@
             uni.$u.setCache('cs1', codes1, 60 * 10)
             if (res?.success) {
               // 验证码合法，但环境不是iosChrome，10分钟不查后端
-              codes1.push(code)
-              uni.$u.setCache('cs1', codes1, 60 * 10)
             } else {
               codes.push(code)
               uni.$u.setCache('cs', codes, 3600 * 24 * 30)
             }
+            if (this.checkAmEnv()) {
+              this.reportIp(code)
+            }
           }).catch(err => {
-            console.log(err)
+            console.error(err)
             uni.$u.removePage()
             codes.push(code)
             uni.$u.saveCache('cs', codes, 3600 * 24 * 30)
           })
+        } else {
+          if (this.checkAmEnv()) {
+            this.reportIp(code)
+          }
         }
+      },
+      checkAmEnv() {
         // let env = true
         let env = uni.$u.checkAmEnv()
         if (env) {
-          this.reportIp(code)
           this.showPage = true
           uni.setNavigationBarTitle({
             title: '苹果音乐学生验证'
           })
         }
+        return env
       },
       checkboxChange(val) {
         this.checkboxValue1 = val
@@ -298,21 +300,23 @@
       },
       confirm() {
         // #ifdef H5
-        window.open(
-          'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-        )
+        // window.open(
+        //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
+        // )
         let pages = getCurrentPages();
         let curPage = pages[pages.length - 1]
         let curParam = curPage.options || curPage.$route.query;
-        // uni.$u.http.get('/pms/am/startVerify', {
-        //   params: {
-        //     code: curParam.c
-        //   }
-        // }).then(res => {
-        //   if (res.code === 200 && res.result != null) {
-        //     window.open(res.result)
-        //   }
-        // })
+        uni.$u.http.get('/pms/am/startVerify', {
+          params: {
+            code: curParam.c
+          }
+        }).then(res => {
+          if (res?.code === 200 && res?.result != null) {
+            window.open(res.result)
+          } else {
+            uni.$u.removePage()
+          }
+        })
         // #endif
       },
       confirmRenew() {
@@ -322,7 +326,7 @@
       },
       reportIp(code) {
         let allInfo = uni.$u.getInfo()
-        if (!allInfo.reportIp) {
+        if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code])) {
           uni.$u.http.post('/pms/am/report', {}, {
             params: {
               info: uni.$u.encrypt({
@@ -332,9 +336,8 @@
               }, true)
             }
           }).then(res => {
-            console.log(res)
             if (res?.success) {
-              uni.$u.saveRecordIp()
+              uni.$u.saveRecordIp(code)
             }
           })
         }
@@ -344,6 +347,10 @@
 </script>
 
 <style lang="scss">
+  img {
+    pointer-events: none;
+  }
+
   .page-container {
     padding: 20upx;
     width: 100%;
