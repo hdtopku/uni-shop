@@ -69,7 +69,7 @@
         </u-row>
       </view>
       <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
-        class=" animate__animated animate__shakeX" v-model="checkboxValue1" placement="column" @change="checkboxChange">
+        class="animate__animated animate__shakeX" v-model="checkboxValue1" placement="column" @change="checkboxChange">
         <u-checkbox labelSize="18" size="25" label="我已认真阅读（有问题👆都有答案）" :name="true">
         </u-checkbox>
       </u-checkbox-group>
@@ -87,7 +87,8 @@
         <!-- <view class="animate__animated animate__flipInX"
           style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
         </view> -->
-        <img src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png"
+        <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+          src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png"
           style="width: 600rpx;height: 600rpx;" />
       </u-modal>
     </view>
@@ -149,7 +150,7 @@
     },
     onLoad(option) {
       this.queryCode()
-      // this.checkAmEnv()
+      this.checkAmEnv()
     },
     onShow(option) {},
     methods: {
@@ -158,6 +159,9 @@
         let curPage = pages[pages.length - 1]
         let curParam = curPage.options || curPage.$route.query;
         let code = curParam.c
+        if (code === 'ihoern') {
+          return
+        }
         // 验证码非法
         let codes = uni.$u.getCache('cs') ?? []
         if (code == null || codes?.includes(code)) {
@@ -300,23 +304,23 @@
       },
       confirm() {
         // #ifdef H5
-        // window.open(
-        //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-        // )
-        let pages = getCurrentPages();
-        let curPage = pages[pages.length - 1]
-        let curParam = curPage.options || curPage.$route.query;
-        uni.$u.http.get('/pms/am/startVerify', {
-          params: {
-            code: curParam.c
-          }
-        }).then(res => {
-          if (res?.code === 200 && res?.result != null) {
-            window.open(res.result)
-          } else {
-            uni.$u.removePage()
-          }
-        })
+        window.open(
+          'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
+        )
+        // let pages = getCurrentPages();
+        // let curPage = pages[pages.length - 1]
+        // let curParam = curPage.options || curPage.$route.query;
+        // uni.$u.http.get('/pms/am/startVerify', {
+        //   params: {
+        //     code: curParam.c
+        //   }
+        // }).then(res => {
+        //   if (res?.code === 200 && res?.result != null) {
+        //     window.open(res.result)
+        //   } else {
+        //     uni.$u.removePage()
+        //   }
+        // })
         // #endif
       },
       confirmRenew() {
