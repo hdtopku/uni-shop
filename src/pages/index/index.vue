@@ -150,7 +150,7 @@
     },
     onLoad(option) {
       this.queryCode()
-      this.checkAmEnv()
+      // this.checkAmEnv()
     },
     onShow(option) {},
     methods: {
@@ -160,6 +160,7 @@
         let curParam = curPage.options || curPage.$route.query;
         let code = curParam.c
         if (code === 'ihoern') {
+          this.checkAmEnv()
           return
         }
         // 验证码非法
