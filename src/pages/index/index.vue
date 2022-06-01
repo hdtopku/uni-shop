@@ -14,7 +14,7 @@
         </u-radio>
       </u-radio-group>
       <u-alert v-show="showAlert" class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType"
-        :effect="alertEffect" showIcon>
+        :effect="alertEffect">
       </u-alert>
     </view>
     <!-- 步骤2 -->
@@ -49,14 +49,15 @@
             如果抽到：音乐界面会提前一个月提醒验证
             则需要来这边下单续！
 
-            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一共验证不了几次，人工和升级链均需成本，希望能尊重客服的劳动）
+            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢！）
           </text>
         </u-collapse-item>
       </u-collapse>
     </view>
     <!-- 底部按钮 -->
     <view>
-      <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">下一步</u-button>
+      <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">{{buttonText}}
+      </u-button>
       <view v-show="currentStep !== 0">
         <u-row class="u-flex" gutter="10">
           <u-col span="6">
@@ -88,7 +89,7 @@
           style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
         </view> -->
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png"
+          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
           style="width: 600rpx;height: 600rpx;" />
       </u-modal>
     </view>
@@ -110,37 +111,25 @@
         renewTitle: '',
         renewCancelText: '',
         renewModalContent: '',
+        buttonText: '下一步（1分钟就能搞定）',
         showModal: false,
-        modalContent: `有疑问？
+        modalContent: `若有疑问？
         必须【系统设置头像订阅Apple Music】先截图，再提问！这是唯一有效凭证！
         
-        没疑问！很满意，好评！
+        若没疑问！很满意，好评！
         `,
         checkboxValue1: [false],
         alertType: 'error',
-        alertTitle: `请正确选择您的情况！
-        
-        不难，按教程1分钟搞定！
-        `,
+        alertTitle: `请正确选择您的情况！`,
         alertEffect: 'light',
         nextDisabled: true,
         radiolist7: [{
-            label: '1、我是新用户，还有免费试用',
+            label: '情况1、我尚未订阅：过期用户、或新用户',
             name: 1,
             disabled: false
           },
           {
-            label: '2、我已过期或已取消，目前未订阅',
-            name: 2,
-            disabled: false
-          },
-          {
-            label: '3、我是个人方案订阅中，需要升级为学生方案',
-            name: 3,
-            disabled: false
-          },
-          {
-            label: '4、我是学生方案订阅中，苹果提示我验证资格',
+            label: '情况2、我在订阅中：个人方案、或学生续期',
             name: 4,
             disabled: false
           },
@@ -185,6 +174,7 @@
               // 验证码合法，但环境不是iosChrome，10分钟不查后端
             } else {
               codes.push(code)
+              console.log(uni.$u.saveCache)
               uni.$u.setCache('cs', codes, 3600 * 24 * 30)
             }
             if (this.checkAmEnv()) {
@@ -232,35 +222,33 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `请先到苹果音乐中【免费开通个人方案】，然后选情况3继续！
+            this.alertTitle = `先开后升
             
-            温馨提示：若无免费试用，说明您之前试用过，过期了或被您取消了。请按照情况2继续！`
+            过期用户步骤：
+            1、先花10元开个人方案，10元苹果收，不可退！
+            2、开完后，再选择情况2升级
+            
+            新用户步骤：
+            1、先免费开通个人方案，若不免费，说明您试用过，按过期用户步骤
+            2、开完后，再选择情况2升级`
             this.alertEffect = 'dark'
             this.nextDisabled = true
-            break
-          case 2:
-            this.alertType = 'error'
-            this.alertTitle = `请先到苹果音乐中【花费10元开通个人方案】，然后选情况3继续！
-            
-            温馨提示：下个月起5元，10元苹果收取，不可退还！`
-            this.alertEffect = 'dark'
-            this.nextDisabled = true
-            break
-          case 3:
-            this.alertType = 'success'
-            this.alertTitle = `我保证【个人方案】未过期、未取消
-            
-            温馨提示：验证后月租半价
-            `
-            this.alertEffect = 'dark'
-            this.nextDisabled = false
+            this.buttonText = '先到音乐里开通个人方案，再升学生方案'
             break
           case 4:
             this.alertType = 'success'
-            this.alertTitle = `苹果提醒我【验证学生资格】，提醒消失即成功续期、日期不变
+            this.alertTitle = `个人方案升级：
+            1、必须在订阅中，没过期、没取消
+            2、若过期按情况1先开后升，否则将失败
+            
+            学生方案续期：
+            1、苹果提醒我【验证学生资格】
+            2、提醒消失则成功续期1年
+            3、成功后，续期日期不改变
 `
             this.alertEffect = 'dark'
             this.nextDisabled = false
+            this.buttonText = '下一步'
             break
         }
       },
@@ -305,23 +293,23 @@
       },
       confirm() {
         // #ifdef H5
-        window.open(
-          'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-        )
-        // let pages = getCurrentPages();
-        // let curPage = pages[pages.length - 1]
-        // let curParam = curPage.options || curPage.$route.query;
-        // uni.$u.http.get('/pms/am/startVerify', {
-        //   params: {
-        //     code: curParam.c
-        //   }
-        // }).then(res => {
-        //   if (res?.code === 200 && res?.result != null) {
-        //     window.open(res.result)
-        //   } else {
-        //     uni.$u.removePage()
-        //   }
-        // })
+        // window.open(
+        //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
+        // )
+        let pages = getCurrentPages();
+        let curPage = pages[pages.length - 1]
+        let curParam = curPage.options || curPage.$route.query;
+        uni.$u.http.get('/pms/am/startVerify', {
+          params: {
+            code: curParam.c
+          }
+        }).then(res => {
+          if (res?.code === 200 && res?.result != null) {
+            window.open(res.result)
+          } else {
+            uni.$u.removePage()
+          }
+        })
         // #endif
       },
       confirmRenew() {
