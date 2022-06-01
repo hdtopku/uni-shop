@@ -86,12 +86,13 @@
           "changeOrigin": true,
           "secure": false
         },
-        "/jeecgboot": {
-          "target": "http://api3.taojingling.cn/jeecg-boot",
+        "/jb": {
+          // "target": "http://api3.taojingling.cn/jeecg-boot",
+          "target": "http://localhost:9000/jeecg-boot",
           "changeOrigin": true,
           "secure": false,
           "pathRewrite": {
-            "^/jeecgboot": ""
+            "^/jb": ""
           }
         }
       }

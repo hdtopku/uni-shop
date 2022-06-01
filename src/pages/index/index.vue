@@ -75,7 +75,7 @@
         </u-checkbox>
       </u-checkbox-group>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
-        @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！保证会截图"
+        @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！一定先截图"
         @confirm="confirm" :content='modalContent'>
       </u-modal>
       <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="非常重要！请看清楚"
@@ -144,22 +144,35 @@
     },
     onShow(option) {},
     methods: {
-      queryCode() {
+      getCode() {
         let pages = getCurrentPages();
         let curPage = pages[pages.length - 1]
         let curParam = curPage.options || curPage.$route.query;
-        let code = curParam.c
-        // 验证码非法
+        let code = curParam?.c
         let codes = uni.$u.getCache('cs') ?? []
         if (code == null || codes?.includes(code)) {
           // 验证码不合法
           uni.$u.removePage()
+          return null
+        }
+        return code
+      },
+      addInvalidCode(code) {
+        let codes = uni.$u.getCache('cs') ?? []
+        uni.$u.removePage()
+        codes.push(code)
+        uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+      },
+      queryCode() {
+        // 验证码非法
+        let code = this.getCode()
+        if (code == null) {
           return
         }
         // 验证码合法，但不是iosChrome
         let codes1 = uni.$u.getCache('cs1') ?? []
         if (!codes1?.includes(code)) {
-          uni.$u.http.get('/pms/am/queryCode', {
+          uni.$u.http.get('/pms/am/c/queryCode', {
             params: {
               code
             }
@@ -170,17 +183,14 @@
             if (res?.success) {
               // 验证码合法，但环境不是iosChrome，10分钟不查后端
             } else {
-              codes.push(code)
-              uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+              this.addInvalidCode(code)
             }
             if (this.checkAmEnv()) {
               this.reportIp(code)
             }
           }).catch(err => {
             // console.error(err)
-            uni.$u.removePage()
-            codes.push(code)
-            uni.$u.saveCache('cs', codes, 3600 * 24 * 30)
+            this.addInvalidCode(code)
           })
         } else {
           if (this.checkAmEnv()) {
@@ -284,6 +294,7 @@
           })
         } else {
           this.showModal = true
+          this.startVerify()
         }
       },
       confirm() {
@@ -294,12 +305,19 @@
         // window.open(
         //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
         // )
-        let pages = getCurrentPages();
-        let curPage = pages[pages.length - 1]
-        let curParam = curPage.options || curPage.$route.query;
-        uni.$u.http.get('/pms/am/startVerify', {
+        setTimeout(() => {
+          this.startVerify()
+        }, 500)
+        // #endif
+      },
+      startVerify() {
+        let code = this.getCode()
+        if (code == null) {
+          return
+        }
+        uni.$u.http.get('/pms/am/c/startVerify', {
           params: {
-            code: curParam.c
+            code
           }
         }).then(res => {
           if (res?.success && res?.result != null) {
@@ -309,9 +327,9 @@
             }
           } else {
             uni.$u.removePage()
+            this.addInvalidCode(code)
           }
         })
-        // #endif
       },
       confirmRenew() {
         this.showRenewModal = false
@@ -321,7 +339,7 @@
       reportIp(code) {
         let allInfo = uni.$u.getInfo()
         if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code])) {
-          uni.$u.http.post('/pms/am/report', {}, {
+          uni.$u.http.post('/pms/am/c/report', {}, {
             params: {
               info: uni.$u.encrypt({
                 ip: allInfo.ip,
