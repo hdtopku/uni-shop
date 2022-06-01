@@ -332,7 +332,7 @@
       },
       reportIp(code) {
         let allInfo = uni.$u.getInfo()
-        if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code])) {
+        if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code]) && allInfo?.ip?.ip != null) {
           uni.$u.http.post('/pms/am/c/report', {}, {
             params: {
               info: uni.$u.encrypt({
