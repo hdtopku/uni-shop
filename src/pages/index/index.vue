@@ -140,7 +140,6 @@
     },
     onLoad(option) {
       this.queryCode()
-      // this.checkAmEnv()
     },
     onShow(option) {},
     methods: {
@@ -149,10 +148,6 @@
         let curPage = pages[pages.length - 1]
         let curParam = curPage.options || curPage.$route.query;
         let code = curParam.c
-        if (code === 'ihoern') {
-          this.checkAmEnv()
-          return
-        }
         // 验证码非法
         let codes = uni.$u.getCache('cs') ?? []
         if (code == null || codes?.includes(code)) {
@@ -193,7 +188,6 @@
         }
       },
       checkAmEnv() {
-        // let env = true
         let env = uni.$u.checkAmEnv()
         if (env) {
           this.showPage = true
