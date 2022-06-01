@@ -4,7 +4,7 @@
       <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
       <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
     </u-steps>
-    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '仔细阅读，不必求助客服'"></u-divider>
+    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '所有问题 👇 都能解答'"></u-divider>
     <!-- 步骤1 -->
     <view class="step-content" v-show="currentStep === 0">
       <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
@@ -49,7 +49,7 @@
             如果抽到：音乐界面会提前一个月提醒验证
             则需要来这边下单续！
 
-            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢！）
+            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢理解！）
           </text>
         </u-collapse-item>
       </u-collapse>
@@ -114,10 +114,11 @@
         renewModalContent: '',
         buttonText: '下一步（1分钟就能搞定）',
         showModal: false,
-        modalContent: `若有疑问？
-        必须【系统设置头像订阅Apple Music】先截图，再提问！这是唯一有效凭证！
+        modalContent: `为了高效沟通，提问前
+        【系统设置头像订阅Apple Music】
+        必须先截图，再提问！
         
-        若没疑问！很满意，好评！
+        满意，好评！
         `,
         checkboxValue1: [false],
         alertType: 'error',
