@@ -68,12 +68,8 @@
       })
     },
     methods: {
-      rightClick() {
-        console.log('rightClick');
-      },
-      leftClick() {
-        console.log('leftClick');
-      },
+      rightClick() {},
+      leftClick() {},
       beforeSwitch(index) {
         // 只能切换偶数项
         if (index === 1) {
@@ -83,7 +79,7 @@
         if (index % 2 == 0) return true;
         else return false;
       }
-    }
+    },
   }
 </script>
 

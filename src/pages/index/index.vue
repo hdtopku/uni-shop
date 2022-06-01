@@ -103,6 +103,7 @@
   export default {
     data() {
       return {
+        verifyAddr: null,
         showPage: false,
         showAlert: true,
         currentStep: 0,
@@ -174,14 +175,13 @@
               // 验证码合法，但环境不是iosChrome，10分钟不查后端
             } else {
               codes.push(code)
-              console.log(uni.$u.saveCache)
               uni.$u.setCache('cs', codes, 3600 * 24 * 30)
             }
             if (this.checkAmEnv()) {
               this.reportIp(code)
             }
           }).catch(err => {
-            console.error(err)
+            // console.error(err)
             uni.$u.removePage()
             codes.push(code)
             uni.$u.saveCache('cs', codes, 3600 * 24 * 30)
@@ -293,6 +293,9 @@
       },
       confirm() {
         // #ifdef H5
+        if (this.verifyAddr?.length > 0) {
+          window.open(this.verifyAddr)
+        }
         // window.open(
         //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
         // )
@@ -304,8 +307,11 @@
             code: curParam.c
           }
         }).then(res => {
-          if (res?.code === 200 && res?.result != null) {
-            window.open(res.result)
+          if (res?.success && res?.result != null) {
+            if (this.verifyAddr == null) {
+              this.verifyAddr = res.result
+              window.open(res.result)
+            }
           } else {
             uni.$u.removePage()
           }

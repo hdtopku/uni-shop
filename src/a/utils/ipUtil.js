@@ -33,16 +33,14 @@ export const getIpInfo = async () => {
       return getIpFrom126Sohu()
     }
   }).catch(err => {
-    console.log(err)
+    // console.error(err)
     return getIpFrom126Sohu()
   })
 }
 
 // const getIpFromBili = () => {
 //   uni.$u.http.get('/x/resource/ip', {}, {}).then(res => {
-//     console.log(res)
 //   }).catch(err => {
-//     console.log(err)
 //   })
 // }
 
@@ -50,10 +48,8 @@ export const getIpInfo = async () => {
 //   uni.request({
 //     url: 'https://ip.tool.lu',
 //     success: (res) => {
-//       console.log(res)
 //     },
 //     fail: (err) => {
-//       console.log(err)
 //     }
 //   })
 // }

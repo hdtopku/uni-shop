@@ -58,7 +58,6 @@ export const saveRecordIp = (code, reportIp = true) => {
     info.reportIp = {}
   }
   info.reportIp[code] = reportIp
-  console.log(info)
   setCache(key, info, timeout)
 }
 uni.$u.saveRecordIp = saveRecordIp
