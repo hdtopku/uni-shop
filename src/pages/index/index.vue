@@ -302,12 +302,7 @@
         if (this.verifyAddr?.length > 0) {
           window.open(this.verifyAddr)
         }
-        // window.open(
-        //   'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset/pXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw==&ud_s=lu71Beg7pESvcKjG7JPTdQ==&ud_t=1629938295'
-        // )
-        setTimeout(() => {
-          this.startVerify()
-        }, 500)
+        this.startVerify()
         // #endif
       },
       startVerify() {
@@ -323,7 +318,6 @@
           if (res?.success && res?.result != null) {
             if (this.verifyAddr == null) {
               this.verifyAddr = res.result
-              window.open(res.result)
             }
           } else {
             uni.$u.removePage()
