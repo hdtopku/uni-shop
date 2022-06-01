@@ -37,20 +37,11 @@ const checkAmEnv = () => {
   if (!uni.$u.getInfo('ios')) {
     uni.$u.removePage()
     let h1 = document.createElement('p')
-    h1.innerHTML = `安卓、windows或mac用户必须借助iphone或ipad才可验证！请使用iphone或ipad打开此链接，再开始验证！
-          <br>
-          如有iphone或ipad，
+    h1.innerHTML = `苹果官方暂不支持：安卓、windows或mac用户验证！<b style='color:red'>请使用iphone或ipad完成验证</b>
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我复制验证链接，并前往iphone或ipad验证</button>
-    <br>
-    <br>
-    <br>
-    温馨提醒：<b style='color:red'>请勿反复询问</b>客服：安卓、windows或mac不可以吗？
-    <br>
-    <br>
-    答：<b style='color:red'>是，只能使用</b>iphone或ipad验证！
+<button id="CopyBtn" style="padding:10px">点我复制验证链接，并前往iphone或ipad验证</button>
     `
-    h1.style = 'padding:200px 20px'
+    h1.style = 'padding:250px 20px'
     document.body.appendChild(h1)
     var CopyBtn = document.getElementById("CopyBtn");
     CopyBtn.onclick = function() {
@@ -60,7 +51,7 @@ const checkAmEnv = () => {
       text.select();
       // 对选中的内容进行复制
       document.execCommand("copy");
-      window.alert(`链接：${location.href}，已复制，请前往iphone或ipad验证`)
+      window.alert(`验证链接已复制`)
     }
     return false
     // } else if (!uni.$u.getInfo('iosChrome')) {
