@@ -34,6 +34,7 @@
             1、学生(1个月) 5元勾上
             2、且【验证大学生身份】提醒消失即成功。
           </text>
+          <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
         </u-collapse-item>
         <u-collapse-item title="3、慢打不开？">
           <text class="u-collapse-content">
@@ -82,7 +83,7 @@
         cancelText="继续！我保证没过期" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
         confirmText="懵了！我再想想" confirmColor="blue" @confirm="showRenewModal = false" :content='renewModalContent'>
       </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="日期不变、提醒消失"
+      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！提醒消失即成功"
         @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！我再看看"
         confirmColor="blue" @confirm="showRenewModal1 = false" :content='renewModalContent'>
         <!-- <view class="animate__animated animate__flipInX"
