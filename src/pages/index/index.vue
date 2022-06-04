@@ -1,100 +1,109 @@
 <template>
-  <page v-if="showPage" class="page-container">
-    <u-steps :current="currentStep" iconPlacement="right">
-      <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
-      <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
-    </u-steps>
-    <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '所有问题 👇 都能解答'"></u-divider>
-    <!-- 步骤1 -->
-    <view class="step-content" v-show="currentStep === 0">
-      <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
-        @change="groupChange">
-        <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index"
-          :label="item.label" :name="item.name">
-        </u-radio>
-      </u-radio-group>
-      <u-alert v-show="showAlert" class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType"
-        :effect="alertEffect">
-      </u-alert>
-    </view>
-    <!-- 步骤2 -->
-    <view class="step-content" v-show="currentStep === 1">
-      <u-collapse accordion>
-        <u-collapse-item title="1、如何验证？">
-          <text class="u-collapse-content">
-            点开始验证，并顺着点，直到成功！
-
-            提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
-          </text>
-        </u-collapse-item>
-        <u-collapse-item title="2、是否成功？">
-          <text class="u-collapse-content">
-            点开【系统设置头像订阅Apple Music】
-
-            1、学生(1个月) 5元勾上
-            2、且【验证大学生身份】提醒消失即成功。
-          </text>
-          <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
-        </u-collapse-item>
-        <u-collapse-item title="3、慢打不开？">
-          <text class="u-collapse-content">
-            网差慢，耐心等待。
-
-            还可以重启手机、换网、
-            换其他iphone、ipad设备重来、或翻q
-          </text>
-        </u-collapse-item>
-        <u-collapse-item title="4、优惠期限？">
-          <text class="u-collapse-content">
-            苹果1-4年会抽查资格
-            如果抽到：音乐界面会提前一个月提醒验证
-            则需要来这边下单续！
-
-            【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢理解！）
-          </text>
-        </u-collapse-item>
-      </u-collapse>
-    </view>
-    <!-- 底部按钮 -->
-    <view>
-      <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">{{buttonText}}
+  <view v-if="showPage">
+    <view v-if="!reportedIp" style="padding: 700upx 50upx 0">
+      <u-button @click="reloadPage" type="primary"
+        class="shadow-lg animate__animated animate__pulse animate__slow animate__infinite">
+        网络异常，重新加载
       </u-button>
-      <view v-show="currentStep !== 0">
-        <u-row class="u-flex" gutter="10">
-          <u-col span="6">
-            <u-button class="animate__animated animate__slideInLeft animate__slower animate__repeat-2"
-              @click="clickNext" type="error" plain shape="circle">上一步</u-button>
-          </u-col>
-          <u-col span="6">
-            <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
-          </u-col>
-        </u-row>
+    </view>
+    <page v-else class="page-container">
+      <u-steps :current="currentStep" iconPlacement="right">
+        <u-steps-item title="加入会员" desc="需先加入会员"></u-steps-item>
+        <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
+      </u-steps>
+      <u-divider :text="currentStep === 0 ? '请正确选择您的情况' : '所有问题 👇 都能解答'"></u-divider>
+      <!-- 步骤1 -->
+      <view class="step-content" v-show="currentStep === 0">
+        <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
+          @change="groupChange">
+          <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index"
+            :label="item.label" :name="item.name">
+          </u-radio>
+        </u-radio-group>
+        <u-alert v-show="showAlert" class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType"
+          :effect="alertEffect">
+        </u-alert>
       </view>
-      <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
-        class="animate__animated animate__shakeX" v-model="checkboxValue1" placement="column" @change="checkboxChange">
-        <u-checkbox labelSize="18" size="25" label="我已认真阅读（有问题👆都有答案）" :name="true">
-        </u-checkbox>
-      </u-checkbox-group>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
-        @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！一定先截图"
-        @confirm="confirm" :content='modalContent'>
-      </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="非常重要！请看清楚"
-        cancelText="继续！我保证没过期" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
-        confirmText="懵了！我再想想" confirmColor="blue" @confirm="showRenewModal = false" :content='renewModalContent'>
-      </u-modal>
-      <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！提醒消失即成功"
-        @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！我再看看"
-        confirmColor="blue" @confirm="showRenewModal1 = false" :content='renewModalContent'>
-        <!-- <view class="animate__animated animate__flipInX"
+      <!-- 步骤2 -->
+      <view class="step-content" v-show="currentStep === 1">
+        <u-collapse accordion>
+          <u-collapse-item title="1、如何验证？">
+            <text class="u-collapse-content">
+              点开始验证，并顺着点，直到成功！
+
+              提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
+            </text>
+          </u-collapse-item>
+          <u-collapse-item title="2、是否成功？">
+            <text class="u-collapse-content">
+              点开【系统设置头像订阅Apple Music】
+
+              1、学生(1个月) 5元勾上
+              2、且【验证大学生身份】提醒消失即成功。
+            </text>
+            <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
+          </u-collapse-item>
+          <u-collapse-item title="3、慢打不开？">
+            <text class="u-collapse-content">
+              网差慢，耐心等待。
+
+              还可以重启手机、换网、
+              换其他iphone、ipad设备重来、或翻q
+            </text>
+          </u-collapse-item>
+          <u-collapse-item title="4、优惠期限？">
+            <text class="u-collapse-content">
+              苹果1-4年会抽查资格
+              如果抽到：音乐界面会提前一个月提醒验证
+              则需要来这边下单续！
+
+              【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢理解！）
+            </text>
+          </u-collapse-item>
+        </u-collapse>
+      </view>
+      <!-- 底部按钮 -->
+      <view>
+        <u-button @click="clickNext" type="error" plain shape="circle" v-show="currentStep === 0">{{buttonText}}
+        </u-button>
+        <view v-show="currentStep !== 0">
+          <u-row class="u-flex" gutter="10">
+            <u-col span="6">
+              <u-button class="animate__animated animate__slideInLeft animate__slower animate__repeat-2"
+                @click="clickNext" type="error" plain shape="circle">上一步</u-button>
+            </u-col>
+            <u-col span="6">
+              <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
+            </u-col>
+          </u-row>
+        </view>
+        <u-checkbox-group style="margin: 30upx 0;float: right;" v-show="currentStep === 1 && showAlert"
+          class="animate__animated animate__shakeX" v-model="checkboxValue1" placement="column"
+          @change="checkboxChange">
+          <u-checkbox labelSize="18" size="25" label="我已认真阅读（有问题👆都有答案）" :name="true">
+          </u-checkbox>
+        </u-checkbox-group>
+        <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="提问必须带上截图！" cancelText="我再想想"
+          @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！一定先截图"
+          @confirm="confirm" :content='modalContent'>
+        </u-modal>
+        <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal" title="非常重要！请看清楚"
+          cancelText="继续！我保证没过期" @close="showRenewModal = false" @cancel="confirmRenew" cancelColor="red"
+          confirmText="懵了！我再想想" confirmColor="blue" @confirm="showRenewModal = false" :content='renewModalContent'>
+        </u-modal>
+        <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！提醒消失即成功"
+          @close="showRenewModal1 = false" @cancel="confirmRenew" cancelColor="red" confirmText="懵了！我再看看"
+          confirmColor="blue" @confirm="showRenewModal1 = false" :content='renewModalContent'>
+          <!-- <view class="animate__animated animate__flipInX"
           style="background-image: url('https://article.biliimg.com/bfs/article/89f030de49f21e74881bf2a6145ae009ae94344c.png');background-size: contain;background-repeat: no-repeat;width: 600rpx;height: 600rpx;">
         </view> -->
-        <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
-          style="width: 600rpx;height: 600rpx;" />
-      </u-modal>
-    </view>
-  </page>
+          <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+            src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
+            style="width: 600rpx;height: 600rpx;" />
+        </u-modal>
+      </view>
+    </page>
+  </view>
 </template>
 
 <script>
@@ -106,6 +115,7 @@
       return {
         verifyAddr: null,
         showPage: false,
+        reportedIp: true,
         showAlert: true,
         currentStep: 0,
         showRenewModal: false,
@@ -142,9 +152,15 @@
     },
     onLoad(option) {
       this.queryCode()
+      uni.$on('reportedIp', () => {
+        this.reportedIp = false
+      })
     },
     onShow(option) {},
     methods: {
+      reloadPage() {
+        window.location.reload()
+      },
       getCode() {
         let pages = getCurrentPages();
         let curPage = pages[pages.length - 1]

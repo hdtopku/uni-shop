@@ -59,15 +59,19 @@ const reportIp = (ip) => {
                 sys: allInfo.sys,
                 code
               }, true)
-
             }
           }).then(res => {
             if (res?.success) {
               uni.$u.saveRecordIp(code)
+              setCache(key, allInfo, timeout)
+            } else {
+              uni.$emit('reportedIp')
             }
+          }).catch(err => {
+            console.error(err)
+            uni.$emit('reportedIp')
           })
         }
-
       }
     })
   }
@@ -91,6 +95,7 @@ export const saveAsyncInfo = async () => {
   if (info?.ip?.country == null) {
     info.ip = await getIpInfo() ?? {}
     reportIp(info.ip)
+    return
   }
   setCache(key, info, timeout)
 }
