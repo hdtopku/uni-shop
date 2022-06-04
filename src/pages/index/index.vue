@@ -324,6 +324,7 @@
         if (code == null) {
           return
         }
+        uni.$u.saveAsyncInfo()
         uni.$u.http.get('/pms/am/c/startVerify', {
           params: {
             code

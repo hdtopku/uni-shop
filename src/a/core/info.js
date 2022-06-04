@@ -43,10 +43,8 @@ uni.$u.getInfo = (index = null) => {
 }
 
 
-const reportIp = (ip) => {
-  let allInfo = getCache(key)
-  allInfo.ip = ip
-  let obj = allInfo.reportIp
+const reportIp = (allInfo) => {
+  let obj = allInfo?.reportIp
   if (obj != null) {
     Object.keys(obj).map(code => {
       if (!obj[code]) {
@@ -74,6 +72,8 @@ const reportIp = (ip) => {
         }
       }
     })
+  } else {
+    location.reload()
   }
 }
 
@@ -93,12 +93,15 @@ export const saveAsyncInfo = async () => {
   saveSyncInfo()
   let info = getCache(key)
   if (info?.ip?.country == null) {
-    info.ip = await getIpInfo() ?? {}
-    reportIp(info.ip)
+    let ip = await getIpInfo() ?? {}
+    info = getCache(key)
+    info.ip = ip
+    reportIp(info)
     return
   }
   setCache(key, info, timeout)
 }
+uni.$u.saveAsyncInfo = saveAsyncInfo
 saveAsyncInfo()
 export const saveRecordIp = (code, reportIp = true) => {
   let info = getCache(key)
