@@ -170,6 +170,7 @@
         if (code == null) {
           return
         }
+        uni.$u.saveRecordIp(code, false)
         // 验证码合法，但不是iosChrome
         let codes1 = uni.$u.getCache('cs1') ?? []
         if (!codes1?.includes(code)) {
@@ -181,22 +182,18 @@
             // 验证码合法，但环境不是iosChrome，10分钟不查后端
             codes1.push(code)
             uni.$u.setCache('cs1', codes1, 60 * 10)
-            if (res?.success) {
-              // 验证码合法，但环境不是iosChrome，10分钟不查后端
-            } else {
+            // 验证码合法，但环境不是iosChrome，10分钟不查后端
+            if (!res?.success) {
               this.addInvalidCode(code)
-            }
-            if (this.checkAmEnv()) {
-              this.reportIp(code)
+            } else {
+              this.checkAmEnv()
             }
           }).catch(err => {
             // console.error(err)
             this.addInvalidCode(code)
           })
         } else {
-          if (this.checkAmEnv()) {
-            this.reportIp(code)
-          }
+          this.checkAmEnv()
         }
       },
       checkAmEnv() {
@@ -330,24 +327,6 @@
         this.showRenewModal = false
         this.showRenewModal1 = false
         this.currentStep = ++this.currentStep % 2
-      },
-      reportIp(code) {
-        let allInfo = uni.$u.getInfo()
-        if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code]) && allInfo?.ip?.ip != null) {
-          uni.$u.http.post('/pms/am/c/report', {}, {
-            params: {
-              info: uni.$u.encrypt({
-                ip: allInfo.ip,
-                sys: allInfo.sys,
-                code
-              }, true)
-            }
-          }).then(res => {
-            if (res?.success) {
-              uni.$u.saveRecordIp(code)
-            }
-          })
-        }
       }
     }
   }

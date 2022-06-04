@@ -31,6 +31,48 @@ const getSystemInfo = () => {
     return null
   }
 }
+uni.$u.getInfo = (index = null) => {
+  let cache = getCache(key)
+  if (cache != null) {
+    if (index == null) {
+      return cache
+    }
+    return cache[index]
+  }
+  return null
+}
+
+
+const reportIp = (ip) => {
+  let allInfo = getCache(key)
+  allInfo.ip = ip
+  let obj = allInfo.reportIp
+  if (obj != null) {
+    Object.keys(obj).map(code => {
+      if (!obj[code]) {
+        if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code]) && allInfo?.ip?.ip !=
+          null) {
+          uni.$u.http.post('/pms/am/c/report', {}, {
+            params: {
+              info: uni.$u.encrypt({
+                ip: allInfo.ip,
+                sys: allInfo.sys,
+                code
+              }, true)
+
+            }
+          }).then(res => {
+            if (res?.success) {
+              uni.$u.saveRecordIp(code)
+            }
+          })
+        }
+
+      }
+    })
+  }
+}
+
 const saveSyncInfo = () => {
   let info = getCache(key) ?? {}
   info.sys = getSystemInfo() ?? {}
@@ -48,6 +90,7 @@ export const saveAsyncInfo = async () => {
   let info = getCache(key)
   if (info?.ip?.country == null) {
     info.ip = await getIpInfo() ?? {}
+    reportIp(info.ip)
   }
   setCache(key, info, timeout)
 }
@@ -61,14 +104,3 @@ export const saveRecordIp = (code, reportIp = true) => {
   setCache(key, info, timeout)
 }
 uni.$u.saveRecordIp = saveRecordIp
-
-uni.$u.getInfo = (index = null) => {
-  let cache = getCache(key)
-  if (cache != null) {
-    if (index == null) {
-      return cache
-    }
-    return cache[index]
-  }
-  return null
-}

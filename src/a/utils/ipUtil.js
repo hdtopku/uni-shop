@@ -16,7 +16,9 @@ const getIpFrom126Sohu = () => {
     })
 }
 export const getIpInfo = async () => {
-  return await uni.$u.http.get('https://2022.ipchaxun.com').then(res => {
+  return await uni.$u.http.get('https://2022.ipchaxun.com', {
+    timeout: 2000
+  }).then(res => {
     res = res.data
     let result = {}
     if (res.ret === 'ok') {
