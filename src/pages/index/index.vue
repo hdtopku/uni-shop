@@ -107,9 +107,6 @@
 </template>
 
 <script>
-  import {
-    saveAsyncInfo
-  } from '@/a/core/info.js'
   export default {
     data() {
       return {
@@ -180,13 +177,13 @@
         codes.push(code)
         uni.$u.setCache('cs', codes, 3600 * 24 * 30)
       },
-      queryCode() {
-        // 验证码非法
+      async queryCode() {
         let code = this.getCode()
         if (code == null) {
           return
         }
-        uni.$u.saveRecordIp(code, false)
+        await uni.$u.saveRecordIp(code, false)
+        uni.$u.saveAsyncInfo()
         // 验证码合法，但不是iosChrome
         let codes1 = uni.$u.getCache('cs1') ?? []
         if (!codes1?.includes(code)) {
