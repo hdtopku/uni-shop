@@ -106,8 +106,8 @@ export const saveAsyncInfo = async () => {
 }
 uni.$u.saveAsyncInfo = saveAsyncInfo
 export const saveRecordIp = (code, reportIp = true) => {
-  let info = getCache(key)
-  if (info.reportIp == null) {
+  let info = getCache(key) ?? {}
+  if (info?.reportIp == null) {
     info.reportIp = {}
   }
   info.reportIp[code] = reportIp
