@@ -1,6 +1,6 @@
 import './htmlUtil.js'
 const getIpFrom126Sohu = () => {
-  return uni.$u.loadJs('http://ip.ws.126.net/ipquery').then(() => {
+  return uni.$u.loadJs('https://ip.ws.126.net/ipquery').then(() => {
       let result = {
         province: lo,
         city: lc
@@ -8,7 +8,7 @@ const getIpFrom126Sohu = () => {
       return Promise.resolve(result)
     })
     .then(result => {
-      return uni.$u.loadJs('http://pv.sohu.com/cityjson').then(() => {
+      return uni.$u.loadJs('https://pv.sohu.com/cityjson').then(() => {
         result.country = returnCitySN.cname
         result.ip = returnCitySN.cip
         return Promise.resolve(result)
