@@ -3,6 +3,7 @@
     <u-transition :show="show" mode="slide-left">
       <view class="transition">动画</view>
     </u-transition>
+    {{browser}}
     <button @click="change">按钮</button>
   </view>
 </template>
@@ -11,8 +12,12 @@
   export default {
     data() {
       return {
-        show: true
+        show: true,
+        browser: {}
       }
+    },
+    onLoad() {
+      // console.log(new Browser())
     },
     methods: {
       change() {

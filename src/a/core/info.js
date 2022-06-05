@@ -5,6 +5,7 @@ import {
   encrypt,
   decrypt
 } from '../utils/encriptUtil.js'
+
 import {
   setCache,
   getCache,
@@ -85,6 +86,8 @@ const saveSyncInfo = () => {
   } else {
     info.ios = false
   }
+  let browserInfo = new Browser()
+  info.sys.browser = browserInfo.browser
   info.iosChrome = navigator.userAgent.indexOf('CriOS') > -1 || navigator.userAgent.indexOf('Quark') > -1;
   setCache(key, info, timeout)
 }
