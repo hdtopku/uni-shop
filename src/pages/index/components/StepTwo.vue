@@ -98,6 +98,7 @@
         this.checkboxValue1 = val
       },
       clickStart() {
+        uni.$u.reportIp()
         if (!this.checkboxValue1[0]) {
           this.showAlert = false
           setTimeout(() => {

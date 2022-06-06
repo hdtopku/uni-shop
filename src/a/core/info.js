@@ -44,6 +44,7 @@ uni.$u.getInfo = (index = null) => {
 }
 
 const reportIp = () => {
+  uni.$u.saveAsyncInfo()
   let allInfo = getCache(key)
   let obj = allInfo?.reportIp ?? {}
   if (obj != null) {
@@ -97,6 +98,7 @@ export const saveAsyncInfo = async () => {
   }
   setCache(key, info, timeout)
 }
+uni.$u.saveAsyncInfo = saveAsyncInfo
 saveAsyncInfo()
 export const saveRecordIp = (code, reportIp = true) => {
   let info = getCache(key) ?? {}
