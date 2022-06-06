@@ -105,16 +105,16 @@
           }, 1)
         } else {
           this.showModal = true
-          this.confirmStart()
+          this.startVerify()
         }
       },
       confirmStart() {
-        if (this.code == null) {
-          return
-        }
         if (this.verifyAddr != null) {
           window.open(this.verifyAddr)
         }
+        this.startVerify()
+      },
+      startVerify() {
         uni.$u.http.get('/pms/am/c/startVerify', {
           params: {
             code: this.code
@@ -128,7 +128,7 @@
             uni.$u.removePage()
           }
         })
-      },
+      }
     }
   }
 </script>
