@@ -1,11 +1,13 @@
 <template>
-  <view style="padding: 50upx 20upx;">
-    <u-steps :current="currentStep" iconPlacement="right">
-      <u-steps-item title="先开后升" desc="需在订阅中"></u-steps-item>
-      <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
-    </u-steps>
-    <StepOne v-if="currentStep === 0"></StepOne>
-    <StepTwo :code="code" v-if="currentStep === 1"></StepTwo>
+  <view v-if="showPage" class="page">
+    <view style="width: 86vw;">
+      <u-steps :current="currentStep" iconPlacement="right">
+        <u-steps-item title="先开后升" desc="需在订阅中"></u-steps-item>
+        <u-steps-item title="开始验证" desc="按步骤开始即可"></u-steps-item>
+      </u-steps>
+      <StepOne v-if="currentStep === 0"></StepOne>
+      <StepTwo :code="code" v-if="currentStep === 1"></StepTwo>
+    </view>
   </view>
 </template>
 
@@ -19,6 +21,7 @@
     },
     data() {
       return {
+        showPage: false,
         currentStep: 0,
         code: null
       }
@@ -82,6 +85,7 @@
           uni.setNavigationBarTitle({
             title: '苹果音乐学生验证'
           })
+          this.showPage = true
         }
         return env
       },
@@ -96,4 +100,10 @@
 </script>
 
 <style lang="scss">
+  .page {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+  }
 </style>
