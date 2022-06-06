@@ -43,8 +43,9 @@ uni.$u.getInfo = (index = null) => {
   return null
 }
 
-const reportIp = (allInfo) => {
-  let obj = allInfo?.reportIp
+const reportIp = () => {
+  let allInfo = getCache(key)
+  let obj = allInfo?.reportIp ?? {}
   if (obj != null) {
     Object.keys(obj).map(code => {
       if (!obj[code]) {
@@ -61,21 +62,16 @@ const reportIp = (allInfo) => {
           }).then(res => {
             if (res?.success) {
               uni.$u.saveRecordIp(code)
-              setCache(key, allInfo, timeout)
-            } else {
-              uni.$emit('reportedIp')
             }
           }).catch(err => {
             console.error(err)
-            uni.$emit('reportedIp')
           })
         }
       }
     })
-  } else {
-    location.reload()
   }
 }
+uni.$u.reportIp = reportIp
 
 const saveSyncInfo = () => {
   let info = getCache(key) ?? {}
@@ -98,19 +94,12 @@ export const saveAsyncInfo = async () => {
     let ip = await getIpInfo() ?? {}
     info = getCache(key)
     info.ip = ip
-    reportIp(info)
-    return
   }
-  reportIp(info)
   setCache(key, info, timeout)
 }
-uni.$u.saveAsyncInfo = saveAsyncInfo
+saveAsyncInfo()
 export const saveRecordIp = (code, reportIp = true) => {
-  let info = getCache(key)
-  if (info == null) {
-    info = {}
-    setTimeout(location.reload, 1000)
-  }
+  let info = getCache(key) ?? {}
   if (info?.reportIp == null) {
     info.reportIp = {}
   }

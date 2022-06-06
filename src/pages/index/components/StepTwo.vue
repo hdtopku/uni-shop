@@ -1,0 +1,159 @@
+<template>
+  <view class="container">
+    <u-divider text="请先仔细阅读"></u-divider>
+    <u-collapse class="step-content" accordion>
+      <u-collapse-item title="1、如何验证？">
+        <text class="u-collapse-content">
+          点开始验证，并顺着点，直到成功！
+
+          提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
+        </text>
+      </u-collapse-item>
+      <u-collapse-item title="2、慢打不开？">
+        <text class="u-collapse-content">
+          网差慢，耐心等待。
+
+          还可以换个浏览器、
+          重启手机、换网
+          或换其他iphone、ipad设备重来、或翻q
+        </text>
+      </u-collapse-item>
+      <u-collapse-item title="3、是否成功？">
+        <text class="u-collapse-content">
+          点开【系统设置头像订阅Apple Music】
+
+          1、学生(1个月) 5元勾上
+          2、且【验证大学生身份】提醒消失即成功。
+        </text>
+        <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
+      </u-collapse-item>
+      <u-collapse-item title="4、优惠期限？">
+        <text class="u-collapse-content">
+          苹果1-4年会抽查资格
+          如果抽到：音乐界面会提前一个月提醒验证
+          则需要来这边下单续！
+
+          【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次，人工和升级链均需成本，希望能尊重客服的劳动，感谢理解！）
+        </text>
+      </u-collapse-item>
+    </u-collapse>
+    <!-- 底部按钮 -->
+    <view class="btn">
+      <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
+        @change="checkboxChange">
+        <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25"
+          label="我已认真阅读，可以开始验证" :name="true">
+        </u-checkbox>
+      </u-checkbox-group>
+      <u-row gutter="10">
+        <u-col span="6">
+          <u-button class="animate__animated animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext"
+            type="error" plain shape="circle">上一步</u-button>
+        </u-col>
+        <u-col span="6">
+          <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
+        </u-col>
+      </u-row>
+    </view>
+    <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
+      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！一定先截图"
+      @confirm="confirmStart" :content='modalContent'>
+    </u-modal>
+  </view>
+</template>
+
+<script>
+  export default {
+    props: {
+      code: null
+    },
+    data() {
+      return {
+        verifyAddr: null,
+        showAlert: true,
+        showModal: false,
+        modalContent: `提问前必须先截图
+        【系统设置头像订阅Apple Music】
+        给客服（一图胜万语）`,
+        checkboxValue1: [false],
+        radiolist7: [{
+            label: '情况1、我尚未订阅：过期用户、或新用户',
+            name: 1,
+            disabled: false
+          },
+          {
+            label: '情况2、我在订阅中：个人方案、或学生续期',
+            name: 4,
+            disabled: false
+          },
+        ],
+        radiovalue7: 0,
+      }
+    },
+    methods: {
+      clickNext() {
+        uni.$emit('nextStep')
+      },
+      checkboxChange(val) {
+        this.checkboxValue1 = val
+      },
+      clickStart() {
+        if (!this.checkboxValue1[0]) {
+          this.showAlert = false
+          setTimeout(() => {
+            this.showAlert = true
+          }, 1)
+        } else {
+          this.showModal = true
+          this.confirmStart()
+        }
+      },
+      confirmStart() {
+        if (this.code == null) {
+          return
+        }
+        if (this.verifyAddr != null) {
+          window.open(this.verifyAddr)
+        }
+        uni.$u.http.get('/pms/am/c/startVerify', {
+          params: {
+            code: this.code
+          }
+        }).then(res => {
+          if (res?.success && res?.result != null) {
+            if (this.verifyAddr == null) {
+              this.verifyAddr = res.result
+            }
+          } else {
+            uni.$u.removePage()
+          }
+        })
+      },
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .container {
+    position: relative;
+    height: 950upx;
+
+    .step-content {
+      height: 700upx;
+      overflow: scroll;
+      padding-bottom: 100upx;
+
+    }
+
+    .btn {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      text-align: right;
+    }
+
+    img {
+      pointer-events: none;
+    }
+  }
+</style>
