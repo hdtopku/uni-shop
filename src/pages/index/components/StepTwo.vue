@@ -96,6 +96,7 @@
       },
       checkboxChange(val) {
         this.checkboxValue1 = val
+        uni.$u.reportIp()
       },
       clickStart() {
         uni.$u.reportIp()

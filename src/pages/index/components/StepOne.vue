@@ -77,8 +77,10 @@
             this.buttonText = '已在订阅中，下一步'
             break
         }
+        uni.$u.reportIp()
       },
       clickNext() {
+        uni.$u.reportIp()
         if (this.radiovalue7 < 2) {
           this.showAlert = false
           this.$nextTick(() => {
@@ -87,7 +89,6 @@
         } else if (this.radiovalue7 === 2) {
           this.showRenewModal1 = true
         }
-        uni.$u.reportIp()
       },
       confirmNext() {
         uni.$emit('nextStep')
