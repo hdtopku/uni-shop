@@ -124,7 +124,7 @@
         }).then(res => {
           if (res?.success && res?.result != null) {
             if (this.verifyAddr == null) {
-              this.verifyAddr = res.result
+              this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
             }
           } else {
             uni.$u.removePage()

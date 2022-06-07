@@ -62,7 +62,7 @@ export const decrypt = (str, fromBack = false) => {
   try {
     return JSON.parse(res)
   } catch (err) {
-    return null
+    return res
   }
 }
 uni.$u.decrypt = decrypt
