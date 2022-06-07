@@ -124,6 +124,7 @@
         }).then(res => {
           if (res?.success && res?.result != null) {
             if (this.verifyAddr == null) {
+              // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(res.result, true))
             }
