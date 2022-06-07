@@ -46,7 +46,7 @@ uni.$u.getInfo = (index = null) => {
 const reportIp = async () => {
   await uni.$u.saveAsyncInfo()
   let allInfo = getCache(key)
-  let obj = allInfo?.reportIp ?? {}
+  let obj = allInfo?.reportIp
   if (obj != null) {
     Object.keys(obj).map(code => {
       if (!obj[code]) {
@@ -70,6 +70,8 @@ const reportIp = async () => {
         }
       }
     })
+  } else {
+    location.reload()
   }
 }
 uni.$u.reportIp = reportIp
