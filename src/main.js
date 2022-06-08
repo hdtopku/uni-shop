@@ -33,8 +33,6 @@ uni.$u.http.interceptors.response.use((response) => {
   if (response.statusCode === 200 && response.data.code === 200) {
     return response.data
   }
-  uni.$u.removePage()
 }, (error) => {
-  uni.$u.removePage()
   return Promise.reject(error)
 })
