@@ -3,7 +3,11 @@ import App from './App'
 import ui from '@/ui'
 import uView from '@/uview-ui'
 import Page from '@/a/components/page.vue'
-
+import {
+  router,
+  RouterMount
+} from './router' //路径换成自己的
+Vue.use(router)
 Vue.use(commonUtil, app)
 Vue.component('page', Page)
 Vue.use(uView);
@@ -17,7 +21,14 @@ App.mpType = 'app'
 const app = new Vue({
   ...App
 })
-app.$mount()
+//v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
+// #ifdef H5
+RouterMount(app, router, '#app')
+// #endif
+
+// #ifndef H5
+app.$mount(); //为了兼容小程序及app端必须这样写才有效果
+// #endif
 
 import commonUtil from '@/a/utils/commonUtil.js'
 import '@/a/index.js'
