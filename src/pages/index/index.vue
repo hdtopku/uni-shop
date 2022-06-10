@@ -66,6 +66,11 @@
         }
       },
       getCode() {
+        // let pages = getCurrentPages();
+        // let curPage = pages[pages.length - 1]
+        // let curParam = curPage.options || curPage.$route.query;
+        // let code = curParam?.c
+        console.log(this.$Route?.query?.code)
         let code = this.$Route?.query?.code
         let codes = uni.$u.getCache('cs') ?? []
         if (code == null || codes?.includes(code)) {
