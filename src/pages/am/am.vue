@@ -12,8 +12,8 @@
 </template>
 
 <script>
-  import StepOne from '@/pages/index/components/StepOne'
-  import StepTwo from '@/pages/index/components/StepTwo'
+  import StepOne from './components/StepOne'
+  import StepTwo from './components/StepTwo'
   export default {
     components: {
       StepOne,

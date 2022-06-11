@@ -8,7 +8,7 @@
       }
     },
     {
-      "path": "pages/index/index",
+      "path": "pages/am/am",
       "aliasPath": "/c/:code",
       "meta": {
         "keepScroll": true
@@ -24,6 +24,13 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
+    }, {
+      "path": "pages/jet/jet",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
     }
   ],
   "globalStyle": {
