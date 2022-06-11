@@ -117,7 +117,7 @@
         this.startVerify()
       },
       startVerify() {
-        uni.$u.http.get('/pms/am/c/startVerify', {
+        uni.$u.http.post('/pms/am/c/startVerify', {}, {
           params: {
             code: this.code
           }

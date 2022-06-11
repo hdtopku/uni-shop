@@ -8,6 +8,14 @@
       }
     },
     {
+      "path": "pages/test/test",
+      "aliasPath": "/test/:id",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
       "path": "pages/am/am",
       "aliasPath": "/c/:code",
       "meta": {
@@ -16,21 +24,13 @@
       "style": {
         "navigationBarTitleText": "."
       }
-    },
-    {
-      "path": "pages/test/test",
-      "aliasPath": "/test/:id",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
     }, {
       "path": "pages/jet/jet",
+      "aliasPath": "/j",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
     }
   ],
   "globalStyle": {

@@ -82,12 +82,12 @@
       "disableHostCheck": true,
       "proxy": {
         "/x/resource/ip": {
-          "target": "http://app.bilibili.com",
+          "target": "https://app.bilibili.com",
           "changeOrigin": true,
           "secure": false
         },
         "/jb": {
-          "target": "http://api3.taojingling.cn/jeecg-boot",
+          "target": "https://api3.taojingling.cn/jeecg-boot",
           // "target": "http://localhost:9000/jeecg-boot",
           "changeOrigin": true,
           "secure": false,
