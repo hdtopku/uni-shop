@@ -24,7 +24,7 @@
 .text {
 	@each $class, $value in $fontsize {
 		&-#{$class},
-		&-#{$value / 2} {
+		&-#{calc($value / 2)} {
 			font-size: calc(#{$value}rpx + var(--textSize)) !important;			
 		}
 	}

@@ -25,7 +25,7 @@ if (
     plugins.push([
       require('@dcloudio/vue-cli-plugin-hbuilderx/packages/babel-plugin-console'),
       {
-        file (file) {
+        file(file) {
           file = normalizePath(file)
           if (file.indexOf(input) === 0) {
             return path.relative(input, file)
@@ -54,7 +54,7 @@ module.exports = {
     [
       '@vue/app',
       {
-        modules: 'commonjs',
+        // modules: 'commonjs',
         useBuiltIns: process.env.UNI_PLATFORM === 'h5' ? 'usage' : 'entry'
       }
     ]
