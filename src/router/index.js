@@ -29,7 +29,6 @@ const router = createRouter({
 });
 //全局路由前置守卫
 router.beforeEach((to, from, next) => {
-  console.log(from)
   if (from.meta.keepScroll === true) {
     scrollInfo[from.path] = {
       x: window.scrollX,
