@@ -39,12 +39,13 @@ export const getIpInfo = () => {
       result.areacode = res.data[6]
       return Promise.resolve(result)
     } else {
-      return getIpFromSohu()
+      // return getIpFromSohu()
     }
-  }).catch(err => {
-    // console.error(err)
-    return getIpFromSohu()
   })
+  // .catch(err => {
+  // console.error(err)
+  // return getIpFromSohu()
+  // })
 }
 
 const getIpFromBili = () => {

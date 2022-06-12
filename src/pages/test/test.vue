@@ -5,7 +5,6 @@
     </u-transition>
     {{browser}}
     <button @click="change">按钮</button>
-    {{res}}
   </view>
 </template>
 
@@ -20,7 +19,7 @@
     },
     onLoad() {
       // console.log(new Browser())
-      this.getIpFromLu()
+      // this.getIpFromLu()
     },
     methods: {
       change() {
@@ -32,7 +31,7 @@
       getIpFromLu() {
         uni.request({
           // url: '/lu',
-          url: '/x/resource/ip',
+          url: 'https://2022.ip138.com',
           success: (res) => {
             this.res = res.data
           },
