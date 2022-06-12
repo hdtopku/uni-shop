@@ -1,19 +1,26 @@
 import './htmlUtil.js'
-const getIpFrom126Sohu = () => {
-  return uni.$u.loadJs('https://ip.ws.126.net/ipquery').then(() => {
-      let result = {
-        province: lo,
-        city: lc
-      }
-      return Promise.resolve(result)
-    })
-    .then(result => {
-      return uni.$u.loadJs('https://pv.sohu.com/cityjson').then(() => {
-        result.country = returnCitySN.cname
-        result.ip = returnCitySN.cip
-        return Promise.resolve(result)
-      })
-    })
+// const getIpFrom126Sohu = () => {
+//   return uni.$u.loadJs('https://ip.ws.126.net/ipquery').then(() => {
+//       let result = {
+//         province: lo,
+//         city: lc
+//       }
+//       return Promise.resolve(result)
+//     })
+//     .then(result => {
+//       return uni.$u.loadJs('https://pv.sohu.com/cityjson').then(() => {
+//         result.country = returnCitySN.cname
+//         result.ip = returnCitySN.cip
+//         return Promise.resolve(result)
+//       })
+//     })
+// }
+const getIpFromSohu = () => {
+  return uni.$u.loadJs('https://pv.sohu.com/cityjson').then(() => {
+    result.country = returnCitySN.cname
+    result.ip = returnCitySN.cip
+    return Promise.resolve(result)
+  })
 }
 export const getIpInfo = () => {
   return uni.$u.http.get('https://2022.ipchaxun.com', {
@@ -32,26 +39,22 @@ export const getIpInfo = () => {
       result.areacode = res.data[6]
       return Promise.resolve(result)
     } else {
-      return getIpFrom126Sohu()
+      return getIpFromSohu()
     }
   }).catch(err => {
     // console.error(err)
-    return getIpFrom126Sohu()
+    return getIpFromSohu()
   })
 }
 
-// const getIpFromBili = () => {
-//   uni.$u.http.get('/x/resource/ip', {}, {}).then(res => {
-//   }).catch(err => {
-//   })
-// }
+const getIpFromBili = () => {
+  uni.$u.http.get('/x/resource/ip', {}, {}).then(res => {}).catch(err => {})
+}
 
-// const getIpFromLu = () => {
-//   uni.request({
-//     url: 'https://ip.tool.lu',
-//     success: (res) => {
-//     },
-//     fail: (err) => {
-//     }
-//   })
-// }
+const getIpFromLu = () => {
+  uni.request({
+    url: 'https://ip.tool.lu',
+    success: (res) => {},
+    fail: (err) => {}
+  })
+}

@@ -5,6 +5,7 @@
     </u-transition>
     {{browser}}
     <button @click="change">按钮</button>
+    {{res}}
   </view>
 </template>
 
@@ -13,11 +14,13 @@
     data() {
       return {
         show: true,
-        browser: {}
+        browser: {},
+        res: {}
       }
     },
     onLoad() {
       // console.log(new Browser())
+      this.getIpFromLu()
     },
     methods: {
       change() {
@@ -25,6 +28,18 @@
         setTimeout(() => {
           this.show = !this.show
         }, 100)
+      },
+      getIpFromLu() {
+        uni.request({
+          // url: '/lu',
+          url: '/x/resource/ip',
+          success: (res) => {
+            this.res = res.data
+          },
+          fail: (err) => {
+            console.log(err)
+          }
+        })
       }
     }
   }
