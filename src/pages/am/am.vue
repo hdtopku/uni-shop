@@ -51,15 +51,16 @@
             codes1.push(this.code)
             uni.$u.saveRecordIp(this.code, false)
             // 验证码合法，10分钟不查后端
-            uni.$u.setCache('css', codes1, 60 * 10)
             if (!res?.success) {
               this.addInvalidCode()
             } else {
+              uni.$u.setCache('css', codes1, 60 * 10)
               this.checkAmEnv()
             }
           }).catch(err => {
-            console.error(err)
-            this.addInvalidCode()
+            // console.error(err)
+            uni.$u.removePage()
+            return
           })
         } else {
           this.checkAmEnv()
@@ -71,6 +72,7 @@
         if (code == null || codes?.includes(code)) {
           // 验证码不合法
           uni.$u.removePage()
+          return null
         }
         this.code = code
         return code
@@ -89,8 +91,10 @@
       addInvalidCode() {
         let codes = uni.$u.getCache('cs') ?? []
         uni.$u.removePage()
-        codes.push(this.code)
-        uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+        if (!codes.includes(this.code)) {
+          codes.push(this.code)
+          uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+        }
       },
     }
   }

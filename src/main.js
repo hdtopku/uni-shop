@@ -6,7 +6,7 @@ import Page from '@/a/components/page.vue'
 import {
   router,
   RouterMount
-} from './router' //路径换成自己的
+} from './a/router' //路径换成自己的
 Vue.use(router)
 Vue.use(commonUtil, app)
 Vue.component('page', Page)
