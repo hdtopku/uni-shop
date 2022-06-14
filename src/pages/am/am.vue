@@ -30,6 +30,7 @@
       this.queryCode()
       uni.$on('nextStep', () => {
         this.currentStep = ++this.currentStep % 2
+        uni.$u.reportIp()
       })
       uni.$on('addInvalidCode', this.addInvalidCode)
     },
