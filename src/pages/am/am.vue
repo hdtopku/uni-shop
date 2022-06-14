@@ -31,6 +31,7 @@
       uni.$on('nextStep', () => {
         this.currentStep = ++this.currentStep % 2
       })
+      uni.$on('addInvalidCode', this.addInvalidCode)
     },
     methods: {
       async queryCode() {

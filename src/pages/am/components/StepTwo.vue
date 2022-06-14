@@ -55,7 +55,7 @@
       </u-row>
     </view>
     <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
-      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！提问先截图"
+      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！提问记得先截图"
       @confirm="confirmStart" :content='modalContent'>
     </u-modal>
   </view>
@@ -71,9 +71,11 @@
         verifyAddr: null,
         showAlert: true,
         showModal: false,
-        modalContent: `提问前必须先截图
-        【系统设置头像订阅Apple Music】
-        给客服（一图胜万语）`,
+        modalContent: `如果遇到问题
+
+        打开【系统设置头像订阅Apple Music】
+
+        先截图再提问`,
         checkboxValue1: [false],
         radiolist7: [{
             label: '情况1、我尚未订阅：过期用户、或新用户',
@@ -128,7 +130,7 @@
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(res.result, true))
             }
           } else {
-            uni.$u.removePage()
+            uni.$emit('addInvalidCode')
           }
         })
       }
