@@ -9,9 +9,12 @@
           提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
         </text>
       </u-collapse-item>
-      <u-collapse-item title="2、页面空白？">
+      <u-collapse-item title="2、慢打不开？">
         <text class="u-collapse-content">
-          换谷歌、夸克等第三方刘览器重来
+          Safari可能出现<text style="color:red;">加载慢、或无法验证</text>。
+          换<text style="color:red;">谷歌、夸克</text>等第三方刘览器可解决。
+          <img src="https://article.biliimg.com/bfs/article/cd4a5f4e5b23241198f313f9cced30730ce80060.jpg"
+            style="margin: 0 auto;display: block;width: 80%;" />
         </text>
       </u-collapse-item>
       <u-collapse-item title="3、是否成功？">
