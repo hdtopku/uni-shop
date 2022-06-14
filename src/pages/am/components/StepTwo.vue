@@ -55,7 +55,7 @@
       </u-row>
     </view>
     <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
-      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！一定先截图"
+      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！提问先截图"
       @confirm="confirmStart" :content='modalContent'>
     </u-modal>
   </view>
