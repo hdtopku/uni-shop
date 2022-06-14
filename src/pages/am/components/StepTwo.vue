@@ -9,13 +9,9 @@
           提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
         </text>
       </u-collapse-item>
-      <u-collapse-item title="2、慢打不开？">
+      <u-collapse-item title="2、页面空白？">
         <text class="u-collapse-content">
-          网差慢，耐心等待。
-
-          还可以换个浏览器、
-          重启手机、换网
-          或换其他iphone、ipad设备重来、或翻q
+          换谷歌、夸克等第三方刘览器重来
         </text>
       </u-collapse-item>
       <u-collapse-item title="3、是否成功？">
