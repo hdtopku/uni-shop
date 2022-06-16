@@ -76,12 +76,12 @@
         alertTitle: `👆 请正确选择您的情况！`,
         alertEffect: 'light',
         radiolist7: [{
-            label: '情况1、我尚未订阅：过期用户、或新用户',
+            label: '情况1、未订阅：已过期、已取消、新用户',
             name: 1,
             disabled: false
           },
           {
-            label: '情况2、我在订阅中：个人方案、或学生续期',
+            label: '情况2、订阅中：个人方案、或学生续期',
             name: 2,
             disabled: false
           },
@@ -100,15 +100,13 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `先开后升
+            this.alertTitle = `需先订阅，再按情况2
             
-            情况1.1：过期用户步骤
-            1、先到音乐里花10元开个人方案，10元苹果收，不可退！
-            2、开完后，再选择情况2升级
+            情况1.1：过期用户
+            先到音乐里花10元订阅个人方案，10元苹果收，不可退！再按情况2
             
-            情况1.2：新用户步骤
-            1、先到音乐里免费开通个人方案，若试用过无免费，按情况1.1
-            2、开完后，再选择情况2升级`
+            情况1.2：新用户、已取消
+            先到音乐里免费订阅个人方案，若试用过无免费，按情况1.1`
             this.alertEffect = 'light'
             this.buttonText = '先到音乐里开通个人方案，再按情况2升级'
             break
