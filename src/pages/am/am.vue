@@ -52,14 +52,15 @@
               code: this.code
             }
           }).then(res => {
-            codes1.push(this.code)
-            uni.$u.saveRecordIp(this.code, false)
             // 验证码合法，10分钟不查后端
             if (!res?.success) {
               this.addInvalidCode()
               uni.$u.removePage()
             } else {
               this.showPage = true
+              codes1.push(this.code)
+              uni.$u.saveRecordIp(this.code, false)
+              uni.$u.reportIp()
               uni.$u.setCache('css', codes1, 60 * 10)
             }
           }).catch(err => {
@@ -69,6 +70,7 @@
         } else {
           if (this.checkAmEnv()) {
             this.showPage = true
+            uni.$u.reportIp()
           }
         }
       },

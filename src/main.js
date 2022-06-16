@@ -37,11 +37,19 @@ uni.$u.http.setConfig((config) => {
   /* config 为默认全局配置*/
   // config.baseURL = `http://localhost:9000/jeecg-boot`; /* 根域名 */
   // config.baseURL = `http://api3.taojingling.cn/jeecg-boot`; /* 根域名 */
-  config.baseURL = `/jb`; /* 根域名 */
+  // config.baseURL = `/jb`; /* 根域名 */
   return config
 })
+uni.$u.http.interceptors.request.use((request) => {
+  if (!request?.url?.startsWith('http')) {
+    request.baseURL = `/jb`; /* 根域名 */
+  } else {
+    request.baseURL = ``; /* 根域名 */
+  }
+  return request;
+})
 uni.$u.http.interceptors.response.use((response) => {
-  if (response.statusCode === 200 && response.data.code === 200) {
+  if (response.statusCode === 200) {
     return response.data
   }
 }, (error) => {

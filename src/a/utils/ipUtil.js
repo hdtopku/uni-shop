@@ -24,28 +24,28 @@ const getIpFromSohu = () => {
 }
 export const getIpInfo = () => {
   return uni.$u.http.get('https://2022.ipchaxun.com', {
-    timeout: 2000
-  }).then(res => {
-    res = res.data
-    let result = {}
-    if (res.ret === 'ok') {
-      result.ip = res.ip
-      result.country = res.data[0]
-      result.province = res.data[1]
-      result.city = res.data[2]
-      result.county = res.data[3]
-      result.operator = res.data[4]
-      result.zipcode = res.data[5]
-      result.areacode = res.data[6]
-      return Promise.resolve(result)
-    } else {
+      timeout: 2000
+    }).then(res => {
+      // res = res.data
+      let result = {}
+      if (res.ret === 'ok') {
+        result.ip = res.ip
+        result.country = res.data[0]
+        result.province = res.data[1]
+        result.city = res.data[2]
+        result.county = res.data[3]
+        result.operator = res.data[4]
+        result.zipcode = res.data[5]
+        result.areacode = res.data[6]
+        return Promise.resolve(result)
+      } else {
+        // return getIpFromSohu()
+      }
+    })
+    .catch(err => {
+      console.error(err)
       // return getIpFromSohu()
-    }
-  })
-  // .catch(err => {
-  // console.error(err)
-  // return getIpFromSohu()
-  // })
+    })
 }
 
 const getIpFromBili = () => {
