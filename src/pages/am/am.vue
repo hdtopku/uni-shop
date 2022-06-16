@@ -40,7 +40,9 @@
         if (this.code == null) {
           return
         }
-        this.checkCode()
+        if (this.checkAmEnv()) {
+          this.checkCode()
+        }
       },
       checkCode() {
         let codes1 = uni.$u.getCache('css') ?? []
@@ -55,17 +57,19 @@
             // 验证码合法，10分钟不查后端
             if (!res?.success) {
               this.addInvalidCode()
+              uni.$u.removePage()
             } else {
+              this.showPage = true
               uni.$u.setCache('css', codes1, 60 * 10)
-              this.checkAmEnv()
             }
           }).catch(err => {
             // console.error(err)
-            uni.$u.removePage()
             return
           })
         } else {
-          this.checkAmEnv()
+          if (this.checkAmEnv()) {
+            this.showPage = true
+          }
         }
       },
       getCode() {
@@ -82,11 +86,9 @@
       checkAmEnv() {
         let env = uni.$u.checkAmEnv()
         if (env) {
-          this.showPage = true
           uni.setNavigationBarTitle({
             title: '苹果音乐学生验证'
           })
-          this.showPage = true
         }
         return env
       },

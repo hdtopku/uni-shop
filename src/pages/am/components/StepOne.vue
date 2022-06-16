@@ -22,7 +22,18 @@
     <u-modal @close="showExpireModal = false" title="请先到苹果音乐里开通个人方案" closeOnClickOverlay :show="showExpireModal"
       confirmText="确定" @confirm="showExpireModal = false">
       <view>
-        由于苹果仅限订阅中的用户，才可升级学生方案，请先到苹果音乐里开通个人方案，再按情况2进行升级！如果您是过期用户，且不愿花10元开通，可在情况1中发起退款！
+        由于苹果仅限订阅中的用户，才可升级学生方案，请先到苹果音乐里开通个人方案，再按情况2进行升级！
+        <view>
+          如果您是过期用户，且不愿花10元开通，可在情况1中发起退款！
+        </view>
+      </view>
+    </u-modal>
+    <u-modal @close="showBye = false" :show="showBye" title="相逢即缘，好聚好散，再见！" confirmText="请前往订单发起退款！"
+      @confirm="confirmBye">
+      <view style="font-size: 40upx; text-align: justify;">
+        <u-alert fontSize="20" title="退款选择以下原因，系统自动秒退，免人工审核！" type="error"></u-alert>
+        <u-gap></u-gap>
+        <view style="color:red;text-decoration:underline;">未收到货，退款原因选择：其他/协商一致</view>
       </view>
     </u-modal>
     <u-modal @close="showRefund = false" title="退款协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
@@ -37,8 +48,8 @@
         </u-checkbox-group>
       </view>
     </u-modal>
-    <u-modal showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续！提醒消失即成功"
-      @close="showRenewModal1 = false" @cancel="confirmNext" cancelColor="red" confirmText="懵了！我再看看" confirmColor="blue"
+    <u-modal title="看清楚，很重要！" showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续，我懂了！"
+      @close="showRenewModal1 = false" @cancel="confirmNext" cancelColor="red" confirmText="稍等，我懵了！" confirmColor="gray"
       @confirm="showRenewModal1 = false">
       <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
         src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
@@ -57,6 +68,7 @@
         showNotify: false,
         showRefund: false,
         showRefundAlert: true,
+        showBye: false,
         checkboxValue1: [false],
         showExpireModal: false,
         showAlert: true,
@@ -140,13 +152,14 @@
             }
           }).then(res => {
             if (res.success) {
-              uni.$emit('addInvalidCode')
-              uni.$u.route({
-                url: '/refund'
-              })
+              this.showRefund = false
+              this.showBye = true
             }
           })
         }
+      },
+      confirmBye() {
+        uni.$emit('addInvalidCode')
       },
       clickNext() {
         uni.$u.reportIp()
