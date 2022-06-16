@@ -24,6 +24,16 @@
       "style": {
         "navigationBarTitleText": "."
       }
+    },
+    {
+      "path": "pages/am/refund",
+      "aliasPath": "/refund",
+      "meta": {
+        "keepScroll": true
+      },
+      "style": {
+        "navigationBarTitleText": "."
+      }
     }, {
       "path": "pages/jet/jet",
       "aliasPath": "/j",
@@ -31,6 +41,14 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
+    }, {
+      "path": "pages/order/order",
+      "aliasPath": "/order/:id",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
     }
   ],
   "globalStyle": {

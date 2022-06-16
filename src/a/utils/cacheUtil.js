@@ -46,9 +46,8 @@ export const getCache = (key, isEncrypt = true) => {
   }
   return val?.data ?? null
 }
-uni.$u.setCache = setCache
-uni.$u.getCache = getCache
-
 export const delCache = (key) => {
   uni.removeStorageSync(key)
 }
+uni.$u.setCache = setCache
+uni.$u.getCache = getCache
