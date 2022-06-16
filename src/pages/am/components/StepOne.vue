@@ -1,5 +1,6 @@
 <template>
   <view class="container">
+    <u-notify ref="uNotify"></u-notify>
     <u-divider text="订阅中才可升级、续期"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
       @change="groupChange">
