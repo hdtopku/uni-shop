@@ -19,12 +19,18 @@
       <u-button @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
     </view>
+    <u-modal @close="showExpireModal = false" title="请先到苹果音乐里开通个人方案" closeOnClickOverlay :show="showExpireModal"
+      confirmText="确定" @confirm="showExpireModal = false">
+      <view>
+        由于苹果仅限订阅中的用户，才可升级学生方案，请先到苹果音乐里开通个人方案，再按情况2进行升级！如果您是过期用户，且不愿花10元开通，可在情况1中发起退款！
+      </view>
+    </u-modal>
     <u-modal @close="showRefund = false" title="退款协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
       cancelText="取消" confirmText="继续退款" confirmColor="red" @cancel="showRefund=false" @confirm="confirmRefund">
       <view>
-        由于苹果仅限开通个人方案才可升级学生方案，为提高客服满意度，少数过期用户可能不愿花10元开通，可申请退款，升级链将被自动回收。申请后，请自行前往订单提交退款申请，<text
+        由于苹果仅限订阅中的用户，才可升级学生方案，为提高客服满意度，少数过期用户可能不愿花10元开通，可申请退款，升级链将被自动回收。申请后，请自行前往订单提交退款申请，<text
           style="color:red">退款原因：其他/协商一致</text>
-        <u-checkbox-group v-model="checkboxValue1" placement="column" @change="checkboxChange">
+        <u-checkbox-group v-if="showRefund" v-model="checkboxValue1" placement="column" @change="checkboxChange">
           <u-checkbox class="animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18" size="25"
             label="我已明确，继续退款！" :name="true">
           </u-checkbox>
@@ -52,6 +58,7 @@
         showRefund: false,
         showRefundAlert: true,
         checkboxValue1: [false],
+        showExpireModal: false,
         showAlert: true,
         alertType: 'error',
         alertTitle: `👆 请正确选择您的情况！`,
@@ -114,7 +121,7 @@
           color: '#fff',
           bgColor: '#ff4c4c',
           message: '先开通个人方案，再按情况2升级',
-          duration: 1000 * 5,
+          duration: 1000 * 10,
           fontSize: 20,
           safeAreaInsetTop: true
         })
@@ -146,6 +153,7 @@
         if (this.radiovalue7 < 2) {
           if (this.radiovalue7 === 1) {
             this.notify()
+            this.showExpireModal = true
           }
           this.showAlert = false
           this.$nextTick(() => {
