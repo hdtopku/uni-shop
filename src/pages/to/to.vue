@@ -1,5 +1,8 @@
 <template>
-  <view>
+  <view v-if="showPage" style="width: 100vw;height: 100vh;display: flex;align-items: center;padding: 300upx 50upx 0">
+    <!-- <iframe style="width: 100vw;height: 100vh;" :src="link"></iframe> -->
+    <u-button class="animate__animated animate__pulse animate__infinite" type="primary" size="large" @click="jump">去提货
+    </u-button>
   </view>
 </template>
 
@@ -7,24 +10,33 @@
   export default {
     data() {
       return {
-        code: null
+        code: null,
+        link: '',
+        showPage: false,
       }
     },
     onLoad() {
-      uni.$u.removePage()
       let info = uni.$u.getInfo()
       if (info?.sys?.model?.toUpperCase() === 'PC') {
+        uni.$u.removePage()
         this.openInMobile()
         return
       }
       if (this.getCode() != null) {
         uni.$u.http.post('/pms/shortLink/c/query/' + this.code).then(res => {
-          let link = decodeURIComponent(uni.$u.decrypt(res.result, true))
-          // location.href = link
+          if (res.success) {
+            this.showPage = true
+            this.link = decodeURIComponent(uni.$u.decrypt(res.result, true))
+          } else {
+            uni.$u.removePage()
+          }
         })
       }
     },
     methods: {
+      jump() {
+        location.href = this.link
+      },
       getCode() {
         let code = this.$Route?.query?.code
         this.code = code
