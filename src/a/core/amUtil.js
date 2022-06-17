@@ -34,12 +34,12 @@
 // </view>
 
 const checkAmEnv = () => {
-  if (!uni.$u.getInfo('ios')) {
+  if (uni.$u.getInfo()?.sys?.model === 'PC' || !uni.$u.getInfo('ios')) {
     uni.$u.removePage()
     let h1 = document.createElement('p')
     h1.innerHTML = `苹果官方暂不支持：安卓、windows或mac用户验证！<b style='color:red'>请使用iphone或ipad完成验证</b>
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn" style="padding:10px">点我复制验证链接，并前往iphone或ipad验证</button>
+<button id="CopyBtn" style="padding:10px;font-size:18px;">点我复制验证链接，并前往iphone或ipad验证</button>
     `
     h1.style = 'padding:250px 20px'
     document.body.appendChild(h1)

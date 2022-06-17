@@ -47,7 +47,7 @@
       checkCode() {
         let codes1 = uni.$u.getCache('css') ?? []
         if (!codes1?.includes(this.code)) {
-          uni.$u.http.post('/pms/am/c/queryCode', {}, {
+          uni.$u.http.post('/pms/am/c/query', {}, {
             params: {
               code: this.code
             }

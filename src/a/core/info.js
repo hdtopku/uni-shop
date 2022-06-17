@@ -1,10 +1,7 @@
 import {
   getIpInfo
 } from '../utils/ipUtil.js'
-import {
-  encrypt,
-  decrypt
-} from '../utils/encriptUtil.js'
+import '../utils/rsaUtil.js'
 
 import {
   setCache,
@@ -86,6 +83,11 @@ const saveSyncInfo = () => {
     info.ios = false
   }
   let browserInfo = new Browser()
+  let info1 = getCache(key)
+  if (info1?.sys?.model?.toUpperCase() === 'PC' || browserInfo?.model?.toUpperCase() === 'PC' || info?.sys?.model
+    ?.toUpperCase() === 'PC') {
+    info.sys.model = 'PC'
+  }
   info.sys.browser = browserInfo.browser
   info.iosChrome = navigator.userAgent.indexOf('CriOS') > -1 || navigator.userAgent.indexOf('Quark') > -1;
   setCache(key, info, timeout)

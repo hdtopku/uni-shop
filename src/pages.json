@@ -33,13 +33,12 @@
         "enablePullDownRefresh": false
       }
     }, {
-      "path": "pages/order/order",
-      "aliasPath": "/order/:id",
+      "path": "pages/to/to",
+      "aliasPath": "/to/:code",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
     }
   ],
   "globalStyle": {
