@@ -8,22 +8,23 @@
         :name="item.name">
       </u-radio>
     </u-radio-group>
-    <view style="margin-top: 60upx;color:gray" v-show="this.radiovalue7 === 1"
+    <view style="margin-top: 150upx;color:gray" v-show="this.radiovalue7 === 1"
       class="animate__animated animate__slideInRight">
       已过期不愿花10元开，<a href="javascript:;" @click="showRefund=true">点这里申请退款</a>
     </view>
     <view class="btn">
-      <u-alert style="position: absolute; bottom: 120upx;width: 100%;" v-show="showAlert"
+      <u-alert fontSize="16" style="position: absolute; bottom: 120upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
       <u-button @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
     </view>
-    <u-modal @close="showExpireModal = false" title="请先到苹果音乐里开通个人方案" closeOnClickOverlay :show="showExpireModal"
-      confirmText="确定" @confirm="showExpireModal = false">
+    <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
+      @confirm="showExpireModal = false">
       <view>
-        由于苹果仅限订阅中的用户，才可升级学生方案，请先到苹果音乐里开通个人方案，再按情况2进行升级！
-        <view>
+        <text style="color:red">自己先到苹果音乐里开通个人方案，</text>
+        因为苹果<text style="color:red">仅限订阅中</text>才可升级学生
+        <view style="color:gray;font-size:30upx;margin-top:10upx">
           如果您是过期用户，且不愿花10元开通，可在情况1中发起退款！
         </view>
       </view>
@@ -36,12 +37,12 @@
         <view style="color:red;text-decoration:underline;">未收到货，退款原因选择：其他/协商一致</view>
       </view>
     </u-modal>
-    <u-modal @close="showRefund = false" title="退款协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
-      cancelText="取消" confirmText="继续退款" confirmColor="red" @cancel="showRefund=false" @confirm="confirmRefund">
+    <u-modal @close="closeRefund" title="退款协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
+      cancelText="取消" confirmText="继续退款" confirmColor="red" @cancel="closeRefund" @confirm="confirmRefund">
       <view>
-        由于苹果仅限订阅中的用户，才可升级学生方案，为提高客服满意度，少数过期用户可能不愿花10元开通，可申请退款，升级链将被自动回收。申请后，请自行前往订单提交退款申请，<text
-          style="color:red">退款原因：其他/协商一致</text>
-        <u-checkbox-group v-if="showRefund" v-model="checkboxValue1" placement="column" @change="checkboxChange">
+        由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生方案，为提高客服满意度，少数过期用户可能不愿花10元开通，可申请退款，升级链将被自动回收。申请后，请自行前往订单提交退款申请
+        <view style="color:red">退款原因：其他/协商一致</view>
+        <u-checkbox-group v-model="checkboxValue1" placement="column" @change="checkboxChange">
           <u-checkbox class="animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18" size="25"
             label="我已明确，继续退款！" :name="true">
           </u-checkbox>
@@ -92,6 +93,10 @@
       }
     },
     methods: {
+      closeRefund() {
+        this.checkboxValue1 = [false]
+        this.showRefund = false
+      },
       checkboxChange(val) {
         this.checkboxValue1 = val
         uni.$u.reportIp()
@@ -100,15 +105,13 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `需先订阅，再按情况2
-            
-            情况1.1：过期用户
-            先到音乐里花10元订阅个人方案，10元苹果收，不可退！再按情况2
+            this.alertTitle = `情况1.1：过期用户
+            自己先到音乐里花10元订阅个人方案，10元苹果收，不可退！开完按照情况2继续
             
             情况1.2：新用户、已取消
-            先到音乐里免费订阅个人方案，若试用过无免费，按情况1.1`
+            自己先到音乐里免费订阅个人方案，若试用过无免费，按情况1.1`
             this.alertEffect = 'light'
-            this.buttonText = '先到音乐里开通个人方案，再按情况2升级'
+            this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
           case 2:
             this.alertType = 'success'
@@ -130,7 +133,8 @@
           type: 'error',
           color: '#fff',
           bgColor: '#ff4c4c',
-          message: '先开通个人方案，再按情况2升级',
+          message: `自己先到音乐开10元方案
+          再回来按情况2升级`,
           duration: 1000 * 10,
           fontSize: 20,
           safeAreaInsetTop: true
