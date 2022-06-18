@@ -6,7 +6,7 @@
         <text class="u-collapse-content">
           点开始验证，并顺着点，直到成功！
 
-          提示：无论指纹或人脸多少次，苹果不会二次扣费，请放心人脸或指纹！
+          提示：无论指纹或人脸多少次，苹果<text style="color:red">不会二次扣费</text>，请放心人脸或指纹！
         </text>
       </u-collapse-item>
       <u-collapse-item title="2、慢打不开？">
@@ -22,7 +22,7 @@
           点开【系统设置头像订阅Apple Music】
 
           1、学生(1个月) 5元勾上
-          2、且【验证大学生身份】提醒消失即成功。
+          2、且【验证大学生身份】<text style="color:red">提醒消失即成功</text>。
         </text>
         <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
       </u-collapse-item>
