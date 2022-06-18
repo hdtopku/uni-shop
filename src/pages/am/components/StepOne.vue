@@ -16,7 +16,7 @@
       <u-alert fontSize="16" style="position: absolute; bottom: 120upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
-      <u-button @click="clickNext" type="error" plain shape="circle">{{buttonText}}
+      <u-button v-show="this.radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
     </view>
     <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
@@ -105,10 +105,10 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `情况1.1：过期用户
+            this.alertTitle = `情况1.1：过期用户步骤
             自己先到音乐里花10元订阅个人方案，10元苹果收，不可退！开完按照情况2继续
             
-            情况1.2：新用户、已取消
+            情况1.2：新用户、已取消步骤
             自己先到音乐里免费订阅个人方案，若试用过无免费，按情况1.1`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
