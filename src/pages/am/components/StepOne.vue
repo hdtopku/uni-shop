@@ -75,7 +75,11 @@
         showExpireModal: false,
         showAlert: true,
         alertType: 'error',
-        alertTitle: `👆 请正确选择您的情况！`,
+        alertTitle: `👆 请正确选择您的情况！
+
+        1、未订阅
+        2、订阅中，才可继续
+        `,
         alertEffect: 'light',
         radiolist7: [{
             label: '情况1、未订阅：已过期、已取消、新用户',
