@@ -12,8 +12,8 @@
       <u-alert fontSize="16" style="position: absolute; bottom: 150upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
-      <u-button class="animate__animated animate__pulse animate__slow animate__infinite" v-if="this.radiovalue7 !==1"
-        @click="clickNext" type="error" plain shape="circle">{{buttonText}}
+      <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
+        v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
       <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
         若已过期不愿重开，<a href="javascript:;" @click="showRefund=true">申请退单终止验证</a>
