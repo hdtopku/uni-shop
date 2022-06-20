@@ -111,23 +111,23 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `情况1.1：过期用户
+            this.alertTitle = `【步骤】
+            1、自己先到音乐软件里，开10元方案
+            2、再回来选择情况2，升级为5元方案
             
-            【步骤】自己先到音乐软件里花10元重开个人方案，10元苹果收，不可退！开完按照情况2继续
----------------------------------------
-
-            情况1.2：新用户、已取消
-            
-            【步骤】自己先到音乐软件里免费订阅个人方案，若试用过无免费，按情况1.1`
+            【温馨提醒】
+            过期用户：首月10元（不可退还），下月起5元！
+            新用户：免费开10元方案（若试用过，则无免费）`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
           case 2:
             this.alertType = 'primary'
-            this.alertTitle = `情况2.1：个人方案订阅中
-            没过期、没取消，若过期按情况1先开后升，否则将失败
-            
-            情况2.2：学生方案订阅中`
+            this.alertTitle = `
+            情况2 .1： 个人方案订阅中
+            没过期、 没取消， 若过期按情况1先开后升， 否则将失败
+
+            情况2 .2： 学生方案订阅中`
             this.alertEffect = 'dark'
             this.buttonText = '已在订阅中，下一步'
             break
@@ -140,8 +140,9 @@
           type: 'error',
           color: '#fff',
           bgColor: '#ff4c4c',
-          message: `自己先到音乐开10元方案
-          再回来按情况2升级`,
+          message: `
+            自己先到音乐开10元方案
+            再回来按情况2升级`,
           duration: 1000 * 10,
           fontSize: 20,
           safeAreaInsetTop: true
