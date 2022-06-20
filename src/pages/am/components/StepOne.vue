@@ -112,20 +112,19 @@
           case 1:
             this.alertType = 'error'
             this.alertTitle = `【步骤】
-            1、自己先到音乐软件里，开10元方案
+            1、自己到音乐软件里，先开10元方案
             2、再回来选择情况2，升级为5元方案
             
             【温馨提醒】
             过期用户：首月10元（不可退还），下月起5元！
-            新用户：免费开10元方案（若试用过，则无免费）`
+            已取消、新用户：免费开10元方案（若试用过，则无免费）`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
           case 2:
             this.alertType = 'primary'
-            this.alertTitle = `
-            情况2 .1： 个人方案订阅中
-            没过期、 没取消， 若过期按情况1先开后升， 否则将失败
+            this.alertTitle = `情况2 .1： 个人方案订阅中
+            若已过期、已取消必须按照情况1先开后升， 否则将失败
 
             情况2 .2： 学生方案订阅中`
             this.alertEffect = 'dark'
