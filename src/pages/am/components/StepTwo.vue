@@ -11,8 +11,8 @@
       </u-collapse-item>
       <u-collapse-item title="2、慢打不开？">
         <text class="u-collapse-content">
-          【注意】Safari可能<text style="color:red;">提示无法验证、白屏、卡死、没反应等</text>。
-          换<text style="color:red;">夸克、谷歌</text>等第三方刘览器可解决。
+          注意！Safari、微信、百度浏览器可能<text style="color:red;">提示无法验证、白屏、卡死、没反应等</text>。
+          换<text style="color:red;">夸克、谷歌</text>等第三方刘览器即可解决。
           <img src="https://article.biliimg.com/bfs/article/cd4a5f4e5b23241198f313f9cced30730ce80060.jpg"
             style="margin: 0 auto;display: block;width: 80%;" />
         </text>
@@ -71,10 +71,9 @@
         verifyAddr: null,
         showAlert: true,
         showModal: false,
-        modalContent: `如需咨询客服，请一定带上以下截图
+        modalContent: `👇如需咨询客服，请一定带上以下截图
 
         打开【系统设置头像订阅Apple Music】
-
         `,
         checkboxValue1: [false],
         radiolist7: [{
