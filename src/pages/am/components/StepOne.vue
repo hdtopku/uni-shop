@@ -12,7 +12,8 @@
       <u-alert fontSize="16" style="position: absolute; bottom: 150upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
-      <u-button v-if="this.radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
+      <u-button class="animate__animated animate__pulse animate__slow animate__infinite" v-if="this.radiovalue7 !==1"
+        @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
       <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
         若已过期不愿重开，<a href="javascript:;" @click="showRefund=true">申请退单终止验证</a>
@@ -126,9 +127,7 @@
             this.alertTitle = `情况2.1：个人方案订阅中
             没过期、没取消，若过期按情况1先开后升，否则将失败
             
-            情况2.2：学生方案订阅中
-            苹果提醒我【验证学生资格】
-`
+            情况2.2：学生方案订阅中`
             this.alertEffect = 'dark'
             this.buttonText = '已在订阅中，下一步'
             break
