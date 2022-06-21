@@ -17,7 +17,7 @@
             style="margin: 0 auto;display: block;width: 80%;" />
         </text>
       </u-collapse-item>
-      <u-collapse-item title="3、是否成功？">
+      <!-- <u-collapse-item title="3、是否成功？">
         <text class="u-collapse-content">
           点开【系统设置头像订阅Apple Music】
 
@@ -28,8 +28,8 @@
           由于学生方案是包月，非包年，所以成功前后【<text style="color:red">续期日期不改变</text>】
         </view>
         <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
-      </u-collapse-item>
-      <u-collapse-item title="4、优惠期限？">
+      </u-collapse-item> -->
+      <u-collapse-item title="3、优惠期限？">
         <text class="u-collapse-content">
           苹果1-4年会抽查资格
           如果抽到：音乐界面会提前一个月提醒验证
@@ -53,13 +53,26 @@
             type="error" plain shape="circle">上一步</u-button>
         </u-col>
         <u-col span="6">
-          <u-button type="primary" @click="clickStart" shape="circle">开始验证</u-button>
+          <u-button type="primary" @click="clickStart"
+            :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">开始验证
+          </u-button>
         </u-col>
       </u-row>
     </view>
-    <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
+    <!-- <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
       @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！提问记得截图"
       @confirm="confirmStart" :content='modalContent'>
+    </u-modal> -->
+
+    <u-modal title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
+      @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
+      <view>
+        <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
+          style="width: 600rpx;height: 600rpx;" />
+        如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+          class="animate__animated animate__shakeY animate__infinite">必须</view>点开【系统设置头像订阅Apple Music】截图客服
+      </view>
     </u-modal>
   </view>
 </template>

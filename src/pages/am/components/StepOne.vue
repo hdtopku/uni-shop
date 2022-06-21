@@ -51,13 +51,16 @@
         </u-checkbox-group>
       </view>
     </u-modal>
-    <u-modal title="看清楚，很重要！" showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续，我懂了！"
+    <!-- <u-modal title="" showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续，我懂了！"
       @close="showRenewModal1 = false" @cancel="confirmNext" cancelColor="red" confirmText="稍等，我懵了！" confirmColor="gray"
       @confirm="showRenewModal1 = false">
-      <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-        src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
-        style="width: 600rpx;height: 600rpx;" />
-    </u-modal>
+      <view>
+        <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
+          style="width: 600rpx;height: 600rpx;" />
+        如未成功，点开【系统设置头像订阅Apple Music】截图客服
+      </view>
+    </u-modal> -->
   </view>
 </template>
 
@@ -123,10 +126,9 @@
             break
           case 2:
             this.alertType = 'primary'
-            this.alertTitle = `情况2 .1： 个人方案订阅中
-            若已过期、已取消必须按照情况1先开后升， 否则将失败
-
-            情况2 .2： 学生方案订阅中`
+            this.alertTitle = `10元方案、或5元方案订阅中
+            
+            【注意】若已过期、已取消必须按照情况1先开后升， 否则将失败`
             this.alertEffect = 'dark'
             this.buttonText = '已在订阅中，下一步'
             break
@@ -182,7 +184,8 @@
             this.showAlert = true
           })
         } else if (this.radiovalue7 === 2) {
-          this.showRenewModal1 = true
+          // this.showRenewModal1 = true
+          uni.$emit('nextStep')
         }
       },
       confirmNext() {
