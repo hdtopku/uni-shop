@@ -22,8 +22,11 @@
           点开【系统设置头像订阅Apple Music】
 
           1、学生(1个月) 5元勾上
-          2、且【验证大学生身份】<text style="color:red">提醒消失即成功</text>。
+          2、且【验证大学生身份】<text style="color:red">提醒消失即成功</text>
         </text>
+        <view style="margin-top: 20upx;">
+          由于学生方案是包月，非包年，所以成功前后【<text style="color:red">续期日期不改变</text>】
+        </view>
         <img src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png" />
       </u-collapse-item>
       <u-collapse-item title="4、优惠期限？">
