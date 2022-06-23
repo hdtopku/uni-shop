@@ -15,9 +15,9 @@
       <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
         v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
-      <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
+      <!-- <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
         若已过期不愿重开，<a href="javascript:;" @click="showRefund=true">申请退单终止验证</a>
-      </view>
+      </view> -->
     </view>
     <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
       @confirm="showExpireModal = false">
@@ -114,13 +114,18 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
+            // this.alertTitle = `【步骤】
+            // 1、自己到音乐软件里，先开10元方案
+            // 2、再回来选择情况2，升级为5元方案
+
+            // 【温馨提醒】
+            // 过期用户：首月10元（不可退还），下月起5元！
+            // 已取消、新用户：免费开10元方案（若试用过，则无免费）`
             this.alertTitle = `【步骤】
-            1、自己到音乐软件里，先开10元方案
-            2、再回来选择情况2，升级为5元方案
+            1、过期用户到支付宝搜：Apple专区，免费开通10元方案。
+            已取消、新用户到音乐软件里：免费开10元方案。
             
-            【温馨提醒】
-            过期用户：首月10元（不可退还），下月起5元！
-            已取消、新用户：免费开10元方案（若试用过，则无免费）`
+            2、再回来选择情况2，升级为5元方案`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
