@@ -91,7 +91,7 @@
             disabled: false
           },
           {
-            label: '情况2、订阅中：个人方案、或学生续期',
+            label: '情况2、订阅中：10元方案、或5元续期',
             name: 2,
             disabled: false
           },
