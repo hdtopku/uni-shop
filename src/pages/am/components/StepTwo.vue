@@ -6,14 +6,13 @@
         <text class="u-collapse-content">
           点开始验证，并顺着点，直到成功！
 
-          提示：无论指纹或人脸多少次，苹果<text style="color:red">不会二次扣费</text>，请放心人脸或指纹！
+          提示：请放心人脸或指纹！苹果<text style="color:red">不会二次扣费</text>
         </text>
       </u-collapse-item>
       <u-collapse-item title="2、慢打不开？">
         <text class="u-collapse-content">
-          注意！Safari、微信、百度浏览器可能<text style="color:red;">提示无法验证、白屏、卡死、没反应等</text>。
-          换<text style="color:red;">夸克、谷歌</text>等第三方刘览器即可解决。
-          <img src="https://article.biliimg.com/bfs/article/cd4a5f4e5b23241198f313f9cced30730ce80060.jpg"
+          Safari、微信、百度打开可能<text style="color:red;">提示无法验证、白屏、卡死等</text>。换<text style="color:red;">夸克、谷歌</text>等浏览器，可解决
+          <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
             style="margin: 0 auto;display: block;width: 80%;" />
         </text>
       </u-collapse-item>
@@ -31,11 +30,8 @@
       </u-collapse-item> -->
       <u-collapse-item title="3、优惠期限？">
         <text class="u-collapse-content">
-          苹果1-4年会抽查资格
-          如果抽到：音乐界面会提前一个月提醒验证
-          则需要来这边下单续！
-
-          【注意】有极个别客户360天说提示验证，以不到365天为由，要求客服免费加一年（一年就一次也不贵，人工和升级链均需成本，希望能尊重客服的劳动，感谢理解！）
+          苹果1-4年会抽查资格（音乐界面会提前一个月<text style="color:red">提醒验证</text>）
+          如果抽到需<text style="color:red">重新下单</text>续，人工和激活链均需成本！
         </text>
       </u-collapse-item>
     </u-collapse>

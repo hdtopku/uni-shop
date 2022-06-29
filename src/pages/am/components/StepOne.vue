@@ -128,9 +128,9 @@
             break
           case 2:
             this.alertType = 'primary'
-            this.alertTitle = `10元方案、或5元方案订阅中
+            this.alertTitle = `必须在订阅中
             
-            【注意】若已过期、已取消必须按照情况1先开后升， 否则将失败`
+            若已过期、已取消：必须按照情况1先开后升， 否则将失败`
             this.alertEffect = 'dark'
             this.buttonText = '已在订阅中，下一步'
             break
