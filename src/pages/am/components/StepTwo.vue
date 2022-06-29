@@ -6,7 +6,7 @@
         <text class="u-collapse-content">
           点开始验证，并顺着点，直到成功！
 
-          提示：请放心人脸或指纹！苹果<text style="color:red">不会二次扣费</text>
+          提示：无论人脸或指纹多少次，苹果<text style="color:red">不会二次扣费</text>，请放心人脸或指纹！
         </text>
       </u-collapse-item>
       <u-collapse-item title="2、慢打不开？">
