@@ -9,14 +9,14 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: 150upx;width: 100%;" v-show="showAlert"
+      <u-alert fontSize="16" style="position: absolute; bottom: 200upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
       <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
         v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
       <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
-        若已过期不愿重开，<a href="javascript:;" @click="showRefund=true">申请退单终止验证</a>
+        过期用户需花10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
       </view>
     </view>
     <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
@@ -116,9 +116,7 @@
             this.alertType = 'error'
             this.alertTitle = `【步骤】
             1、自己到音乐软件里，先开10元方案
-            2、再回来选择情况2，升级为5元方案
-
-            注意：过期用户需10元重开（不可退还），下月起5元！`
+            2、再回来选择情况2，升级为5元方案`
             // 已取消、新用户：免费开10元方案（若试用过，则无免费）
             // this.alertTitle = `【步骤】
             // 1、过期用户到支付宝搜：Apple专区，领红包并免费开通10元方案。
