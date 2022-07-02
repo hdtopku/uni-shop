@@ -6,14 +6,18 @@
         <text class="u-collapse-content">
           点开始验证，并顺着点，直到成功！
 
-          提示：无论人脸或指纹多少次，苹果<text style="color:red">不会二次扣费</text>，请放心人脸或指纹！
+          提示：无论人脸或指纹多少次<text style="color:red;font-size: 35upx;font-weight: bold;">均免费</text>，<text
+            style="color:red;font-size: 35upx;font-weight: bold;">不会扣费</text>，请放心人脸或指纹！
         </text>
       </u-collapse-item>
-      <u-collapse-item title="2、慢打不开？">
-        <text class="u-collapse-content">
-          Safari、微信、百度打开可能<text style="color:red;">提示无法验证、白屏、卡死等</text>。换<text style="color:red;">夸克、谷歌</text>等浏览器，可解决
-          <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
-            style="margin: 0 auto;display: block;width: 80%;" />
+      <u-collapse-item title="2、无法验证？">
+        <text class="u-collapse-content" style="font-size: 30upx;">
+          <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
+            style="margin: 0 auto;display: block;width: 90%;" />
+          如图遇到<text style="color:red;">无法验证、无法连接、白屏卡死</text>
+          <view style="color:red;font-weight: bolder;font-size: 50upx;display: inline-block;"
+            class="animate__animated animate__heartBeat animate__infinite ">用夸克、谷歌</view>等可解决，别用<text
+            style="color:red;">Safari、微信、百度</text>
         </text>
       </u-collapse-item>
       <!-- <u-collapse-item title="3、是否成功？">
@@ -30,8 +34,10 @@
       </u-collapse-item> -->
       <u-collapse-item title="3、优惠期限？">
         <text class="u-collapse-content">
-          苹果1-4年会抽查资格（音乐界面会提前一个月<text style="color:red">提醒验证</text>）
-          如果抽到需<text style="color:red">重新下单</text>续，人工和激活链均需成本！
+          <viwe style="font-size: 40upx;font-weight: bold;color:red;">12个月。</viwe>
+          <view>音乐界面会提前1个月<text style="color:red">弹窗提醒验证</text>，每12个月过来下单续一年。</view>
+          <!-- 苹果1-4年会抽查资格（音乐界面会提前一个月<text style="color:red">提醒验证</text>）
+          如果抽到需<text style="color:red">重新下单</text>续，人工和激活链均需成本！ -->
         </text>
       </u-collapse-item>
     </u-collapse>
