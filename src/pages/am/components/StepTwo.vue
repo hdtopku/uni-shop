@@ -6,8 +6,8 @@
         <text class="u-collapse-content">
           点开始验证，并顺着点，直到成功！
 
-          提示：无论人脸或指纹多少次<text style="color:red;font-size: 35upx;font-weight: bold;">均免费</text>，<text
-            style="color:red;font-size: 35upx;font-weight: bold;">不会扣费</text>，请放心人脸或指纹！
+          提示：无论人脸或指纹多少次<text style="color:red;font-size: 40upx;font-weight: bold;">均免费</text>，<text
+            style="color:red;font-size: 40upx;font-weight: bold;">不会扣费</text>，请放心人脸或指纹！
         </text>
       </u-collapse-item>
       <u-collapse-item title="2、无法验证？">
