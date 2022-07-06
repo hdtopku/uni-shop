@@ -115,8 +115,8 @@
           case 1:
             this.alertType = 'error'
             this.alertTitle = `【步骤】
-            1、自己到音乐软件里，先开个人方案
-            2、再回来选择情况2，免费升级为5元方案`
+            1、自己先到苹果音乐软件里，开个人方案
+            2、再回来选择2，免费升级为5元方案`
             // 已取消、新用户：免费开10元方案（若试用过，则无免费）
             // this.alertTitle = `【步骤】
             // 1、过期用户到支付宝搜：Apple专区，领红包并免费开通10元方案。
@@ -128,7 +128,7 @@
             break
           case 2:
             this.alertType = 'primary'
-            this.alertTitle = `必须在订阅中
+            this.alertTitle = `已在订阅中
             
             若已过期、已取消：必须按照情况1先开后升， 否则将失败`
             this.alertEffect = 'dark'
