@@ -70,8 +70,8 @@
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
-          style="width: 600rpx;height: 600rpx;" />
+          src="https://article.biliimg.com/bfs/article/94b877877539757e2a1cc3308d375acca01ae163.png"
+          style="height: 720rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>点开【系统设置头像订阅Apple Music】截图客服
