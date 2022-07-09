@@ -70,7 +70,7 @@
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/5470f8c4a8a16add61ccdaffe5eefb37b2b15746.png"
+          src="https://article.biliimg.com/bfs/article/dadb946a05f07ddb66f1469bd7395e27a4af165c.png"
           style="height: 720rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
