@@ -167,6 +167,7 @@
             if (res.success) {
               this.showRefund = false
               this.showBye = true
+              uni.$emit('addInvalidCode', false)
             }
           })
         }

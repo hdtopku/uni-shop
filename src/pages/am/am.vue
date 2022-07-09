@@ -32,7 +32,9 @@
         this.currentStep = ++this.currentStep % 2
         uni.$u.reportIp()
       })
-      uni.$on('addInvalidCode', this.addInvalidCode)
+      uni.$on('addInvalidCode', (removalPage = true) => {
+        this.addInvalidCode(removalPage)
+      })
     },
     methods: {
       async queryCode() {
@@ -94,9 +96,11 @@
         }
         return env
       },
-      addInvalidCode() {
+      addInvalidCode(removalPage = true) {
         let codes = uni.$u.getCache('cs') ?? []
-        uni.$u.removePage()
+        if (removalPage) {
+          uni.$u.removePage()
+        }
         if (!codes.includes(this.code)) {
           codes.push(this.code)
           uni.$u.setCache('cs', codes, 3600 * 24 * 30)
