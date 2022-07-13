@@ -9,9 +9,14 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: 200upx;width: 100%;" v-show="showAlert"
+      <u-alert fontSize="16" style="position: absolute; bottom: 300upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
+      <view v-if="radiovalue7 === 1">
+        <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+          style="position: absolute; bottom: 180upx;" @click="subscribePersonal" type="error">去开通个人套餐</u-button>
+        <text style="display: flex;justify-content: center;">或</text>
+      </view>
       <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
         v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
       </u-button>
@@ -51,16 +56,6 @@
         </u-checkbox-group>
       </view>
     </u-modal>
-    <!-- <u-modal title="" showCancelButton :closeOnClickOverlay="true" :show="showRenewModal1" cancelText="继续，我懂了！"
-      @close="showRenewModal1 = false" @cancel="confirmNext" cancelColor="red" confirmText="稍等，我懵了！" confirmColor="gray"
-      @confirm="showRenewModal1 = false">
-      <view>
-        <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/7b874bde1ce69b4096656e2668f6d348fd06f3aa.png"
-          style="width: 600rpx;height: 600rpx;" />
-        如未成功，点开【系统设置头像订阅Apple Music】截图客服
-      </view>
-    </u-modal> -->
   </view>
 </template>
 
@@ -79,10 +74,10 @@
         showExpireModal: false,
         showAlert: true,
         alertType: 'error',
-        alertTitle: `👆  是否在订阅中？
+        alertTitle: `👆  是否开着苹果音乐套餐？
 
-        1、未订阅
-        2、订阅中，才可继续
+        1、未订阅（没开、或已停）
+        2、订阅中（才可下一步）
         `,
         alertEffect: 'light',
         radiolist7: [{
@@ -102,6 +97,9 @@
       }
     },
     methods: {
+      subscribePersonal() {
+        window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
+      },
       closeRefund() {
         this.checkboxValue1 = [false]
         this.showRefund = false
