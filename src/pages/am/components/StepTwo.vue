@@ -132,16 +132,18 @@
         this.startVerify()
       },
       startVerify() {
+        const encryptLink =
+          'gN5JgbLx8e3umjHbwMXXmd1JLCOWYyJxnt0xR5a/GTXC6zrVdY6j9/7d7d3zrMicYpNr9ObDKpBwmg9DBuVPf47DFIZypn/EBfRJSaIFeUH2HeIGAuuAks4xQKRD0MfBVCwN6CgZcNBNimWvoDOU6cFBaPbohgWDIH2tziDcYiaDC6EGUT4FUlQyWYqNSd0sopagBlZnwI60A88Bn2QGqwiJY9OI36nnFIsPCsUhN9ixMBMRMaWhI6iFgbvPNrppjmFghqP4mHcAXcs+P1sFo/vC21jr8Ze7A+5CZO89aZ+FPQDqys7w5rigGW/7yYwChQMY7/4tqskSCChlGtm/AQ=='
         uni.$u.http.post('/pms/am/c/startVerify', {}, {
           params: {
             code: this.code
           }
         }).then(res => {
-          if (res?.success && res?.result != null) {
+          if (res?.success) {
             if (this.verifyAddr == null) {
               // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
-              this.verifyAddr = decodeURIComponent(uni.$u.decrypt(res.result, true))
+              this.verifyAddr = decodeURIComponent(uni.$u.decrypt(encryptLink, true))
             }
           } else {
             uni.$emit('addInvalidCode')
