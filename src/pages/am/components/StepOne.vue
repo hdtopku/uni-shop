@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <u-notify ref="uNotify"></u-notify>
-    <u-divider text="订阅中才可升级、续期"></u-divider>
+    <u-divider text="订阅中才可验证"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
       @change="groupChange">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
@@ -14,7 +14,7 @@
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: 180upx;" @click="subscribePersonal" type="error">去开通个人套餐</u-button>
+          style="position: absolute; bottom: 180upx;" @click="subscribePersonal" type="error">去开通个人方案</u-button>
         <text style="display: flex;justify-content: center;">或</text>
       </view>
       <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
@@ -113,8 +113,8 @@
           case 1:
             this.alertType = 'error'
             this.alertTitle = `【步骤】
-            1、自己先到苹果音乐软件里，开个人方案
-            2、再回来选择2，免费升级为5元方案`
+            1、自己先到苹果音乐软件里，开通个人方案
+            2、开通后选择2，免费升级为5元方案`
             // 已取消、新用户：免费开10元方案（若试用过，则无免费）
             // this.alertTitle = `【步骤】
             // 1、过期用户到支付宝搜：Apple专区，领红包并免费开通10元方案。
