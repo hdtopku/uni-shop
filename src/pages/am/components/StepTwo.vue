@@ -55,11 +55,17 @@
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/dadb946a05f07ddb66f1469bd7395e27a4af165c.png"
-          style="height: 720rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
+          src="https://article.biliimg.com/bfs/article/f277d4422bb25a98760bd9c70f7e1fd6e0aa46d4.jpg"
+          style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
+          <view>提醒消失就已成功，无需二次向客服确认</view>
+          <view>仔细阅读👉 由于学生方案是包月，非包年。所以成功后
+            <span style="color:red;">【续期时间不显示为明年】</span>
+          </view>
           如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
-            class="animate__animated animate__shakeY animate__infinite">必须</view>点开【系统设置头像订阅Apple Music】截图客服
+            class="animate__animated animate__shakeY animate__infinite">必须
+          </view>
+          <view>点开【系统设置头像订阅am】截图客服</view>
         </view>
       </view>
     </u-modal>
@@ -76,8 +82,8 @@
         verifyAddr: null,
         showAlert: true,
         alertTitle: `为减少客服压力
-        1、验证资格提醒消失就算成功，无需二次向客服确认
-        2、成功后，无需致谢客服`,
+        1、验证资格消失就算成功，无需二次向客服确认
+        2、成功后，无需致谢客服，仔细阅读👇`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
