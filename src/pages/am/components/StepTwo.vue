@@ -55,7 +55,7 @@
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/f277d4422bb25a98760bd9c70f7e1fd6e0aa46d4.jpg"
+          src="https://article.biliimg.com/bfs/article/0ccad4b0a8cb40f11236a2b58a5eadc71a0c6ae8.jpg"
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           <view>提醒消失就已成功，无需二次向客服确认</view>
