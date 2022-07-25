@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <u-notify ref="uNotify"></u-notify>
-    <u-divider text="订阅中才可验证"></u-divider>
+    <u-divider text="未订阅必须先订阅"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
       @change="groupChange">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
@@ -9,21 +9,24 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: 300upx;width: 100%;" v-show="showAlert"
+      <u-alert fontSize="16" style="position: absolute; bottom: -160upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: 180upx;" @click="subscribePersonal" type="error">去开通个人方案</u-button>
+          style="position: absolute; bottom: 160upx;" @click="subscribePersonal" type="error">先打开苹果音乐软件，开通个人方案
+        </u-button>
         <text style="display: flex;justify-content: center;">或</text>
-      </view>
-      <u-button :class="radiovalue7 ===2 ? 'animate__animated animate__pulse animate__slow animate__infinite':''"
-        v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
-      </u-button>
-      <view v-else style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
-        过期用户需花10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
+        <view style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
+          试用过已过期需花10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
+        </view>
       </view>
     </view>
+    <u-divider text="订阅中才可下一步"></u-divider>
+    <u-button class="next-btn animate__animated animate__pulse animate__slow animate__infinite" v-if="radiovalue7 !==1"
+      @click="clickNext" type="error" plain shape="circle">{{buttonText}}
+    </u-button>
+    <!-- 窗口 -->
     <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
       @confirm="showExpireModal = false">
       <view>
@@ -46,12 +49,13 @@
       cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund" @confirm="confirmRefund">
       <view style="color:gray">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
-        <view style="margin-top: 20upx;">如果不继续，可跟客服申请退单，<text style="color:red">退款原因：其他/协商一致</text></view>
+        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，可跟客服申请退单，<text
+            style="color:red">退款原因：其他/协商一致</text></view>
 
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="checkboxChange">
-          <u-checkbox class="animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18" size="25"
-            label="确定终止验证，继续退单！" :name="true">
+          <u-checkbox class="checkbox animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18"
+            size="25" label="确定终止验证，继续退单！" :name="true">
           </u-checkbox>
         </u-checkbox-group>
       </view>
@@ -74,10 +78,15 @@
         showExpireModal: false,
         showAlert: true,
         alertType: 'error',
-        alertTitle: `👆  是否开着苹果音乐套餐？
-
-        1、未订阅（没开、或已停）
-        2、订阅中（才可下一步）
+        alertTitle: `👆 没开或已停，选1
+        
+        
+        
+        是否开着苹果音乐套餐？
+        
+        
+        
+        👇 开着，选2
         `,
         alertEffect: 'light',
         radiolist7: [{
@@ -86,13 +95,13 @@
             disabled: false
           },
           {
-            label: '2、订阅中：10元方案、或学生续期',
+            label: '2、订阅中：开着10元方案、或学生续期',
             name: 2,
             disabled: false
           },
         ],
         radiovalue7: 0,
-        buttonText: '下一步',
+        buttonText: '请选择是否订阅中',
         showRenewModal1: false,
       }
     },
@@ -112,24 +121,23 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `【步骤】
-            1、自己先到苹果音乐软件里，开通个人方案
-            2、开通后选择2，免费升级为5元方案`
-            // 已取消、新用户：免费开10元方案（若试用过，则无免费）
-            // this.alertTitle = `【步骤】
-            // 1、过期用户到支付宝搜：Apple专区，领红包并免费开通10元方案。
-            // 已取消、新用户到音乐软件里：免费开10元方案。
-
-            // 2、再回来选择情况2，升级为5元方案`
+            this.alertTitle = `开通10元方案后，选2👇免费升级为5元`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
           case 2:
-            this.alertType = 'primary'
-            this.alertTitle = `已在订阅中
+            this.alertType = 'error'
+            this.alertTitle = `👆 未订阅必须选1， 否则将失败
             
-            若已过期、已取消：必须按照情况1先开后升， 否则将失败`
-            this.alertEffect = 'dark'
+            
+            
+            
+            
+            
+            
+            
+            👇 订阅中（可以下一步）`
+            this.alertEffect = 'light'
             this.buttonText = '已在订阅中，下一步'
             break
         }
@@ -202,12 +210,25 @@
 
     .btn {
       position: absolute;
-      bottom: 0;
+      bottom: 480upx;
       width: 100%;
+    }
+
+    .next-btn {
+      position: absolute;
+      bottom: 0upx;
     }
 
     img {
       pointer-events: none;
+    }
+
+    ::v-deep .u-border-bottom:first-child {
+      margin-bottom: 500upx !important;
+    }
+
+    ::v-deep .u-border-bottom {
+      border-bottom: none !important;
     }
   }
 </style>
