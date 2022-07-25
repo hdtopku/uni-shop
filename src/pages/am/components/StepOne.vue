@@ -14,11 +14,11 @@
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: 160upx;" @click="subscribePersonal" type="error">先打开苹果音乐软件，开通个人方案
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">先打开苹果音乐软件，开通个人方案
         </u-button>
-        <text style="display: flex;justify-content: center;">或</text>
-        <view style="color:gray" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
-          试用过已过期需花10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
+        <view style="color:gray;" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
+          <span style="color:red;font-size:50upx">或</span>，试用过已过期需花10元重开，下月起5元！若不愿重开，<a href="javascript:;"
+            @click="showRefund=true">可申请退单终止验证</a>
         </view>
       </view>
     </view>
