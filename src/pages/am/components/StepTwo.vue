@@ -6,7 +6,7 @@
     <u-alert fontSize="16" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
     </u-alert>
     <u-collapse class="step-content" accordion>
-      <u-collapse-item title="1、学生验证不扣钱，持续1年">
+      <u-collapse-item title="【必读1】学生验证不扣钱，持续1年">
         <text class="u-collapse-content">
           1、验证时<text style="color:red;font-size: 40upx;font-weight: bold;">人脸或指纹不会扣钱！</text>放心继续
         </text>
@@ -15,7 +15,7 @@
           <view>2、每年下单<text style="">维持1年</text>，音乐界面会提前1个月<text style="color:red">弹窗提醒验证</text></view>
         </text>
       </u-collapse-item>
-      <u-collapse-item title="2、无法验证、无法连接、白屏卡死？">
+      <u-collapse-item title="【必读2】无法验证、无法连接、白屏卡死？">
         <text class="u-collapse-content" style="font-size: 30upx;">
           <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
             style="margin: 0 auto;display: block;width: 90%;" />
@@ -46,10 +46,6 @@
         </u-col>
       </u-row>
     </view>
-    <!-- <u-modal showCancelButton :closeOnClickOverlay="true" :show="showModal" title="为了高效沟通！" cancelText="我再想想"
-      @close="showModal = false" @cancel="showModal = false" confirmColor="red" confirmText="继续！提问记得截图"
-      @confirm="confirmStart" :content='modalContent'>
-    </u-modal> -->
 
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">

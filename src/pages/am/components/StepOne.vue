@@ -14,11 +14,11 @@
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">先打开苹果音乐软件，开通个人方案
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：先打开苹果音乐软件，开通个人方案
         </u-button>
         <view style="color:gray;" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
-          <span style="color:red;font-size:50upx">或</span>，试用过已过期需花10元重开(<span
-            style="color:red">全网都如此</span>)，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
+          或，试用过已过期需花10元重开(<span style="color:red">全网都如此</span>)，下月起5元！若不愿重开，<a href="javascript:;"
+            @click="showRefund=true">可申请退单终止验证</a>
         </view>
       </view>
     </view>
@@ -121,7 +121,8 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `开通10元方案后，选2👇免费升级为5元`
+            this.alertTitle = `第二步：开通10元方案后，
+            选2、订阅中 👇 免费升级为5元`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
