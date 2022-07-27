@@ -129,7 +129,7 @@
       },
       startVerify() {
         const encryptLink =
-          'gN5JgbLx8e3umjHbwMXXmd1JLCOWYyJxnt0xR5a/GTXC6zrVdY6j9/7d7d3zrMicYpNr9ObDKpBwmg9DBuVPf47DFIZypn/EBfRJSaIFeUH2HeIGAuuAks4xQKRD0MfBVCwN6CgZcNBNimWvoDOU6cFBaPbohgWDIH2tziDcYiaDC6EGUT4FUlQyWYqNSd0sopagBlZnwI60A88Bn2QGqwiJY9OI36nnFIsPCsUhN9ixMBMRMaWhI6iFgbvPNrppjmFghqP4mHcAXcs+P1sFo/vC21jr8Ze7A+5CZO89aZ+FPQDqys7w5rigGW/7yYwChQMY7/4tqskSCChlGtm/AQ=='
+          'mRyZGTkVAZUpdDh47MzrSS+cj7t5RWB5YB8jpJdCEaIEZtp4Ans5b1VKHc14hIQpO0COVlZE12GmjcHzc0Z47AwGREQGqj3unoCovyprRuxVn4K312ypWK3Dp61oLSfhn0KHz3zDggdG5/7O9nYXaU3o7y/HPn7/rBP4qv2icMCaKVE2ZM1M77zmR2TnqFxUwbPfbyUFv4DlsLCEz86gtiVrspiIib+PFbwW5uagBt9HSPsuyxWY1JaxnhzI9DiItgMVxFuqdBLpFBK1jGpIfh7LKZJQF30C96HZ0J2Vmhz3u/qWASERwMxbMymi+VTB8kGrSzHcQmx7CBMX2U1rSw=='
         uni.$u.http.post('/pms/am/c/startVerify', {}, {
           params: {
             code: this.code
@@ -140,9 +140,6 @@
               // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(encryptLink, true))
-              this.verifyAddr = decodeURIComponent(
-                'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=eRtEYe4oujj%2f9eZ7RsQjKEwpg%2fBteUdxGfgxYNLfrRdNUgMt8WzBDaUuck9kghwfpFyDqZ5qMMBYl2yzYa6K1A%3d%3d&ud_s=tFBSOjklg0W%2fAAouXmEf%2fQ%3d%3d&ud_t=1658905140'
-              )
             }
           } else {
             uni.$emit('addInvalidCode')
