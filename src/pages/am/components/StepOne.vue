@@ -89,7 +89,7 @@
         `,
         alertEffect: 'light',
         radiolist7: [{
-            label: '1、未订阅：已过期、已取消、新用户',
+            label: '1、未订阅：已过期、已取消、未开通',
             name: 1,
             disabled: false
           },
