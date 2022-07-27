@@ -140,6 +140,9 @@
               // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(encryptLink, true))
+              this.verifyAddr = decodeURIComponent(
+                'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset%2fpXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw%3d%3d&ud_s=lu71Beg7pESvcKjG7JPTdQ%3d%3d&ud_t=1690439617'
+                )
             }
           } else {
             uni.$emit('addInvalidCode')
