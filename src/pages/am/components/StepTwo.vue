@@ -141,8 +141,8 @@
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(encryptLink, true))
               this.verifyAddr = decodeURIComponent(
-                'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=cEv3MQq6Aj8alkFkGwcFECset%2fpXKjxW4sOwjpMqLTGlRDLIgBehkWv7FMiolTRwZT1OspZE76LOzh70DftfFw%3d%3d&ud_s=lu71Beg7pESvcKjG7JPTdQ%3d%3d&ud_t=1690439617'
-                )
+                'https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=eRtEYe4oujj%2f9eZ7RsQjKEwpg%2fBteUdxGfgxYNLfrRdNUgMt8WzBDaUuck9kghwfpFyDqZ5qMMBYl2yzYa6K1A%3d%3d&ud_s=tFBSOjklg0W%2fAAouXmEf%2fQ%3d%3d&ud_t=1658905140'
+              )
             }
           } else {
             uni.$emit('addInvalidCode')
