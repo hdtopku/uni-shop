@@ -41,7 +41,7 @@
         </u-col>
         <u-col span="6">
           <u-button type="primary" @click="clickStart"
-            :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">开始验证
+            :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">验证资格
           </u-button>
         </u-col>
       </u-row>
@@ -49,6 +49,18 @@
 
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
+      <view slot="confirmButton">
+        <u-row justify="space-around" gutter="20">
+          <u-col span="4">
+            <u-button type="info" class="shadow-sm" @click="showModal = false">关闭</u-button>
+          </u-col>
+          <u-col span="8">
+            <u-button type="primary" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+              @click="confirmStart">
+              好的，现在开始验证</u-button>
+          </u-col>
+        </u-row>
+      </view>
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
           src="https://article.biliimg.com/bfs/article/0ccad4b0a8cb40f11236a2b58a5eadc71a0c6ae8.jpg"

@@ -9,19 +9,21 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: -160upx;width: 100%;" v-show="showAlert"
+      <u-alert fontSize="16" style="position: absolute; bottom: -180upx;width: 100%;" v-show="showAlert"
         class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：先打开苹果音乐软件，开通个人方案
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
-        <view style="color:gray;" v-show="this.radiovalue7 === 1" class="animate__animated animate__slideInRight">
-          或，试用过已过期需花10元重开，下月起5元！全网都如此，若不愿重开，<a href="javascript:;" @click="showRefund=true">可申请退单终止验证</a>
+        <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow">
+          <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
+            class="animate__animated animate__shakeY animate__infinite">必须</view>
+          先开10元方案。试用过已过期首月10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
         </view>
       </view>
     </view>
-    <u-divider text="订阅中才可下一步"></u-divider>
+    <u-divider text="订阅中才可学生升级"></u-divider>
     <u-button class="next-btn animate__animated animate__pulse animate__slow animate__infinite" v-if="radiovalue7 !==1"
       @click="clickNext" type="error" plain shape="circle">{{buttonText}}
     </u-button>
@@ -81,7 +83,9 @@
         
         
         
+        
         是否开着苹果音乐套餐？
+        
         
         
         
@@ -120,14 +124,15 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `第二步：开通10元方案后，
-            选2、订阅中 👇 免费升级为5元`
+            this.alertTitle = `第二步：开通10元方案后，再回来
+            选2，免费升级为5元方案👇👇👇`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
           case 2:
             this.alertType = 'error'
             this.alertTitle = `👆 未订阅必须选1， 否则将失败
+            
             
             
             
@@ -207,6 +212,12 @@
   .container {
     position: relative;
     height: 900upx;
+
+    .explain {
+      color: gray;
+      border: 1px dashed red;
+      border-radius: 10upx;
+    }
 
     .btn {
       position: absolute;
