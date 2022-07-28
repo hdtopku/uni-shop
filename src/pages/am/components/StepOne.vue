@@ -19,7 +19,7 @@
         <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow">
           <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          先开10元方案。试用过已过期首月10元重开，下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
+          先开个人方案，过期用户首月10元重开（其他用户免费开），下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
         </view>
       </view>
     </view>
