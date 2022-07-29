@@ -66,9 +66,13 @@
           src="https://article.biliimg.com/bfs/article/0ccad4b0a8cb40f11236a2b58a5eadc71a0c6ae8.jpg"
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
-          <view>提醒消失就已成功，无需二次向客服确认</view>
-          <view>仔细阅读👉 由于学生方案是包月，非包年。所以成功后
+          <view>👆👆👆提醒消失就已成功，无需二次向客服确认</view>
+          <br>
+          <view>原因：<view style="color:red;font-weight: bolder;display: inline-block;"
+              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间</view>，且学生方案是包月，非包年，所以成功后
             <span style="color:red;">【续期时间不显示为明年】</span>
+            <br>
+            👆👆👆请仔细阅读原因
           </view>
           如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须
