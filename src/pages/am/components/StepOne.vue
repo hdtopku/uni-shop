@@ -9,18 +9,24 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: -180upx;width: 100%;" v-show="showAlert"
-        class="animate__animated animate__shakeX" :title="alertTitle" :type="alertType" :effect="alertEffect">
+      <u-alert fontSize="16" style="position: absolute; bottom: -180upx;width: 100%;"
+        v-show="showAlert && radiovalue7 !== 1" class="animate__animated animate__shakeX" :title="alertTitle"
+        :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
-        <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow">
+        <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"
+          style="font-size: 30upx;">
           <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          先开10元方案，过期用户首月10元重开（其他用户免费开），下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
+          先开10元方案，处于订阅中，再升级：过期用户首月10元重开（其他人免费开），下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
         </view>
+        <u-button class="shadow" style="position: absolute; bottom: -180upx;" @click="chooseTwo" type="error">
+          第二步：开通后，立即选2升级为5元方案<view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
+            class="animate__animated animate__shakeY animate__slow animate__infinite">👇</view>
+        </u-button>
       </view>
     </view>
     <u-divider text="订阅中才可学生升级"></u-divider>
@@ -112,6 +118,10 @@
       subscribePersonal() {
         window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
       },
+      chooseTwo() {
+        this.radiovalue7 = 2
+        this.groupChange(2)
+      },
       closeRefund() {
         this.checkboxValue1 = [false]
         this.showRefund = false
@@ -124,8 +134,8 @@
         switch (n) {
           case 1:
             this.alertType = 'error'
-            this.alertTitle = `第二步：开通10元方案后，再回来
-            选2，免费升级为5元方案👇👇👇`
+            this.alertTitle = `第二步：开通10元方案后，立即回来
+            选2，立即升级为5元方案👇👇👇`
             this.alertEffect = 'light'
             this.buttonText = '自己先去开个人方案，开完按情况2升级'
             break
