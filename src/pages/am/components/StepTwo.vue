@@ -141,7 +141,7 @@
       },
       startVerify() {
         const encryptLink =
-          'mRyZGTkVAZUpdDh47MzrSS+cj7t5RWB5YB8jpJdCEaIEZtp4Ans5b1VKHc14hIQpO0COVlZE12GmjcHzc0Z47AwGREQGqj3unoCovyprRuxVn4K312ypWK3Dp61oLSfhn0KHz3zDggdG5/7O9nYXaU3o7y/HPn7/rBP4qv2icMCaKVE2ZM1M77zmR2TnqFxUwbPfbyUFv4DlsLCEz86gtiVrspiIib+PFbwW5uagBt9HSPsuyxWY1JaxnhzI9DiItgMVxFuqdBLpFBK1jGpIfh7LKZJQF30C96HZ0J2Vmhz3u/qWASERwMxbMymi+VTB8kGrSzHcQmx7CBMX2U1rSw=='
+          'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
         uni.$u.http.post('/pms/am/c/startVerify', {}, {
           params: {
             code: this.code
