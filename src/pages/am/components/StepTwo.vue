@@ -87,12 +87,11 @@
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           <view>
-            <view style="color:red;font-weight: bolder;display: inline-block;"
+            1、<view style="color:red;font-weight: bolder;display: inline-block;"
               class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间</view>👆提醒消失就成功。学生方案是包月，非包年，所以成功后
             <span style="color:red;">【续期时间不显示为明年】</span>
           </view>
-          <br>
-          如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+          2、如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须
           </view>
           <view>点开【系统设置头像订阅am】截图客服</view>
