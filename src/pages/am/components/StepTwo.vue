@@ -3,8 +3,8 @@
 
     <!-- <u-divider text="请先仔细阅读" textColor="red" textSize="30"></u-divider> -->
     <u-gap></u-gap>
-    <u-divider text="学生验证不扣钱，持续1年"></u-divider>
-    <u-alert fontSize="14" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
+    <u-divider text="学生验证不扣钱，每年下单维持1年"></u-divider>
+    <u-alert fontSize="15" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
     </u-alert>
 
     <text class="u-collapse-content" style="font-size: 30upx;">
@@ -15,6 +15,7 @@
         class="animate__animated animate__heartBeat animate__infinite ">请用夸克、谷歌</view><span style="">
         别用Safari、微信、百度</span>
     </text>
+    <u-divider text="为减少客服压力，全程无需致谢客服"></u-divider>
     <!-- <u-collapse class="step-content" accordion>
       <u-collapse-item title="【必读1】学生验证不扣钱，持续1年">
         <text class="u-collapse-content">
@@ -85,14 +86,12 @@
           src="https://article.biliimg.com/bfs/article/0ccad4b0a8cb40f11236a2b58a5eadc71a0c6ae8.jpg"
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
-          <view>👆👆👆提醒消失就已成功，无需二次向客服确认</view>
-          <br>
-          <view>原因：<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间</view>，且学生方案是包月，非包年，所以成功后
+          <view>
+            <view style="color:red;font-weight: bolder;display: inline-block;"
+              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间</view>👆提醒消失就成功。学生方案是包月，非包年，所以成功后
             <span style="color:red;">【续期时间不显示为明年】</span>
-            <br>
-            👆👆👆请仔细阅读原因
           </view>
+          <br>
           如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须
           </view>
@@ -113,10 +112,8 @@
         verifyAddr: null,
         showAlert: true,
         // 1、验证资格消失就算成功，无需二次向客服确认
-        alertTitle: `为减少客服压力，全程无需致谢客服
-        1、学生验证，人脸或指纹不会扣钱，放心继续
-        2、每年下单维持1年，音乐里会提前1个月弹窗提醒验证
-        3、若提示👇无法验证|无法连接|白屏卡死`,
+        alertTitle: `1、学生验证，人脸或指纹不会扣钱，放心继续
+        2、若提示👇无法验证|无法连接|白屏卡死`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
