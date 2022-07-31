@@ -83,7 +83,7 @@
       </view>
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/0ccad4b0a8cb40f11236a2b58a5eadc71a0c6ae8.jpg"
+          src="https://article.biliimg.com/bfs/article/2dcbeacaf4a941e7be54eacc1ece5412a724bf10.jpg"
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           <view>
@@ -94,7 +94,7 @@
           2、如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须
           </view>
-          <view>点开【系统设置头像订阅am】截图客服</view>
+          <view>点开【系统设置顶部头像订阅am】截图客服</view>
         </view>
       </view>
     </u-modal>
