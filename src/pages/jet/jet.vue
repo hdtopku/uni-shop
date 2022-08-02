@@ -1,7 +1,7 @@
 <template>
   <view>
-    <!-- <StepOne></StepOne> -->
-    <StepTwo></StepTwo>
+    <StepOne></StepOne>
+    <!-- <StepTwo></StepTwo> -->
     <!-- <Login></Login> -->
   </view>
 </template>

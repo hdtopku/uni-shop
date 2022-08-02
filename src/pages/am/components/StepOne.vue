@@ -21,7 +21,9 @@
           style="font-size: 30upx;">
           <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          先开10元方案，处于订阅中，再升级：过期用户首月10元重开（其他人免费开），下月起5元！若不愿重开，<a href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
+          先开10元方案(<span
+            style="text-decoration:underline;font-weight: bold;">是个人方案，不是家庭、不是声控、不是学生</span>)，处于订阅中，再升级：过期用户首月10元重开（其他人免费开），下月起5元！若不愿重开，<a
+            href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
         </view>
         <u-button class="shadow" style="position: absolute; bottom: -180upx;" @click="chooseTwo" type="error">
           第二步：开通后，立即选2升级为5元方案<view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"

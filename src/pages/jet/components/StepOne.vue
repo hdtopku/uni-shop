@@ -4,17 +4,18 @@
     <u-divider text="绑定标识，自助售后"></u-divider>
     <u-alert :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="输入标识，推荐输入qq号/邮箱/手机等" border="surround" v-model="identity" @change="change">
-    </u--input>
-    <u-gap></u-gap>
-    <u-button type="primary" @click="testPass">绑定标识，自助提取</u-button>
-    <u-modal closeOnClickOverlay showCancelButton :show="showModal" :title="title" :content='content'
-      @close="closeModal" @cancel="showModal = false" @confirm="confirm"></u-modal>
+    <LoginForm></LoginForm>
+    <!-- <u-modal closeOnClickOverlay showCancelButton :show="showModal" :title="title" :content='content'
+      @close="closeModal" @cancel="showModal = false" @confirm="confirm"></u-modal> -->
   </view>
 </template>
 
 <script>
+  import LoginForm from './LoginForm.vue'
   export default {
+    components: {
+      LoginForm
+    },
     data() {
       return {
         identity: 'identity',
