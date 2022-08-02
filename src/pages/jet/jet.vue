@@ -1,14 +1,20 @@
 <template>
   <view>
-    <StepOne></StepOne>
+    <!-- <StepOne></StepOne> -->
+    <StepTwo></StepTwo>
+    <!-- <Login></Login> -->
   </view>
 </template>
 
 <script>
   import StepOne from './components/StepOne.vue'
+  import StepTwo from './components/StepTwo.vue'
+  import Login from './components/Login.vue'
   export default {
     components: {
-      StepOne
+      StepOne,
+      StepTwo,
+      Login
     },
     data() {
       return {
