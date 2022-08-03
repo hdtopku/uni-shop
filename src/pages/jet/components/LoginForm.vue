@@ -1,13 +1,14 @@
 <template>
   <view>
     <u-alert :title="alertTitle" type="error"></u-alert>
-    <u--input clearable placeholder="请输入标识" border="surround" v-model="identity" @change="change">
+    <u-gap></u-gap>
+    <u--input clearable placeholder="请输入标识，推荐用qq号/邮箱/手机等" border="surround" v-model="identity" @change="change">
     </u--input>
     <u-gap></u-gap>
     <u-row justify="center" gutter="2">
       <u-col span="4">
         <u-checkbox-group v-model="checkboxValue1" placement="column" @change="checkboxChange">
-          <u-checkbox v-show="showAlert" class="animate__animated animate__shakeX" labelSize="18" size="25" label="确认无误"
+          <u-checkbox v-show="showAlert" class="animate__animated animate__shakeX" labelSize="18" size="25" label="再次确认"
             :name="true">
           </u-checkbox>
         </u-checkbox-group>
@@ -27,10 +28,10 @@
         checkboxValue1: [false],
         showAlert: true,
 
-        alertTitle: `放心输入任意你能记住的标识
-        
-        1、标识用于自助售后，你必须记住（可以是qq号/邮箱/手机等）
-        2、至少8位、仅限字母、数字，不包含特殊字符`,
+        alertTitle: `请输入标识：
+        1、标识用于自助提取及售后，你必须记住
+        2、8-24位、仅限字母、数字、符号
+        3、推荐使用qq号/邮箱/手机等，以便记忆`,
       }
     },
     methods: {

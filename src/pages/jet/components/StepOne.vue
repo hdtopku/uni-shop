@@ -1,12 +1,8 @@
 <template>
   <view class="p-3">
     <u-gap></u-gap>
-    <u-divider text="绑定标识，自助售后"></u-divider>
-    <u-alert :title="alertTitle" type="error"></u-alert>
-    <u-gap></u-gap>
+    <u-divider text="绑定标识，自助提取及售后"></u-divider>
     <LoginForm></LoginForm>
-    <!-- <u-modal closeOnClickOverlay showCancelButton :show="showModal" :title="title" :content='content'
-      @close="closeModal" @cancel="showModal = false" @confirm="confirm"></u-modal> -->
   </view>
 </template>
 
@@ -18,12 +14,6 @@
     },
     data() {
       return {
-        identity: 'identity',
-        alertTitle: `放心输入任意你能记住的标识
-        
-        1、标识用于自助售后，你必须记住（可以是qq号/邮箱/手机等）
-        2、至少8位、仅限字母、数字，不包含特殊字符`,
-        showModal: true,
         title: '是否确定绑定',
         content: '自助售后',
       }
