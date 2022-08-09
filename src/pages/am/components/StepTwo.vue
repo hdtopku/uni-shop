@@ -134,6 +134,13 @@
         radiovalue7: 0,
       }
     },
+    created() {
+      uni.$on('startVerify', () => {
+        if (this.verifyAddr != null) {
+          this.startVerify()
+        }
+      })
+    },
     methods: {
       clickNext() {
         uni.$emit('nextStep')

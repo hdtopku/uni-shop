@@ -1,7 +1,9 @@
 <script>
   export default {
     onLaunch: function() {},
-    onShow: function() {},
+    onShow: function() {
+      uni.$emit('startVerify')
+    },
     onHide: function() {}
   }
 </script>
