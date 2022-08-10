@@ -2,7 +2,7 @@
   <view class="p-3">
     <u-gap></u-gap>
     <u-divider text="绑定标识，自助提取及售后"></u-divider>
-    <LoginForm></LoginForm>
+    <LoginForm :code="code"></LoginForm>
   </view>
 </template>
 
@@ -11,6 +11,9 @@
   export default {
     components: {
       LoginForm
+    },
+    props: {
+      code: null
     },
     data() {
       return {

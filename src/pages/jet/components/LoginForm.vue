@@ -22,6 +22,9 @@
 
 <script>
   export default {
+    props: {
+      code: null
+    },
     data() {
       return {
         identity: '1450948930@qq.com',
@@ -37,7 +40,13 @@
     methods: {
       submit() {
         if (this.checkboxValue1[0]) {
-
+          uni.$u.http.post('/pms/c/id/b/' + this.code, {}, {
+            params: {
+              identity: this.identity
+            }
+          }).then(res => {
+            console.log(res)
+          })
         } else {
 
           this.showAlert = false

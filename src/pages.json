@@ -27,7 +27,7 @@
     },
     {
       "path": "pages/jet/jet",
-      "aliasPath": "/j",
+      "aliasPath": "/j/:code",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false

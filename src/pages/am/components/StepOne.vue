@@ -51,7 +51,7 @@
       <view style="font-size: 40upx; text-align: justify;">
         <u-alert fontSize="20" title="退款选择以下原因，系统自动秒退，免人工审核！" type="error"></u-alert>
         <u-gap></u-gap>
-        <view style="color:red;text-decoration:underline;">未收到货，退款原因选择：其他/协商一致</view>
+        <view style="color:red;text-decoration:underline;">未收到货，退款原因选择：协商一致</view>
       </view>
     </u-modal>
     <u-modal @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
@@ -59,7 +59,7 @@
       <view style="color:gray">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
         <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，可跟客服申请退单，<text
-            style="color:red">退款原因：其他/协商一致</text></view>
+            style="color:red">退款原因：协商一致</text></view>
 
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="checkboxChange">
