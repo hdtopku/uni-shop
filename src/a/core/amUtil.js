@@ -55,49 +55,34 @@ const checkAmEnv = () => {
     }
     return false
     // } else if (!uni.$u.getInfo('iosChrome')) {
-  } else if (false) {
-    uni.$u.removePage()
-    let h1 = document.createElement('p')
-    h1.innerHTML = `
+  } else {
+    let browser = uni.$u.getInfo()?.sys.browser?.toLowerCase()
+    if (browser === 'wechat' || browser === 'baidu') {
+      uni.$u.removePage()
+      let h1 = document.createElement('p')
+      h1.innerHTML = `
         <img style="width:100px;height:100px" src="/static/img/chrome.png">
         <img style="width:100px;height:100px" src="/static/img/quark.png">
         <br>
-        必须使用谷歌chrome、或夸克浏览器才可验证，
-        <br>
-        <a href="https://apps.apple.com/cn/app/google-chrome/id535886823" text="请点这里下载谷歌浏览器" target="_blank"
-          @click="click">请点这里下载谷歌浏览器【推荐】</a>
-          <br>
-        <a href="https://apps.apple.com/cn/app/%E5%A4%B8%E5%85%8B-%E6%96%B0%E7%94%9F%E4%BB%A3%E6%99%BA%E8%83%BD%E6%90%9C%E7%B4%A2/id1160172628" text="请点这里下载夸克浏览器" target="_blank"
-          @click="click">或点这里下载夸克浏览器</a>
-          <br>
-          如已下载，
+        暂不支持用<span style="color:red">微信、百度浏览器</span>验证，请用Safari、谷歌、QQ浏览器等打开验证
+          
 <textarea id="text" style="position: fixed;top: 10000px;left: 10000px;opacity: 0;"></textarea>
-<button id="CopyBtn">点我验证复制链接，并前往chrome、夸克验证</button>
-<br>
-<br>
-温馨提醒：<b style='color:red'>请勿反复询问</b>客服：必须使用chrome、夸克吗？
-<br>
-<br>
-答：<b>是，必须！</b><b style='color:red'>不要犹豫，请直接下载。</b>因为Safari等验证过程中会出现各种问题。
-<br>
-<br>
-不想用？验完就卸载
-<br>
-没流量？有wifi时弄
+<button id="CopyBtn">点我复制验证链接，并前往Safari、Chrome、QQBrowser、UC、夸克验证</button>
           `
-    h1.style = 'padding:50px 20px;background-color:white'
-    document.body.appendChild(h1)
-    var CopyBtn = document.getElementById("CopyBtn");
-    CopyBtn.onclick = function() {
-      // 将需要复制的内容赋值给文本框
-      text.value = location.href;
-      // 选中文本框的内容
-      text.select();
-      // 对选中的内容进行复制
-      document.execCommand("copy");
-      window.alert(`链接：${location.href}，已复制，请前往chrome验证`)
+      h1.style = 'padding:50px 20px;background-color:white'
+      document.body.appendChild(h1)
+      var CopyBtn = document.getElementById("CopyBtn");
+      CopyBtn.onclick = function() {
+        // 将需要复制的内容赋值给文本框
+        text.value = location.href;
+        // 选中文本框的内容
+        text.select();
+        // 对选中的内容进行复制
+        document.execCommand("copy");
+        window.alert(`链接：${location.href}，已复制，请前往chrome验证`)
+      }
+      return false
     }
-    return false
   }
   return true
 }

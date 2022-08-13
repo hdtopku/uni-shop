@@ -12,40 +12,9 @@
         style="margin: 0 auto;display: block;width: 70%;" />
 
       <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
-        class="animate__animated animate__heartBeat animate__infinite ">请用夸克、谷歌</view><span style="">
-        别用Safari、微信、百度</span>
+        class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
     </text>
     <u-divider text="为减少客服压力，全程无需致谢客服"></u-divider>
-    <!-- <u-collapse class="step-content" accordion>
-      <u-collapse-item title="【必读1】学生验证不扣钱，持续1年">
-        <text class="u-collapse-content">
-          1、验证时<text style="color:red;font-size: 40upx;font-weight: bold;">人脸或指纹不会扣钱！</text>放心继续
-        </text>
-
-        <text class="u-collapse-content">
-          <view>2、每年下单<text style="">维持1年</text>，音乐界面会提前1个月<text style="color:red">弹窗提醒验证</text></view>
-        </text>
-        <view>3、若提示：我们无法验证您的学生身份</view>
-        <text class="u-collapse-content" style="font-size: 30upx;">
-          <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
-            style="margin: 0 auto;display: block;width: 60%;" />
-
-          <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
-            class="animate__animated animate__heartBeat animate__infinite ">请用夸克、谷歌</view><span style="">
-            别用Safari、微信、百度</span>
-        </text>
-      </u-collapse-item>
-      <u-collapse-item title="【必读2】无法验证、无法连接、白屏卡死？">
-        <text class="u-collapse-content" style="font-size: 30upx;">
-          <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
-            style="margin: 0 auto;display: block;width: 90%;" />
-
-          <view style="color:red;font-weight: bolder;font-size: 50upx;display: inline-block;"
-            class="animate__animated animate__heartBeat animate__infinite ">请用夸克、谷歌</view>，<view style="">
-            别用Safari、微信、百度</view>
-        </text>
-      </u-collapse-item>
-    </u-collapse> -->
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
@@ -110,9 +79,8 @@
       return {
         verifyAddr: null,
         showAlert: true,
-        // 1、验证资格消失就算成功，无需二次向客服确认
-        alertTitle: `1、学生验证，人脸或指纹不会扣钱，放心继续
-        2、若提示👇无法验证|无法连接|白屏卡死`,
+        alertTitle: `1、学生验证，人脸或指纹不扣钱，放心继续
+        2、若提示👇 无法验证、白屏卡死、无法连接`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
