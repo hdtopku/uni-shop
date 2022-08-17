@@ -57,7 +57,8 @@
         <view style="font-size: 30upx;">
           <view>
             1、<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间</view>👆提醒消失就成功。学生方案是包月，非包年，所以成功后
+              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间且人脸不扣钱</view>
+            👆提醒消失就成功。学生方案是包月，非包年，所以成功后
             <span style="color:red;">【续期时间不显示为明年】</span>
           </view>
           2、如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
