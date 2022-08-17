@@ -22,7 +22,7 @@
           <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
           <span><span style="color:red">由个人转学生</span>。首月先开个人(家庭和声控不行)</span>，再<span
-            style="color:red">选2</span>升级下月起5元！试用过的10元重开，若不愿重开，<a href="javascript:;"
+            style="color:red">选2</span>升级下月起5元！过期用户10元重开，若不愿重开，<a href="javascript:;"
             @click="showRefund=true">点此退单终止验证</a>
 
         </view>
