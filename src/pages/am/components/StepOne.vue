@@ -18,16 +18,18 @@
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
         <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"
-          style="font-size: 30upx;">
+          style="font-size: 28upx;">因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          先开10元方案(<span
-            style="text-decoration:underline;font-weight: bold;">是个人方案，不是家庭、不是声控、不是学生</span>)，处于订阅中，再升级：过期用户首月10元重开（其他人免费开），下月起5元！若不愿重开，<a
-            href="javascript:;" @click="showRefund=true">点此退单终止验证</a>
+          <span><span style="color:red">由个人转学生</span>。首月先开个人(家庭和声控不行)</span>，再<span
+            style="color:red">选2</span>升级下月起5元！试用过的10元重开，若不愿重开，<a href="javascript:;"
+            @click="showRefund=true">点此退单终止验证</a>
+
         </view>
-        <u-button class="shadow" style="position: absolute; bottom: -180upx;" @click="chooseTwo" type="error">
-          第二步：开通后，立即选2升级为5元方案<view style="color:red;font-weight: bolder;font-size: 40upx;display: inline-block;"
-            class="animate__animated animate__shakeY animate__slow animate__infinite">👇</view>
+        <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+          style="position: absolute; bottom: -180upx;" @click="chooseTwo" type="error">
+          第二步：升级为5元方案，开通后立即回来<view style="color:red;font-weight: bolder;display: inline-block;"
+            class="animate__animated animate__shakeY animate__slow animate__infinite">选2👇</view>
         </u-button>
       </view>
     </view>
@@ -92,7 +94,7 @@
         
         
         问：是否开着苹果音乐套餐？
-        （不清楚开是否开着的，统一选1没开👆）
+        （不清楚是否开着的，都选1👆）
         
         
         
@@ -143,7 +145,7 @@
             break
           case 2:
             this.alertType = 'error'
-            this.alertTitle = `👆 未订阅必须选1， 否则将失败
+            this.alertTitle = `👆 未订阅（必须选1， 否则将失败）
             
             
             
@@ -155,7 +157,7 @@
             
             👇 订阅中（可以下一步）`
             this.alertEffect = 'light'
-            this.buttonText = '已在订阅中，下一步：升级续期学生方案'
+            this.buttonText = '已在订阅中，下一步：免费升级续期学生方案'
             break
         }
         uni.$u.reportIp()
@@ -226,6 +228,8 @@
     height: 900upx;
 
     .explain {
+      position: absolute;
+      top: -180upx;
       color: gray;
       border: 1px dashed red;
       border-radius: 10upx;
