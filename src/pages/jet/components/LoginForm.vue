@@ -8,7 +8,7 @@
     <u-row justify="center" gutter="2">
       <u-col span="4">
         <u-checkbox-group v-model="checkboxValue1" placement="column" @change="checkboxChange">
-          <u-checkbox v-show="showAlert" class="animate__animated animate__shakeX" labelSize="18" size="25" label="再次确认"
+          <u-checkbox v-show="showAlert" class="animate__animated animate__shakeX" labelSize="18" size="25" label="确认无误"
             :name="true">
           </u-checkbox>
         </u-checkbox-group>
@@ -32,7 +32,7 @@
         showAlert: true,
 
         alertTitle: `请输入标识：
-        1、标识用于自助提取及售后，你必须记住
+        1、标识作为密码，用于自助提取，你必须记住
         2、8-24位、仅限字母、数字、符号
         3、推荐使用qq号/邮箱/手机等，以便记忆`,
       }

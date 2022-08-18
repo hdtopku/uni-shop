@@ -37,6 +37,15 @@
         this.code = code
         return code
       },
+      queryCode() {
+        uni.$u.http.post('/pms/c/id/b/' + this.code, {}, {
+          params: {
+            identity: this.identity
+          }
+        }).then(res => {
+          console.log(res)
+        })
+      }
     }
   }
 </script>
