@@ -1,8 +1,8 @@
 <template>
   <view>
-    <StepOne :code="code"></StepOne>
+    <StepOne v-if="tip == null" :code="code"></StepOne>
+    <Login v-else :code="code" :tip="tip"></Login>
     <!-- <StepTwo></StepTwo> -->
-    <!-- <Login></Login> -->
   </view>
 </template>
 
@@ -18,12 +18,13 @@
     },
     data() {
       return {
-        code: null
+        code: null,
+        tip: null
       }
     },
     onLoad(option) {
       let code = this.getCode()
-      console.log(code)
+      this.queryCode()
     },
     methods: {
       getCode() {
@@ -38,11 +39,14 @@
         return code
       },
       queryCode() {
-        uni.$u.http.post('/pms/c/id/b/' + this.code, {}, {
+        uni.$u.http.post('/pms/c/id/q/' + this.code, {}, {
           params: {
-            identity: this.identity
+            code: this.code
           }
         }).then(res => {
+          if (res != null) {
+            this.tip = res.result
+          }
           console.log(res)
         })
       }
