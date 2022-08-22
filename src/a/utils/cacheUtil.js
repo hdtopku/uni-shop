@@ -51,3 +51,4 @@ export const delCache = (key) => {
 }
 uni.$u.setCache = setCache
 uni.$u.getCache = getCache
+uni.$u.delCache = delCache

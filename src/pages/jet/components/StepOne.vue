@@ -1,7 +1,7 @@
 <template>
   <view class="p-3">
     <u-gap></u-gap>
-    <u-divider text="绑定标识，自助提取及售后"></u-divider>
+    <u-divider text="绑定标识，自助提取"></u-divider>
     <LoginForm :code="code"></LoginForm>
   </view>
 </template>
@@ -16,10 +16,7 @@
       code: null
     },
     data() {
-      return {
-        title: '是否确定绑定',
-        content: '自助售后',
-      }
+      return {}
     },
     watch: {
       identity() {
@@ -30,7 +27,6 @@
       testPass() {
         var pattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\(\)]).{6,16}$/
         let res = pattern.test(this.identity)
-        console.log(res)
         this.showModal = true
       },
       closeModal() {
@@ -38,7 +34,6 @@
       },
       confirm() {
         this.showModal = false
-
       }
     }
   }

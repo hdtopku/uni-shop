@@ -69,7 +69,7 @@ const reportIp = async () => {
     })
   } else {
     await uni.clearStorageSync()
-    location.reload()
+    // location.reload()
   }
 }
 uni.$u.reportIp = reportIp
@@ -98,7 +98,7 @@ export const saveAsyncInfo = async () => {
   let info = getCache(key)
   if (info?.ip?.country == null) {
     getIpInfo().then(ip => {
-      info = getCache(key)
+      info = getCache(key) ?? {}
       info.ip = ip
       setCache(key, info, timeout)
     })

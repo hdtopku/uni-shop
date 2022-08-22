@@ -14,7 +14,7 @@
         :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
-        <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+        <u-button class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
         <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"

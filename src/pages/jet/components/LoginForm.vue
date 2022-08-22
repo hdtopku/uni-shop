@@ -45,10 +45,11 @@
               identity: this.identity
             }
           }).then(res => {
-            console.log(res)
+            if (res.success) {
+              uni.$emit('queryCode')
+            }
           })
         } else {
-
           this.showAlert = false
           setTimeout(() => {
             this.showAlert = true
@@ -56,9 +57,7 @@
         }
       },
       checkboxChange() {},
-      change() {
-
-      }
+      change() {}
     }
   }
 </script>

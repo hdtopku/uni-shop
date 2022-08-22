@@ -1,7 +1,10 @@
 <template>
-  <view>
-    <StepOne v-if="tip == null" :code="code"></StepOne>
-    <Login v-else :code="code" :tip="tip"></Login>
+  <view v-if="codeValid">
+    <StepTwo v-if="queryCache" :account="account" :password="password"></StepTwo>
+    <view v-else>
+      <StepOne v-if="tip == null" :code="code"></StepOne>
+      <Login v-else :code="code" :tip="tip"></Login>
+    </view>
     <!-- <StepTwo></StepTwo> -->
   </view>
 </template>
@@ -18,12 +21,17 @@
     },
     data() {
       return {
+        codeValid: false,
         code: null,
-        tip: null
+        tip: null,
+        queryCache: false,
+        account: null,
+        password: null
       }
     },
     onLoad(option) {
       let code = this.getCode()
+      uni.$on('queryCode', this.queryCode)
       this.queryCode()
     },
     methods: {
@@ -39,15 +47,28 @@
         return code
       },
       queryCode() {
-        uni.$u.http.post('/pms/c/id/q/' + this.code, {}, {
-          params: {
-            code: this.code
+        if (this.code == null) {
+          return
+        }
+        uni.$u.saveRecordIp(this.code, false)
+        let accounts = uni.$u.getCache('i') ?? {}
+        let account = accounts[this.code]
+        if (account?.account != null && account?.password != null) {
+          this.account = account.account
+          this.password = account.password
+          this.queryCache = true
+          this.codeValid = true
+          return
+        }
+        accounts[this.code]
+        uni.$u.http.post('/pms/c/id/q/' + this.code, {}, {}).then(res => {
+          if (res.success) {
+            this.codeValid = res.success
+            if (res.result != null) {
+              this.tip = res.result
+            }
+            uni.$u.reportIp()
           }
-        }).then(res => {
-          if (res != null) {
-            this.tip = res.result
-          }
-          console.log(res)
         })
       }
     }
