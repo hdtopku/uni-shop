@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <u-notify ref="uNotify"></u-notify>
-    <u-divider text="未订阅必须先订阅"></u-divider>
+    <u-divider text="若未订阅：必须先订阅个人，再升级"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
       @change="groupChange">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
@@ -9,31 +9,31 @@
       </u-radio>
     </u-radio-group>
     <view class="btn">
-      <u-alert fontSize="16" style="position: absolute; bottom: -180upx;width: 100%;"
+      <u-alert fontSize="16" style="position: absolute; top: -280upx;width: 100%;"
         v-show="showAlert && radiovalue7 !== 1" class="animate__animated animate__shakeX" :title="alertTitle"
         :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
-        <u-button class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
-        </u-button>
         <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"
           style="font-size: 28upx;">因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          <span><span style="color:red">由个人转学生</span>。首月先开个人(家庭和声控不行)</span>，再选下方<span
-            style="color:red;">2、订阅中</span>升级下月起5元！过期用户10元重开，若不愿重开，<a href="javascript:;"
-            @click="showRefund=true">点此退单终止验证</a>
-
+          <span><span style="color:red">由个人转学生</span>。<span style="color:red;">第一步</span>先开个人(家庭和声控不行)</span>，<span
+            style="color:red;">第二步</span>升级下月起5元！过期用户10元重开，<a href="javascript:;" @click="showRefund=true">不愿重开申请退单</a>
         </view>
-        <u-button class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: -180upx;" @click="chooseTwo" type="error">
-          第二步：升级为5元方案，开通后立即回来<view style="color:red;font-weight: bolder;display: inline-block;"
-            class="animate__animated animate__shakeY animate__slow animate__infinite">选2👇</view>
+        <u-button shape="circle" plain class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
         </u-button>
+        <u-button shape="circle" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+          style="position: absolute; bottom: -110upx;z-index: 1;" @click="clickNext" type="error">
+          第二步：开通完毕，立即升级学生方案
+        </u-button>
+
+        <u-alert fontSize="10" style="position: absolute;bottom: -170upx;right:0;" description="注意：必须先开个人，才可第二步"
+          type="success">
+        </u-alert>
       </view>
     </view>
-    <u-divider text="订阅中才可学生升级"></u-divider>
     <u-button class="next-btn animate__animated animate__pulse animate__slow animate__infinite" v-if="radiovalue7 !==1"
       @click="clickNext" type="error" plain shape="circle">{{buttonText}}
     </u-button>
@@ -93,8 +93,8 @@
         
         
         
-        问：是否开着苹果音乐套餐？
-        （不清楚是否开着的，都选1👆）
+        
+        问：是否开着苹果音乐套餐（不清楚请选1👆）
         
         
         
@@ -135,6 +135,12 @@
         uni.$u.reportIp()
       },
       groupChange(n) {
+        uni.$u.reportIp()
+        this.showAlert = false
+        this.$nextTick(() => {
+          this.showAlert = true
+        })
+
         switch (n) {
           case 1:
             this.alertType = 'error'
@@ -145,22 +151,11 @@
             break
           case 2:
             this.alertType = 'error'
-            this.alertTitle = `👆 未订阅（必须选1， 否则将失败）
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            👇 订阅中（可以下一步）`
+            this.alertTitle = `👆 若未订阅必须选1：先订阅，再升级`
             this.alertEffect = 'light'
             this.buttonText = '已在订阅中，下一步：免费升级续期学生方案'
             break
         }
-        uni.$u.reportIp()
       },
       notify() {
         this.$refs.uNotify.show({
@@ -202,16 +197,17 @@
       },
       clickNext() {
         uni.$u.reportIp()
-        if (this.radiovalue7 < 2) {
+        if (this.radiovalue7 < 1) {
           if (this.radiovalue7 === 1) {
-            this.notify()
-            this.showExpireModal = true
+            // this.notify()
+            // this.showExpireModal = true
+
           }
           this.showAlert = false
           this.$nextTick(() => {
             this.showAlert = true
           })
-        } else if (this.radiovalue7 === 2) {
+        } else if (this.radiovalue7 === 1 || this.radiovalue7 === 2) {
           // this.showRenewModal1 = true
           uni.$emit('nextStep')
         }
@@ -243,7 +239,7 @@
 
     .next-btn {
       position: absolute;
-      bottom: 0upx;
+      bottom: 50upx;
     }
 
     img {

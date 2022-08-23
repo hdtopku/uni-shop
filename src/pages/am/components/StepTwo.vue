@@ -4,17 +4,17 @@
     <!-- <u-divider text="请先仔细阅读" textColor="red" textSize="30"></u-divider> -->
     <u-gap></u-gap>
     <u-divider text="学生验证不扣钱，每年下单维持1年"></u-divider>
-    <u-alert fontSize="15" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
+    <u-alert fontSize="17" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
     </u-alert>
-
+    <u-gap height="5"></u-gap>
     <text class="u-collapse-content" style="font-size: 30upx;">
       <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
         style="margin: 0 auto;display: block;width: 70%;" />
-
-      <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
-        class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
+      <view style="text-align: right;">
+        <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
+          class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
+      </view>
     </text>
-    <u-divider text="为减少客服压力，全程无需致谢客服"></u-divider>
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
@@ -62,7 +62,7 @@
             <span style="color:red;">【续期时间不显示为明年，但优惠持续1年】</span>
           </view>
           <view>
-            2、如未成功，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+            2、若未成功、或提示账户已使用，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
             </view>
           </view>
@@ -83,7 +83,7 @@
         verifyAddr: null,
         showAlert: true,
         alertTitle: `1、学生验证，人脸或指纹不扣钱，放心继续
-        2、若提示👇 无法验证、白屏卡死、无法连接`,
+        2、若提示👇 无法验证、无法连接、卡住`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
@@ -176,7 +176,7 @@
     .btn {
       position: absolute;
       width: 100%;
-      bottom: 0;
+      bottom: 50upx;
       text-align: right;
     }
 
