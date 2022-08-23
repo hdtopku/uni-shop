@@ -69,7 +69,7 @@ const reportIp = async () => {
     })
   } else {
     await uni.clearStorageSync()
-    // location.reload()
+    location.reload()
   }
 }
 uni.$u.reportIp = reportIp
