@@ -8,12 +8,12 @@
     </u-alert>
     <u-gap height="5"></u-gap>
     <text class="u-collapse-content" style="font-size: 30upx;">
-      <img src="https://article.biliimg.com/bfs/article/daef40c5b37a38a62949d5dc315860fd7924106b.png"
+      <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
         style="margin: 0 auto;display: block;width: 70%;" />
-      <view style="text-align: right;">
+      <!-- <view style="text-align: right;">
         <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
           class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
-      </view>
+      </view> -->
     </text>
     <!-- 底部按钮 -->
     <view class="btn">
@@ -35,6 +35,8 @@
         </u-col>
       </u-row>
     </view>
+    <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -70upx;right:0"
+      :description="modalTitle" type="info"></u-alert>
 
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
@@ -58,11 +60,12 @@
           <view>
             1、<view style="color:red;font-weight: bolder;display: inline-block;"
               class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间且人脸不扣钱</view>
-            👆提醒消失就成功。学生方案是包月，非包年，所以
-            <span style="color:red;">【续期时间不显示为明年，但优惠持续1年】</span>
+            👆消失就成功。
+            <span style="color:red;">续期时间不显示为明年，但优惠持续1年</span>
           </view>
           <view>
-            2、若未成功、或提示账户已使用，<view style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+            2、若未成功、或提示<span style="color:red;">账户已使用</span>，<view
+              style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
             </view>
           </view>
@@ -83,13 +86,15 @@
         verifyAddr: null,
         showAlert: true,
         alertTitle: `1、学生验证，人脸或指纹不扣钱，放心继续
-        2、若提示👇 无法验证、无法连接、卡住`,
+        2、若遇到👇 用谷歌、QQ浏览器，别用Safari`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
 
         打开【系统设置头像订阅Apple Music】
         `,
+        modalTitle: `高效沟通：多截图、直接问
+        😊 不要发：你好、在吗`,
         checkboxValue1: [false],
         radiolist7: [{
             label: '情况1、我尚未订阅：过期用户、或新用户',
