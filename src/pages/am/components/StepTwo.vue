@@ -9,7 +9,8 @@
     <u-gap height="5"></u-gap>
     <text class="u-collapse-content" style="font-size: 30upx;">
       <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
-        style="margin: 0 auto;display: block;width: 70%;" />
+        style="margin: 0 auto;display: block;width: 70%;"
+        class="animate__animated animate__rubberBand animate__slower animate__infinite" />
       <!-- <view style="text-align: right;">
         <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
           class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
