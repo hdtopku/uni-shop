@@ -1,8 +1,12 @@
 <template>
-  <view v-if="showPage" style="width: 100vw;height: 100vh;display: flex;align-items: center;padding: 300upx 50upx 0">
-    <!-- <iframe style="width: 100vw;height: 100vh;" :src="link"></iframe> -->
-    <u-button class="animate__animated animate__pulse animate__infinite" type="primary" size="large" @click="jump">去提货
+  <view v-if="showPage" style="width: 100vw;height: 100vh;padding: 800upx 50upx 0">
+    <u-button class="animate__animated animate__pulse animate__infinite" type="primary" size="large" @click="jump"
+      style="z-index: 1;">去提货
     </u-button>
+    <!-- <iframe style="width: 100vw;height: 100vh;" :src="link"></iframe> -->
+    <u-alert fontSize="20" style="position: absolute;right: 50upx;margin-top: 20upx;" description="下单后，再提货"
+      type="error"></u-alert>
+
   </view>
 </template>
 
