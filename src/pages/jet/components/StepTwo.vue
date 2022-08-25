@@ -17,7 +17,7 @@
       <u-collapse-item title="高级" name="Docs guide">
         <u-button type="error" @click="refetch">重新获取</u-button>
         <u-divider text="修改标识"></u-divider>
-        <LoginForm></LoginForm>
+        <LoginForm isUpdate :code="code"></LoginForm>
       </u-collapse-item>
     </u-collapse>
   </view>
@@ -30,12 +30,13 @@
       LoginForm
     },
     props: {
+      code: '',
       account: null,
       password: null
     },
     data() {
       return {
-        identity: '1450948930@qq.com',
+        identity: '',
         checkboxValue1: [true]
       }
     },
@@ -47,7 +48,7 @@
       },
       refetch() {
         uni.$u.delCache('i')
-        // location.reload()
+        uni.$emit('queryCode')
       },
       open(e) {
         // console.log('open', e)

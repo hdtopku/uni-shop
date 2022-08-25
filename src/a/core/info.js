@@ -40,7 +40,7 @@ uni.$u.getInfo = (index = null) => {
   return null
 }
 
-const reportIp = async () => {
+const reportIp = async (type = 1) => {
   await uni.$u.saveAsyncInfo()
   let allInfo = getCache(key)
   let obj = allInfo?.reportIp
@@ -49,11 +49,16 @@ const reportIp = async () => {
       if (!obj[code]) {
         if (code != null && (allInfo?.reportIp == null || !allInfo?.reportIp[code]) && allInfo?.ip?.ip !=
           null) {
-          uni.$u.http.post('/pms/am/c/report', {}, {
+          let url = '/pms/am/c/r'
+          if (type === 2) {
+            url = '/c/id/r'
+          }
+          uni.$u.http.post(url, {}, {
             params: {
-              info: uni.$u.encrypt({
+              i: uni.$u.encrypt({
                 ip: allInfo.ip,
                 sys: allInfo.sys,
+                type,
                 code
               }, true)
             }

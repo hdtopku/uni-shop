@@ -32,7 +32,7 @@
 
       },
       submit() {
-        uni.$u.http.post('/pms/c/id/g/' + this.code, {}, {
+        uni.$u.http.post('/c/id/g/' + this.code, {}, {
           params: {
             code: this.code,
             identity: this.identity
@@ -41,7 +41,9 @@
           if (res.success) {
             // this.tip = res.result
             let accounts = getCache('i') ?? {}
-            accounts[this.code] = res.result
+            let account = res.result
+            account.identity = this.identity
+            accounts[this.code] = account
             setCache('i', accounts)
             uni.$emit('queryCode')
           } else {

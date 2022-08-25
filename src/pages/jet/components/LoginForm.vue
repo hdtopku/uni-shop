@@ -23,11 +23,13 @@
 <script>
   export default {
     props: {
-      code: null
+      code: null,
+      isUpdate: false
     },
     data() {
       return {
-        identity: '1450948930@qq.com',
+        identity: '',
+        old: '',
         checkboxValue1: [false],
         showAlert: true,
 
@@ -37,15 +39,37 @@
         3、推荐使用qq号/邮箱/手机等，以便记忆`,
       }
     },
+    created() {
+      if (this.isUpdate) {
+        let accounts = uni.$u.getCache('i') ?? {}
+        let account = accounts[this.code]
+        if (account?.identity != null) {
+          this.identity = account.identity
+          this.old = this.identity
+        }
+      }
+    },
     methods: {
       submit() {
+        let params = {
+          identity: this.identity
+        }
+        if (this.isUpdate) {
+          params.old = this.old
+        }
         if (this.checkboxValue1[0]) {
-          uni.$u.http.post('/pms/c/id/b/' + this.code, {}, {
-            params: {
-              identity: this.identity
-            }
+          uni.$u.http.post('/c/id/b/' + this.code, {}, {
+            params
           }).then(res => {
             if (res.success) {
+              if (this.isUpdate) {
+                uni.$u.delCache('i')
+                uni.$emit('queryCode')
+              } else {
+                let accounts = uni.$u.getCache('i') ?? {}
+                let account = accounts[this.code]
+                uni.$u.setCache('i', accounts, 10 * 60)
+              }
               uni.$emit('queryCode')
             }
           })
@@ -57,7 +81,8 @@
         }
       },
       checkboxChange() {},
-      change() {}
+      change() {},
+
     }
   }
 </script>

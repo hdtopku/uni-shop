@@ -1,11 +1,10 @@
 <template>
   <view v-if="codeValid">
-    <StepTwo v-if="queryCache" :account="account" :password="password"></StepTwo>
+    <StepTwo v-if="queryCache" :account="account" :password="password" :code="code"></StepTwo>
     <view v-else>
       <StepOne v-if="tip == null" :code="code"></StepOne>
       <Login v-else :code="code" :tip="tip"></Login>
     </view>
-    <!-- <StepTwo></StepTwo> -->
   </view>
 </template>
 
@@ -60,14 +59,24 @@
           this.codeValid = true
           return
         }
-        accounts[this.code]
-        uni.$u.http.post('/pms/c/id/q/' + this.code, {}, {}).then(res => {
+        if (account?.tip) {
+          this.codeValid = true
+          this.tip = account.tip
+          return
+        }
+        uni.$u.http.post('/c/id/q/' + this.code, {}, {}).then(res => {
           if (res.success) {
             this.codeValid = res.success
             if (res.result != null) {
               this.tip = res.result
             }
-            uni.$u.reportIp()
+            this.queryCache = false
+            let account = accounts[this.code] ?? {}
+            account.tip = res.result
+            account.status = 1
+            uni.$u.reportIp(2)
+            accounts[this.code] = account
+            uni.$u.setCache('i', accounts, 60 * 10)
           }
         })
       }
