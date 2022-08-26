@@ -64,7 +64,17 @@
           this.tip = account.tip
           return
         }
-        uni.$u.http.post('/c/id/q/' + this.code, {}, {}).then(res => {
+        let allInfo = uni.$u.getCache('ms')
+        uni.$u.http.post('/c/id/q', {}, {
+          params: {
+            i: uni.$u.encrypt({
+              ip: allInfo.ip,
+              sys: allInfo.sys,
+              type,
+              code
+            }, true)
+          }
+        }).then(res => {
           if (res.success) {
             this.codeValid = res.success
             if (res.result != null) {

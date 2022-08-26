@@ -44,7 +44,7 @@
             let account = res.result
             account.identity = this.identity
             accounts[this.code] = account
-            setCache('i', accounts)
+            setCache('i', accounts, 10 * 60)
             uni.$emit('queryCode')
           } else {
             if (res.code === 510) {

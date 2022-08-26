@@ -65,12 +65,13 @@
             <span style="color:red;">续期时间不显示为明年，但优惠持续1年</span>
           </view>
           <view>
-            2、若未成功、或提示<span style="color:red;">账户已使用</span>，<view
+            2、遇到任何问题：如提示<span style="color:red;">账户已使用</span>，<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
             </view>
           </view>
-          <view>点开【系统设置顶部头像订阅am】截图客服</view>
+          <view>点开【系统设置顶部头像订阅AM】截图客服</view>
+          <view>以便高效处理</view>
         </view>
       </view>
     </u-modal>
