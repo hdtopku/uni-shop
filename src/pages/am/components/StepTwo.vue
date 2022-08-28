@@ -66,7 +66,7 @@
           </view>
           <view>
             2、若提示<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">账户已使用</view>，<view
+              class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
             </view>
