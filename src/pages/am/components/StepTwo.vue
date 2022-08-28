@@ -42,6 +42,10 @@
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view slot="confirmButton">
+        <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;right: 20upx;bottom: 120upx;"
+          description="多截图😊 沟通更高效" type="success">
+        </u-alert>
+        <u-gap></u-gap>
         <u-row justify="space-around" gutter="20">
           <u-col span="4">
             <u-button type="info" class="shadow-sm" @click="showModal = false">关闭</u-button>

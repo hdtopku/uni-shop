@@ -70,8 +70,8 @@
             i: uni.$u.encrypt({
               ip: allInfo.ip,
               sys: allInfo.sys,
-              type,
-              code
+              type: 2,
+              code: this.code
             }, true)
           }
         }).then(res => {
@@ -84,7 +84,6 @@
             let account = accounts[this.code] ?? {}
             account.tip = res.result
             account.status = 1
-            uni.$u.reportIp(2)
             accounts[this.code] = account
             uni.$u.setCache('i', accounts, 60 * 10)
           }
