@@ -3,7 +3,7 @@
     <u-notify ref="uNotify"></u-notify>
     <u-divider text="若未订阅：必须先订阅个人，再升级"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
-      @change="groupChange">
+      @change="$u.debounce(groupChange, 600, true)">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
         :name="item.name">
       </u-radio>
@@ -25,7 +25,8 @@
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
         </u-button>
         <u-button shape="circle" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
-          style="position: absolute; bottom: -110upx;z-index: 1;" @click="clickNext" type="error">
+          style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
+          type="error">
           第二步：开通完毕，立即升级学生方案
         </u-button>
 
@@ -57,14 +58,15 @@
       </view>
     </u-modal>
     <u-modal @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
-      cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund" @confirm="confirmRefund">
+      cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund"
+      @confirm="$u.debounce(confirmRefund, 600, true)">
       <view style="color:gray">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
         <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，可跟客服申请退单，<text
             style="color:red">退款原因：协商一致</text></view>
 
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
-          @change="checkboxChange">
+          @change="$u.debounce(checkboxChange, 600, true)">
           <u-checkbox class="checkbox animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18"
             size="25" label="确定终止验证，继续退单！" :name="true">
           </u-checkbox>

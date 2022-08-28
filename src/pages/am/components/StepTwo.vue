@@ -19,7 +19,7 @@
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
-        @change="checkboxChange">
+        @change="$u.debounce(checkboxChange, 600, true)">
         <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25" label="我已认真阅读"
           :name="true">
         </u-checkbox>
@@ -30,7 +30,7 @@
             type="error" plain shape="circle">上一步</u-button>
         </u-col>
         <u-col span="6">
-          <u-button type="primary" @click="clickStart"
+          <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
             :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">验证资格
           </u-button>
         </u-col>
