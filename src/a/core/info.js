@@ -74,7 +74,9 @@ const reportIp = async (type = 1) => {
     })
   } else {
     await uni.clearStorageSync()
-    location.reload()
+    setTimeout(() => {
+      location.reload()
+    }, 1200)
   }
 }
 uni.$u.reportIp = reportIp

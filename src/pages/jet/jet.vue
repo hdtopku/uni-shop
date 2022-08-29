@@ -1,36 +1,40 @@
 <template>
-  <view v-if="codeValid">
-    <StepTwo v-if="queryCache" :account="account" :password="password" :code="code"></StepTwo>
-    <view v-else>
-      <StepOne v-if="tip == null" :code="code"></StepOne>
-      <Login v-else :code="code" :tip="tip"></Login>
+  <view>
+    <view v-if="showPage">
+      <AccountInfo v-if="showAccount && accountInfo != null" :account="accountInfo.account" :password="password"
+        :code="code"></AccountInfo>
+      <view v-else>
+        <Login v-if="showLogin && accountInfo != null" :code="code" :tip="accountInfo.tip"></Login>
+        <Register v-else :code="code"></Register>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
-  import StepOne from './components/StepOne.vue'
-  import StepTwo from './components/StepTwo.vue'
+  import Register from './components/Register.vue'
+  import AccountInfo from './components/AccountInfo.vue'
   import Login from './components/Login.vue'
   export default {
     components: {
-      StepOne,
-      StepTwo,
+      Register,
+      AccountInfo,
       Login
     },
     data() {
       return {
-        codeValid: false,
+        showPage: false,
+        showLogin: false,
+        showAccount: false,
         code: null,
         tip: null,
-        queryCache: false,
-        account: null,
+        accountInfo: {},
         password: null
       }
     },
     onLoad(option) {
       let code = this.getCode()
-      uni.$on('queryCode', this.queryCode)
+      uni.$on('startQuery', this.startQuery)
       this.queryCode()
     },
     methods: {
@@ -45,49 +49,61 @@
         this.code = code
         return code
       },
-      queryCode() {
+      queryCode(params = {}) {
         if (this.code == null) {
           return
         }
-        uni.$u.saveRecordIp(this.code, false)
+        // uni.$u.saveAsyncInfo()
+        // uni.$u.saveRecordIp(this.code, false)
         let accounts = uni.$u.getCache('i') ?? {}
-        let account = accounts[this.code]
-        if (account?.account != null && account?.password != null) {
-          this.account = account.account
-          this.password = account.password
-          this.queryCache = true
-          this.codeValid = true
-          return
+        this.accountInfo = accounts[this.code]
+        if (this.accountInfo != null) {
+          this.dealAccount()
+        } else {
+          this.startQuery(params)
         }
-        if (account?.tip) {
-          this.codeValid = true
-          this.tip = account.tip
-          return
-        }
+      },
+      startQuery(parameters) {
+        this.showPage = false
         let allInfo = uni.$u.getCache('ms')
+        let params = {
+          i: uni.$u.encrypt({
+            ip: allInfo.ip,
+            sys: allInfo.sys,
+            type: 2,
+            code: this.code,
+            ...parameters
+          }, true)
+        }
+        let accounts = uni.$u.getCache('i') ?? {}
+        this.accountInfo = accounts[this.code]
         uni.$u.http.post('/c/id/q', {}, {
-          params: {
-            i: uni.$u.encrypt({
-              ip: allInfo.ip,
-              sys: allInfo.sys,
-              type: 2,
-              code: this.code
-            }, true)
-          }
+          params
         }).then(res => {
           if (res.success) {
-            this.codeValid = res.success
-            if (res.result != null) {
-              this.tip = res.result
-            }
-            this.queryCache = false
-            let account = accounts[this.code] ?? {}
-            account.tip = res.result
-            account.status = 1
-            accounts[this.code] = account
+            this.showPage = res.success
+            this.showAccount = false
+            accounts[this.code] = res.result
+            this.accountInfo = res.result
             uni.$u.setCache('i', accounts, 60 * 10)
+            this.dealAccount()
           }
         })
+      },
+      dealAccount() {
+        if (this.accountInfo == null) {
+          return
+        }
+        if (this.accountInfo?.tip != null) {
+          this.showPage = true
+        }
+        if (this.accountInfo?.tip != null) {
+          this.showLogin = true
+        }
+        if (this.accountInfo?.account != null && this.accountInfo?.password != null) {
+          this.showPage = true
+          this.showAccount = true
+        }
       }
     }
   }

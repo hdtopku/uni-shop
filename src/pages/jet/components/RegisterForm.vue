@@ -64,13 +64,13 @@
             if (res.success) {
               if (this.isUpdate) {
                 uni.$u.delCache('i')
-                uni.$emit('queryCode')
+                uni.$emit('startQuery')
               } else {
                 let accounts = uni.$u.getCache('i') ?? {}
                 let account = accounts[this.code]
                 uni.$u.setCache('i', accounts, 10 * 60)
               }
-              uni.$emit('queryCode')
+              uni.$emit('startQuery')
             }
           })
         } else {

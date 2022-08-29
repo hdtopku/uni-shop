@@ -2,15 +2,15 @@
   <view class="p-3">
     <u-gap></u-gap>
     <u-divider text="绑定标识，自助提取"></u-divider>
-    <LoginForm :code="code"></LoginForm>
+    <RegisterForm :code="code"></RegisterForm>
   </view>
 </template>
 
 <script>
-  import LoginForm from './LoginForm.vue'
+  import RegisterForm from './RegisterForm.vue'
   export default {
     components: {
-      LoginForm
+      RegisterForm
     },
     props: {
       code: null

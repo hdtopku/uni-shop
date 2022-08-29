@@ -17,17 +17,17 @@
       <u-collapse-item title="高级" name="Docs guide">
         <u-button type="error" @click="refetch">重新获取</u-button>
         <u-divider text="修改标识"></u-divider>
-        <LoginForm isUpdate :code="code"></LoginForm>
+        <RegisterForm isUpdate :code="code"></RegisterForm>
       </u-collapse-item>
     </u-collapse>
   </view>
 </template>
 
 <script>
-  import LoginForm from './LoginForm.vue'
+  import RegisterForm from './RegisterForm.vue'
   export default {
     components: {
-      LoginForm
+      RegisterForm
     },
     props: {
       code: '',
@@ -48,7 +48,7 @@
       },
       refetch() {
         uni.$u.delCache('i')
-        uni.$emit('queryCode')
+        uni.$emit('startQuery')
       },
       open(e) {
         // console.log('open', e)

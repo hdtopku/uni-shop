@@ -13,10 +13,6 @@
 </template>
 
 <script>
-  import {
-    setCache,
-    getCache
-  } from '../../../a/utils/cacheUtil.js'
   export default {
     props: {
       tip: null,
@@ -27,33 +23,45 @@
         identity: ""
       }
     },
+    created() {
+      uni.$on('notify', this.notify)
+    },
     methods: {
-      testPass() {
-
-      },
       submit() {
-        uni.$u.http.post('/c/id/g/' + this.code, {}, {
-          params: {
-            code: this.code,
-            identity: this.identity
-          }
-        }).then(res => {
-          if (res.success) {
-            // this.tip = res.result
-            let accounts = getCache('i') ?? {}
-            let account = res.result
-            account.identity = this.identity
-            accounts[this.code] = account
-            setCache('i', accounts, 10 * 60)
-            uni.$emit('queryCode')
-          } else {
-            if (res.code === 510) {
-              this.tip = res.message
-              this.notify()
-            }
-            // uni.$emit('queryCode')
-          }
-        })
+        let accounts = uni.$u.getCache('i') ?? {}
+        let accountInfo = accounts[this.code] ?? {}
+        if (accountInfo?.identity != null && this.identity === accountInfo.identity) {
+          uni.$emit('startQuery', {
+            extra: this.identity
+          })
+          return
+        }
+        this.notify()
+        // if (accountInfo?.identity != null && this.identity === accountInfo.identity) {
+        //   uni.$u.http.post('/c/id/g/' + this.code, {}, {
+        //     params: {
+        //       code: this.code,
+        //       identity: this.identity
+        //     }
+        //   }).then(res => {
+        //     if (res.success) {
+        //       // this.tip = res.result
+        //       accountInfo = res.result
+        //       accountInfo.identity = this.identity
+        //       accounts[this.code] = accountInfo
+        //       uni.$u.setCache('i', accounts, 10 * 60)
+        //       uni.$emit('queryCode')
+        //     } else {
+        //       if (res.code === 510) {
+        //         this.tip = res.message
+        //         this.notify()
+        //       }
+        //       // uni.$emit('queryCode')
+        //     }
+        //   })
+        // } else {
+        //   this.notify()
+        // }
       },
       notify() {
         this.$refs.uNotify.show({
@@ -61,7 +69,7 @@
           type: 'error',
           color: '#fff',
           bgColor: '#ff4c4c',
-          message: `标识不正确，请重新输入`,
+          message: `标识不正确`,
           duration: 1000 * 5,
           fontSize: 18,
           safeAreaInsetTop: true
