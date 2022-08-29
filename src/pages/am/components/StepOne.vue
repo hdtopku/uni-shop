@@ -24,7 +24,7 @@
         <u-button shape="circle" plain class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
         </u-button>
-        <u-button shape="circle" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+        <u-button shape="circle" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
           style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
           type="error">
           第二步：开通完成，立即免费学生验证
