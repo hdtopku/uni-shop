@@ -15,14 +15,15 @@
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"
-          style="font-size: 28upx;">因官方改版，
+          style="font-size: 28upx;">说明：因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
           <span><span style="color:red">由个人转学生</span>。<span style="color:red;">第一步</span>先开个人(家庭和声控不行)</span>，<span
             style="color:red;">第二步</span>升级下月起5元！过期用户10元重开，<a href="javascript:;" @click="showRefund=true">不愿重开申请退单</a>
+          <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">继续必须首月开个人，不继续退单即可</view>
         </view>
         <u-button shape="circle" plain class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
         <u-button shape="circle" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
           style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
