@@ -19,9 +19,9 @@
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
-        @change="$u.debounce(checkboxChange, 600, true)">
-        <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25" label="我已认真阅读"
-          :name="true">
+        @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
+        <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25"
+          label="已知晓，学生验证：人脸或指纹不扣钱" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-row gutter="10">
@@ -31,7 +31,8 @@
         </u-col>
         <u-col span="6">
           <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
-            :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">验证资格
+            :class="showModal ? '' : 'animate__animated animate__pulse animate__infinite'" shape="circle">
+            {{startBtnText}}
           </u-button>
         </u-col>
       </u-row>
@@ -64,7 +65,7 @@
         <view style="font-size: 30upx;">
           <view>
             1、<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间且人脸不扣钱</view>
+              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间且人脸免费</view>
             👆消失就成功。
             <span style="color:red;">续期时间不显示为明年，但优惠持续1年</span>
           </view>
@@ -91,8 +92,8 @@
       return {
         verifyAddr: null,
         showAlert: true,
-        alertTitle: `1、学生验证，人脸或指纹不扣钱，放心继续
-        2、若遇到👇 用谷歌、QQ浏览器，别用Safari`,
+        startBtnText: '免费验证资格',
+        alertTitle: `若遇到👇 用谷歌、QQ浏览器，别用Safari`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
@@ -128,8 +129,12 @@
         uni.$emit('nextStep')
       },
       checkboxChange(val) {
-        this.checkboxValue1 = val
         uni.$u.reportIp()
+        // if (val != null && val[0]) {
+        //   this.startBtnText = '验证资格'
+        // } else {
+        //   this.startBtnText = '免费验证'
+        // }
       },
       clickStart() {
         uni.$u.reportIp()

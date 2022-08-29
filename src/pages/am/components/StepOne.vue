@@ -3,7 +3,7 @@
     <u-notify ref="uNotify"></u-notify>
     <u-divider text="若未订阅：必须先订阅个人，再升级"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
-      @change="$u.debounce(groupChange, 600, true)">
+      @change="$u.debounce(groupChange(radiovalue7), 600, true)">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
         :name="item.name">
       </u-radio>
@@ -27,7 +27,7 @@
         <u-button shape="circle" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
           style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
           type="error">
-          第二步：开通完毕，立即升级学生方案
+          第二步：开通完成，立即免费学生验证
         </u-button>
 
         <u-alert fontSize="10" style="position: absolute;bottom: -170upx;right:0;" description="注意：必须先开个人，才可第二步"
@@ -124,10 +124,6 @@
       subscribePersonal() {
         window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
       },
-      chooseTwo() {
-        this.radiovalue7 = 2
-        this.groupChange(2)
-      },
       closeRefund() {
         this.checkboxValue1 = [false]
         this.showRefund = false
@@ -136,7 +132,7 @@
         this.checkboxValue1 = val
         uni.$u.reportIp()
       },
-      groupChange(n) {
+      groupChange(n = 1) {
         uni.$u.reportIp()
         this.showAlert = false
         this.$nextTick(() => {
