@@ -21,7 +21,7 @@
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
         @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
         <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25"
-          label="已知晓，学生验证：人脸或指纹不扣钱" :name="true">
+          label="已知晓：验证时刷脸不扣钱" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-row gutter="10">
