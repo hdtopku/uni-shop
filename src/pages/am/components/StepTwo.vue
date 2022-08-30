@@ -39,14 +39,9 @@
     </view>
     <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -70upx;right:0"
       :description="modalTitle" type="info"></u-alert>
-
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
-      <view slot="confirmButton">
-        <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;right: 20upx;bottom: 120upx;"
-          description="多截图😊 沟通更高效" type="success">
-        </u-alert>
-        <u-gap></u-gap>
+      <view slot="confirmButton" style="position: relative;top: -30upx;">
         <u-row justify="space-around" gutter="20">
           <u-col span="4">
             <u-button type="info" class="shadow-sm" @click="showModal = false">关闭</u-button>
@@ -58,6 +53,10 @@
           </u-col>
         </u-row>
       </view>
+      <u-gap></u-gap>
+      <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;right: 20upx;bottom: 150upx;"
+        description="多截图😊 沟通更高效" type="success">
+      </u-alert>
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
           src="https://article.biliimg.com/bfs/article/2dcbeacaf4a941e7be54eacc1ece5412a724bf10.jpg"
@@ -71,12 +70,17 @@
           </view>
           <view>
             2、若提示<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，<view
+              class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，请<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
+            </view><a href="javascript:;" @click="subscribePersonal">先开10元方案</a>，再点下方进行升级<view
+              style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+              class="animate__animated animate__shakeY animate__infinite">👇
             </view>
           </view>
-          <view>点开【系统设置顶部头像订阅AM】截图客服</view>
+
+        </view>
+        <view>
         </view>
       </view>
     </u-modal>
@@ -153,6 +157,9 @@
           window.open(this.verifyAddr)
         }
         this.startVerify()
+      },
+      subscribePersonal() {
+        window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
       },
       startVerify() {
         const encryptLink =
