@@ -1,11 +1,11 @@
 <template>
   <view>
     <view v-if="showPage">
-      <AccountInfo v-if="showAccount && accountInfo != null" :account="accountInfo.account" :password="password"
-        :code="code"></AccountInfo>
-      <view v-else>
-        <Login v-if="showLogin && accountInfo != null" :code="code" :tip="accountInfo.tip"></Login>
-        <Register v-else :code="code"></Register>
+      <Register v-if="accountInfo.status===1" :code="code"></Register>
+      <view v-if="accountInfo.status === 2">
+        <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
+        </Login>
+        <AccountInfo v-else :account="accountInfo.account" :password="accountInfo.password" :code="code"></AccountInfo>
       </view>
     </view>
   </view>
@@ -25,7 +25,6 @@
       return {
         showPage: false,
         showLogin: false,
-        showAccount: false,
         code: null,
         tip: null,
         accountInfo: {},
@@ -82,9 +81,9 @@
         }).then(res => {
           if (res.success) {
             this.showPage = res.success
-            this.showAccount = false
             accounts[this.code] = res.result
             this.accountInfo = res.result
+            console.log(this.accountInfo)
             uni.$u.setCache('i', accounts, 60 * 10)
             this.dealAccount()
           }
@@ -102,7 +101,6 @@
         }
         if (this.accountInfo?.account != null && this.accountInfo?.password != null) {
           this.showPage = true
-          this.showAccount = true
         }
       }
     }

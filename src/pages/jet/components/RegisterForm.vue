@@ -62,14 +62,7 @@
             params
           }).then(res => {
             if (res.success) {
-              if (this.isUpdate) {
-                uni.$u.delCache('i')
-                uni.$emit('startQuery')
-              } else {
-                let accounts = uni.$u.getCache('i') ?? {}
-                let account = accounts[this.code]
-                uni.$u.setCache('i', accounts, 10 * 60)
-              }
+              uni.$u.delCache('i')
               uni.$emit('startQuery')
             }
           })
