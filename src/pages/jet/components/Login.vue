@@ -37,31 +37,6 @@
           return
         }
         this.notify()
-        // if (accountInfo?.identity != null && this.identity === accountInfo.identity) {
-        //   uni.$u.http.post('/c/id/g/' + this.code, {}, {
-        //     params: {
-        //       code: this.code,
-        //       identity: this.identity
-        //     }
-        //   }).then(res => {
-        //     if (res.success) {
-        //       // this.tip = res.result
-        //       accountInfo = res.result
-        //       accountInfo.identity = this.identity
-        //       accounts[this.code] = accountInfo
-        //       uni.$u.setCache('i', accounts, 10 * 60)
-        //       uni.$emit('queryCode')
-        //     } else {
-        //       if (res.code === 510) {
-        //         this.tip = res.message
-        //         this.notify()
-        //       }
-        //       // uni.$emit('queryCode')
-        //     }
-        //   })
-        // } else {
-        //   this.notify()
-        // }
       },
       notify() {
         this.$refs.uNotify.show({

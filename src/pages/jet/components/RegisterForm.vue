@@ -51,14 +51,17 @@
     methods: {
       submit() {
         let params = {
-          identity: this.identity
+          identity: this.identity,
+          code: this.code
         }
         if (this.isUpdate) {
           params.old = this.old
         }
         if (this.checkboxValue1[0]) {
-          uni.$u.http.post('/c/id/b/' + this.code, {}, {
-            params
+          uni.$u.http.post('/c/id/b', {}, {
+            params: {
+              i: uni.$u.encrypt(params, true)
+            }
           }).then(res => {
             if (res.success) {
               uni.$u.delCache('i')

@@ -91,7 +91,7 @@
         if (this.accountInfo == null) {
           return
         }
-        if (this.accountInfo?.tip != null) {
+        if (this.accountInfo?.status === 1 || this.accountInfo?.status === 2) {
           this.showPage = true
         }
         if (this.accountInfo?.tip != null) {
