@@ -61,7 +61,6 @@
         }
       },
       startQuery(parameters) {
-        this.showPage = false
         let allInfo = uni.$u.getCache('ms')
         let params = {
           i: uni.$u.encrypt({
@@ -84,6 +83,7 @@
             this.accountInfo = result
             uni.$u.setCache('i', accounts, 60 * 10)
             this.dealAccount()
+            location.reload()
           }
         })
       },
