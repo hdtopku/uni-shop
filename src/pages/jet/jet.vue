@@ -1,12 +1,10 @@
 <template>
-  <view>
-    <view v-if="showPage">
-      <Register v-if="accountInfo.status===1" :code="code"></Register>
-      <view v-if="accountInfo.status === 2">
-        <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
-        </Login>
-        <AccountInfo v-else :account="accountInfo.account" :password="accountInfo.password" :code="code"></AccountInfo>
-      </view>
+  <view v-if="showPage" style="padding: 200upx 30upx 0">
+    <Register v-if="accountInfo.status===1" :code="code"></Register>
+    <view v-if="accountInfo.status === 2">
+      <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
+      </Login>
+      <AccountInfo v-else :account="accountInfo.account" :password="accountInfo.password" :code="code"></AccountInfo>
     </view>
   </view>
 </template>
@@ -81,9 +79,9 @@
         }).then(res => {
           if (res.success) {
             this.showPage = res.success
-            accounts[this.code] = res.result
-            this.accountInfo = res.result
-            console.log(this.accountInfo)
+            let result = JSON.parse(decodeURIComponent(uni.$u.decrypt(res.result, true)))
+            accounts[this.code] = result
+            this.accountInfo = result
             uni.$u.setCache('i', accounts, 60 * 10)
             this.dealAccount()
           }
@@ -108,5 +106,4 @@
 </script>
 
 <style>
-
 </style>

@@ -32,7 +32,6 @@
         old: '',
         checkboxValue1: [false],
         showAlert: true,
-
         alertTitle: `请输入标识：
         1、标识作为密码，用于自助提取，你必须记住
         2、8-24位、仅限字母、数字、符号
@@ -75,7 +74,6 @@
       },
       checkboxChange() {},
       change() {},
-
     }
   }
 </script>

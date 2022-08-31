@@ -30,7 +30,7 @@
       submit() {
         let accounts = uni.$u.getCache('i') ?? {}
         let accountInfo = accounts[this.code] ?? {}
-        if (accountInfo?.identity != null && this.identity === accountInfo.identity) {
+        if (accountInfo?.identity != null && uni.$u.md5(this.identity) === accountInfo.identity) {
           uni.$emit('startQuery', {
             extra: this.identity
           })
