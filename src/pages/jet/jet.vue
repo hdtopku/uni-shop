@@ -61,6 +61,7 @@
         }
       },
       startQuery(parameters) {
+        this.showPage = false // accountInfo=null会报错
         let allInfo = uni.$u.getCache('ms')
         let params = {
           i: uni.$u.encrypt({
