@@ -49,7 +49,7 @@
           <u-col span="8">
             <u-button type="primary" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
               @click="confirmStart">
-              好的，开始免费验证</u-button>
+              订阅中，开始免费验证</u-button>
           </u-col>
         </u-row>
       </view>
