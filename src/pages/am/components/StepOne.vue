@@ -19,7 +19,8 @@
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
           <span><span style="color:red">由个人转学生</span>。<span style="color:red;">第一步</span><a href="javascript:;"
-              @click="subscribePersonal">先开个人</a>(家庭和声控不行)</span>，<span
+              @click="subscribePersonal">先开个人</a>(<span
+              style="text-decoration: underline;font-weight: bolder;">家庭和声控不行</span>)</span>，<span
             style="color:red;">第二步</span>升级下月起5元！过期用户10元重开，<a href="javascript:;" @click="showRefund=true">不愿重开申请退单</a>
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">继续必须<a href="javascript:;"
               @click="subscribePersonal">先开个人</a>，不继续退单即可</view>
