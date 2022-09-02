@@ -113,7 +113,7 @@
             disabled: false
           },
           {
-            label: '2、订阅中：开着10元方案、或学生续期',
+            label: '2、订阅中：试用中、开着10元方案、或学生续期',
             name: 2,
             disabled: false
           },
