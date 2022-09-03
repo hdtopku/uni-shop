@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <u-notify ref="uNotify"></u-notify>
-    <u-divider text="若未订阅：必须先订阅个人，再升级"></u-divider>
+    <u-divider textSize="16" text="若未订阅：必须先订阅个人，再升级"></u-divider>
     <u-radio-group v-model="radiovalue7" :borderBottom="true" placement="column" iconPlacement="right"
       @change="$u.debounce(groupChange(radiovalue7), 600, true)">
       <u-radio :customStyle="{marginBottom: '8px'}" v-for="(item, index) in radiolist7" :key="index" :label="item.label"
@@ -25,13 +25,14 @@
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">继续必须<a href="javascript:;"
               @click="subscribePersonal">先开个人</a>，不继续退单即可</view>
         </view>
-        <u-button shape="circle" plain class="shadow animate__animated animate__pulse animate__slow animate__repeat-2"
+        <u-button shape="circle" plain
+          class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
           style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
         </u-button>
         <u-button shape="circle" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
           style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
           type="error">
-          第二步：开通完成，立即免费学生验证
+          第二步：开通完成，立即升级为学生方案
         </u-button>
 
         <u-alert fontSize="10" style="position: absolute;bottom: -170upx;right:0;" description="注意：必须先开个人，才可第二步"
@@ -153,7 +154,7 @@
             break
           case 2:
             this.alertType = 'error'
-            this.alertTitle = `👆 若未订阅必须选1：先订阅，再升级`
+            this.alertTitle = `👆 若未订阅必须选1：先订阅个人，再升级`
             this.alertEffect = 'light'
             this.buttonText = '已在订阅中，下一步：免费升级续期学生方案'
             break
