@@ -23,7 +23,7 @@
               style="text-decoration: underline;font-weight: bolder;">家庭和声控不行</span>)</span>，<span
             style="color:red;">第二步</span>升级下月起5元！过期用户10元重开，<a href="javascript:;" @click="showRefund=true">不愿重开申请退单</a>
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">继续必须<a href="javascript:;"
-              @click="subscribePersonal">先开个人</a>，不继续退单即可</view>
+              @click="subscribePersonal">先开个人</a>，不继续<a href="javascript:;" @click="showRefund=true">退单</a>即可</view>
         </view>
         <u-button shape="circle" plain
           class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
@@ -67,8 +67,8 @@
       @confirm="$u.debounce(confirmRefund, 600, true)">
       <view style="color:gray">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
-        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，可跟客服申请退单，<text
-            style="color:red">退款原因：协商一致</text></view>
+        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，点下方<text
+            style="color:red">继续退单</text>，再跟客服申请退款。</view>
 
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="$u.debounce(checkboxChange, 600, true)">
