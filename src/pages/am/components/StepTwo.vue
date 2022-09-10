@@ -50,7 +50,8 @@
           <u-col span="9">
             <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
               @click="confirmStart">
-              订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -10upx;">人脸免费</text>验证</u-button>
+              订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">人脸 <u-icon
+                  style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费</text>验证</u-button>
           </u-col>
         </u-row>
       </view>
