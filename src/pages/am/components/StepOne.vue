@@ -66,13 +66,10 @@
     <u-modal width="740upx" @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true"
       :show="showRefund" cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund"
       @confirm="$u.debounce(confirmRefund, 600, true)">
-      <view style="color:gray">
-        由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
-        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，若不继续，点<text
-            style="color:red">继续退单</text>，并说明退款原因。</view>
-
-        <u-divider text="👇 注意👇"></u-divider>
-        若使用了第二步的激活码且成功，<text style="color:red">还恶意退款</text>，将登记至同类型店铺，<text style="color:red;">终身禁止验证！</text>
+      <view style="color:gray;font-size: 35upx;">
+        由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退，全网都如此</text>。
+        <u-divider textColor="red" textSize="20" text="👇 注意！请尊重客服劳动👇"></u-divider>
+        若已进行第二步且成功，<text style="color:red">还恶意退款</text>，将登记至同类型店铺，<text style="color:red;">终身禁止验证！</text>
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="$u.debounce(checkboxChange, 600, true)">
           <u-checkbox class="checkbox animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18"
