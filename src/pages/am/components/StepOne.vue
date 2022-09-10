@@ -68,8 +68,8 @@
       @confirm="$u.debounce(confirmRefund, 600, true)">
       <view style="color:gray;font-size: 35upx;">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退，全网都如此</text>。
-        <u-divider textColor="red" textSize="20" text="👇 注意！请尊重客服劳动👇"></u-divider>
-        若已进行第二步且成功，<text style="color:red">还恶意退款</text>，将登记至同类型店铺，<text style="color:red;">终身禁止验证！</text>
+        <u-divider textColor="red" textSize="20" text="👇 注意！请尊重卖家劳动👇"></u-divider>
+        若已进行<text style="color:red">第二步且成功，还恶意退款</text>，将登记至同类型店铺，<text style="color:red;">终身禁止验证！</text>
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="$u.debounce(checkboxChange, 600, true)">
           <u-checkbox class="checkbox animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18"
