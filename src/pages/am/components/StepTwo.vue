@@ -4,7 +4,7 @@
     <!-- <u-divider text="请先仔细阅读" textColor="red" textSize="30"></u-divider> -->
     <u-gap></u-gap>
     <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
-    <u-alert fontSize="17" class="animate__animated animate__backInDown" :title="alertTitle" type="error">
+    <u-alert fontSize="17" class="animate__animated animate__backInDown" :description="alertTitle" type="error">
     </u-alert>
     <u-gap height="5"></u-gap>
     <text class="u-collapse-content" style="font-size: 30upx;">
@@ -97,7 +97,7 @@
         verifyAddr: null,
         showAlert: true,
         startBtnText: '免费验证资格',
-        alertTitle: `若遇到👇 换谷歌、QQ浏览器，别用Safari`,
+        alertTitle: `若遇到👇 换谷歌、QQ浏览器等，别用Safari`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
