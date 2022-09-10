@@ -14,8 +14,10 @@
         :type="alertType" :effect="alertEffect">
       </u-alert>
       <view v-if="radiovalue7 === 1">
-        <view v-show="this.radiovalue7 === 1" class="explain animate__animated animate__slideInRight animate__slow"
-          style="font-size: 28upx;">说明：因官方改版，
+        <view v-show="this.radiovalue7 === 1"
+          class="explain animate__animated animate__flipInX animate__delay-5s animate__slower"
+          style="font-size: 28upx;">
+          说明：因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
           <span><span style="color:red">由个人转学生</span>。<span style="color:red;">第一步</span><a href="javascript:;"
