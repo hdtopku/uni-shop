@@ -47,9 +47,9 @@
             <u-button type="info" class="shadow-sm" @click="showModal = false">关闭</u-button>
           </u-col>
           <u-col span="8">
-            <u-button type="primary" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
+            <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
               @click="confirmStart">
-              订阅中，开始免费验证</u-button>
+              订阅中，人脸<text style="color: #ff4c4c;font-size: 50upx;">免费</text>验证</u-button>
           </u-col>
         </u-row>
       </view>
