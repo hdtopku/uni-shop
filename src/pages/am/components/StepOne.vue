@@ -56,26 +56,27 @@
         </view>
       </view>
     </u-modal>
-    <u-modal @close="showBye = false" :show="showBye" title="相逢即缘，好聚好散，再见！" confirmText="请前往订单发起退款！"
-      @confirm="confirmBye">
+    <u-modal @close="showBye = false" :show="showBye" title="好聚好散！" confirmText="请前往订单发起退款！" @confirm="confirmBye">
       <view style="font-size: 40upx; text-align: justify;">
-        <u-alert fontSize="20" title="退款选择以下原因，系统自动秒退，免人工审核！" type="error"></u-alert>
-        <u-gap></u-gap>
-        <view style="color:red;text-decoration:underline;">未收到货，退款原因选择：协商一致</view>
+        <!-- <u-alert fontSize="20" type="error"></u-alert> -->
+        <!-- <u-gap></u-gap> -->
+        <view style="color:red;">退款选：未收到货、协商一致，并说明原因！</view>
       </view>
     </u-modal>
-    <u-modal @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true" :show="showRefund"
-      cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund"
+    <u-modal width="740upx" @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true"
+      :show="showRefund" cancelText="取消" confirmText="继续退单" confirmColor="red" @cancel="closeRefund"
       @confirm="$u.debounce(confirmRefund, 600, true)">
       <view style="color:gray">
         由于苹果仅限<text style="color:red">订阅中</text>的用户，才可升级学生套餐。因此过期用户需花10元重开，且10元<text style="color:red">不可退</text>。
-        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，如果不继续，点下方<text
-            style="color:red">继续退单</text>，再跟客服申请退款。</view>
+        <view style="margin-top: 20upx;"><text style="color:red">全网都是如此</text>，若不继续，点<text
+            style="color:red">继续退单</text>，并说明退款原因。</view>
 
+        <u-divider text="👇 注意👇"></u-divider>
+        若使用了第二步的激活码且成功，<text style="color:red">还恶意退款</text>，将登记至同类型店铺，<text style="color:red;">终身禁止验证！</text>
         <u-checkbox-group style="margin-top: 20upx;" v-model="checkboxValue1" placement="column"
           @change="$u.debounce(checkboxChange, 600, true)">
           <u-checkbox class="checkbox animate__animated animate__shakeX" v-show="showRefundAlert" labelSize="18"
-            size="25" label="确定终止验证，继续退单！" :name="true">
+            size="25" label="确定非恶意退款，继续退单！" :name="true">
           </u-checkbox>
         </u-checkbox-group>
       </view>
