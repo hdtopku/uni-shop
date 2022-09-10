@@ -31,7 +31,8 @@
         </u-col>
         <u-col span="6">
           <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
-            :class="showModal ? '' : 'animate__animated animate__pulse animate_fast animate__infinite'" shape="circle">
+            :class="showModal ? '' : 'animate__animated animate__heartBeat animate_slow animate__infinite'"
+            shape="circle">
             {{startBtnText}}
           </u-button>
         </u-col>
@@ -43,13 +44,13 @@
       @cancel="showModal = false" showCancelButton cancelText="取消" confirmText="好的，开始验证！" @confirm="confirmStart">
       <view slot="confirmButton" style="position: relative;top: -30upx;">
         <u-row justify="space-around" gutter="20">
-          <u-col span="4">
+          <u-col span="3">
             <u-button type="info" class="shadow-sm" @click="showModal = false">关闭</u-button>
           </u-col>
-          <u-col span="8">
+          <u-col span="9">
             <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
               @click="confirmStart">
-              订阅中，人脸<text style="color: #ff4c4c;font-size: 50upx;">免费</text>验证</u-button>
+              订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -10upx;">人脸免费</text>验证</u-button>
           </u-col>
         </u-row>
       </view>
@@ -96,7 +97,7 @@
       return {
         verifyAddr: null,
         showAlert: true,
-        startBtnText: '免费验证资格',
+        startBtnText: '免费学生验证',
         alertTitle: `若遇到👇 换谷歌、QQ浏览器等，别用Safari`,
 
         showModal: false,
