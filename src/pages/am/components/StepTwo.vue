@@ -44,7 +44,7 @@
           <u-col span="9">
             <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
               @click="confirmStart">
-              订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">人脸 <u-icon
+              订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">开始 <u-icon
                   style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费</text>验证</u-button>
           </u-col>
         </u-row>
@@ -60,17 +60,17 @@
         <view style="font-size: 30upx;">
           <view>
             1、<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">👆消失就成功，扣费时间不变且不显示为明年</view>
+              class="animate__animated animate__bounce animate__repeat-3">👆消失就成功，扣费时间不变且不显示为明年</view>
           </view>
           <view class="animate__animated animate__flipInX animate__delay-5s animate__slower">
-            2、若提示<view style="color:red;font-weight: bolder;display: inline-block;"
+            2、若提示<view style="color:red;display: inline-block;"
               class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，请<view
-              style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
+              style="color:red;font-weight: bold;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">必须
-            </view><a href="javascript:;" @click="subscribePersonal">先开10元方案</a>，再点下方进行升级<view
+            </view><a href="javascript:;" @click="subscribePersonal">先开10元方案</a>，再点下方<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">👇
-            </view>
+            </view>升级
           </view>
 
         </view>
@@ -91,7 +91,8 @@
         verifyAddr: null,
         showAlert: true,
         startBtnText: '免费学生验证',
-        alertTitle: `若遇到👆 换谷歌、QQ浏览器等，别用Safari`,
+        alertTitle: `若遇到👆 换个浏览器验证，即可解决
+        如：谷歌、qq浏览器等`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
