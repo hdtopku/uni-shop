@@ -1,21 +1,15 @@
 <template>
   <view class="container">
-
-    <!-- <u-divider text="请先仔细阅读" textColor="red" textSize="30"></u-divider> -->
-    <u-gap></u-gap>
     <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
-    <u-alert fontSize="17" class="animate__animated animate__backInDown" :description="alertTitle" type="error">
-    </u-alert>
     <u-gap height="5"></u-gap>
     <text class="u-collapse-content" style="font-size: 30upx;">
       <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
-        style="margin: 0 auto;display: block;width: 80%;"
+        style="margin: 0 auto;display: block;width: 90%;"
         class="animate__animated animate__heartBeat animate__slower animate__infinite" />
-      <!-- <view style="text-align: right;">
-        <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
-          class="animate__animated animate__heartBeat animate__infinite ">请换谷歌、QQ浏览器、夸克</view>别用Safari
-      </view> -->
     </text>
+    <u-gap height="28"></u-gap>
+    <u-alert fontSize="17" class=" animate__backInDown" :description="alertTitle" type="error">
+    </u-alert>
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
@@ -25,13 +19,13 @@
         </u-checkbox>
       </u-checkbox-group>
       <u-row gutter="10">
-        <u-col span="6">
-          <u-button class="animate__animated animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext"
-            type="error" plain shape="circle">上一步</u-button>
+        <u-col span="4">
+          <u-button class=" animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext" type="error"
+            plain shape="circle">上一步</u-button>
         </u-col>
-        <u-col span="6">
+        <u-col span="8">
           <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
-            :class="showModal ? '' : 'animate__animated animate__heartBeat animate_slow animate__infinite'"
+            :class="showModal ? '' : 'animate__animated animate__pulse animate_faster animate__infinite'"
             shape="circle">
             {{startBtnText}}
           </u-button>
@@ -61,16 +55,14 @@
       </u-alert>
       <view>
         <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-          src="https://article.biliimg.com/bfs/article/2dcbeacaf4a941e7be54eacc1ece5412a724bf10.jpg"
+          src="https://article.biliimg.com/bfs/article/0c3ccfff19bfe7f9bb3e984378410a27ebe9c4bf.jpg"
           style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
         <view style="font-size: 30upx;">
           <view>
             1、<view style="color:red;font-weight: bolder;display: inline-block;"
-              class="animate__animated animate__bounce animate__infinite">学生验证不改变续期时间且人脸免费</view>
-            👆消失就成功。
-            <span style="color:red;">续期时间不显示为明年，但优惠持续1年</span>
+              class="animate__animated animate__bounce animate__infinite">👆消失就成功，扣费时间不变且不显示为明年</view>
           </view>
-          <view>
+          <view class="animate__animated animate__flipInX animate__delay-5s animate__slower">
             2、若提示<view style="color:red;font-weight: bolder;display: inline-block;"
               class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，请<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
@@ -99,7 +91,7 @@
         verifyAddr: null,
         showAlert: true,
         startBtnText: '免费学生验证',
-        alertTitle: `若遇到👇 换谷歌、QQ浏览器等，别用Safari`,
+        alertTitle: `若遇到👆 换谷歌、QQ浏览器等，别用Safari`,
 
         showModal: false,
         modalContent: `👇如需咨询客服，请一定带上以下截图
