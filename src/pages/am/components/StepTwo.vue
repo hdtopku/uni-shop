@@ -75,7 +75,7 @@
             请换个浏览器验证，如：谷歌、qq浏览器等</view>
         </view>
         <view style="z-index: 1;position: relative;">
-          <u-divider textPosition="left" textSize="20" text="👆不成功看上面"></u-divider>
+          <u-divider textPosition="left" textColor="red" textSize="20" text="👆不成功看上面"></u-divider>
         </view>
         <u-alert class="animate__fadeInRight animate__slower" style="position: absolute;right: 0upx;bottom: 160upx;"
           description="多截图😊 高效沟通" type="success">
