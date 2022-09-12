@@ -20,9 +20,8 @@
           说明：因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
-          <span><span style="color:red">由个人转学生</span>。<span style="color:red;">第一步</span><a href="javascript:;"
-              @click="subscribePersonal">先开个人</a>(<span
-              style="text-decoration: underline;font-weight: bolder;">家庭和声控不行</span>)</span>，<span
+          <span><span style="color:red;"></span><a href="javascript:;" @click="subscribePersonal">先开个人</a>(<span
+              style="text-decoration: underline;font-weight: bolder;font-size: 18upx;">家庭和声控不行</span>)</span>，<span
             style="color:red;">第二步</span>升级为5元！过期用户10元重开
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">必须<a href="javascript:;"
               @click="subscribePersonal">先开个人</a>，若不继续<a href="javascript:;" @click="showRefund=true">申请退单</a></view>

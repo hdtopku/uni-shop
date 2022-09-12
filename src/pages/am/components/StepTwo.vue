@@ -66,11 +66,11 @@
             2、若提示<view style="color:red;display: inline-block;"
               class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>，请<view
               style="color:red;font-weight: bold;font-size: 60upx;display: inline-block;"
-              class="animate__animated animate__shakeY animate__infinite">必须
-            </view><a href="javascript:;" @click="subscribePersonal">先开10元方案</a>，再点下方<view
+              class="animate__animated animate__shakeY animate__infinite">
+            </view><a href="javascript:;" style="font-size: 60upx;" @click="subscribePersonal">先开个人</a>，再点下方升级<view
               style="color:red;font-weight: bolder;font-size: 60upx;display: inline-block;"
               class="animate__animated animate__shakeY animate__infinite">👇
-            </view>升级
+            </view>
           </view>
 
         </view>
