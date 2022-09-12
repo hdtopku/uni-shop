@@ -2,36 +2,94 @@
   <view class="container">
     <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
     <u-gap height="5"></u-gap>
-    <text class="u-collapse-content" style="font-size: 30upx;">
+    <!-- <text class="u-collapse-content" style="font-size: 30upx;">
       <img src="https://article.biliimg.com/bfs/article/5f0f2f5584732f993dd0f63702d16ac65d9d2d86.jpg"
         style="margin: 0 auto;display: block;width: 90%;"
         class="animate__animated animate__heartBeat animate__slower animate__infinite" />
     </text>
     <u-gap height="28"></u-gap>
     <u-alert fontSize="17" class=" animate__backInDown" :description="alertTitle" type="error">
-    </u-alert>
+    </u-alert> -->
+    <view>
+      <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+        src="https://article.biliimg.com/bfs/article/0c3ccfff19bfe7f9bb3e984378410a27ebe9c4bf.jpg"
+        style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
+      <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
+        class="animate__animated animate__bounce animate__repeat-3">
+        消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
+        扣费时间不变且不显示为明年</view>
+    </view>
+
     <!-- 底部按钮 -->
     <view class="btn">
       <u-checkbox-group style="position: absolute;right: 0; bottom: 100upx;" v-model="checkboxValue1" placement="column"
         @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
-        <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="18" size="25"
+        <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
           label="已知晓：验证时刷脸不扣钱" :name="true">
         </u-checkbox>
       </u-checkbox-group>
       <u-row gutter="10">
-        <u-col span="4">
-          <u-button class=" animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext" type="error"
-            plain shape="circle">上一步</u-button>
+        <u-col span="3">
+          <u-button class="shadow animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext"
+            type="error" plain shape="circle">上一步</u-button>
         </u-col>
-        <u-col span="8">
-          <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
+        <u-col span="9">
+          <!-- <u-button type="primary" @click="$u.debounce(clickStart, 600, true)"
             :class="showModal ? '' : 'animate__animated animate__pulse animate_faster animate__infinite'"
             shape="circle">
             {{startBtnText}}
-          </u-button>
+          </u-button> -->
+          <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
+            @click="$u.debounce(clickStart, 600, true)">
+            订阅中，开始<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
+              <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
+            </text>验证</u-button>
         </u-col>
       </u-row>
     </view>
+    <u-popup :round="10" :show="showPop" mode="bottom" @close="showPop=false" @open="showPop=true" closeable>
+      <view style="padding:20upx;font-size: 50upx;">
+        <view class="animate__animated animate__flipInX animate__slower">
+          1、若提示<view style="color:red;display: inline-block;z-index: 1;"
+            class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>
+          <u-row gutter="10">
+            <u-col span="6">
+              <u-button class="shadow animate__heartBeat animate__slower animate__infinite" @click="subscribePersonal"
+                type="error" plain shape="circle">先开个人</u-button>
+            </u-col>
+            <u-col span="6">
+              <u-button type="primary" class="shadow animate__heartBeat animate__slow animate__infinite" shape="circle"
+                @click="$u.debounce(confirmStart, 600, true)">
+                再<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
+                  <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
+                </text>验证
+              </u-button>
+            </u-col>
+          </u-row>
+        </view>
+        <u-gap height="15"></u-gap>
+        <view class="animate__animated animate__flipInX animate__slower">
+          2、若提示<view style="color:red;display: inline-block;"
+            class="animate__animated animate__shakeX animate__slow animate__infinite">我们无法验证您的身份</view>
+          <view style="font-size: 36upx;">
+            请换个浏览器验证，如：谷歌、qq浏览器等</view>
+        </view>
+        <view style="z-index: 1;position: relative;">
+          <u-divider textPosition="left" textSize="20" text="👆不成功看上面"></u-divider>
+        </view>
+        <u-alert class="animate__fadeInRight animate__slower" style="position: absolute;right: 0upx;bottom: 160upx;"
+          description="多截图😊 高效沟通" type="success">
+        </u-alert>
+        <u-button size="large" type="primary"
+          class="shadow animate__animated animate__heartBeat animate__slower animate__infinite" shape="circle"
+          @click="confirmStart">
+          订阅中，开始<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
+            <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
+          </text>验证
+        </u-button>
+        <u-gap></u-gap>
+      </view>
+    </u-popup>
     <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -70upx;right:0"
       :description="modalTitle" type="info"></u-alert>
     <u-modal width="740upx" title="" :closeOnClickOverlay="true" :show="showModal" @close="showModal = false"
@@ -90,6 +148,7 @@
       return {
         verifyAddr: null,
         showAlert: true,
+        showPop: false,
         startBtnText: '免费学生验证',
         alertTitle: `若遇到👆 换个浏览器验证，即可解决
         如：谷歌、qq浏览器等`,
@@ -129,6 +188,9 @@
       },
       checkboxChange(val) {
         uni.$u.reportIp()
+        // if (!this.checkboxValue1[0]) {
+        //   this.startVerify()
+        // }
         // if (val != null && val[0]) {
         //   this.startBtnText = '验证资格'
         // } else {
@@ -143,7 +205,8 @@
             this.showAlert = true
           }, 1)
         } else {
-          this.showModal = true
+          // this.showModal = true
+          this.showPop = true
           this.startVerify()
         }
       },

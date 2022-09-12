@@ -41,8 +41,8 @@
         </u-alert>
       </view>
     </view>
-    <u-button class="next-btn animate__animated animate__pulse animate__slow animate__infinite" v-if="radiovalue7 !==1"
-      @click="clickNext" type="error" plain shape="circle">{{buttonText}}
+    <u-button class="next-btn animate__animated animate__heartBeat animate__slower animate__infinite"
+      v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
     </u-button>
     <!-- 窗口 -->
     <u-modal @close="showExpireModal = false" :show="showExpireModal" confirmText="确定"
