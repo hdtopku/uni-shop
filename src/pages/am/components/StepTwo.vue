@@ -49,7 +49,7 @@
     </view>
     <u-popup :round="10" :show="showPop" mode="bottom" @close="showPop=false" @open="showPop=true" closeable>
       <view style="padding:20upx;font-size: 50upx;">
-        <view class="animate__animated animate__flipInX animate__slower">
+        <view class="animate__animated animate__delay-1s animate__flipInX animate__slower">
           1、若提示<view style="color:red;display: inline-block;z-index: 1;"
             class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>
           <u-row gutter="10">
@@ -68,14 +68,14 @@
           </u-row>
         </view>
         <u-gap height="15"></u-gap>
-        <view class="animate__animated animate__flipInX animate__slower">
+        <view class="animate__animated animate__delay-5s animate__flipInX animate__slower">
           2、若提示<view style="color:red;display: inline-block;"
             class="animate__animated animate__shakeX animate__slow animate__infinite">我们无法验证您的身份</view>
           <view style="font-size: 36upx;">
             请换个浏览器验证，如：谷歌、qq浏览器等</view>
         </view>
         <view style="z-index: 1;position: relative;">
-          <u-divider textPosition="left" textColor="red" textSize="20" text="👆不成功看上面"></u-divider>
+          <u-divider textPosition="left" textColor="red" textSize="25" text="👆不成功看上面"></u-divider>
         </view>
         <u-alert class="animate__fadeInRight animate__slower" style="position: absolute;right: 0upx;bottom: 160upx;"
           description="多截图😊 高效沟通" type="success">
