@@ -1,5 +1,6 @@
 <template>
   <view v-if="showPage" class="page">
+    <u-notify ref="uNotify"></u-notify>
     <view style="width: 88vw;">
       <u-steps :current="currentStep" iconPlacement="right">
         <u-steps-item title="先开后升" desc="需在订阅中"></u-steps-item>
@@ -23,7 +24,7 @@
       return {
         showPage: false,
         currentStep: 0,
-        code: null
+        code: null,
       }
     },
     onLoad(option) {
@@ -35,6 +36,7 @@
       uni.$on('addInvalidCode', (removalPage = true) => {
         this.addInvalidCode(removalPage)
       })
+      uni.$on('showNotify', this.notify)
     },
     methods: {
       async queryCode() {
@@ -45,6 +47,18 @@
         if (this.checkAmEnv()) {
           this.checkCode()
         }
+      },
+      notify(message = '') {
+        this.$refs.uNotify.show({
+          top: 500,
+          type: 'error',
+          color: '#fff',
+          bgColor: '#ff4c4c',
+          message: message,
+          duration: 1000 * 3,
+          fontSize: 25,
+          safeAreaInsetTop: true
+        })
       },
       checkCode() {
         let codes1 = uni.$u.getCache('css') ?? []
