@@ -21,8 +21,9 @@
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
             class="animate__animated animate__shakeY animate__infinite">必须</view>
           <span><span style="color:red;"></span><a href="javascript:;" @click="subscribePersonal">先开个人</a>(<span
-              style="text-decoration: underline;font-weight: bolder;font-size: 18upx;"><span
-                style="color:red">是否免费开</span>，以音乐界面为准。家庭和声控不行</span>)</span>，<span style="color:red;">第二步</span>升级为5元！
+              style="text-decoration: underline;font-weight: bolder;"><span
+                style="color:red;font-size: 26upx;">是否免费开</span>，以音乐界面为准。家庭和声控不行</span>)</span>，<span
+            style="color:red;">第二步</span>升级为5元
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;">必须<a href="javascript:;"
               @click="subscribePersonal">先开个人</a><span style="font-size: 26upx;">，若已过期不愿10元开</span><a
               href="javascript:;" @click="showRefund=true">点此退单</a>
