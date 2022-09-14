@@ -45,8 +45,8 @@
                 type="error" plain shape="circle">先开个人</u-button>
             </u-col>
             <u-col span="6">
-              <u-button type="primary" class="shadow animate__heartBeat animate__slow animate__infinite" shape="circle"
-                @click="$u.debounce(jumpStart, 600, true)">
+              <u-button plain type="error" class="shadow animate__heartBeat animate__slow animate__infinite"
+                shape="circle" @click="$u.debounce(jumpStart, 600, true)">
                 再<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
                   <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
                 </text>验证

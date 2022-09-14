@@ -35,7 +35,7 @@
         </view>
         <u-button shape="circle" plain
           class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人10元方案
+          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
         </u-button>
         <u-button plain shape="circle"
           class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
