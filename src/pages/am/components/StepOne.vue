@@ -15,7 +15,7 @@
       </u-alert>
       <view v-if="radiovalue7 === 1">
         <view v-show="this.radiovalue7 === 1"
-          class="explain animate__animated animate__flipInX animate__delay-5s animate__slower"
+          class="explain animate__animated animate__flipInX animate__delay-3s animate__slower"
           style="font-size: 28upx;">
           说明：因官方改版，
           <view style="color:red;font-weight: bolder;font-size: 38upx;display: inline-block;"
