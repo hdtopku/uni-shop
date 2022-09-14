@@ -9,6 +9,7 @@
       class="animate__animated animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
+      <u-gap height="6"></u-gap>
       <view>且验证刷脸不扣钱</view>
     </view>
 
@@ -21,7 +22,7 @@
       <u-col span="9">
         <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
           @click="$u.debounce(clickStart, 600, true)">
-          订阅中，可以<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
+          订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
             <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
           </text>验证</u-button>
       </u-col>
