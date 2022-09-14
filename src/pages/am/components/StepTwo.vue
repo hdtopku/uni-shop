@@ -45,7 +45,7 @@
           </u-button> -->
           <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
             @click="$u.debounce(clickStart, 600, true)">
-            订阅中，开始<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
+            订阅中，可以<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
               <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
             </text>验证</u-button>
         </u-col>
@@ -75,21 +75,21 @@
           </u-row>
         </view>
         <u-gap height="15"></u-gap>
-        <view class="animate__animated animate__delay-2s animate__flipInX animate__slower">
+        <view class="animate__animated animate__delay-1s animate__flipInX animate__slower">
           2、若提示<view style="color:red;display: inline-block;"
             class="animate__animated animate__shakeX animate__slow animate__infinite">我们无法验证您的身份</view>
           <view style="font-size: 36upx;">
             请换个浏览器验证，如：谷歌、qq浏览器等</view>
         </view>
         <view style="z-index: 1;position: relative;"
-          class="animate__animated animate__delay-4s animate__fadeIn animate__slow animate__infinite">
-          <u-divider textPosition="left" textColor="red" textSize="25" text="👆不成功看上面2种"></u-divider>
+          class="animate__animated animate__delay-2s animate__fadeIn animate__slow animate__infinite">
+          <u-divider textPosition="left" textColor="red" textSize="25" text="👆验证时，可能遇到"></u-divider>
         </view>
-        <view class="animate__animated animate__delay-4s animate__flipInX animate__slower">
+        <view class="animate__animated animate__delay-2s animate__flipInX animate__slower">
           <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
             <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
-              label="已认真阅读，刷脸不扣钱，可以开始" :name="true">
+              label="已认真阅读，刷脸不扣钱" :name="true">
             </u-checkbox>
           </u-checkbox-group>
           <u-gap height="40"></u-gap>
