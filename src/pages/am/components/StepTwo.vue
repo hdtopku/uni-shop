@@ -22,9 +22,7 @@
       <u-col span="9">
         <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
           @click="$u.debounce(clickStart, 600, true)">
-          订阅中，<text style="color: #ff4c4c;font-size: 40upx;margin-top: -8upx;">
-            <u-icon style="display:inline-block" name="fingerprint" color="red" size="28"></u-icon>免费
-          </text>验证</u-button>
+          已在订阅中，下一步</u-button>
       </u-col>
     </u-row>
     <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
@@ -33,10 +31,14 @@
     <!-- 底部弹出层 -->
     <u-popup :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true" closeable>
       <view style="padding:30upx 20upx 20upx;font-size: 50upx;">
+        <view style="z-index: 1;position: relative;" class="animate__animated animate__fadeIn">
+          <u-divider class="animate__animated animate__bounce animate__infinite" textPosition="left" textColor="red"
+            textSize="18" text="👇 验证时，可能遇到"></u-divider>
+        </view>
         <u-alert class="animate__fadeInRight animate__slower" style="position: absolute;right: 50upx;top: 0upx;"
           description="多截图😊 高效沟通" type="success">
         </u-alert>
-        <view class="animate__animated animate__flipInX animate__slower">
+        <view class="animate__animated  animate__flipInX animate__slower">
           1、若提示<view style="color:red;display: inline-block;z-index: 1;"
             class="animate__animated animate__shakeX animate__slow animate__infinite">账户已使用</view>
           <u-row gutter="10">
@@ -61,10 +63,7 @@
           <view style="font-size: 36upx;">
             请换个浏览器验证，如：谷歌、qq浏览器等</view>
         </view>
-        <view style="z-index: 1;position: relative;" class="animate__animated animate__delay-2s animate__fadeIn">
-          <u-divider class="animate__animated animate__bounce animate__infinite" textPosition="left" textColor="red"
-            textSize="25" text="👆验证时，可能遇到"></u-divider>
-        </view>
+        <u-gap height="15"></u-gap>
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slower">
           <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
@@ -72,7 +71,7 @@
               label="已认真阅读，刷脸不扣钱" :name="true">
             </u-checkbox>
           </u-checkbox-group>
-          <u-gap height="40"></u-gap>
+          <u-gap height="45"></u-gap>
           <u-button size="large" type="primary"
             class="shadow animate__animated animate__heartBeat animate__slower animate__infinite" shape="circle"
             @click="confirmStart">
