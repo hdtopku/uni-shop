@@ -8,7 +8,7 @@
     <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animated animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
-      扣费时间不变且不显示为明年
+      扣费时间不变不显示为明年
       <view>且验证刷脸不扣钱</view>
     </view>
 
