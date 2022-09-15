@@ -54,7 +54,7 @@
           <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
             <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
-              label="已认真阅读，刷脸不扣钱" :name="true">
+              label="已知晓：刷脸不扣钱" :name="true">
             </u-checkbox>
           </u-checkbox-group>
           <u-gap height="40"></u-gap>
@@ -113,7 +113,7 @@
       },
       confirmStart() {
         if (!this.checkboxValue1[0]) {
-          uni.$emit('showNotify', '开始前，请勾选：已认真阅读')
+          uni.$emit('showNotify', '开始前，请勾选：已知晓')
           this.showAlert = false
           setTimeout(() => {
             this.showAlert = true
