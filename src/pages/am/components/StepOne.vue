@@ -33,16 +33,16 @@
               href="javascript:;" @click="showRefund=true">点此退单</a>
           </view>
         </view>
-        <u-button shape="circle" plain
-          class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
-          style="position: absolute; bottom: 200upx;" @click="subscribePersonal" type="error">第一步：打开苹果音乐，开通个人方案
-        </u-button>
-        <u-button plain shape="circle"
-          class="shadow animate__animated animate__heartBeat animate__slow animate__infinite"
-          style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)"
-          type="error">
+        <button style="position: absolute; bottom: 200upx;"
+          class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4 mt-4"
+          @click="subscribePersonal">
+          第一步：打开苹果音乐，开通个人方案
+        </button>
+        <button
+          class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4 mt-4"
+          style="position: absolute; bottom: -110upx;z-index: 1;" @click="$u.debounce(clickNext, 600, true)">
           第二步：升级为学生方案
-        </u-button>
+        </button>
         <u-alert fontSize="10" style="position: absolute;bottom: -170upx;right:0;" description="注意：必须先开个人，才可第二步"
           type="success">
         </u-alert>
@@ -50,9 +50,11 @@
     </view>
 
     <!-- 订阅中按钮 -->
-    <u-button class="next-btn animate__animated animate__heartBeat animate__slower animate__infinite"
-      v-if="radiovalue7 !==1" @click="clickNext" type="error" plain shape="circle">{{buttonText}}
-    </u-button>
+    <button
+      class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4 mt-4"
+      v-if="radiovalue7 !==1" @click="clickNext">
+      {{buttonText}}
+    </button>
 
     <!-- 退单协议 -->
     <u-modal width="740upx" @close="closeRefund" title="退单协议" showCancelButton :closeOnClickOverlay="true"

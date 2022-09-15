@@ -20,9 +20,13 @@
           plain shape="circle">上一步</u-button>
       </u-col>
       <u-col span="9">
-        <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
+        <button @click="$u.debounce(clickStart, 600, true)"
+          class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
+          已在订阅中，下一步：验证资格
+        </button>
+        <!-- <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
           @click="$u.debounce(clickStart, 600, true)">
-          已在订阅中，下一步：验证资格</u-button>
+          已在订阅中，下一步：验证资格</u-button> -->
       </u-col>
     </u-row>
     <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
