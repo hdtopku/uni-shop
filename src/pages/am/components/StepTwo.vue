@@ -22,11 +22,8 @@
       <u-col span="9">
         <button @click="$u.debounce(clickStart, 600, true)"
           class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
-          已在订阅中，下一步：验证资格
+          已在订阅中，准备验证资格
         </button>
-        <!-- <u-button type="primary" class="shadow animate__animated animate__heartBeat animate__slower animate__infinite"
-          @click="$u.debounce(clickStart, 600, true)">
-          已在订阅中，下一步：验证资格</u-button> -->
       </u-col>
     </u-row>
     <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
@@ -38,7 +35,7 @@
       <view style="padding:30upx 20upx 20upx;font-size: 35upx;">
         <view class="animate__animated animate__flipInX  p-3 animate__slow">
           <text style="font-size: 40upx;">1、验证时，若提示</text>
-          <ui-tag class="animate__animated animate__shakeX animate__slow animate__infinite" bg="bg-red-gradient"
+          <ui-tag class="animate__animated animate__hinge animate__slower animate__infinite" bg="bg-red-gradient"
             info="账户已使用" />
           <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
@@ -48,12 +45,12 @@
         </view>
         <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
           <text style="font-size: 40upx;">2、若提示</text>
-          <ui-tag class="animate__animated animate__shakeX animate__slow animate__infinite " bg="bg-red-gradient"
+          <ui-tag class="animate__animated animate__flip animate__slower animate__infinite" bg="bg-red-gradient"
             info="我们无法验证您的身份" />
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
         </view>
-        <view class="animate__animated animate__delay-2s animate__flipInX animate__slower">
+        <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
           <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
             <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
@@ -64,7 +61,8 @@
           <button
             class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4"
             @click="confirmStart">
-            订阅中，开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
+            订阅中，现在开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;"
+              class="u-absolute">
               <u-icon style="display:inline-block;" name="fingerprint" color="red" size="28"></u-icon>
             </text><text class="pl-5">免费</text>
           </button>
