@@ -80,7 +80,7 @@
       return {
         verifyAddr: null,
         showAlert: true,
-        showPop: true,
+        showPop: false,
         modalTitle: `高效沟通：多截图、直接问
         😊 别发：你好、在吗`,
         checkboxValue1: [false],
