@@ -51,16 +51,16 @@
           <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
         </view>
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
-          <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
+          <!-- <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
             <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
               label="已知晓：刷脸不扣钱" :name="true">
             </u-checkbox>
-          </u-checkbox-group>
-          <u-gap height="40"></u-gap>
+          </u-checkbox-group> -->
+          <u-gap height="20"></u-gap>
           <button
-            class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4"
-            @click="confirmStart">
+            class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4 text-xl"
+            @click="jumpStart">
             订阅中，开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
               <u-icon style="display:inline-block;" name="fingerprint" color="red" size="28"></u-icon>
             </text><text class="pl-5">刷脸免费</text>
