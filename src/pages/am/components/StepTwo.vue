@@ -51,6 +51,8 @@
           <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
         </view>
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
+          <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
+            description="多截图、直接问" type="success"></u-alert>
           <!-- <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
             @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
             <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
@@ -82,7 +84,7 @@
         verifyAddr: null,
         showAlert: true,
         showPop: false,
-        modalTitle: `高效沟通：多截图、直接问
+        modalTitle: `多截图、好沟通、直接问
         😊 别发：你好、在吗`,
         checkboxValue1: [false],
       }
