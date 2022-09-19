@@ -22,7 +22,7 @@
       <u-col span="9">
         <button @click="$u.debounce(clickStart, 600, true)"
           class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
-          已在订阅中，准备验证资格
+          下一步
         </button>
       </u-col>
     </u-row>
@@ -61,10 +61,9 @@
           <button
             class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4"
             @click="confirmStart">
-            订阅中，现在开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;"
-              class="u-absolute">
+            订阅中，开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
               <u-icon style="display:inline-block;" name="fingerprint" color="red" size="28"></u-icon>
-            </text><text class="pl-5">免费</text>
+            </text><text class="pl-5">刷脸免费</text>
           </button>
         </view>
         <u-gap></u-gap>
@@ -113,7 +112,7 @@
       },
       confirmStart() {
         if (!this.checkboxValue1[0]) {
-          uni.$emit('showNotify', '开始前，请勾选：已知晓')
+          uni.$emit('showNotify', '开始前，请勾选：刷脸不扣钱')
           this.showAlert = false
           setTimeout(() => {
             this.showAlert = true

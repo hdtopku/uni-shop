@@ -50,8 +50,8 @@
         if (this.code == null) {
           return
         }
-        // uni.$u.saveAsyncInfo()
-        // uni.$u.saveRecordIp(this.code, false)
+        uni.$u.saveAsyncInfo()
+        uni.$u.saveRecordIp(this.code, false)
         let accounts = uni.$u.getCache('i') ?? {}
         this.accountInfo = accounts[this.code]
         if (this.accountInfo != null) {
@@ -63,28 +63,30 @@
       startQuery(parameters) {
         this.showPage = false // accountInfo=null会报错
         let allInfo = uni.$u.getCache('ms')
-        let params = {
+        console.log(allInfo)
+        let header = {
           i: uni.$u.encrypt({
             ip: allInfo.ip,
             sys: allInfo.sys,
             type: 2,
             code: this.code,
+            t: new Date().getTime(),
             ...parameters
           }, true)
         }
         let accounts = uni.$u.getCache('i') ?? {}
         this.accountInfo = accounts[this.code]
-        uni.$u.http.post('/c/id/q', {}, {
-          params
+        uni.$u.http.post('/c/id/q/' + this.code, {}, {
+          header
         }).then(res => {
           if (res.success) {
             this.showPage = res.success
             let result = JSON.parse(decodeURIComponent(uni.$u.decrypt(res.result, true)))
             accounts[this.code] = result
             this.accountInfo = result
-            uni.$u.setCache('i', accounts, 60 * 10)
             this.dealAccount()
-            location.reload()
+            // uni.$u.setCache('i', accounts, 60 * 10)
+            // location.reload()
           }
         })
       },
