@@ -23,7 +23,7 @@
     data() {
       return {
         showPage: false,
-        currentStep: 0,
+        currentStep: 1,
         code: null,
       }
     },

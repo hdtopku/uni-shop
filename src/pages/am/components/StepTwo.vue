@@ -15,11 +15,11 @@
 
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
-      <u-col span="3">
+      <!-- <u-col span="3">
         <u-button class="shadow animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext" type="error"
           plain shape="circle">上一步</u-button>
-      </u-col>
-      <u-col span="9">
+      </u-col> -->
+      <u-col span="12">
         <button @click="$u.debounce(clickStart, 600, true)"
           class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
           下一步
@@ -37,11 +37,14 @@
           <text style="font-size: 40upx;">1、验证时，若提示</text>
           <ui-tag class="animate__animated animate__hinge animate__slower animate__infinite" bg="bg-red-gradient"
             info="账户已使用" />
-          <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
+          <u-gap height="5"></u-gap>
+          <u-tag size="large" color="red" text="未成功，请截图给客服" plain></u-tag>
+
+          <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
             <a href="javascript:;" @click="subscribePersonal">先开个人方案</a>
             <a href="javascript:;" @click="$u.debounce(jumpStart, 600, true)">再免费升级</a>
-          </view>
+          </view> -->
         </view>
         <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
           <text style="font-size: 40upx;">2、若提示</text>
@@ -53,12 +56,6 @@
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
           <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
             description="多截图、直接问" type="success"></u-alert>
-          <!-- <u-checkbox-group style="float:right" v-model="checkboxValue1" placement="column"
-            @change="$u.debounce(checkboxChange(checkboxValue1), 600, true)">
-            <u-checkbox class="animate__animated animate__shakeX" v-show="showAlert" labelSize="20" size="25"
-              label="已知晓：刷脸不扣钱" :name="true">
-            </u-checkbox>
-          </u-checkbox-group> -->
           <u-gap height="20"></u-gap>
           <button
             class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4 text-xl"

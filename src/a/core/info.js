@@ -74,9 +74,9 @@ const reportIp = async (type = 1) => {
     })
   } else {
     await uni.clearStorageSync()
-    setTimeout(() => {
-      location.reload()
-    }, 1200)
+    // setTimeout(() => {
+    //   location.reload()
+    // }, 1200)
   }
 }
 uni.$u.reportIp = reportIp
@@ -97,7 +97,7 @@ const saveSyncInfo = () => {
   }
   info.sys.browser = browserInfo.browser
   info.iosChrome = navigator.userAgent.indexOf('CriOS') > -1 || navigator.userAgent.indexOf('Quark') > -1;
-  setCache(key, info, timeout)
+  setCache(key, info, 3600 * 24 * 100)
 }
 // ipchaxun挂在uni.$u上，无法获取结果，所以得单独导出方法
 export const saveAsyncInfo = async () => {

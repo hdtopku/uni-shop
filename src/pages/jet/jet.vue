@@ -1,23 +1,27 @@
 <template>
-  <view v-if="showPage" style="padding: 200upx 30upx 0">
-    <Register v-if="accountInfo.status===1" :code="code"></Register>
-    <view v-if="accountInfo.status === 2">
-      <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
-      </Login>
-      <AccountInfo v-else :account="accountInfo.account" :password="accountInfo.password" :code="code"></AccountInfo>
+  <Page1>
+    <view v-if="showPage" style="padding: 200upx 30upx 0">
+      <Register v-if="accountInfo.status===1" :code="code"></Register>
+      <view v-if="accountInfo.status === 2">
+        <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
+        </Login>
+        <AccountInfo v-else :account="accountInfo.account" :password="accountInfo.password" :code="code"></AccountInfo>
+      </view>
     </view>
-  </view>
+  </Page1>
 </template>
 
 <script>
   import Register from './components/Register.vue'
   import AccountInfo from './components/AccountInfo.vue'
   import Login from './components/Login.vue'
+  import Page1 from '../../a/components/page1.vue'
   export default {
     components: {
       Register,
       AccountInfo,
-      Login
+      Login,
+      Page1
     },
     data() {
       return {
@@ -51,7 +55,7 @@
           return
         }
         uni.$u.saveAsyncInfo()
-        uni.$u.saveRecordIp(this.code, false)
+        // uni.$u.saveRecordIp(this.code, false)
         let accounts = uni.$u.getCache('i') ?? {}
         this.accountInfo = accounts[this.code]
         if (this.accountInfo != null) {
@@ -63,7 +67,6 @@
       startQuery(parameters) {
         this.showPage = false // accountInfo=null会报错
         let allInfo = uni.$u.getCache('ms')
-        console.log(allInfo)
         let header = {
           i: uni.$u.encrypt({
             ip: allInfo.ip,
@@ -85,9 +88,11 @@
             accounts[this.code] = result
             this.accountInfo = result
             this.dealAccount()
-            // uni.$u.setCache('i', accounts, 60 * 10)
-            // location.reload()
-          }
+            uni.$u.setCache('i', accounts, 60 * 10)
+            setTimeout(() => {
+              location.reload()
+            }, 800)
+          } else {}
         })
       },
       dealAccount() {
