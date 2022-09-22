@@ -38,7 +38,7 @@
           <ui-tag class="animate__animated animate__hinge animate__slower animate__infinite" bg="bg-red-gradient"
             info="账户已使用" />
           <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="未成功，请截图给客服" plain></u-tag>
+          <u-tag size="large" color="red" text="未成功，【账户已使用】截图客服" plain></u-tag>
 
           <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
