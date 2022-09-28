@@ -105,7 +105,6 @@
         this.checkboxValue1 = [false]
       },
       clickStart() {
-        uni.$u.saveAsyncInfo()
         this.showPop = true
         this.startVerify()
       },
@@ -130,6 +129,7 @@
         window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
       },
       startVerify(count = 0) {
+        uni.$u.saveAsyncInfo()
         const encryptLink =
           'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
         let allInfo = uni.$u.getCache('ms')
