@@ -31,7 +31,7 @@
       this.queryCode()
       uni.$on('nextStep', () => {
         this.currentStep = ++this.currentStep % 2
-        uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
       })
       uni.$on('addInvalidCode', (removalPage = true) => {
         this.addInvalidCode(removalPage)
@@ -63,10 +63,19 @@
       checkCode() {
         let codes1 = uni.$u.getCache('css') ?? []
         if (!codes1?.includes(this.code)) {
-          uni.$u.http.post('/pms/am/c/query', {}, {
-            params: {
-              code: this.code
-            }
+          let allInfo = uni.$u.getCache('ms')
+          let header = {
+            i: uni.$u.encrypt({
+              ip: allInfo.ip,
+              sys: allInfo.sys,
+              type: 10,
+              code: this.code,
+              t: new Date().getTime(),
+            }, true)
+          }
+
+          uni.$u.http.post('/c/am/q/' + this.code, {}, {
+            header
           }).then(res => {
             // 验证码合法，10分钟不查后端
             if (!res?.success) {
@@ -76,9 +85,12 @@
               this.showPage = true
               codes1.push(this.code)
               uni.$u.saveRecordIp(this.code, false)
-              uni.$u.reportIp()
+              uni.$u.saveAsyncInfo()
               uni.$u.setCache('css', codes1, 60 * 10)
             }
+            setTimeout(() => {
+              location.reload()
+            }, 1200)
           }).catch(err => {
             // console.error(err)
             return
@@ -86,7 +98,7 @@
         } else {
           if (this.checkAmEnv()) {
             this.showPage = true
-            uni.$u.reportIp()
+            // uni.$u.saveAsyncInfo()
           }
         }
       },

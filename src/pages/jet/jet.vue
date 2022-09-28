@@ -71,7 +71,7 @@
           i: uni.$u.encrypt({
             ip: allInfo.ip,
             sys: allInfo.sys,
-            type: 2,
+            type: 10,
             code: this.code,
             t: new Date().getTime(),
             ...parameters

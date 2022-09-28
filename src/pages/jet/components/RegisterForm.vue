@@ -3,12 +3,12 @@
     <u-alert :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
     <u--input clearable placeholder="请输入标识，推荐用qq号/邮箱/手机等" border="surround" v-model="identity"
-      @confirm="$u.debounce(submit, 1000, true)" @change="change">
+      @confirm="$u.debounce(submit, 1000, true)">
     </u--input>
     <u-gap></u-gap>
     <u-row justify="center" gutter="2">
       <u-col span="4">
-        <u-checkbox-group v-model="checkboxValue1" placement="column" @change="checkboxChange">
+        <u-checkbox-group v-model="checkboxValue1" placement="column">
           <u-checkbox v-show="showAlert" class="animate__animated animate__shakeX" labelSize="18" size="25" label="确认无误"
             :name="true">
           </u-checkbox>
@@ -75,9 +75,7 @@
             this.showAlert = true
           }, 1)
         }
-      },
-      checkboxChange() {},
-      change() {},
+      }
     }
   }
 </script>

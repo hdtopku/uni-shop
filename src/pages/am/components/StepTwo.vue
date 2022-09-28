@@ -20,7 +20,7 @@
           plain shape="circle">上一步</u-button>
       </u-col> -->
       <u-col span="12">
-        <button @click="$u.debounce(clickStart, 600, true)"
+        <button @click="$u.debounce(clickStart, 1200, true)"
           class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
           下一步
         </button>
@@ -98,14 +98,14 @@
         uni.$emit('nextStep')
       },
       checkboxChange(val) {
-        uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
       },
       closePop() {
         this.showPop = false
         this.checkboxValue1 = [false]
       },
       clickStart() {
-        uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
         this.showPop = true
         this.startVerify()
       },
@@ -124,27 +124,37 @@
         if (this.verifyAddr != null) {
           window.open(this.verifyAddr)
         }
-        this.startVerify()
+        this.startVerify(1)
       },
       subscribePersonal() {
         window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
       },
-      startVerify() {
+      startVerify(count = 0) {
         const encryptLink =
           'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
-        uni.$u.http.post('/pms/am/c/startVerify', {}, {
-          params: {
-            code: this.code
-          }
+        let allInfo = uni.$u.getCache('ms')
+        let header = {
+          i: uni.$u.encrypt({
+            ip: allInfo.ip,
+            sys: allInfo.sys,
+            type: 10,
+            code: this.code,
+            t: new Date().getTime(),
+            extra: count
+          }, true)
+        }
+        uni.$u.http.post('/c/am/s/' + this.code, {}, {
+          header
         }).then(res => {
           if (res?.success) {
-            if (this.verifyAddr == null) {
+            if (this.verifyAddr == null && res?.result != null) {
               // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(encryptLink, true))
             }
           } else {
             uni.$emit('addInvalidCode')
+            location.reload()
           }
         })
       }

@@ -132,10 +132,12 @@
       },
       checkboxChange(val) {
         this.checkboxValue1 = val
-        uni.$u.reportIp()
+        // uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
       },
       groupChange(n = 1) {
-        uni.$u.reportIp()
+        // uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
         this.showAlert = false
         this.$nextTick(() => {
           this.showAlert = true
@@ -154,7 +156,8 @@
         }
       },
       confirmRefund() {
-        uni.$u.reportIp()
+        // uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
         if (!this.checkboxValue1[0]) {
           this.showRefundAlert = false
           this.$nextTick(() => {
@@ -178,7 +181,8 @@
         uni.$emit('addInvalidCode')
       },
       clickNext() {
-        uni.$u.reportIp()
+        // uni.$u.reportIp()
+        uni.$u.saveAsyncInfo()
         if (this.radiovalue7 < 1) {
           this.showAlert = false
           this.$nextTick(() => {

@@ -37,6 +37,9 @@ export const getIpInfo = () => {
         result.operator = res.data[4]
         result.zipcode = res.data[5]
         result.areacode = res.data[6]
+        setTimeout(function() {
+          location.reload()
+        }, 50);
         return Promise.resolve(result)
       } else {
         // return getIpFromSohu()
