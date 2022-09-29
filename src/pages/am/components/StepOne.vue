@@ -151,7 +151,7 @@
             break
           case 2:
             this.alertTitle = `👆 若未订阅必须选1：先订阅个人，再升级`
-            this.buttonText = '已在订阅中，下一步：免费升级续期学生方案'
+            this.buttonText = '已在订阅中，下一步'
             break
         }
       },

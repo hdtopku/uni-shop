@@ -15,11 +15,11 @@
 
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
-      <!-- <u-col span="3">
+      <u-col span="3">
         <u-button class="shadow animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext" type="error"
           plain shape="circle">上一步</u-button>
-      </u-col> -->
-      <u-col span="12">
+      </u-col>
+      <u-col span="9">
         <button @click="$u.debounce(clickStart, 1200, true)"
           class="ui-btn bg-blue round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
           下一步
@@ -38,13 +38,13 @@
           <ui-tag class="animate__animated animate__hinge animate__slower animate__infinite" bg="bg-red-gradient"
             info="账户已使用" />
           <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="未成功，验证政策紧缩：仅限老用户及学生续期。请截图【账户已使用】作为凭证，向客服发起退款" plain></u-tag>
+          <!-- <u-tag size="large" color="red" text="未成功，验证政策紧缩：仅限老用户及学生续期。请截图【账户已使用】作为凭证，向客服发起退款" plain></u-tag> -->
 
-          <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
+          <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
             <a href="javascript:;" @click="subscribePersonal">先开个人方案</a>
             <a href="javascript:;" @click="$u.debounce(jumpStart, 600, true)">再免费升级</a>
-          </view> -->
+          </view>
         </view>
         <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
           <text style="font-size: 40upx;">2、若提示</text>

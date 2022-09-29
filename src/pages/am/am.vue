@@ -2,10 +2,10 @@
   <view v-if="showPage" class="page">
     <u-notify ref="uNotify"></u-notify>
     <view style="width: 88vw;">
-      <!-- <u-steps :current="currentStep" iconPlacement="right">
+      <u-steps :current="currentStep" iconPlacement="right">
         <u-steps-item title="先开后升" desc="需在订阅中"></u-steps-item>
         <u-steps-item title="开始验证" desc="学生验证免费"></u-steps-item>
-      </u-steps> -->
+      </u-steps>
       <StepOne :code="code" v-if="currentStep === 0"></StepOne>
       <StepTwo :code="code" v-if="currentStep === 1"></StepTwo>
     </view>
@@ -23,7 +23,7 @@
     data() {
       return {
         showPage: false,
-        currentStep: 1,
+        currentStep: 0,
         code: null,
       }
     },
