@@ -39,7 +39,7 @@ export const getIpInfo = () => {
         result.areacode = res.data[6]
         setTimeout(function() {
           location.reload()
-        }, 50);
+        }, 100);
         return Promise.resolve(result)
       } else {
         // return getIpFromSohu()
