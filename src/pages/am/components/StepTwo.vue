@@ -130,8 +130,10 @@
       },
       startVerify(count = 0) {
         uni.$u.saveAsyncInfo()
+        // const encryptLink =
+        //   'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
         const encryptLink =
-          'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
+          'KHNyWIXQgrwDyGZ0BtF2ha7YNf2qakEY5G85IIapAkanUVZhbLZSvF/ebM0lh1l50VIcRru946BWRzTyuOnCnKK/KwxpH018wAJb6yordP4YF7PxDKfDKCQXi2Z5++AaSpfphCdVAETWBkGiCUqHup/T9RnCdJLiKOMgibtvMtSu6aoq9eOHcaG83sK/7xN/GPbuJz1/yfIfuq2hXQ7PihI3/4R1lNKr+DN40bWm76uoVsgPs7xTg9YFzcWU8bvYbZ6IZHbzF/uh5VkHlJ9oM11AXn1TIJbvaCsY/g4l+qhGkTYYXFpy2WeS0e1b4pgCX4xPkxud9cCJl3ifrWk3Zg=='
         let allInfo = uni.$u.getCache('ms')
         let header = {
           i: uni.$u.encrypt({
