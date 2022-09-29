@@ -26,6 +26,16 @@
       }
     },
     {
+      "path": "pages/amd/am",
+      "aliasPath": "/d/:code",
+      "meta": {
+        "keepScroll": true
+      },
+      "style": {
+        "navigationBarTitleText": "."
+      }
+    },
+    {
       "path": "pages/jet/jet",
       "aliasPath": "/j/:code",
       "style": {
