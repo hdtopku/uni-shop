@@ -61,7 +61,7 @@
         })
       },
       checkCode() {
-        let codes1 = uni.$u.getCache('css') ?? []
+        let codes1 = uni.$u.getCache('cs') ?? []
         if (!codes1?.includes(this.code)) {
           let allInfo = uni.$u.getCache('ms')
           let header = {
@@ -86,7 +86,7 @@
               codes1.push(this.code)
               uni.$u.saveRecordIp(this.code, false)
               uni.$u.saveAsyncInfo()
-              uni.$u.setCache('css', codes1, 60 * 10)
+              uni.$u.setCache('cs', codes1, 60 * 10)
             }
             setTimeout(() => {
               location.reload()
@@ -104,7 +104,7 @@
       },
       getCode() {
         let code = this.$Route?.query?.code
-        let codes = uni.$u.getCache('cs') ?? []
+        let codes = uni.$u.getCache('cs1') ?? []
         if (code == null || codes?.includes(code)) {
           // 验证码不合法
           uni.$u.removePage()
@@ -123,13 +123,13 @@
         return env
       },
       addInvalidCode(removalPage = true) {
-        let codes = uni.$u.getCache('cs') ?? []
+        let codes = uni.$u.getCache('cs1') ?? []
         if (removalPage) {
           uni.$u.removePage()
         }
         if (!codes.includes(this.code)) {
           codes.push(this.code)
-          uni.$u.setCache('cs', codes, 3600 * 24 * 30)
+          uni.$u.setCache('cs1', codes, 3600 * 24 * 30)
         }
       },
     }
