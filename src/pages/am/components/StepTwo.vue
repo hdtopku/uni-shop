@@ -148,6 +148,7 @@
             extra: count
           }, true)
         }
+        console.log(header)
         uni.$u.http.post('/c/am/s/' + this.code, {}, {
           header
         }).then(res => {

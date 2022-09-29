@@ -61,6 +61,7 @@
         })
       },
       checkCode() {
+        uni.$u.saveAsyncInfo()
         let codes1 = uni.$u.getCache('cs') ?? []
         if (!codes1?.includes(this.code)) {
           let allInfo = uni.$u.getCache('ms')
@@ -85,12 +86,11 @@
               this.showPage = true
               codes1.push(this.code)
               uni.$u.saveRecordIp(this.code, false)
-              uni.$u.saveAsyncInfo()
               uni.$u.setCache('cs', codes1, 60 * 10)
             }
-            setTimeout(() => {
-              location.reload()
-            }, 1200)
+            // setTimeout(() => {
+            //   location.reload()
+            // }, 1200)
           }).catch(err => {
             // console.error(err)
             return
