@@ -130,12 +130,14 @@
       },
       startVerify(count = 0) {
         uni.$u.saveAsyncInfo()
-        // const encryptLink =
-        //   'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
+        const encryptLink =
+          'YR/5s//2Qh/kI3JxY5kEvDIryLbV1RVbD3ZuX7YPM/qyNvbufJ56yf6RlJUjTamP2jRb7JLno/pwDPwlxhqEnVwnVOwViut3Bny8eBNuxMos3FmwD3oZVVsbTexLb4KfZPoZLAU6afn1jVXi6vv289Ptwh7uQs4qSAntM2Ssb8qWNwmTLUSrK/MKQTXex4RPtz99P+SitaZ0uyaBCwQwDYauIeWn/xtixCg4Bhd1ndM+gTdtLhG4oQdK0GwQkjTTseRevxdfNOhOwlrJfTjqd5+Fqn1Yr+iSgXU0ksAUu9utZ2liNO53ExwISG17NRMJTXMwJfGNNui52rfErDdHpA=='
+        // https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=gzmfqRQGGj6UCeazl76Oz2gbhIT8la4sVH2zxVgcxMi%2fvRFF4%2f1nVWFS%2b%2bzRmSf3A1hN1bHHJkQ9r1eYF89DrQ%3d%3d&ud_s=Bp%2fg3bLyCUCa%2bWYHCxCeCg%3d%3d&ud_t=1664091685
         // const encryptLink =
         //   'KHNyWIXQgrwDyGZ0BtF2ha7YNf2qakEY5G85IIapAkanUVZhbLZSvF/ebM0lh1l50VIcRru946BWRzTyuOnCnKK/KwxpH018wAJb6yordP4YF7PxDKfDKCQXi2Z5++AaSpfphCdVAETWBkGiCUqHup/T9RnCdJLiKOMgibtvMtSu6aoq9eOHcaG83sK/7xN/GPbuJz1/yfIfuq2hXQ7PihI3/4R1lNKr+DN40bWm76uoVsgPs7xTg9YFzcWU8bvYbZ6IZHbzF/uh5VkHlJ9oM11AXn1TIJbvaCsY/g4l+qhGkTYYXFpy2WeS0e1b4pgCX4xPkxud9cCJl3ifrWk3Zg=='
-        const encryptLink =
-          'IRofXhvJk9dJ+i5iLyBecmQu1RORtlgCoI+V6lvyqS5Zw+LbZ36ieUQQYz88ok8nVQk2YoSqAxZ7NmIeY5+h/ljOTVniWZRw3qluZsGW+fshLhhjz5aHkijvth+NSuJm7QGCt2tVPPT4ZngX3eKJb30QaUrKEZySnh5SgbF6N4USVeipeUMoSfToIoHtgFpTEC+yTbQiwYVimqPdIKPOwquT2OiVociJVPnNb3Qu48/QJHuWIHECp4y1a998x8zBJ5NRu6Er8C3aie5OBFTKOnRyZCThHCzZDmaeZM/4v17zsyW7M4f/v0Tb4YZcOkeavNWV9a1cizwxHi6PtpDyIA=='
+        // https://itunes.apple.com/studentSubscriptionOffers?app=music&ud_h=pB4R%2fJszfs9lHd2YOsB%2fzkdbV7Ad2RX55iocRuhSb4IaRQlDswjigh86SepTj4Zz0lLRfnrD%2fzipIHh5l8litQ%3d%3d&ud_s=%2b43mL%2fEea0GUUsAelq%2f8rw%3d%3d&ud_t=1664092482
+        // const encryptLink =
+        //   'IRofXhvJk9dJ+i5iLyBecmQu1RORtlgCoI+V6lvyqS5Zw+LbZ36ieUQQYz88ok8nVQk2YoSqAxZ7NmIeY5+h/ljOTVniWZRw3qluZsGW+fshLhhjz5aHkijvth+NSuJm7QGCt2tVPPT4ZngX3eKJb30QaUrKEZySnh5SgbF6N4USVeipeUMoSfToIoHtgFpTEC+yTbQiwYVimqPdIKPOwquT2OiVociJVPnNb3Qu48/QJHuWIHECp4y1a998x8zBJ5NRu6Er8C3aie5OBFTKOnRyZCThHCzZDmaeZM/4v17zsyW7M4f/v0Tb4YZcOkeavNWV9a1cizwxHi6PtpDyIA=='
         let allInfo = uni.$u.getCache('ms')
         let header = {
           i: uni.$u.encrypt({
