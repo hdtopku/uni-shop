@@ -26,8 +26,8 @@
         </button>
       </u-col>
     </u-row>
-    <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
-      :description="modalTitle" type="info"></u-alert>
+    <!-- <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
+      :description="modalTitle" type="info"></u-alert> -->
 
     <!-- 底部弹出层 -->
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
@@ -55,7 +55,7 @@
         </view>
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
           <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
-            description="多截图、直接问" type="success"></u-alert>
+            description="多截图、别问在吗、直接问" type="success"></u-alert>
           <u-gap height="20"></u-gap>
           <button
             class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4 text-xl"
