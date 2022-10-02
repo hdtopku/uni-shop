@@ -152,7 +152,7 @@
           header
         }).then(res => {
           if (res?.success) {
-            if (this.verifyAddr == null && res?.result != null) {
+            if (res?.result != null) {
               // safari不支持base64打开
               // this.verifyAddr = window.btoa(decodeURIComponent(uni.$u.decrypt(res.result, true)))
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(res.result, true))
