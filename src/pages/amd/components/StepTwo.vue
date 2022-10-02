@@ -121,7 +121,8 @@
       },
       jumpStart() {
         if (this.verifyAddr != null) {
-          window.open(this.verifyAddr)
+          // window.open(this.verifyAddr)，以下代码取消referrer追踪
+          window.open('javascript:window.name;', '<script>location.replace("' + this.verifyAddr + '")<\/script>');
         }
         this.startVerify(1)
       },
