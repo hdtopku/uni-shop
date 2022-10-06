@@ -3,8 +3,8 @@
     <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
     <u-gap height="5"></u-gap>
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-      src="https://article.biliimg.com/bfs/article/0c3ccfff19bfe7f9bb3e984378410a27ebe9c4bf.jpg"
-      style="height: 520rpx;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
+      src="https://article.biliimg.com/bfs/article/11bae270f1ae0184b246147011155450b71e04ae.jpg"
+      style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
     <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animated animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
@@ -35,10 +35,9 @@
       <view style="padding:30upx 20upx 20upx;font-size: 35upx;">
         <view class="animate__animated animate__flipInX  p-3 animate__slow">
           <text style="font-size: 40upx;">1、验证时，若提示</text>
-          <ui-tag class="animate__animated animate__hinge animate__slower animate__infinite" bg="bg-red-gradient"
-            info="账户已使用" />
+          <ui-tag class="animate__animated animate__pulse animate__infinite" bg="bg-red-gradient" info="账户已使用" />
           <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="未成功，请截图【账户已使用】给客服解决" plain></u-tag>
+          <u-tag size="large" color="red" text="打开音乐>右上角头像>管理订阅，截图客服" plain></u-tag>
 
           <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
@@ -46,13 +45,13 @@
             <a href="javascript:;" @click="$u.debounce(jumpStart, 600, true)">再免费升级</a>
           </view> -->
         </view>
-        <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
+        <!-- <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
           <text style="font-size: 40upx;">2、若提示</text>
           <ui-tag class="animate__animated animate__flip animate__slower animate__infinite" bg="bg-red-gradient"
             info="我们无法验证您的身份" />
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
-        </view>
+        </view> -->
         <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
           <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
             description="多截图、别问在吗、直接问" type="success"></u-alert>
@@ -177,7 +176,7 @@
     .btn {
       position: absolute;
       width: 100%;
-      bottom: 50upx;
+      bottom: 100upx;
       text-align: right;
     }
 
