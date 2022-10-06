@@ -34,7 +34,7 @@
       closeable>
       <view style="padding:30upx 20upx 20upx;font-size: 35upx;">
         <view class="animate__animated animate__flipInX  p-3 animate__slow">
-          <text style="font-size: 40upx;">1、验证时，若提示</text>
+          <text style="font-size: 40upx;">若提示</text>
           <ui-tag class="animate__animated animate__pulse animate__infinite" bg="bg-red-gradient" info="账户已使用" />
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="打开音乐>右上角头像>管理订阅，截图客服" plain></u-tag>
