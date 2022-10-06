@@ -36,11 +36,11 @@
       closeable>
       <view style="font-size: 35upx;text-align: center;">
         <view class="animate__flipInX p-3 animate__slow">
-          <text style="font-size: 30upx;">若提示：</text>
+          <text style="font-size: 30upx;"></text>
           <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite" bg="bg-red-gradient"
-            info="账户已使用" />
+            info="验证完后" />
           <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="打开音乐>右上角头像>管理订阅，截图客服" plain></u-tag>
+          <u-tag size="large" color="red" text="点开订阅>查看所有方案>学生方案勾上即可" plain></u-tag>
 
           <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
             class="mt-2 border border-blue p-2 ">
@@ -110,7 +110,7 @@
       },
       clickStart() {
         this.jumpStart()
-        // this.showPop = true
+        this.showPop = true
         // setTimeout(() => {
         //   this.jumpStart()
         // }, 1500)

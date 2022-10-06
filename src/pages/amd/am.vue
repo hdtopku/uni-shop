@@ -1,5 +1,5 @@
 <template>
-  <view v-if="showPage" class="page bg-pink-thin">
+  <view v-if="showPage" class="page bg-pink-light">
     <u-notify ref="uNotify"></u-notify>
     <view style="width: 88vw;">
       <!-- <u-steps :current="currentStep" iconPlacement="right">
