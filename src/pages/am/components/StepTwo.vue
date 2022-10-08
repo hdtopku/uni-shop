@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
+    <!-- <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider> -->
     <u-gap height="5"></u-gap>
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
       src="https://article.biliimg.com/bfs/article/11bae270f1ae0184b246147011155450b71e04ae.jpg"
@@ -10,7 +10,6 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
       <u-gap height="6"></u-gap>
-      <view>且验证刷脸不扣钱</view>
     </view>
 
     <!-- 底部按钮 -->
@@ -170,6 +169,7 @@
 
 <style lang="scss" scoped>
   .container {
+    padding-top: 120rpx;
     position: relative;
     height: 950upx;
 

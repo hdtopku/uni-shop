@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider>
+    <!-- <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider> -->
     <u-gap height="5"></u-gap>
     <!-- src="https://article.biliimg.com/bfs/article/0c3ccfff19bfe7f9bb3e984378410a27ebe9c4bf.jpg" -->
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
@@ -8,11 +8,8 @@
       style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
     <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animated animate__bounce animate__repeat-3">
-      <view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
-      消失就成功，且刷脸不扣钱
-
-      <u-gap height="6"></u-gap>
-      <view>扣费时间不变不显示为明年</view>
+      消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
+      扣费时间不变不显示为明年
     </view>
 
     <!-- 底部按钮 -->
@@ -183,6 +180,7 @@
   .container {
     position: relative;
     height: 950upx;
+    padding-top: 120rpx;
 
     .btn {
       position: absolute;
