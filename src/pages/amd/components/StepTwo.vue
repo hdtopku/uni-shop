@@ -24,9 +24,13 @@
     </u-row>
     <u-gap height="5"></u-gap>
     <div style="text-align: center;">
-      <div class="borders border-blue p-2"
+      <div class="borders border-blue p-2 my-2"
         style="font-size: 28upx;color:red;display: inline-block;border-radius: 10px;">
-        验证完后：点开订阅>查看所有方案>学生方案勾上即可</div>
+        验证完后：点管理或直接点开订阅
+        >查看所有方案>学生方案勾上即可
+      </div>
+      <img style="display: inline-block;width: 400upx;"
+        src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
     </div>
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
       closeable>
@@ -144,7 +148,6 @@
   .container {
     position: relative;
     height: 950upx;
-    padding-top: 120rpx;
 
     .btn {
       // position: absolute;
