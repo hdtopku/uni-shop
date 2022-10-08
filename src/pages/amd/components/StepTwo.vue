@@ -12,12 +12,9 @@
       扣费时间不变不显示为明年
     </view>
 
+    <u-gap height="50"></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
-      <!-- <u-col span="3">
-        <u-button class="shadow animate__slideInLeft animate__slower animate__repeat-2" @click="clickNext" type="error"
-          plain shape="circle">上一步</u-button>
-      </u-col> -->
       <u-col span="12">
         <button @click="$u.debounce(clickStart, 1200, true)"
           class="ui-btn bg-orange-gradient round block shadow animate__animated animate__heartBeat animate__slower animate__infinite py-4">
@@ -25,47 +22,24 @@
         </button>
       </u-col>
     </u-row>
-    <!-- <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
-      :description="modalTitle" type="info">
-    </u-alert> -->
-    <!-- 底部弹出层 -->
+    <u-gap height="5"></u-gap>
+    <div style="text-align: center;">
+      <div class="borders border-blue p-2"
+        style="font-size: 28upx;color:red;display: inline-block;border-radius: 10px;">
+        验证完后：点开订阅>查看所有方案>学生方案勾上即可</div>
+    </div>
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
       closeable>
       <view style="font-size: 35upx;text-align: center;">
         <view class="animate__flipInX p-3 animate__slow">
           <text style="font-size: 30upx;"></text>
-          <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite" bg="bg-red-gradient"
+          <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite p-4" bg="bg-red-gradient"
             info="验证完后" />
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="点开订阅>查看所有方案>学生方案勾上即可" plain></u-tag>
 
-          <!-- <view style="display: flex; justify-content: space-evenly;border-radius: 10upx;"
-            class="mt-2 border border-blue p-2 ">
-            <a href="javascript:;" @click="subscribePersonal">先开个人方案</a>
-            <a href="javascript:;" @click="$u.debounce(jumpStart, 600, true)">再免费升级</a>
-          </view> -->
           <u-gap></u-gap>
         </view>
-        <!-- <view class="animate__animated p-3 animate__delay-1s animate__flipInX animate__slow">
-          <text style="font-size: 40upx;">2、若提示</text>
-          <ui-tag class="animate__animated animate__flip animate__slower animate__infinite" bg="bg-red-gradient"
-            info="我们无法验证您的身份" />
-          <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
-        </view> -->
-        <!-- <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
-          <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
-            description="多截图、别问在吗、直接问" type="success"></u-alert>
-          <u-gap height="20"></u-gap>
-          <button
-            class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4 text-xl"
-            @click="jumpStart">
-            订阅中，开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
-              <u-icon style="display:inline-block;" name="fingerprint" color="red" size="28"></u-icon>
-            </text><text class="pl-5">刷脸免费</text>
-          </button>
-        </view>
-        <u-gap></u-gap> -->
       </view>
     </u-popup>
   </view>
@@ -81,8 +55,6 @@
         verifyAddr: null,
         showAlert: true,
         showPop: false,
-        modalTitle: `多截图、好沟通、直接问
-        😊 别发：你好、在吗`,
         checkboxValue1: [false],
       }
     },
@@ -107,18 +79,10 @@
       },
       clickStart() {
         this.jumpStart()
-        this.showPop = true
-        // setTimeout(() => {
-        //   this.jumpStart()
-        // }, 1500)
       },
       confirmStart() {
         if (!this.checkboxValue1[0]) {
           uni.$emit('showNotify', '开始前，请勾选：刷脸不扣钱')
-          this.showAlert = false
-          setTimeout(() => {
-            this.showAlert = true
-          }, 1)
         } else {
           this.jumpStart()
         }
@@ -183,7 +147,7 @@
     padding-top: 120rpx;
 
     .btn {
-      position: absolute;
+      // position: absolute;
       width: 100%;
       bottom: 100upx;
       text-align: right;

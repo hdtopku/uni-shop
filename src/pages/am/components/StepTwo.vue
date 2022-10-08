@@ -51,7 +51,7 @@
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="换个浏览器验证，即可解决！如谷歌、qq浏览器等" plain></u-tag>
         </view> -->
-        <view class="animate__animated animate__delay-2s animate__flipInX animate__slow">
+        <view class="animate__animated animate__delay-1s animate__flipInX animate__slow">
           <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: 70upx;right:0;"
             description="多截图、别问在吗、直接问" type="success"></u-alert>
           <u-gap height="20"></u-gap>
