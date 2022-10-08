@@ -29,7 +29,7 @@
         验证完后：点管理或直接点开订阅
         >查看所有方案>学生方案勾上即可
       </div>
-      <img style="display: inline-block;width: 400upx;"
+      <img style="display: inline-block;width: 460upx;"
         src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
     </div>
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
