@@ -1,8 +1,5 @@
 <template>
-  <view class="container">
-    <!-- <u-divider textSize="16" text="学生验证不扣钱，每年下单维持1年"></u-divider> -->
-    <u-gap height="5"></u-gap>
-    <!-- src="https://article.biliimg.com/bfs/article/0c3ccfff19bfe7f9bb3e984378410a27ebe9c4bf.jpg" -->
+  <view class="">
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
       src="https://article.biliimg.com/bfs/article/11bae270f1ae0184b246147011155450b71e04ae.jpg"
       style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
@@ -11,8 +8,9 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view>
-
-    <u-gap height="50"></u-gap>
+    <u-gap height="60"></u-gap>
+    <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
+      type="error"></u-alert>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
@@ -26,7 +24,7 @@
     <div style="text-align: center;">
       <div class="borders border-blue p-2 my-2"
         style="font-size: 28upx;color:red;display: inline-block;border-radius: 10px;">
-        验证完后：点管理或直接点开订阅
+        验证后：点管理或直接点开订阅
         >查看所有方案>学生方案勾上即可
       </div>
       <img style="display: inline-block;width: 460upx;"

@@ -11,7 +11,8 @@
       扣费时间不变不显示为明年
       <u-gap height="6"></u-gap>
     </view>
-
+    <u-gap></u-gap>
+    <u-alert class=" animate__fadeInRight animate__slower" style="" :description="modalTitle" type="error"></u-alert>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <!-- <u-col span="3">
@@ -58,9 +59,10 @@
           <button
             class="ui-btn bg-blue round block shadow-blur animate__animated animate__heartBeat animate__slower animate__infinite py-4 text-xl"
             @click="jumpStart">
-            订阅中，开始验证<text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
+            开始验证
+            <!-- <text style="color: #ff4c4c;font-size: ;margin-top: -10upx;margin-left: -20upx;" class="u-absolute">
               <u-icon style="display:inline-block;" name="fingerprint" color="red" size="28"></u-icon>
-            </text><text class="pl-5">刷脸免费</text>
+            </text><text class="pl-5">刷脸免费</text> -->
           </button>
         </view>
         <u-gap></u-gap>
@@ -79,8 +81,7 @@
         verifyAddr: null,
         showAlert: true,
         showPop: false,
-        modalTitle: `多截图、好沟通、直接问
-        😊 别发：你好、在吗`,
+        modalTitle: `验证前：若有免费先开免费的；若中途取消先免费重开再开始👇`,
         checkboxValue1: [false],
       }
     },
@@ -174,7 +175,7 @@
     height: 950upx;
 
     .btn {
-      position: absolute;
+      // position: absolute;
       width: 100%;
       bottom: 100upx;
       text-align: right;
