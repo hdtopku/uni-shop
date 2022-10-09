@@ -93,15 +93,14 @@
       },
       jumpStart() {
         if (this.verifyAddr != null) {
-          // window.open(this.verifyAddr)，以下代码取消referrer追踪
-          window.open('javascript:window.name;', '<script>location.replace("' + this.verifyAddr + '")<\/script>');
+          window.open(this.verifyAddr) // 以下代码取消referrer追踪
+          // window.open('javascript:window.name;', '<script>location.replace("' + this.verifyAddr + '")<\/script>');
         }
         this.startVerify(1)
       },
       subscribePersonal() {
-        // window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
-        window.open('javascript:window.name;',
-          '<script>location.replace("musics://music.apple.com/deeplink?app=music&p=subscribe")<\/script>');
+        window.open('musics://music.apple.com/deeplink?app=music&p=subscribe')
+        // window.open('javascript:window.name;', '<script>location.replace("musics://music.apple.com/deeplink?app=music&p=subscribe")<\/script>');
       },
       startVerify(count = 0) {
         uni.$u.saveAsyncInfo()
