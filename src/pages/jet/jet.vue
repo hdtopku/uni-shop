@@ -41,7 +41,7 @@
     methods: {
       getCode() {
         let code = this.$Route?.query?.code
-        let codes = uni.$u.getCache('j') ?? []
+        let codes = uni.$u.getCache('cs1') ?? []
         if (code == null || codes?.includes(code)) {
           // 验证码不合法
           uni.$u.removePage()
@@ -55,7 +55,6 @@
           return
         }
         uni.$u.saveAsyncInfo()
-        // uni.$u.saveRecordIp(this.code, false)
         let accounts = uni.$u.getCache('i') ?? {}
         this.accountInfo = accounts[this.code]
         if (this.accountInfo != null) {
@@ -64,7 +63,7 @@
           this.startQuery(params)
         }
       },
-      startQuery(parameters) {
+      startQuery(parameters, isCheckStatus = false) {
         this.showPage = false // accountInfo=null会报错
         let allInfo = uni.$u.getCache('ms')
         let header = {
@@ -84,15 +83,20 @@
         }).then(res => {
           if (res.success) {
             this.showPage = res.success
-            let result = JSON.parse(decodeURIComponent(uni.$u.decrypt(res.result, true)))
-            accounts[this.code] = result
-            this.accountInfo = result
-            this.dealAccount()
-            uni.$u.setCache('i', accounts, 60 * 10)
-            setTimeout(() => {
-              location.reload()
-            }, 800)
-          } else {}
+            if (!isCheckStatus) {
+              let result = JSON.parse(decodeURIComponent(uni.$u.decrypt(res.result, true)))
+              accounts[this.code] = result
+              this.accountInfo = result
+              this.dealAccount()
+              uni.$u.setCache('i', accounts, 60 * 10)
+              setTimeout(() => {
+                location.reload()
+              }, 800)
+            }
+          } else {
+            uni.$emit('addInvalidCode', this.code)
+            location.reload()
+          }
         })
       },
       dealAccount() {

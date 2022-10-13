@@ -9,7 +9,7 @@
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
     </u--input>
     <u-gap></u-gap>
-    <u-button type="primary" @click="$u.debounce(submit, 1000, true)">输入并提取</u-button>
+    <u-button type="primary" @click="submit">输入并提取</u-button>
   </view>
 </template>
 

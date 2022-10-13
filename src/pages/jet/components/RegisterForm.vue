@@ -3,7 +3,7 @@
     <u-alert :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
     <u--input clearable placeholder="请输入标识，推荐用qq号/邮箱/手机等" border="surround" v-model="identity"
-      @confirm="$u.debounce(submit, 1000, true)">
+      @confirm="$u.debounce(submit, 50, true)">
     </u--input>
     <u-gap></u-gap>
     <u-row justify="center" gutter="2">
@@ -15,7 +15,7 @@
         </u-checkbox-group>
       </u-col>
       <u-col span="6">
-        <u-button @click="$u.debounce(submit, 1000, true)" type="primary">提交</u-button>
+        <u-button @click="$u.debounce(submit, 50, true)" type="primary">提交</u-button>
       </u-col>
     </u-row>
   </view>

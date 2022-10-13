@@ -1,10 +1,24 @@
 <script>
   export default {
-    onLaunch: function() {},
+    onLaunch: function() {
+      uni.$on('addInvalidCode', this.addInvalidCode)
+    },
     onShow: function() {
       uni.$emit('startVerify')
+      uni.$emit('startQuery', {}, true)
     },
-    onHide: function() {}
+    onHide: function() {},
+    methods: {
+      addInvalidCode(code) {
+        console.log(code)
+        let codes = uni.$u.getCache('cs1') ?? []
+        uni.$u.removePage()
+        if (code != null && !codes.includes(code)) {
+          codes.push(code)
+          uni.$u.setCache('cs1', codes, 3600 * 24 * 30)
+        }
+      },
+    }
   }
 </script>
 

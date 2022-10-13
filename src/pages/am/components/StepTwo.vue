@@ -157,7 +157,7 @@
               this.verifyAddr = decodeURIComponent(uni.$u.decrypt(res.result, true))
             }
           } else {
-            uni.$emit('addInvalidCode')
+            uni.$emit('addInvalidCode', this.code)
             // uni.$u.setCache('cs', [], 60 * 10)
             // uni.$u.setCache('cs1', [], 60 * 10)
             location.reload()
