@@ -1,7 +1,9 @@
 <template>
   <view>
-    1
-    <web-view :webview-styles="webviewStyles" :src="src"></web-view>
+    <u-gap height="300"></u-gap>
+    <u-button @click="openLink" size="large" :type="isLink() ? 'primary' : 'info'">去下载</u-button>
+    <u-gap></u-gap>
+    <u--input clearable border="surround" v-model="link"></u--input>
   </view>
 </template>
 
@@ -9,28 +11,20 @@
   export default {
     data() {
       return {
-        src: 'https://baidu.com',
-        webviewStyles: {
-          progress: {
-            color: '#FF3333'
-          }
-        }
+        link: 'https://baidu.com',
       }
     },
-    onReady() {
-      // window.open("https://baidu.com", "_blank")
-      // parent.location.href = "https://tb.j5k6.com/ddp5b"
-      // parent.location.href = "https://baidu.com"
-      // window.top.location = "https://baidu.com"
-      // var currentWebview = this.$scope.$getAppWebview()
-      // setTimeout(function() {
-      //   let wv = currentWebview.children()[0]
-      //   wv.setStyle({
-      //     top: 220,
-      //     height: 300
-      //   })
-      // }, 1000);
-    },
-    methods: {}
+    onReady() {},
+    methods: {
+      isLink() {
+        const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
+        const r = this.link?.match(reg);
+        return r != null;
+
+      },
+      openLink() {
+        window.open(this.link)
+      }
+    }
   }
 </script>
