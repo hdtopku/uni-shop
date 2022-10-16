@@ -18,12 +18,13 @@
     methods: {
       isLink() {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
-        const r = this.link?.match(reg);
+        const r = this.link?.trim().match(reg);
         return r != null;
-
       },
       openLink() {
-        window.open(this.link)
+        if (this.isLink()) {
+          window.open(this.link)
+        }
       }
     }
   }
