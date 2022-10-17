@@ -26,6 +26,12 @@
         </button>
       </u-col>
     </u-row>
+    <u-gap></u-gap>
+    <div style="text-align: center;">
+      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
+        text="附：差评师、恶意退款（全网禁拍名单）">
+      </u-link>
+    </div>
     <!-- <u-alert class=" animate__fadeInRight animate__slower" style="position: absolute;bottom: -80upx;right:0;"
       :description="modalTitle" type="info"></u-alert> -->
 

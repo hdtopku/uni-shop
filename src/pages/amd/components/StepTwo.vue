@@ -9,8 +9,15 @@
       扣费时间不变不显示为明年
     </view>
     <u-gap height="60"></u-gap>
-    <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
-      type="error"></u-alert>
+    <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
+      type="error"></u-alert> -->
+
+    <div style="text-align: center;">
+      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
+        text="附：差评师、恶意退款（全网禁拍名单）">
+      </u-link>
+    </div>
+    <u-gap></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
