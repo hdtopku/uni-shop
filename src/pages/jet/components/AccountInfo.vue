@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <u-gap height="80"></u-gap>
+    <u-gap height="200"></u-gap>
     <u-row justify="space-between" gutter="20">
       <u-col span="4">
         <u-button @click="jumpTo" type="error" plain class="shadow-sm">教程</u-button>
