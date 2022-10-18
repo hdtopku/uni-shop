@@ -1,8 +1,8 @@
 <template>
   <view class="p-3">
     <u-gap></u-gap>
-    <u-divider text="绑定标识，自助提取"></u-divider>
-    <RegisterForm :code="code"></RegisterForm>
+    <u-divider text="自助注册及提取"></u-divider>
+    <RegisterForm buttonName="注册" :code="code"></RegisterForm>
   </view>
 </template>
 

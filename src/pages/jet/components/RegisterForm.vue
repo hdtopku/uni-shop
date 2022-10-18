@@ -15,7 +15,7 @@
         </u-checkbox-group>
       </u-col>
       <u-col span="6">
-        <u-button @click="$u.debounce(submit, 50, true)" type="primary">提交</u-button>
+        <u-button @click="$u.debounce(submit, 50, true)" type="primary">{{buttonName}}</u-button>
       </u-col>
     </u-row>
   </view>
@@ -25,7 +25,11 @@
   export default {
     props: {
       code: null,
-      isUpdate: false
+      isUpdate: false,
+      buttonName: {
+        type: String,
+        default: '提交'
+      }
     },
     data() {
       return {
@@ -33,10 +37,9 @@
         old: '',
         checkboxValue1: [false],
         showAlert: true,
-        alertTitle: `请输入标识：
-        1、标识作为密码，用于自助提取，你必须记住
-        2、8-24位、仅限字母、数字、符号
-        3、推荐使用qq号/邮箱/手机等，以便记忆`,
+        alertTitle: `输入标识，完成注册：
+        1、标识相当于密码，用于自助提取，你必须记住
+        2、8-24位，推荐使用qq号/邮箱/手机等，以便记忆`,
       }
     },
     created() {
@@ -51,6 +54,10 @@
     },
     methods: {
       submit() {
+        if (this.identity?.trim()?.length < 8) {
+          uni.$emit('showNotify', '标识太短了')
+          return
+        }
         let params = {
           identity: this.identity,
           code: this.code

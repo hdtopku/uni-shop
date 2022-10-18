@@ -14,7 +14,25 @@
         link: 'https://baidu.com',
       }
     },
-    onReady() {},
+    onReady() {
+      uni.connectSocket({
+        url: 'ws://localhost:8080/websocket',
+        data() {
+          return {
+            x: '',
+            y: ''
+          };
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        protocols: ['protocol1'],
+        method: 'GET'
+      });
+      uni.onSocketOpen(function(res) {
+        console.log('WebSocket连接已打开！');
+      });
+    },
     methods: {
       isLink() {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;

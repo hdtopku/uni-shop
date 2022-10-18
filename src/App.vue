@@ -10,7 +10,6 @@
     onHide: function() {},
     methods: {
       addInvalidCode(code) {
-        console.log(code)
         let codes = uni.$u.getCache('cs1') ?? []
         uni.$u.removePage()
         if (code != null && !codes.includes(code)) {

@@ -1,5 +1,6 @@
 <template>
   <view>
+    <u-notify ref="uNotify"></u-notify>
     <slot></slot>
   </view>
 </template>
@@ -11,6 +12,7 @@
     },
     created(option) {
       uni.$on('saveAsyncInfo', this.saveAsyncInfo)
+      uni.$on('showNotify', this.notify)
     },
     methods: {
       saveAsyncInfo() {
@@ -20,6 +22,18 @@
           //   location.reload()
           // }, 1200)
         }
+      },
+      notify(message = '', top = 10) {
+        this.$refs.uNotify.show({
+          top,
+          type: 'error',
+          color: '#fff',
+          bgColor: '#ff4c4c',
+          message: message,
+          duration: 1000 * 3,
+          fontSize: 25,
+          safeAreaInsetTop: true
+        })
       },
     },
   }
