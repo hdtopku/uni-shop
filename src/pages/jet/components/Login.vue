@@ -1,9 +1,8 @@
 <template>
   <view>
-    <u-notify ref="uNotify"></u-notify>
     <u-gap></u-gap>
-    <u-divider text="输入标识，自助提取"></u-divider>
-    <u-alert title="标识提示：" :description="tip" type="error"></u-alert>
+    <u-divider text="输入密码，自助提取"></u-divider>
+    <u-alert title="密码提示：" :description="tip" type="error"></u-alert>
     <u-gap></u-gap>
     <u--input clearable placeholder="请完整输入标识" border="surround" v-model="identity" @confirm="submit"
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
@@ -40,19 +39,7 @@
           })
           return
         }
-        this.notify()
-      },
-      notify() {
-        this.$refs.uNotify.show({
-          top: 1,
-          type: 'error',
-          color: '#fff',
-          bgColor: '#ff4c4c',
-          message: `标识不正确`,
-          duration: 1000 * 5,
-          fontSize: 18,
-          safeAreaInsetTop: true
-        })
+        uni.$emit('showNotify', '不正确，请重新输入')
       },
     }
   }

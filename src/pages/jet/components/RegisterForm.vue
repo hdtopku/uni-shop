@@ -2,7 +2,7 @@
   <view>
     <u-alert :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="请输入标识，推荐用qq号/邮箱/手机等" border="surround" v-model="identity"
+    <u--input clearable placeholder="请设置密码，推荐输入qq号/邮箱/手机等" border="surround" v-model="identity"
       @confirm="$u.debounce(submit, 50, true)">
     </u--input>
     <u-gap></u-gap>
@@ -37,9 +37,8 @@
         old: '',
         checkboxValue1: [false],
         showAlert: true,
-        alertTitle: `输入标识，完成注册：
-        1、标识相当于密码，用于自助提取，你必须记住
-        2、8-24位，推荐使用qq号/邮箱/手机等，以便记忆`,
+        alertTitle: `1、设置密码：8-24位，以便自助提取
+        2、推荐用qq号/邮箱/手机等，以便记忆`,
       }
     },
     created() {
@@ -54,8 +53,13 @@
     },
     methods: {
       submit() {
-        if (this.identity?.trim()?.length < 8) {
-          uni.$emit('showNotify', '标识太短了')
+        this.identity = this.identity?.trim()
+        if (this.identity?.length < 8) {
+          uni.$emit('showNotify', '密码太短了')
+          return
+        }
+        if (this.identity?.trim()?.length > 24) {
+          uni.$emit('showNotify', '密码太长了')
           return
         }
         let params = {
@@ -71,10 +75,8 @@
               i: uni.$u.encrypt(params, true)
             }
           }).then(res => {
-            if (res.success) {
-              uni.$u.delCache('i')
-              uni.$emit('startQuery')
-            }
+            uni.$u.delCache('i')
+            uni.$emit('startQuery')
           })
         } else {
           this.showAlert = false

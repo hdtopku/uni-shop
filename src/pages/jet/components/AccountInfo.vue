@@ -3,7 +3,7 @@
     <u-gap height="80"></u-gap>
     <u-row justify="space-between" gutter="20">
       <u-col span="4">
-        <u-button type="error" plain class="shadow-sm">教程</u-button>
+        <u-button @click="jumpTo" type="error" plain class="shadow-sm">教程</u-button>
       </u-col>
       <u-col span='8'>
         <u-button type="primary" class="shadow animate__animated animate__pulse animate__slow animate__infinite"
@@ -49,6 +49,9 @@
       refetch() {
         uni.$u.delCache('i')
         uni.$emit('startQuery')
+      },
+      jumpTo() {
+        window.open("https://www.yuque.com/docs/share/cef44c5f-cb62-4e96-ae03-95e47422a375")
       },
       open(e) {
         // console.log('open', e)
