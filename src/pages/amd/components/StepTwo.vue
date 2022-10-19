@@ -17,7 +17,9 @@
         text="附：差评师、恶意退款（全网禁拍名单）">
       </u-link>
     </div>
-    <u-gap></u-gap>
+    <u-gap height="10"></u-gap>
+    <u-alert style="position: absolute;" type="error" description="续期步骤需咨询客服"></u-alert>
+    <u-gap height="40"></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
@@ -46,7 +48,6 @@
             info="验证完后" />
           <u-gap height="5"></u-gap>
           <u-tag size="large" color="red" text="点开订阅>查看所有方案>学生方案勾上即可" plain></u-tag>
-
           <u-gap></u-gap>
         </view>
       </view>
