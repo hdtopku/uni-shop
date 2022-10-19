@@ -31,8 +31,8 @@
     <div style="text-align: center;">
       <div class="borders border-blue p-2 my-2"
         style="font-size: 28upx;color:red;display: inline-block;border-radius: 10px;">
-        验证后：点管理或直接点开订阅
-        >查看所有方案>学生方案勾上即可
+        验证后：点开订阅
+        >查看所有方案>学生方案勾上
       </div>
       <img style="display: inline-block;width: 460upx;"
         src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
