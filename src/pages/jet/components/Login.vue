@@ -4,7 +4,7 @@
     <u-divider text="输入密码，自助提取"></u-divider>
     <u-alert title="密码提示：" :description="tip" type="error"></u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="请完整输入标识" border="surround" v-model="identity" @confirm="submit"
+    <u--input clearable placeholder="请完整输入密码" border="surround" v-model="identity" @confirm="submit"
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
     </u--input>
     <u-gap></u-gap>
