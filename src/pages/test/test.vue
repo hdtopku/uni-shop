@@ -12,11 +12,13 @@
     data() {
       return {
         link: 'https://baidu.com',
+        websock: null,
       }
     },
     onReady() {
+      this.initWebSocket()
       uni.connectSocket({
-        url: 'ws://localhost:8080/websocket',
+        url: 'ws://localhost:3100/websocket',
         data() {
           return {
             x: '',
@@ -33,6 +35,9 @@
         console.log('WebSocket连接已打开！');
       });
     },
+    destroyed: function() { // 离开页面生命周期函数
+      this.websocketclose();
+    },
     methods: {
       isLink() {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
@@ -43,6 +48,36 @@
         if (this.isLink()) {
           window.open(this.link)
         }
+      },
+      initWebSocket: function() {
+        // WebSocket与普通的请求所用协议有所不同，ws等同于http，wss等同于https
+        var userId = 'test';
+        var url = "ws://localhost:9000/jeecgboot/websocket/" + userId;
+        this.websock = new WebSocket(url);
+        this.websock.onopen = this.websocketonopen;
+        this.websock.onerror = this.websocketonerror;
+        this.websock.onmessage = this.websocketonmessage;
+        this.websock.onclose = this.websocketclose;
+      },
+      websocketonopen: function() {
+        console.log("WebSocket连接成功");
+      },
+      websocketonerror: function(e) {
+        console.log("WebSocket连接发生错误");
+      },
+      websocketonmessage: function(e) {
+        var data = eval("(" + e.data + ")");
+        //处理订阅信息
+        if (data.cmd == "topic") {
+          //TODO 系统通知
+
+        } else if (data.cmd == "user") {
+          //TODO 用户消息
+
+        }
+      },
+      websocketclose: function(e) {
+        console.log("connection closed (" + e.code + ")");
       }
     }
   }
