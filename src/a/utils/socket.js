@@ -1,6 +1,6 @@
 import configService from '@/a/utils/config.service.js';
-// let baseUrl = 'http://localhost:9000/jeecg-boot/websocket'
-let baseUrl = 'https://c.taojingling.cn/jeecg-boot/websocket'
+let baseUrl = 'http://localhost:9000/jeecg-boot/websocket'
+// let baseUrl = 'https://c.taojingling.cn/jeecg-boot/websocket'
 //定义定时器
 let globalTimer = null
 class socket {
@@ -84,6 +84,7 @@ class socket {
     const _this = this;
     uni.onSocketClose(function(res) {
       console.log('WebSocket 已关闭！');
+      console.log(res)
       _this.socketStart = false;
       setTimeout(function() {
         //_this.init();

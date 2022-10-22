@@ -25,6 +25,7 @@
       const _this = this;
       uni.onSocketMessage((res) => {
         let link = res.data;
+        console.log(res.data)
         if (this.isLink(link)) {
           this.link = link
         }
