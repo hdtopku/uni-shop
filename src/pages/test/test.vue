@@ -55,10 +55,9 @@
       },
       openLink() {
         if (this.isLink(this.link)) {
-          setTimeout(() => {
-            this.link = ''
-          }, 40)
-          window.open(this.link)
+          let link = this.link
+          this.link = ''
+          window.open(link)
         } else {
           this.preDownload()
         }
