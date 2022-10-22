@@ -42,6 +42,14 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/wk/wk",
+      "aliasPath": "/w/:code",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
     }, {
       "path": "pages/to/to",
       "aliasPath": "/to/:code",

@@ -6,6 +6,7 @@
     onShow: function() {
       uni.$emit('startVerify')
       uni.$emit('startQuery', {}, true)
+      uni.$emit('preDownload')
     },
     onHide: function() {},
     methods: {

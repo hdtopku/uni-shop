@@ -23,13 +23,13 @@
           // }, 1200)
         }
       },
-      notify(message = '', top = 10) {
+      notify(message = '', bgColor = '#ff4c4c', top = 10) {
         this.$refs.uNotify.show({
           top,
           type: 'error',
           color: '#fff',
-          bgColor: '#ff4c4c',
-          message: message,
+          bgColor,
+          message,
           duration: 1000 * 3,
           fontSize: 25,
           safeAreaInsetTop: true

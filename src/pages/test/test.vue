@@ -16,29 +16,35 @@
       }
     },
     onReady() {
-      this.initWebSocket()
-      uni.connectSocket({
-        url: 'ws://localhost:3100/websocket',
-        data() {
-          return {
-            x: '',
-            y: ''
-          };
-        },
-        header: {
-          'content-type': 'application/json'
-        },
-        protocols: ['protocol1'],
-        method: 'GET'
-      });
-      uni.onSocketOpen(function(res) {
-        console.log('WebSocket连接已打开！');
-      });
+      uni.$on('preDownload', this.preDownload)
+      // this.initWebSocket()
+      // uni.connectSocket({
+      //   url: 'ws://localhost:3100/websocket',
+      //   data() {
+      //     return {
+      //       x: '',
+      //       y: ''
+      //     };
+      //   },
+      //   header: {
+      //     'content-type': 'application/json'
+      //   },
+      //   protocols: ['protocol1'],
+      //   method: 'GET'
+      // });
+      // uni.onSocketOpen(function(res) {
+      //   console.log('WebSocket连接已打开！');
+      // });
     },
     destroyed: function() { // 离开页面生命周期函数
-      this.websocketclose();
+      // this.websocketclose();
     },
     methods: {
+      preDownload() {
+        uni.$u.http.post('/c/w/g').then(res => {
+          this.link = res.message
+        })
+      },
       isLink() {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
         const r = this.link?.trim().match(reg);
