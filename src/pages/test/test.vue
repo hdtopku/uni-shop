@@ -11,7 +11,7 @@
   export default {
     data() {
       return {
-        link: 'https://baidu.com',
+        link: '',
         websock: null,
       }
     },
@@ -56,6 +56,9 @@
       openLink() {
         if (this.isLink(this.link)) {
           window.open(this.link)
+          this.link = ''
+        } else {
+          this.preDownload()
         }
       },
       initWebSocket: function() {
