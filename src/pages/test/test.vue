@@ -1,7 +1,7 @@
 <template>
   <view>
     <u-gap height="300"></u-gap>
-    <u-button @click="openLink" size="large" :type="isLink() ? 'primary' : 'info'">去下载</u-button>
+    <u-button @click="openLink" size="large" :type="isLink(link) ? 'primary' : 'info'">去下载</u-button>
     <u-gap></u-gap>
     <u--input clearable border="surround" v-model="link"></u--input>
   </view>
@@ -42,16 +42,19 @@
     methods: {
       preDownload() {
         uni.$u.http.post('/c/w/g').then(res => {
-          this.link = res.message
+          let link = res.message
+          if (this.isLink(link)) {
+            this.link = link
+          }
         })
       },
-      isLink() {
+      isLink(link) {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
-        const r = this.link?.trim().match(reg);
+        const r = link?.trim().match(reg);
         return r != null;
       },
       openLink() {
-        if (this.isLink()) {
+        if (this.isLink(this.link)) {
           window.open(this.link)
         }
       },
