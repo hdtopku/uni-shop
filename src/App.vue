@@ -1,4 +1,5 @@
 <script>
+  import socket from '@/a/utils/socket'
   export default {
     onLaunch: function() {
       uni.$on('addInvalidCode', this.addInvalidCode)
@@ -9,6 +10,9 @@
       uni.$emit('preDownload')
     },
     onHide: function() {},
+    destroyed: function() { // 离开页面生命周期函数
+      socket.closeSocket()
+    },
     methods: {
       addInvalidCode(code) {
         let codes = uni.$u.getCache('cs1') ?? []
