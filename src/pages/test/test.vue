@@ -55,8 +55,8 @@
       },
       openLink() {
         if (this.isLink(this.link)) {
-          window.open(this.link)
           this.link = ''
+          window.open(this.link)
         } else {
           this.preDownload()
         }
