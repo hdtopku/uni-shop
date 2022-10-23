@@ -48,6 +48,8 @@
       openLink() {
         if (this.links?.length > 0) {
           window.open(this.links?.shift())
+        } else {
+          this.preDownload()
         }
       },
     }
