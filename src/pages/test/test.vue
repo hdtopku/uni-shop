@@ -26,10 +26,12 @@
     mounted() {
       const _this = this;
       uni.onSocketMessage((res) => {
-        if (this.isLink(res.data)) {
-          this.links.push(res.data)
+        if (res.success) {
+          let msg = uni.$u.decrypt(res.data, true)
+          if (this.isLink(msg)) {
+            this.links.push(msg)
+          }
         }
-        _this.acceptMessage && _this.acceptMessage(data);
       });
     },
     methods: {
