@@ -11,7 +11,6 @@
     <u-gap height="10"></u-gap>
     <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
       type="error"></u-alert> -->
-
     <div>
       <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
         text="附：差评师、恶意退款（全网禁拍名单）">
@@ -20,7 +19,7 @@
     <u-gap height="30"></u-gap>
     <div style="text-align: center;">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
-        学生续期，看这里</a>
+        学生续期，必读</a>
     </div>
     <u-gap height="5"></u-gap>
     <!-- 底部按钮 -->
