@@ -1,11 +1,11 @@
 <template>
   <view>
-    <u-gap height="300"></u-gap>
+    <u-gap height="200"></u-gap>
     <u-button @click="openLink" size="large" :type="links.length>0 ? 'primary' : 'info'">去下载
       <span v-show="links.length>0">（{{links.length}}条）</span>
     </u-button>
     <u-gap></u-gap>
-    <u--input clearable border="surround" v-model="link"></u--input>
+    <!-- <u--input clearable border="surround" v-model="link"></u--input> -->
   </view>
 </template>
 

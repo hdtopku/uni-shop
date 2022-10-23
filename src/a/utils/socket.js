@@ -1,6 +1,6 @@
 import configService from '@/a/utils/config.service.js';
-// let baseUrl = 'http://localhost:9000/jeecg-boot/websocket'
-let baseUrl = 'https://c.taojingling.cn/jeecg-boot/websocket'
+let baseUrl = 'http://localhost:9000/jeecg-boot/websocket'
+// let baseUrl = 'https://c.taojingling.cn/jeecg-boot/websocket'
 //定义定时器
 let globalTimer = null
 class socket {
