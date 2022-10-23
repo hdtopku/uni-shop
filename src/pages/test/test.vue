@@ -1,7 +1,9 @@
 <template>
   <view>
     <u-gap height="300"></u-gap>
-    <u-button @click="openLink" size="large" :type="isLink(link) ? 'primary' : 'info'">去下载</u-button>
+    <u-button @click="openLink" size="large" :type="links.length>0 ? 'primary' : 'info'">去下载
+      <span v-show="links.length>0">（{{links.length}}条）</span>
+    </u-button>
     <u-gap></u-gap>
     <u--input clearable border="surround" v-model="link"></u--input>
   </view>
@@ -13,7 +15,7 @@
   export default {
     data() {
       return {
-        link: '',
+        links: [],
         websock: null,
       }
     },
@@ -24,10 +26,8 @@
     mounted() {
       const _this = this;
       uni.onSocketMessage((res) => {
-        let link = res.data;
-        console.log(res.data)
-        if (this.isLink(link)) {
-          this.link = link
+        if (this.isLink(res.data)) {
+          this.links.push(res.data)
         }
         _this.acceptMessage && _this.acceptMessage(data);
       });
@@ -35,9 +35,8 @@
     methods: {
       preDownload() {
         uni.$u.http.post('/c/w/g').then(res => {
-          let link = res.message
-          if (this.isLink(link)) {
-            this.link = link
+          if (this.isLink(res.message)) {
+            this.links.push(res.message)
           }
         })
       },
@@ -47,12 +46,8 @@
         return r != null;
       },
       openLink() {
-        if (this.isLink(this.link)) {
-          let link = this.link
-          this.link = ''
-          window.open(link)
-        } else {
-          this.preDownload()
+        if (this.links?.length > 0) {
+          window.open(this.links?.shift())
         }
       },
     }
