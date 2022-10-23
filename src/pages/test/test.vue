@@ -26,21 +26,22 @@
     mounted() {
       const _this = this;
       uni.onSocketMessage((res) => {
+        this.dealResult(res)
+      });
+    },
+    methods: {
+      preDownload() {
+        uni.$u.http.post('/c/w/g').then(res => {
+          this.dealResult(res)
+        })
+      },
+      dealResult(res) {
         if (res.success) {
           let msg = uni.$u.decrypt(res.data, true)
           if (this.isLink(msg)) {
             this.links.push(msg)
           }
         }
-      });
-    },
-    methods: {
-      preDownload() {
-        uni.$u.http.post('/c/w/g').then(res => {
-          if (this.isLink(res.message)) {
-            this.links.push(res.message)
-          }
-        })
       },
       isLink(link) {
         const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
