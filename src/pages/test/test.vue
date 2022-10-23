@@ -36,11 +36,9 @@
         })
       },
       dealResult(res) {
-        if (res.success) {
-          let msg = uni.$u.decrypt(res.data, true)
-          if (this.isLink(msg)) {
-            this.links.push(msg)
-          }
+        let msg = decodeURIComponent(uni.$u.decrypt(res.data, true))
+        if (this.isLink(msg)) {
+          this.links.push(msg)
         }
       },
       isLink(link) {
