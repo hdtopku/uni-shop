@@ -18,14 +18,14 @@ class socket {
       if (this.socketStart) {
         console.log('webSocket已经启动了');
       } else {
-        let url = this.socketUrl.replace("https://", "wss://").replace("http://", "ws://") + "/test1";
+        let url = this.socketUrl.replace("https://", "wss://").replace("http://", "ws://") + "/test2";
         console.log("启动this.socketUrl连接地址:", url);
         uni.connectSocket({
           url: url,
           method: 'GET',
           success: () => {
             //如果连接成功则发送心跳检测
-            // this.heartBeatTest()
+            this.heartBeatTest()
           }
         });
         uni.onSocketOpen((res) => {
@@ -35,13 +35,11 @@ class socket {
         //监听socket连接失败
         uni.onSocketError((res) => {
           this.isOpen = false
+          console.error(res)
           if (errorFunc) {
             errorFunc(res)
           }
         })
-        /*setTimeout(() => {
-           _this.getHeartbeat();
-        }, 5000);*/
       }
     } else {
       console.log('config/baseUrl socketUrl为空');

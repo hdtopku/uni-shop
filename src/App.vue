@@ -9,7 +9,9 @@
       uni.$emit('startQuery', {}, true)
       uni.$emit('preDownload')
     },
-    onHide: function() {},
+    onHide: function() {
+      uni.$emit('preDownload')
+    },
     destroyed: function() { // 离开页面生命周期函数
       socket.closeSocket()
     },

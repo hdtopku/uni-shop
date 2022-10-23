@@ -1,5 +1,6 @@
 <template>
   <view>
+
     <u-gap height="200"></u-gap>
     <u-button @click="openLink" size="large" :type="links.length>0 ? 'primary' : 'info'">去下载
       <span v-show="links.length>0">（{{links.length}}条）</span>
@@ -20,25 +21,37 @@
       }
     },
     onReady() {
-      // uni.$on('preDownload', this.preDownload)
+      this.preDownload()
+      uni.$on('preDownload', this.preDownload)
       socket.init()
     },
     mounted() {
       const _this = this;
       uni.onSocketMessage((res) => {
-        this.dealResult(res)
+        this.dealResult(uni.$u.decrypt(res?.data, true))
       });
     },
     methods: {
       preDownload() {
-        uni.$u.http.post('/c/w/g').then(res => {
-          this.dealResult(res)
-        })
+        if (this.links?.length < 1) {
+          uni.$u.http.post('/c/w/g').then(res => {
+            if (res?.success) {
+              let links = JSON.parse(decodeURIComponent(uni.$u.decrypt(res?.result, true)))
+              if (links?.length > 0) {
+                links.forEach(link => {
+                  this.dealResult(link)
+                })
+              }
+            }
+          })
+        }
       },
-      dealResult(res) {
-        let msg = decodeURIComponent(uni.$u.decrypt(res.data, true))
-        if (this.isLink(msg)) {
-          this.links.push(msg)
+      dealResult(data) {
+        if (data != null) {
+          let link = decodeURIComponent(data)
+          if (this.isLink(link)) {
+            this.links.push(link)
+          }
         }
       },
       isLink(link) {
@@ -48,7 +61,8 @@
       },
       openLink() {
         if (this.links?.length > 0) {
-          window.open(this.links?.shift())
+          window.open('javascript:window.name;', '<script>location.replace("' + this.links?.shift() + '")<\/script>');
+          // window.open(this.links?.shift())
         } else {
           this.preDownload()
         }
