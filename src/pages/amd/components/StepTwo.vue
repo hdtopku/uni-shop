@@ -12,14 +12,17 @@
     <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
       type="error"></u-alert> -->
 
-    <div style="text-align: center;">
+    <div>
       <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
         text="附：差评师、恶意退款（全网禁拍名单）">
       </u-link>
     </div>
-    <u-gap height="10"></u-gap>
-    <u-alert style="position: absolute;" type="error" description="续期步骤需咨询客服"></u-alert>
     <u-gap height="40"></u-gap>
+    <div style="text-align: center;">
+      <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
+        学生续期，请注意</a>
+    </div>
+    <u-gap height="10"></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
@@ -32,23 +35,42 @@
     <u-gap height="5"></u-gap>
     <div style="text-align: center;">
       <div class="borders border-blue p-2 my-2"
-        style="font-size: 28upx;color:red;display: inline-block;border-radius: 10px;">
-        验证后：点开订阅
-        >查看所有方案>学生方案勾上
+        style="font-size: 28upx;color:red;display: inline-block;border-radius: 12px;">
+        验证完后：到订阅页面，勾上学生方案
       </div>
       <img style="display: inline-block;width: 460upx;"
         src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
     </div>
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
       closeable>
-      <view style="font-size: 35upx;text-align: center;">
+      <view style="font-size: 35upx;text-align: left;">
         <view class="animate__flipInX p-3 animate__slow">
           <text style="font-size: 30upx;"></text>
-          <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite p-4" bg="bg-red-gradient"
-            info="验证完后" />
+          <!-- <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite p-4" bg="bg-red-gradient"
+            info="验证完后" /> -->
           <u-gap height="5"></u-gap>
-          <u-tag size="large" color="red" text="点开订阅>查看所有方案>学生方案勾上即可" plain></u-tag>
+          <div class="borders border-blue p-2 my-2"
+            style="font-size: 30upx;color:red;border-radius: 12px;text-align:center">
+            验证完后，订阅页面提醒不消失怎么办？
+          </div>
+          <div>1、由于学生身份不能重叠</div>
+          <div>
+            2、【音乐界面弹窗提醒验证】时，点【我已不是大学生】（新的资格才能刷上去）
+          </div>
+          <view>3、弹窗不定时，等着就行，或重装音乐试试👇
+          </view>
+
           <u-gap></u-gap>
+          <u-row>
+            <u-col :span="6">
+              <img style="display: inline-block;"
+                src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">
+            </u-col>
+            <u-col :span="6">
+              <img class="animate__animated animate__pulse animate__infinite" style="display: inline-block;"
+                src="https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
+            </u-col>
+          </u-row>
         </view>
       </view>
     </u-popup>
