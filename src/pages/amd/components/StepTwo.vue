@@ -8,7 +8,7 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view>
-    <u-gap height="60"></u-gap>
+    <u-gap height="10"></u-gap>
     <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
       type="error"></u-alert> -->
 
@@ -17,12 +17,12 @@
         text="附：差评师、恶意退款（全网禁拍名单）">
       </u-link>
     </div>
-    <u-gap height="40"></u-gap>
+    <u-gap height="30"></u-gap>
     <div style="text-align: center;">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
-        学生续期，请注意</a>
+        学生续期，看这里</a>
     </div>
-    <u-gap height="10"></u-gap>
+    <u-gap height="5"></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
@@ -50,7 +50,7 @@
             info="验证完后" /> -->
           <u-gap height="5"></u-gap>
           <div class="borders border-blue p-2 my-2"
-            style="font-size: 30upx;color:red;border-radius: 12px;text-align:center">
+            style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
             验证完后，订阅页面提醒不消失怎么办？
           </div>
           <div>1、由于学生身份不能重叠</div>
