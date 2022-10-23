@@ -4,9 +4,9 @@
     <u--textarea placeholder="请输入文档连接，以http或https开头，例如：https://wenku.baidu.com/xxx" border="surround" v-model="link">
     </u--textarea>
     <u-gap></u-gap>
-    <u--input placeholder="请输入邮箱" border="surround" clearable v-model="email"></u--input>
+    <u--input placeholder="请输入接收的邮箱" border="surround" clearable v-model="email"></u--input>
     <u-gap></u-gap>
-    <u-button @click="submit" type="primary">提交</u-button>
+    <u-button @click="submit" type="primary">发到邮箱</u-button>
   </Page1>
 </template>
 
