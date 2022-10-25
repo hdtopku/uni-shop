@@ -89,10 +89,10 @@
               this.accountInfo = result
               this.dealAccount()
               uni.$u.setCache('i', accounts, 60 * 10)
-              setTimeout(() => {
-                location.reload()
-              }, 800)
             }
+            setTimeout(() => {
+              location.reload()
+            }, 800)
           } else {
             uni.$emit('addInvalidCode', this.code)
             location.reload()
