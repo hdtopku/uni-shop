@@ -34,7 +34,6 @@
       }
     },
     onLoad(option) {
-      let code = this.getCode()
       uni.$on('startQuery', this.startQuery)
       this.queryCode()
     },
@@ -51,7 +50,7 @@
         return code
       },
       queryCode(params = {}) {
-        if (this.code == null) {
+        if (null == this.getCode()) {
           return
         }
         uni.$u.saveAsyncInfo()
@@ -64,6 +63,9 @@
         }
       },
       startQuery(parameters, isCheckStatus = false) {
+        if (null == this.getCode()) {
+          return
+        }
         this.showPage = false // accountInfo=null会报错
         let allInfo = uni.$u.getCache('ms')
         let header = {
