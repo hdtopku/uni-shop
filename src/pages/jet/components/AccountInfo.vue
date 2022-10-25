@@ -43,7 +43,8 @@
     methods: {
       copy() {
         uni.setClipboardData({
-          data: `${this.account}，${this.password}`
+          data: `账【${this.account}】
+密【${this.password}】`
         })
       },
       refetch() {
