@@ -35,7 +35,7 @@
     <div style="text-align: center;">
       <div class="borders border-blue p-2 my-2"
         style="font-size: 28upx;color:red;display: inline-block;border-radius: 12px;">
-        验证完后：到订阅页面，勾上学生方案
+        验证完后：到订阅里勾上学生
       </div>
       <img style="display: inline-block;width: 460upx;"
         src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
