@@ -62,11 +62,12 @@
           <u-gap></u-gap>
           <u-row>
             <u-col :span="6">
-              <img style="display: inline-block;"
+              <img style="display: inline-block;width:360upx"
                 src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">
             </u-col>
             <u-col :span="6">
-              <img class="animate__animated animate__pulse animate__infinite" style="display: inline-block;"
+              <img class="animate__animated animate__pulse animate__infinite"
+                style="display: inline-block;inline-block;width:360upx"
                 src="https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
             </u-col>
           </u-row>
