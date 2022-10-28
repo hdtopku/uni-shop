@@ -56,11 +56,14 @@
           <div>
             2、【音乐界面弹窗提醒验证】时，点【我已不是大学生】（新的资格才能刷上去）
           </div>
-          <view>3、弹窗不定时，等着就行，或重装音乐试试👇
+          <div>
+            3、点完就成功了，如果点完还没成功，可以随时找我
+          </div>
+          <view>4、弹窗不定时，等着就行，或重装音乐试试👇
           </view>
 
           <u-gap></u-gap>
-          <u-row>
+          <u-row style="margin-left: -20upx;">
             <u-col :span="6">
               <img style="display: inline-block;width:360upx"
                 src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">
