@@ -63,7 +63,7 @@
           </view>
 
           <u-gap></u-gap>
-          <u-row style="margin-left: -20upx;">
+          <u-row style="margin-left: -10upx;">
             <u-col :span="6">
               <img style="display: inline-block;width:320upx"
                 src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">

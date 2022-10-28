@@ -1,7 +1,7 @@
 <template>
   <view v-if="showPage" class="page bg-pink-light">
     <u-notify ref="uNotify"></u-notify>
-    <view style="width: 88vw;">
+    <view style="width: 92vw;">
       <!-- <u-steps :current="currentStep" iconPlacement="right">
         <u-steps-item title="先开后升" desc="需在订阅中"></u-steps-item>
         <u-steps-item title="开始验证" desc="学生验证免费"></u-steps-item>
