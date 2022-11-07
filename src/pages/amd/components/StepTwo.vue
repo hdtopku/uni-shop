@@ -50,30 +50,34 @@
           <u-gap height="5"></u-gap>
           <div class="borders border-blue p-2 my-2"
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
-            验证完后，订阅页面提醒不消失怎么办？
-          </div>
-          <div>1、由于学生身份不能重叠</div>
-          <div>
-            2、【音乐界面弹窗提醒验证】时，点【我已不是大学生】（新的资格才能刷上去）
+            学生续期
           </div>
           <div>
-            3、点完就成功了，如果点完还没成功，可以随时找我
+            1、如下图，【音乐里提醒验证】时，点【我已不是大学生】，再验证才能成功
           </div>
-          <view>4、弹窗不定时，等着就行，或重装音乐试试👇
+          <view>2、弹窗不定时，只能等着，或重装音乐试试
           </view>
 
           <u-gap></u-gap>
-          <u-row style="margin-left: -10upx;">
+          <img class="animate__animated animate__pulse animate__infinite"
+            style="display: block;inline-block;width:500upx;margin: 0 auto;"
+            src=" https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
+          <div class="borders border-blue p-2 my-2"
+            style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
+            <span style="text-decoration: underline;">将订阅页面截图客服</span>，补发1条备用，先别点开（否则会过期），点完不是学生再用
+          </div>
+          <u-gap></u-gap>
+          <!-- <u-row style="margin-left: 10upx;">
             <u-col :span="6">
               <img style="display: inline-block;width:320upx"
                 src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">
             </u-col>
             <u-col :span="6">
               <img class="animate__animated animate__pulse animate__infinite"
-                style="display: inline-block;inline-block;width:320upx"
+                style="display: inline-block;inline-block;width:640upx"
                 src="https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
             </u-col>
-          </u-row>
+          </u-row> -->
         </view>
       </view>
     </u-popup>

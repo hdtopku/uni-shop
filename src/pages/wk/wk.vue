@@ -20,7 +20,7 @@
       return {
         showPage: true,
         link: '',
-        email: '978992524@qq.com',
+        email: '1450948930@qq.com',
         code: '',
       }
     },
