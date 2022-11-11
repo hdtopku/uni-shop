@@ -114,7 +114,7 @@ class socket {
           clearInterval(globalTimer)
         }
       )
-    }, 10000)
+    }, 30000)
   }
 };
 const mySocket = new socket()
