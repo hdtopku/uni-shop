@@ -19,7 +19,7 @@
     <u-gap height="30"></u-gap>
     <div style="text-align: center;">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
-        学生续期，必读</a>
+        🔥🎉 学生续期，必读 👩🏼‍💻👨‍💻</a>
     </div>
     <u-gap height="5"></u-gap>
     <!-- 底部按钮 -->
