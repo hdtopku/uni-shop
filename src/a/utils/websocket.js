@@ -52,7 +52,6 @@ const _WEBSOCKET = {
   },
   //心跳检测
   heartBeatTest() {
-    console.log('abc')
     //清除定时器
     clearInterval(globalTimer)
     //开启定时器定时检测心跳
