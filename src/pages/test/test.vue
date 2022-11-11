@@ -48,7 +48,7 @@
       dealResult(data) {
         if (data != null) {
           let link = decodeURIComponent(data)
-          if (this.isLink(link)) {
+          if (this.isLink(link) && this.links.indexOf(link) < 0) {
             this.links.push(link)
           }
         }

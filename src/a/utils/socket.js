@@ -1,7 +1,7 @@
 import configService from '@/a/utils/config.service.js';
 // let baseUrl = 'http://localhost:9000/jeecg-boot/websocket'
 // let baseUrl = 'https://c.taojingling.cn/jeecg-boot/websocket'
-let baseUrl = process.env.VUE_APP_BASE_API + '/websocket'
+let baseUrl = process.env.VUE_APP_BASE_API + '/websocket/'
 //定义定时器
 let globalTimer = null
 class socket {
@@ -18,7 +18,8 @@ class socket {
       if (this.socketStart) {
         console.log('webSocket已经启动了');
       } else {
-        let url = this.socketUrl.replace("https://", "wss://").replace("http://", "ws://") + "/test2";
+        let url = this.socketUrl.replace("https://", "wss://").replace("http://", "ws://") + process.env
+          .VUE_APP_WENKU_WEBSOCKET_KEY;
         console.log("启动this.socketUrl连接地址:", url);
         uni.connectSocket({
           url: url,
@@ -82,8 +83,6 @@ class socket {
   monitorSocketClose() {
     const _this = this;
     uni.onSocketClose(function(res) {
-      console.log('WebSocket 已关闭！');
-      console.log(res)
       _this.socketStart = false;
       setTimeout(function() {
         //_this.init();
