@@ -40,6 +40,7 @@ class socket {
           if (errorFunc) {
             errorFunc(res)
           }
+          this.reconnect()
         })
       }
     } else {
@@ -84,9 +85,7 @@ class socket {
     const _this = this;
     uni.onSocketClose(function(res) {
       _this.socketStart = false;
-      setTimeout(function() {
-        //_this.init();
-      }, 3000);
+      this.reconnect()
     });
   }
   //监听Socket错误
@@ -112,9 +111,15 @@ class socket {
         () => {
           //如果失败则清除定时器
           clearInterval(globalTimer)
+          this.reconnect()
         }
       )
     }, 30000)
+  }
+  reconnect() {
+    setTimeout(() => {
+      this.init()
+    }, 5000)
   }
 };
 const mySocket = new socket()
