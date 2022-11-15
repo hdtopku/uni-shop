@@ -12,6 +12,9 @@
 
 <script>
   import Page1 from '../../a/components/page1.vue'
+  import {
+    extractUrl
+  } from '../../a/utils/urlUtil.js'
   export default {
     components: {
       Page1
@@ -32,13 +35,14 @@
         this.code = this.$Route?.query?.code
       },
       submit() {
-        if (this.link?.trim().length < 1) {
+        let link = extractUrl(this.link.trim())
+        if (null == link || link.trim().length < 1 || link.indexOf('wenku.baidu.com') < 0) {
           uni.$emit('showNotify', '请输入文档地址')
           return
         }
         let params = {
           email: this.email,
-          link: this.link
+          link
         }
         uni.$u.http.post('/c/w/s/' + this.code, {}, {
             params
