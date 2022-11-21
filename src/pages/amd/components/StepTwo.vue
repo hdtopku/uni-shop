@@ -4,7 +4,7 @@
       src="https://article.biliimg.com/bfs/article/11bae270f1ae0184b246147011155450b71e04ae.jpg"
       style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
     <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
-      class="animate__animated animate__bounce animate__repeat-3">
+      class="animate__animate animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view>
@@ -17,7 +17,8 @@
       </u-link>
     </div>
     <u-gap height="30"></u-gap>
-    <div style="text-align: center;">
+    <div style="text-align: center;"
+      class="animate__animated animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
         🔥🎉 学生续期，必读 👩🏼‍💻👨‍💻</a>
     </div>
@@ -54,18 +55,19 @@
           </div>
           <div>
             1、如下图，【音乐里提醒验证】时，点【我已不是大学生】，再验证才能成功
+            <div style="text-decoration: ;color:red">2、将订阅页面截图，联系客服补发1条备用</div>
           </div>
-          <view>2、弹窗不定时，只能等着，或重装音乐试试
+          <view>3、弹窗不定时，只能等着，或重装音乐试试
           </view>
 
           <u-gap></u-gap>
           <img class="animate__animated animate__pulse animate__infinite"
             style="display: block;inline-block;width:500upx;margin: 0 auto;"
             src=" https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
-          <div class="borders border-blue p-2 my-2"
+          <!-- <div class="borders border-blue p-2 my-2"
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
             <span style="text-decoration: underline;">将订阅页面截图客服</span>，补发1条备用，先别点开（否则会过期），点完不是学生再用
-          </div>
+          </div> -->
           <u-gap></u-gap>
           <!-- <u-row style="margin-left: 10upx;">
             <u-col :span="6">
