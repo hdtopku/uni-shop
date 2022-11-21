@@ -25,7 +25,7 @@
     },
     methods: {
       testPass() {
-        var pattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\(\)]).{6,16}$/
+        var pattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?\(\)]).{6,24}$/
         let res = pattern.test(this.identity)
         this.showModal = true
       },
