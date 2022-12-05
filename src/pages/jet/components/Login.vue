@@ -1,10 +1,10 @@
 <template>
   <view>
     <u-gap></u-gap>
-    <u-divider text="输入密码，自助提取"></u-divider>
-    <u-alert title="密码提示：" :description="tip" type="error"></u-alert>
+    <u-divider text="输入并提取"></u-divider>
+    <u-alert title="内容提示：" :description="tip" type="error"></u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="请完整输入密码" border="surround" v-model="identity" @confirm="submit"
+    <u--input clearable placeholder="👆请完整输入上方的内容" border="surround" v-model="identity" @confirm="submit"
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
     </u--input>
     <u-gap></u-gap>
@@ -39,7 +39,7 @@
           })
           return
         }
-        uni.$emit('showNotify', '不正确，请重新输入')
+        uni.$emit('showNotify', '正确输入您设置的内容，通过验证后，即可提取')
       },
     }
   }

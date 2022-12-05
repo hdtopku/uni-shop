@@ -14,9 +14,9 @@
     </u-row>
     <u-gap></u-gap>
     <u-collapse accordion @change="change" @close="close" @open="open">
-      <u-collapse-item title="高级" name="Docs guide">
+      <u-collapse-item title="高级（重新获取、修改密码等）" name="Docs guide">
         <u-button type="error" @click="refetch">重新获取</u-button>
-        <u-divider text="修改标识"></u-divider>
+        <u-divider text="修改密码"></u-divider>
         <RegisterForm isUpdate :code="code"></RegisterForm>
       </u-collapse-item>
     </u-collapse>
