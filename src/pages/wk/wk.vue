@@ -48,7 +48,10 @@
             params
           })
           .then(res => {
-            uni.$emit('showNotify', '提交成功', '#34bf49')
+            uni.$emit('showNotify',
+              '提交成功', {
+                bgColor: '#34bf49'
+              })
           })
       }
     }

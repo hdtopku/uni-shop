@@ -25,9 +25,6 @@
         identity: ""
       }
     },
-    created() {
-      uni.$on('notify', this.notify)
-    },
     methods: {
       saveAsyncInfo() {
         uni.$emit('saveAsyncInfo')

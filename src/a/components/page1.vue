@@ -23,16 +23,19 @@
           // }, 1200)
         }
       },
-      notify(message = '', bgColor = '#ff4c4c', top = 10) {
+      notify(
+        message = '', info = {
+          bgColor: '#ff4c4c',
+          top: 10,
+          duration: 3000
+        }) {
         this.$refs.uNotify.show({
-          top,
           type: 'error',
           color: '#fff',
-          bgColor,
-          message,
-          duration: 1000 * 3,
           fontSize: 25,
-          safeAreaInsetTop: true
+          safeAreaInsetTop: true,
+          message,
+          ...info
         })
       },
     },

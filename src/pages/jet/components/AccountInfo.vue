@@ -46,6 +46,11 @@
           data: `账【${this.account}】
 密【${this.password}】`
         })
+        setTimeout(() => {
+          uni.$emit('showNotify', '收藏此链接，若账密失效，自助获取最新，无需找客服', {
+            duration: 10000
+          })
+        }, 300)
       },
       refetch() {
         uni.$u.delCache('i')
