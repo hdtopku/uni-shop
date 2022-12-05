@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <u-gap height="200"></u-gap>
+    <u-gap height="120"></u-gap>
     <u-row justify="space-between" gutter="20">
       <u-col span="4">
         <u-button @click="jumpTo" type="error" plain class="shadow-sm">教程</u-button>
@@ -14,9 +14,9 @@
     </u-row>
     <u-gap></u-gap>
     <u-collapse accordion @change="change" @close="close" @open="open">
-      <u-collapse-item title="高级（重新获取、修改密码等）" name="Docs guide">
+      <u-collapse-item title="展开重新获取最新、修改提取密码" name="Docs guide">
         <u-button type="error" @click="refetch">重新获取</u-button>
-        <u-divider text="修改密码"></u-divider>
+        <u-divider text="修改提取密码"></u-divider>
         <RegisterForm isUpdate :code="code"></RegisterForm>
       </u-collapse-item>
     </u-collapse>

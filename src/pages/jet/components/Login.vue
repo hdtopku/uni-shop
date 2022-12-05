@@ -1,11 +1,11 @@
 <template>
   <view>
     <u-gap></u-gap>
-    <u-divider text="👇 是您之前设置的（相当于提取密码）"></u-divider>
+    <!-- <u-divider text="👇 是您之前设置的（相当于提取密码）"></u-divider> -->
     <u-alert v-if="showTip" class="animate__animated animate__shakeX" title="" :description="tip" type="error">
     </u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="请完整输入👆 的内容" border="surround" v-model="identity" @confirm="submit"
+    <u--input clearable placeholder="请输入提取密码" border="surround" v-model="identity" @confirm="submit"
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
     </u--input>
     <u-gap></u-gap>

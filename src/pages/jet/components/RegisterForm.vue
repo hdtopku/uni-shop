@@ -2,7 +2,7 @@
   <view>
     <u-alert :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="请设置密码，推荐输入qq号/邮箱/手机等" border="surround" v-model="identity"
+    <u--input clearable placeholder="推荐输入qq号/邮箱/手机等" border="surround" v-model="identity"
       @confirm="$u.debounce(submit, 50, true)">
     </u--input>
     <u-gap></u-gap>
@@ -37,8 +37,8 @@
         old: '',
         checkboxValue1: [false],
         showAlert: true,
-        alertTitle: `1、设置密码：8-24位，以便自助提取
-        2、推荐用qq号/邮箱/手机等，以便记忆`,
+        alertTitle: `1、设置提取密码：8-24位，以便自助提取
+        2、推荐输入qq号/邮箱/手机等，以便记忆`,
       }
     },
     created() {
