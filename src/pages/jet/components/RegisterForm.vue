@@ -1,6 +1,6 @@
 <template>
   <view>
-    <u-alert :title="alertTitle" type="error"></u-alert>
+    <u-alert v-if="showTip" class="animate__animated animate__shakeX" :title="alertTitle" type="error"></u-alert>
     <u-gap></u-gap>
     <u--input clearable placeholder="推荐输入qq号/邮箱/手机等" border="surround" v-model="identity"
       @confirm="$u.debounce(submit, 50, true)">
@@ -33,6 +33,7 @@
     },
     data() {
       return {
+        showTip: true,
         identity: '',
         old: '',
         checkboxValue1: [false],
@@ -56,10 +57,18 @@
         this.identity = this.identity?.trim()
         if (this.identity?.length < 8) {
           uni.$emit('showNotify', '密码太短了')
+          this.showTip = false
+          setTimeout(() => {
+            this.showTip = true
+          }, 10);
           return
         }
         if (this.identity?.trim()?.length > 24) {
           uni.$emit('showNotify', '密码太长了')
+          this.showTip = false
+          setTimeout(() => {
+            this.showTip = true
+          }, 10);
           return
         }
         let params = {
