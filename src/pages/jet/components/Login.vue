@@ -1,6 +1,6 @@
 <template>
   <view>
-    <u-gap></u-gap>
+    <u-gap height="100"></u-gap>
     <!-- <u-divider text="👇 是您之前设置的（相当于提取密码）"></u-divider> -->
     <u-alert v-if="showTip" class="animate__animated animate__shakeX" title="" :description="tip" type="error">
     </u-alert>
