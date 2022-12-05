@@ -1,10 +1,11 @@
 <template>
   <view>
     <u-gap></u-gap>
-    <u-divider text="输入并提取"></u-divider>
-    <u-alert title="内容提示：" :description="tip" type="error"></u-alert>
+    <u-divider text="👇 是您之前设置的（相当于提取密码）"></u-divider>
+    <u-alert v-if="showTip" class="animate__animated animate__shakeX" title="" :description="tip" type="error">
+    </u-alert>
     <u-gap></u-gap>
-    <u--input clearable placeholder="👆请完整输入上方的内容" border="surround" v-model="identity" @confirm="submit"
+    <u--input clearable placeholder="请完整输入👆 的内容" border="surround" v-model="identity" @confirm="submit"
       @change="$u.debounce(saveAsyncInfo, 2000, true)">
     </u--input>
     <u-gap></u-gap>
@@ -20,6 +21,7 @@
     },
     data() {
       return {
+        showTip: true,
         identity: ""
       }
     },
@@ -39,7 +41,11 @@
           })
           return
         }
-        uni.$emit('showNotify', '正确输入您设置的内容，通过验证后，即可提取')
+        uni.$emit('showNotify', '不正确，请重新输入')
+        this.showTip = false
+        setTimeout(() => {
+          this.showTip = true
+        })
       },
     }
   }
