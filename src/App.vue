@@ -14,12 +14,12 @@
       socket.closeSocket()
     },
     methods: {
-      addInvalidCode(code) {
+      addInvalidCode(code, timeout = 3600 * 24 * 30) {
         let codes = uni.$u.getCache('cs1') ?? []
         uni.$u.removePage()
         if (code != null && !codes.includes(code)) {
           codes.push(code)
-          uni.$u.setCache('cs1', codes, 3600 * 24 * 30)
+          uni.$u.setCache('cs1', codes, timeout)
         }
       },
     }

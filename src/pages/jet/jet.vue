@@ -96,7 +96,7 @@
               location.reload()
             }, 800)
           } else {
-            // uni.$emit('addInvalidCode', this.code)
+            uni.$emit('addInvalidCode', this.code, 10)
             location.reload()
           }
         })

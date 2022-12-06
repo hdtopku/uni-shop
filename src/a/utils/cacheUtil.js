@@ -10,11 +10,11 @@ import {
  * @param {默认不加密} isEncrypt
  * @param {过期时间，默认0表示永久有效} expire
  */
-export const setCache = async (key, value, expire = 0, isEncrypt = true) => {
+export const setCache = async (key, value, timeout, isEncrypt = true) => {
   let obj = {
     data: value, //存储的数据
     t: Date.now() / 1000, //记录存储的时间戳
-    e: expire //记录过期时间，单位秒
+    timeout //记录过期时间，单位秒
   }
   if (isEncrypt) {
     await uni.setStorageSync(key, encrypt(obj))
@@ -40,7 +40,7 @@ export const getCache = (key, isEncrypt = true) => {
     delCache(key)
     return null
   }
-  if (val?.e && Date.now() / 1000 - val?.t > val?.e) {
+  if (val?.timeout && Date.now() / 1000 - val?.t > val?.timeout) {
     uni.removeStorageSync(key)
     return null
   }
