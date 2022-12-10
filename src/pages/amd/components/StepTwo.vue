@@ -1,7 +1,7 @@
 <template>
   <view class="">
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
-      src="https://article.biliimg.com/bfs/article/11bae270f1ae0184b246147011155450b71e04ae.jpg"
+      src="https://article.biliimg.com/bfs/article/1f766ea2e70e6248ceff4747c94ed0bd40bc17dd.jpg"
       style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
     <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animate animate__bounce animate__repeat-3">
