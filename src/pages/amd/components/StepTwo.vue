@@ -8,15 +8,10 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view>
-    <u-gap height="10"></u-gap>
+    <u-gap height="30"></u-gap>
     <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
       type="error"></u-alert> -->
-    <div>
-      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
-        text="附：差评师、恶意退款（全网禁拍名单）">
-      </u-link>
-    </div>
-    <u-gap height="30"></u-gap>
+    <!-- <u-gap height="30"></u-gap> -->
     <div style="text-align: center;"
       class="animate__animated animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
@@ -34,12 +29,14 @@
     </u-row>
     <u-gap height="5"></u-gap>
     <div style="text-align: center;">
-      <div class="borders border-blue p-2 my-2"
+      <!-- <div class="borders border-blue p-2 my-2"
         style="font-size: 28upx;color:red;display: inline-block;border-radius: 12px;">
         验证完后：到订阅里勾上学生
       </div>
       <img style="display: inline-block;width: 460upx;"
-        src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png">
+        src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png"> -->
+      <img style="display: inline-block;width: 500upx;"
+        src="https://article.biliimg.com/bfs/article/9f551b5847d473ea5e634ae3d3c79af57608cea0.jpg">
     </div>
     <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
       closeable>
@@ -68,7 +65,7 @@
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
             <span style="text-decoration: underline;">将订阅页面截图客服</span>，补发1条备用，先别点开（否则会过期），点完不是学生再用
           </div> -->
-          <u-gap></u-gap>
+          <!-- <u-gap></u-gap> -->
           <!-- <u-row style="margin-left: 10upx;">
             <u-col :span="6">
               <img style="display: inline-block;width:320upx"
@@ -83,6 +80,12 @@
         </view>
       </view>
     </u-popup>
+    <u-gap height="10"></u-gap>
+    <div style="float: right;">
+      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
+        text="附：差评师、恶意退款（全网禁拍名单）">
+      </u-link>
+    </div>
   </view>
 </template>
 
