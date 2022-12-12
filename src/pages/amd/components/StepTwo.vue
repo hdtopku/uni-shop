@@ -8,10 +8,10 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view>
+    <view style="text-align: center;">
+      <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>还不明白，是否成功？</a>
+    </view>
     <u-gap height="30"></u-gap>
-    <!-- <u-alert class=" animate__fadeInRight animate__slower" style="" description="验证前：若有免费先开免费的；若中途取消先免费重开再开始👇"
-      type="error"></u-alert> -->
-    <!-- <u-gap height="30"></u-gap> -->
     <div style="text-align: center;"
       class="animate__animated animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
@@ -29,12 +29,6 @@
     </u-row>
     <u-gap height="5"></u-gap>
     <div style="text-align: center;">
-      <!-- <div class="borders border-blue p-2 my-2"
-        style="font-size: 28upx;color:red;display: inline-block;border-radius: 12px;">
-        验证完后：到订阅里勾上学生
-      </div>
-      <img style="display: inline-block;width: 460upx;"
-        src="https://article.biliimg.com/bfs/article/92d7dffc509ae904e536e5c86a8b9dc8fac6f376.png"> -->
       <img style="display: inline-block;width: 500upx;"
         src="https://article.biliimg.com/bfs/article/9f551b5847d473ea5e634ae3d3c79af57608cea0.jpg">
     </div>
@@ -43,8 +37,6 @@
       <view style="font-size: 35upx;text-align: left;">
         <view class="animate__flipInX p-3 animate__slow">
           <text style="font-size: 30upx;"></text>
-          <!-- <ui-tag ui="sm" class="animate animate__heartBeat animate__slower animate__infinite p-4" bg="bg-red-gradient"
-            info="验证完后" /> -->
           <u-gap height="5"></u-gap>
           <div class="borders border-blue p-2 my-2"
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
@@ -61,22 +53,27 @@
           <img class="animate__animated animate__pulse animate__infinite"
             style="display: block;inline-block;width:500upx;margin: 0 auto;"
             src=" https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
-          <!-- <div class="borders border-blue p-2 my-2"
+        </view>
+      </view>
+    </u-popup>
+    <u-popup class="bg-stripes-grey" :round="10" :show="showSuccessPop" mode="bottom" @close="closePop"
+      @open="showSuccessPop=true" closeable>
+      <view style="font-size: 35upx;text-align: left;">
+        <view class="animate__flipInX p-3 animate__slow">
+          <text style="font-size: 30upx;"></text>
+          <u-gap height="5"></u-gap>
+          <div class="borders border-blue p-2 my-2"
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
-            <span style="text-decoration: underline;">将订阅页面截图客服</span>，补发1条备用，先别点开（否则会过期），点完不是学生再用
-          </div> -->
-          <!-- <u-gap></u-gap> -->
-          <!-- <u-row style="margin-left: 10upx;">
-            <u-col :span="6">
-              <img style="display: inline-block;width:320upx"
-                src="https://article.biliimg.com/bfs/article/6657f2eea811289bc3db0835acf78b3d4e358a2b.jpg">
-            </u-col>
-            <u-col :span="6">
-              <img class="animate__animated animate__pulse animate__infinite"
-                style="display: inline-block;inline-block;width:640upx"
-                src="https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
-            </u-col>
-          </u-row> -->
+            如何判断是否成功？
+          </div>
+          <div>
+            1、点开：手机设置>顶部姓名>订阅>点进音乐的订阅：【验证资格】提醒消失，且5元/月勾上，即成功
+            <div style="text-decoration: ;color:red">
+              2、原因：学生验证不改变扣费时间，且学生方案是包月，非包年，所以成功后【扣费日期不显示为明年，但优惠持续1年】
+            </div>
+            ******由于部分客户已成功，还反复询问，希望上面的文字能解答******
+          </div>
+          <u-gap></u-gap>
         </view>
       </view>
     </u-popup>
@@ -99,6 +96,7 @@
         verifyAddr: null,
         showAlert: true,
         showPop: false,
+        showSuccessPop: false,
         checkboxValue1: [false],
       }
     },
@@ -119,6 +117,7 @@
       },
       closePop() {
         this.showPop = false
+        this.showSuccessPop = false
         this.checkboxValue1 = [false]
       },
       clickStart() {
