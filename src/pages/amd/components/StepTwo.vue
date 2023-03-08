@@ -3,21 +3,21 @@
     <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
       src="https://article.biliimg.com/bfs/article/1f766ea2e70e6248ceff4747c94ed0bd40bc17dd.jpg"
       style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
-    <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
+    <!-- <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animate animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
-    </view>
+    </view> -->
+    <u-gap height="15"></u-gap>
     <view style="text-align: center;">
-      <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>还不明白，是否成功？</a>
+      <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>【必读1】还不懂是否成功？</a>
     </view>
-    <u-gap height="30"></u-gap>
-    <div style="text-align: center;"
-      class="animate__animated animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
+    <u-gap height="15"></u-gap>
+    <div style="text-align: center;" class=" animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
-        🔥🎉 学生续期，必读 👩🏼‍💻👨‍💻</a>
+        【必读2】学生续期，必读！</a>
     </div>
-    <u-gap height="5"></u-gap>
+    <u-gap height="15"></u-gap>
     <!-- 底部按钮 -->
     <u-row class="btn" gutter="10">
       <u-col span="12">
@@ -27,7 +27,7 @@
         </button>
       </u-col>
     </u-row>
-    <u-gap height="5"></u-gap>
+    <u-gap height="15"></u-gap>
     <div style="text-align: center;">
       <img style="display: inline-block;width: 500upx;"
         src="https://article.biliimg.com/bfs/article/9f551b5847d473ea5e634ae3d3c79af57608cea0.jpg">
@@ -43,7 +43,7 @@
             学生续期
           </div>
           <div>
-            1、如下图，【音乐里提醒验证】时，点【我已不是大学生】，再验证才能成功
+            1、如下图，【音乐里提醒验证】时，点【我已不是大学生】擦除之前的学生信息之后，再验证才能成功
             <div style="text-decoration: ;color:red">2、将订阅页面截图，联系客服补发1条备用</div>
           </div>
           <view>3、弹窗不定时，只能等着，或重装音乐试试
@@ -58,20 +58,21 @@
     </u-popup>
     <u-popup class="bg-stripes-grey" :round="10" :show="showSuccessPop" mode="bottom" @close="closePop"
       @open="showSuccessPop=true" closeable>
-      <view style="font-size: 35upx;text-align: left;">
+      <view style="font-size: 32upx;text-align: left;">
         <view class="animate__flipInX p-3 animate__slow">
           <text style="font-size: 30upx;"></text>
           <u-gap height="5"></u-gap>
-          <div class="borders border-blue p-2 my-2"
-            style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
+          <u-swiper interval="3500" duration="800" height="350" :list="list" img-mode="scaleToFill"></u-swiper>
+          <!-- <div class="borders border-blue p-2 my-2"
+            style="font-size: 30upx;color:red;border-radius: 12px;text-align:center">
             如何判断是否成功？
-          </div>
+          </div> -->
           <div>
-            1、点开：手机设置>顶部姓名>订阅>点进音乐的订阅：【验证资格】提醒消失，且5元/月勾上，即成功
-            <div style="text-decoration: ;color:red">
+            1、点开：手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功
+            <div style="text-decoration: underline;color:red">
               2、原因：学生验证不改变扣费时间，且学生方案是包月，非包年，所以成功后【扣费日期不显示为明年，但优惠持续1年】
             </div>
-            ******由于部分客户已成功，还反复询问，希望上面的文字能解答******
+            ******请仔细阅读，勿反复问是否成功******
           </div>
           <u-gap></u-gap>
         </view>
@@ -98,6 +99,10 @@
         showPop: false,
         showSuccessPop: false,
         checkboxValue1: [false],
+        list: ['https://article.biliimg.com/bfs/article/39308d28a6dfb737082efbecef19737fccee1160.jpg',
+          'https://article.biliimg.com/bfs/article/d58355cda011c2e9cf1a9ab343e693201705b6b9.jpg',
+          'https://article.biliimg.com/bfs/article/d82a50ab4e6b2004e28886d7b429d43d2a623356.jpg'
+        ]
       }
     },
     created() {
