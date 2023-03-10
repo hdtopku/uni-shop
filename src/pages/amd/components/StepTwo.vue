@@ -9,7 +9,7 @@
       扣费时间不变不显示为明年
     </view> -->
 
-    <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 400upx;margin: 0 auto;"
+    <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 250upx;margin: 0 auto;"
       src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img>
     <u-gap height="15"></u-gap>
     <view style="text-align: center;">
