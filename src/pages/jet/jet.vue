@@ -1,6 +1,6 @@
 <template>
   <Page1>
-    <view v-if="showPage" style="padding: 200upx 30upx 0">
+    <view v-if="showPage" style="padding: 150upx 30upx 0">
       <Register v-if="accountInfo.status===1" :code="code"></Register>
       <view v-if="accountInfo.status === 2">
         <Login v-if="accountInfo.account == null && accountInfo.password == null" :code="code" :tip="accountInfo.tip">
