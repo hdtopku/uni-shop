@@ -8,9 +8,19 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view> -->
-
-    <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 250upx;margin: 0 auto;"
-      src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img>
+    <u-overlay :show="showOverlay" :opacity="1" @click="showOverlay=false">
+      <view class="warp">
+        <!-- <view class="rect" @tap.stop></view> -->
+        <img @click="showMpCode" referrer="no-referrer|origin|unsafe-url" v-if="showCode"
+          style="display: block;width: 600upx;margin: 0 auto;"
+          src="https://article.biliimg.com/bfs/article/82a132435a7fa60ec58192bfd869124befa14985.png"></img>
+      </view>
+    </u-overlay>
+    <img @click="showMpCode" class="animate__animated animate__swing animate__infinite"
+      referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 120upx;margin: 0 auto;"
+      src="https://article.biliimg.com/bfs/article/e3c87054f1fa28534b3872128deda16c66f2c486.png"></img>
+    <!-- <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 250upx;margin: 0 auto;"
+      src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img> -->
     <u-gap height="15"></u-gap>
     <view style="text-align: center;">
       <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>【所有用户】必读！！</a>
@@ -98,6 +108,7 @@
     data() {
       return {
         showCode: false,
+        showOverlay: false,
         verifyAddr: null,
         showAlert: true,
         showPop: false,
@@ -122,6 +133,9 @@
       })
     },
     methods: {
+      showMpCode() {
+        this.showOverlay = !this.showOverlay
+      },
       clickNext() {
         uni.$emit('nextStep')
       },

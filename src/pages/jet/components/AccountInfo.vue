@@ -31,7 +31,7 @@
     </u-collapse>
     <u-gap></u-gap>
     <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 400upx;margin: 0 auto;"
-      src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img>
+      src="https://article.biliimg.com/bfs/article/82a132435a7fa60ec58192bfd869124befa14985.png"></img>
   </view>
 </template>
 

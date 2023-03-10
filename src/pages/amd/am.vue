@@ -144,7 +144,7 @@
   .page {
     display: flex;
     justify-content: center;
-    height: 98vh;
+    height: 100vh;
     align-items: center;
   }
 </style>
