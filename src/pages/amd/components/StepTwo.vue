@@ -1,8 +1,8 @@
 <template>
   <view class="">
-    <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
+    <!-- <img referrer="no-referrer|origin|unsafe-url" class="animate__animated animate__flipInX"
       src="https://article.biliimg.com/bfs/article/1f766ea2e70e6248ceff4747c94ed0bd40bc17dd.jpg"
-      style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" />
+      style="width: 100%;display:block;margin:0 auto;border: 2px solid #ff4c4c;border-radius: 10px;" /> -->
     <!-- <view style="font-size: 36upx;color:red;font-weight: bolder;display: block;text-align: center;margin-top: 10upx;"
       class="animate__animate animate__bounce animate__repeat-3">
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
@@ -70,7 +70,7 @@
           </div> -->
           <div>
             <span
-              style="text-decoration: underline;color:red">1、是否成功</span>：点开手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
+              style="text-decoration: underline;color:red">1、是否成功</span>：参考上图，点开手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
             <view></view>
             <div style="text-decoration: ;color:">
               <span
