@@ -10,12 +10,12 @@
     </view> -->
     <u-gap height="15"></u-gap>
     <view style="text-align: center;">
-      <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>【必读1】还不懂是否成功？</a>
+      <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>【所有用户】必读！！</a>
     </view>
     <u-gap height="15"></u-gap>
     <div style="text-align: center;" class=" animate__delay-2s animate__rubberBand animate__flip animate__repeat-3">
       <a color="#ff4c4c" href="javascript:;" @click="showPop=true" underLine text="学生续期，请注意">
-        【必读2】学生续期，必读！</a>
+        【续期用户】必读！！</a>
     </div>
     <u-gap height="15"></u-gap>
     <!-- 底部按钮 -->
@@ -40,13 +40,14 @@
           <u-gap height="5"></u-gap>
           <div class="borders border-blue p-2 my-2"
             style="font-size: 32upx;color:red;border-radius: 12px;text-align:center">
-            学生续期
+            学生续期：是去年学生优惠，今年续期的用户。
+          </div>
+          <div style="text-decoration: underline;color:red">由于官方要求：需擦除之前学生身份之后，再验证才能成功。将订阅页面截图，以证明您是续期，客服会补发1条备用
           </div>
           <div>
-            1、如下图，【音乐里提醒验证】时，点【我已不是大学生】擦除之前的学生信息之后，再验证才能成功
-            <div style="text-decoration: ;color:red">2、将订阅页面截图，联系客服补发1条备用</div>
+            1、怎么操作：如下图，【音乐里提醒验证】时，点【我已不是大学生】擦除之前的学生信息之后，再验证才能成功
           </div>
-          <view>3、弹窗不定时，只能等着，或重装音乐试试
+          <view>2、弹窗不定时，只能等着，或重装音乐试试。如果最后几天还没弹出，可以先取消订阅，到期后再验证。
           </view>
 
           <u-gap></u-gap>
@@ -68,11 +69,12 @@
             如何判断是否成功？
           </div> -->
           <div>
-            1、点开：手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功
+            1、点开：手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
+            <view></view>
             <div style="text-decoration: underline;color:red">
-              2、原因：学生验证不改变扣费时间，且学生方案是包月，非包年，所以成功后【扣费日期不显示为明年，但优惠持续1年】
+              2、原因：学生验证不改变扣费时间，成功后【扣费日期不显示为明年】，且5元/月持续1年（不用每个月验证），每年下单续1年
             </div>
-            ******请仔细阅读，勿反复问是否成功******
+            ****请仔细阅读，勿反复问<span style="text-decoration: underline;color:red">是否成功/能用多久</span>****
           </div>
           <u-gap></u-gap>
         </view>
@@ -80,8 +82,8 @@
     </u-popup>
     <u-gap height="10"></u-gap>
     <div style="float: right;">
-      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine
-        text="附：差评师、恶意退款（全网禁拍名单）">
+      <u-link href="https://www.yuque.com/docs/share/0c0049b7-96d6-4cbb-a82b-1b8d34c38481" underLine color="#000"
+        text="附：差评师、恶意退款（全网禁拍名单）咒">
       </u-link>
     </div>
   </view>
