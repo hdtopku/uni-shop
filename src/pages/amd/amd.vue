@@ -1,14 +1,16 @@
-<template>
-  <view>
+<!-- <template>
+  <Page1>
     <Am></Am>
-  </view>
+  </Page1>
 </template>
 
 <script>
-  import Am from '../am/am.vue'
+  import Am from '../am.vue'
+  import Page1 from '../../a/components/page1.vue'
   export default {
     components: {
-      Am
+      Am,
+      Page1
     },
     data() {
       return {
@@ -24,3 +26,4 @@
 <style>
 
 </style>
+ -->

@@ -30,7 +30,7 @@
       </u-collapse-item>
     </u-collapse>
     <u-gap></u-gap>
-    <img style="display: block;width: 400upx;margin: 0 auto;"
+    <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 400upx;margin: 0 auto;"
       src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img>
   </view>
 </template>
@@ -46,13 +46,20 @@
       account: null,
       password: null
     },
+    created() {
+      uni.$on('showWxCode', (show) => {
+        this.showCode = show
+      })
+      uni.$emit('ifShowWxCode')
+    },
     data() {
       return {
         identity: '',
         checkboxValue1: [true],
         description: `篡改jet密码，将永久拉黑，终身停止售后！勿自私！
         若希望更稳定，可补差价买上面的，激活自己邮箱`,
-        description1: `以获得稳定的体验，可根据购买时间补差价升级，咨询qq或微信:1450948930，或`
+        description1: `以获得稳定的体验，可根据购买时间补差价升级，咨询qq或微信:1450948930，或`,
+        showCode: false,
       }
     },
     methods: {

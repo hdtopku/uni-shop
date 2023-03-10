@@ -8,6 +8,9 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view> -->
+
+    <img referrer="no-referrer|origin|unsafe-url" v-if="showCode" style="display: block;width: 400upx;margin: 0 auto;"
+      src="https://article.biliimg.com/bfs/article/ca8a5f9c470607308255ec73dfcc8640d8f65ede.png"></img>
     <u-gap height="15"></u-gap>
     <view style="text-align: center;">
       <a color="#ff4c4c" href="javascript:;" @click="showSuccessPop=true" underLine>【所有用户】必读！！</a>
@@ -64,10 +67,6 @@
           <text style="font-size: 30upx;"></text>
           <u-gap height="5"></u-gap>
           <u-swiper interval="3500" duration="800" height="350" :list="list" img-mode="scaleToFill"></u-swiper>
-          <!-- <div class="borders border-blue p-2 my-2"
-            style="font-size: 30upx;color:red;border-radius: 12px;text-align:center">
-            如何判断是否成功？
-          </div> -->
           <div>
             <span
               style="text-decoration: underline;color:red">1、是否成功</span>：参考上图，点开手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
@@ -98,6 +97,7 @@
     },
     data() {
       return {
+        showCode: false,
         verifyAddr: null,
         showAlert: true,
         showPop: false,
@@ -110,6 +110,10 @@
       }
     },
     created() {
+      uni.$on('showWxCode', (show) => {
+        this.showCode = show
+      })
+      uni.$emit('ifShowWxCode')
       this.startVerify()
       uni.$on('startVerify', () => {
         if (this.verifyAddr != null) {
