@@ -69,10 +69,12 @@
             如何判断是否成功？
           </div> -->
           <div>
-            1、点开：手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
+            <span
+              style="text-decoration: underline;color:red">1、是否成功</span>：点开手机设置>顶部姓名>订阅>【进入音乐的订阅】：【验证资格】提醒消失，且5元/月勾上，即成功。
             <view></view>
-            <div style="text-decoration: underline;color:red">
-              2、原因：学生验证不改变扣费时间，成功后【扣费日期不显示为明年】，且5元/月持续1年（不用每个月验证），每年下单续1年
+            <div style="text-decoration: ;color:">
+              <span
+                style="text-decoration: underline;color:red">2、能用多久</span>：学生验证不改变扣费时间，成功后【扣费日期不显示为明年】，且5元/月自动续1年（不用每个月验证），每年下单续1年
             </div>
             ****请仔细阅读，勿反复问<span style="text-decoration: underline;color:red">是否成功/能用多久</span>****
           </div>
