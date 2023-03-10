@@ -8,7 +8,7 @@
       消失就成功<view style="display: inline-block;" class="animate__animated animate__bounce animate__infinite">👆</view>
       扣费时间不变不显示为明年
     </view> -->
-    <u-overlay :show="showOverlay" :opacity="1" @click="showOverlay=false">
+    <u-overlay :duration="100" :show="showOverlay" :opacity="1" @click="showOverlay=false">
       <view class="warp">
         <!-- <view class="rect" @tap.stop></view> -->
         <img @click="showMpCode" referrer="no-referrer|origin|unsafe-url" v-if="showCode"
@@ -224,5 +224,12 @@
     img {
       pointer-events: none;
     }
+  }
+
+  .warp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 </style>
