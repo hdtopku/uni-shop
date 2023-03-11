@@ -54,17 +54,24 @@
     },
     methods: {
       submit() {
-        this.identity = this.identity?.trim()
+        this.identity = this.identity?.replace(/\s*/g, "")
         if (this.identity?.length < 8) {
-          uni.$emit('showNotify', '密码太短了')
+          uni.$emit('showNotify', '密码太短了，需8-24位')
           this.showTip = false
           setTimeout(() => {
             this.showTip = true
           }, 10);
           return
         }
+        // ^[0-9a-zA-Z!@#$%^&*()_+-=,./<>?;':"\[\]\\{}|`~]+$
+        var pattern = /^[0-9a-zA-Z!@#$%^&]+$/
+        let res = pattern.test(this.identity)
+        if (!res) {
+          uni.$emit('showNotify', '密码只能包含：字母、数字和字符!@#$%^&')
+          return
+        }
         if (this.identity?.trim()?.length > 24) {
-          uni.$emit('showNotify', '密码太长了')
+          uni.$emit('showNotify', '密码太长了，需8-24位')
           this.showTip = false
           setTimeout(() => {
             this.showTip = true
