@@ -30,7 +30,7 @@
         <view class="warp">
           <!-- <view class="rect" @tap.stop></view> -->
           <img @click="showMpCode" referrer="no-referrer|origin|unsafe-url" v-if="showCode"
-            style="display: block;width: 600upx;margin: 0 auto;"
+            style="display: block; width: 600upx;margin: 0 auto;"
             src="https://article.biliimg.com/bfs/article/82a132435a7fa60ec58192bfd869124befa14985.png"></img>
         </view>
       </u-overlay>
@@ -60,7 +60,7 @@
       </u-row>
       <u-gap height="15"></u-gap>
       <div style="text-align: center;">
-        <img style="display: inline-block;width: 500upx;"
+        <img referrer="no-referrer|origin|unsafe-url" style="display: inline-block;width: 500upx;"
           src="https://article.biliimg.com/bfs/article/9f551b5847d473ea5e634ae3d3c79af57608cea0.jpg">
       </div>
       <u-popup class="bg-stripes-grey" :round="10" :show="showPop" mode="bottom" @close="closePop" @open="showPop=true"
@@ -82,7 +82,7 @@
             </view>
 
             <u-gap></u-gap>
-            <img class="animate__animated animate__pulse animate__infinite"
+            <img class="animate__animated animate__pulse animate__infinite" referrer="no-referrer|origin|unsafe-url"
               style="display: block;inline-block;width:500upx;margin: 0 auto;"
               src=" https://article.biliimg.com/bfs/article/0a86ce629469e2aa669525bd03ef0956ab498275.jpg">
           </view>
@@ -249,7 +249,7 @@
     }
 
     img {
-      pointer-events: none;
+      // pointer-events: none;
     }
   }
 
