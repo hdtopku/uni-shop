@@ -1,9 +1,9 @@
 <template>
   <view class="">
-    <u-alert style="position: absolute;" title="若希望激活自己的邮箱:" type="warning" :description="description1">
-    </u-alert>
+    <!-- <u-alert style="position: absolute;" title="若希望激活自己的邮箱:" type="warning" :description="description1">
+    </u-alert> -->
     <u-link style="cursor:pointer;position: absolute;right: 100upx;top: 250upx;"
-      href="https://h5.m.taobao.com/awp/core/detail.htm?id=687752813957" text="点击咨询淘宝客服" @click="click">
+      href="https://item.taobao.com/item.htm?id=692734405373" text="🚀 点击咨询客服，升级为稳定定制版 >" @click="click">
     </u-link>
     <u-gap height="120"></u-gap>
     <u-alert title="特别说明:" type="error" :description="description"></u-alert>
@@ -58,7 +58,7 @@
         checkboxValue1: [true],
         description: `篡改jet密码，将永久拉黑，终身停止售后！勿自私！
         若希望更稳定，可补差价买上面的，激活自己邮箱`,
-        description1: `以获得稳定的体验，可根据购买时间补差价升级，咨询qq或微信:1450948930，或`,
+        description1: `以获得稳定的体验，可根据购买时间补差价升级，`,
         showCode: false,
       }
     },
@@ -69,8 +69,10 @@
 密【${this.password}】`
         })
         setTimeout(() => {
-          uni.$emit('showNotify', '收藏此链接，若账密失效，自助获取最新，无需找客服', {
-            duration: 10000
+          uni.$emit('showNotify', `👉 到软件里，选JBAccount登录，遇到问题先看教程
+           👉收藏此链接，若账密失效，自助获取最新，无需找客服
+          `, {
+            duration: 15000
           })
         }, 300)
       },
