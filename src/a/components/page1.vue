@@ -41,7 +41,8 @@
         if (allInfo?.ip?.country?.indexOf('中国') >= 0 && allInfo?.ip?.city?.indexOf('杭州') < 0 && allInfo?.ip?.province
           ?.indexOf('台湾') < 0 && allInfo?.ip?.province?.indexOf('香港') < 0 && allInfo?.ip?.province?.indexOf('澳门') < 0 &&
           allInfo?.ip?.province?.indexOf('香港') < 0) {
-          uni.$emit('showWxCode', true)
+          // uni.$emit('showWxCode', true)
+          uni.$emit('showWxCode', false)
         }
       }
     },
