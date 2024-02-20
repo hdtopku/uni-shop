@@ -23,7 +23,7 @@ const getIpFromSohu = () => {
   })
 }
 export const getIpInfo = () => {
-  return uni.$u.http.get('https://2024.ipchaxun.com', {
+  return uni.$u.http.get(`https://${new Date().getFullYear()}.ipchaxun.com`, {
       timeout: 2000
     }).then(res => {
       // res = res.data
